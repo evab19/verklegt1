@@ -182,3 +182,18 @@ Fimmtudagur
 - Gunnsteinn bætti við virkni fyrir destination
 
 22.30 home time
+
+_____________________________________________________________________________________________________________________________
+Dagur 10 6.12.2019
+Föstudagur 
+_____________________________________________________________________________________________________________________________
+10.20 MORNING MEETING ON THE LINE - FACEBOOK SPJALL
+17.00 Mæting í HR - byrjuðum vinnudaginn
+17.15 Skiptum verkum 
+20.25 Fengum aðstoð frá Arnari og Gylfa m.a. við að skipuleggja APA og fækka tilvikum. Arnar aðstoðaði við að koma okkur á rétta leið með __str__ föllin og útprentun
+
+Þorsteinn sér um að fækka tilvikum í Öpum og tók yfirstjórn á github master.
+Gunnsteinn setti upp prentun og __str__ föll fyrir airplane og destination - útfærð svo útprentun
+Eva lagaði m.a. headera og fækkaði línum í kóða um skrilljón
+Thelma fór í að setja __str__ og prentun fyrir employee - sem fékk svo sömu útfærslu og airplane og destination
+Ingibjörg skoðaði ýmsar lagfæringar og git útsetningu
