@@ -1,4 +1,5 @@
 from models.Destination import Destination
+from models.Airplane import Airplane
 import csv
 
 class DataAPI:
@@ -6,6 +7,7 @@ class DataAPI:
     def __init__(self):
         self.__destinations = []
         self.__employee = []
+        self.__airplane = []
 
     def add_employee(self, employee):
         # first add to file then to private list
@@ -43,16 +45,35 @@ class DataAPI:
         with open("./data/destinations.csv", "a+", newline='', encoding='utf-8-sig') as csv_file:
             fieldnames = ['country', 'airport', 'duration', 'distance', 'contact_name', 'contact_phone']
             writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
-
+ 
             writer.writerow({'country': country, 'airport': airport, 'duration': duration, 'distance': distance, 'contact_name': contact_name, 'contact_phone': contact_phone})
         csv_file.close()
-
+ 
     def get_destinations(self):
         if self.__destinations == []:
+            destination_str = ""
             with open("./data/destinations.csv", newline='', encoding='utf-8-sig') as csvfile:
                 reader = csv.DictReader(csvfile)
                 for row in reader:
                     print(row['country'] + ', ' + row['airport'] + ', ' + row['duration'] + ', ' + row['distance'] + ', ' + row['contact_name'] + ', ' + row['contact_phone'])
-    
-    def update_destination(self, airport_name):
-        pass
+                 
+ 
+    def add_airplane(self, airplane):
+        name = airplane.get_name()
+        model = airplane.get_model()
+        producer = airplane.get_producer()
+        number_of_seats = airplane.get_number_of_seats()
+        with open("./data/airplanes.csv", "a+", newline='', encoding='utf-8-sig') as csv_file:
+            fieldnames = ['name', 'model', 'producer', 'number_of_seats']
+            writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+ 
+            writer.writerow({'name': name, 'model': model, 'producer': producer, 'number_of_seats': number_of_seats})
+        csv_file.close()
+ 
+    def get_airplane(self):
+        if self.__airplane == []:
+            airplane_str = ""
+            with open("./data/airplanes.csv", newline='', encoding='utf-8-sig') as csvfile:
+                reader = csv.DictReader(csvfile)
+                for row in reader:
+                    print(row['name'] + ', ' + row['model'] + ', ' + row['producer'] + ', ' + row['number_of_seats'])
