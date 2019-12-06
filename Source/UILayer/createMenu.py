@@ -1,5 +1,5 @@
 # from UILayer.mainMenu import Main_menu
-from LogicLayer.DestinationAPI import DestinationAPI
+from LogicLayer.LLAPI import LLAPI
 from models.Destination import Destination
 from models.Employee import Employee
 from models.Airplane import Airplane
@@ -9,9 +9,10 @@ ID_COUNTER = 1000 #needs += 1 somewhere
 class Create_Menu:
 
     def __init__(self):
-        self.__destination_service = DestinationAPI()
-        self.__employee_service = DestinationAPI() #ath að breyta!
-        self.__airplane_service = DestinationAPI()
+        self.__llapi = LLAPI()
+        # self.__destination_service = LLAPI()
+        # self.__employee_service = LLAPI() #ath að breyta!
+        # self.__airplane_service = LLAPI()
         # self.create_employee_lst = []
         # self.create_destination_lst = []
         # self.create_flight_lst = []
@@ -145,7 +146,7 @@ class Create_Menu:
         if correct == "y":
             self.__success_header()
             new_employee = Employee(occupation_str, employee_id_str, name_str, SO_str, address_str, home_phone_str, cell_phone_str, email_str)
-            self.__employee_service.add_employee(new_employee)
+            self.__llapi.add_employee(new_employee)
     
     def __create_destination(self):
         ''' Þurfum við ekki að hafa test á því að inputið sé á
@@ -166,7 +167,7 @@ class Create_Menu:
         if correct == "y":
             self.__success_header()
             new_destination = Destination(country_str, airport_str, duration_str, distance_str, contact_name_str, contact_phone_nr_str)
-            self.__destination_service.add_destination(new_destination)
+            self.__llapi.add_destination(new_destination)
             ''' Hér þarf að kalla í API niður í logic layer þar sem inputið
                 er sett í rétt format áður en það fer í data layer til 
                 skráningar.'''
