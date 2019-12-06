@@ -4,7 +4,7 @@ from models.Destination import Destination
 from models.Employee import Employee
 from models.Airplane import Airplane
 
-ID_COUNTER = 1000
+ID_COUNTER = 1000 #needs += 1 somewhere
 
 class Create_Menu:
 
