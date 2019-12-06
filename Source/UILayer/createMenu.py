@@ -3,7 +3,7 @@ from LogicLayer.DestinationAPI import DestinationAPI
 from models.Destination import Destination
 from models.Employee import Employee
 
-ID_COUNTER = 1000
+ID_COUNTER = 1000 #needs += 1 somewhere
 
 class Create_Menu:
 

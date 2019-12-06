@@ -45,11 +45,12 @@ class DataAPI:
         home_phone_str = employee.get_home_phone()
         cell_phone_str = employee.get_cell_phone()
         email_str = employee.get_email()
+        licence_str = employee.get_licence()
         with open("./data/employee.csv", "a+", newline='', encoding='utf-8-sig') as csv_file:
-            fieldnames = ['occupation_str', 'id_str', 'name_str', 'so_str', 'address_str', 'home_phone_str', 'cell_phone_str', 'email_str']
+            fieldnames = ['occupation_str', 'id_str', 'name_str', 'so_str', 'address_str', 'home_phone_str', 'cell_phone_str', 'email_str', 'licence_str']
             writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
 
-            writer.writerow({'occupation_str': occupation_str, 'id_str': id_str, 'name_str': name_str, 'so_str': so_str, 'address_str': address_str, 'home_phone_str': home_phone_str, 'cell_phone_str': cell_phone_str, 'email_str': email_str})
+            writer.writerow({'occupation_str': occupation_str, 'id_str': id_str, 'name_str': name_str, 'so_str': so_str, 'address_str': address_str, 'home_phone_str': home_phone_str, 'cell_phone_str': cell_phone_str, 'email_str': email_str, 'licence_str': licence_str})
         csv_file.close()
 
     def get_employee(self):
@@ -58,7 +59,7 @@ class DataAPI:
             with open("./data/employee.csv", newline='', encoding='utf-8-sig') as csvfile:
                 reader = csv.DictReader(csvfile)
                 for row in reader:
-                    print(row['occupation_str'] + ', ' + row['id_str'] + ', ' + row['name_str'] + ', ' + row['so_str'] + ', ' + row['address_str'] + ', ' + row['home_phone_str'] + ', ' + row['cell_phone_str'] + ', ' + row['email_str'])
+                    print(row['occupation_str'] + ', ' + row['id_str'] + ', ' + row['name_str'] + ', ' + row['so_str'] + ', ' + row['address_str'] + ', ' + row['home_phone_str'] + ', ' + row['cell_phone_str'] + ', ' + row['email_str'] + ', ' + row['licence_str'])
             # destinations_str = "{}\t\t {}\t\t {}\t\t {}\t\t {}\t\t {}\n".format("Country", "Airport", "Duration", "Distance", "Contact name", "Contact phone")
         #     with open("./data/employee.txt", "r") as employee_file:
         #         for line in employee_file.readlines():
