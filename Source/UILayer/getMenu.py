@@ -1,5 +1,6 @@
 # from UILayer.mainMenu import Main_menu
 from LogicLayer.DestinationAPI import DestinationAPI
+from utils.print_functions import header_string
 
 
 class Get_Menu:
@@ -50,62 +51,17 @@ class Get_Menu:
                 input("\n**   Press enter to return to main menu    **")
 
             elif action == "3":
-                self.__get_airplane_information_header()
+                print(header_string("GET AIRPLANE INFORMATION", 50))
                 airplanes = self.__airplane_service.get_airplane()
                 print(airplanes)
                 input("\n**   Press enter to return to main menu    **")
-    
-    def __get_employee_header(self):
-        print("")
-        print("*********************************************")
-        print("*                                           *")
-        print("*               GET EMPLOYEE                *")
-        print("*                                           *")
-        print("*********************************************")
-        print("")
-
-    def __get_destination_header(self):
-        print("")
-        print("*********************************************")
-        print("*                                           *")
-        print("*              GET DESTINATION              *")
-        print("*                                           *")
-        print("*********************************************")
-        print("")
-    
-    def __get_airplane_information_header(self):
-        print("")
-        print("*********************************************")
-        print("*                                           *")
-        print("*         GET AIRPLANE INFORMATION          *")
-        print("*                                           *")
-        print("*********************************************")
-        print("")
-    
-    def __get_flight_schedule_header(self):
-        print("")
-        print("*********************************************")
-        print("*                                           *")
-        print("*            GET FLIGHT SCHEDULE            *")
-        print("*                                           *")
-        print("*********************************************")
-        print("")
-    
-    def __get_employee_schedule_header(self):
-        print("")
-        print("*********************************************")
-        print("*                                           *")
-        print("*         GET EMPLOYEE INFORMATION          *")
-        print("*                                           *")
-        print("*********************************************")
-        print("")
 
     def __get_employee(self):
-        self.__get_employee_header()
+        print(header_string("GET EMPLOYEE", 50))
         pass
 
     def __get_destination(self):
-        self.__get_destination_header()
+        print(header_string("GET DESTINATION", 50))
         print("   **    Please insert Airport name     **   ")
         print("")
         airport_name_str = input("Airport name: ")
@@ -114,7 +70,7 @@ class Get_Menu:
             um þetta destination.'''
         ''' Hér kæmi virknin sem þarf til að birta gögnin sem logic
             layer API skilar upp.'''
-        self.__get_destination_header()
+        print(header_string("GET DESTINATION", 50))
         print("     **    Destination information    **     ")
         print("")
         print("Country: " + "Grænland") #Breyturnar eru ekki tilbúnar
@@ -128,7 +84,7 @@ class Get_Menu:
 
 
     def __get_airplane_information(self):
-        self.__get_flight_information_header()
+        print(header_string("GET FLIGHT INFORMATION", 50))
         print("    **    Please an Airplane name     **     ")
         print("")
         ''' Hér langar mig að fá lista þannig að hægt sé að velja
@@ -138,9 +94,9 @@ class Get_Menu:
         pass
 
     def __get_flight_schedule(self):
-        self.__get_flight_schedule_header()
+        print(header_string("GET FLIGHT SCHEDULE", 50))
         pass
 
     def __get_employee_schedule(self):
-        self.__get_employee_schedule_header()
+        print(header_string("GET EMPLOYEE SCHEDULE", 50))
         pass
