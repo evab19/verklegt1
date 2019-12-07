@@ -134,7 +134,7 @@ class Create_Menu:
         email_str = input("E-mail: ")
         #airplane_license_str = input("Airplane license: ")
         print("")
-        correct = input("Is this information correct? (Y/N) ").lower()
+        correct = input("Is this information correct? (Y/N): ").lower()
 
         if correct == "y":
             self.__success_header()
@@ -155,7 +155,7 @@ class Create_Menu:
         contact_name_str = input("Contact name: ")
         contact_phone_nr_str = input("Contact emergency phone number: ")
         print("")
-        correct = input("Is this information correct? (Y/N)").lower()
+        correct = input("Is this information correct? (Y/N): ").lower()
 
         if correct == "y":
             self.__success_header()
@@ -177,7 +177,7 @@ class Create_Menu:
         producer_str = input("Producer: ")
         number_of_seats_str = input("Number of seats: ")
         print("")
-        correct = input("Is this information correct? (Y/N)").lower()
+        correct = input("Is this information correct? (Y/N): ").lower()
  
         if correct == "y":
             self.__success_header()

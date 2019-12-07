@@ -1,5 +1,6 @@
 from models.Destination import Destination
 from models.Airplane import Airplane
+from models.Employee import Employee
 import csv
 
 class DataAPI:
@@ -10,31 +11,31 @@ class DataAPI:
         self.__airplane = []
 
     def add_employee(self, employee):
-        # first add to file then to private list
         occupation_str = employee.get_occupation()
         id_str = employee.get_id()
         name_str = employee.get_name()
-        so_str = employee.get_so()
+        ssn_str = employee.get_ssn()
         address_str = employee.get_address()
         home_phone_str = employee.get_home_phone()
         cell_phone_str = employee.get_cell_phone()
         email_str = employee.get_email()
         licence_str = employee.get_licence()
         with open("./data/employee.csv", "a+", newline='', encoding='utf-8-sig') as csv_file:
-            fieldnames = ['occupation_str', 'id_str', 'name_str', 'so_str', 'address_str', 'home_phone_str', 'cell_phone_str', 'email_str', 'licence_str']
+            fieldnames = ['occupation', 'id', 'name', 'ssn', 'address', 'home_phone', 'cell_phone', 'email', 'licence']
             writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
 
-            writer.writerow({'occupation_str': occupation_str, 'id_str': id_str, 'name_str': name_str, 'so_str': so_str, 'address_str': address_str, 'home_phone_str': home_phone_str, 'cell_phone_str': cell_phone_str, 'email_str': email_str, 'licence_str': licence_str})
+            writer.writerow({'occupation': occupation_str, 'id': id_str, 'name': name_str, 'ssn': so_str, 'address': address_str, 'home_phone': home_phone_str, 'cell_phone': cell_phone_str, 'email': email_str, 'licence': licence_str})
         csv_file.close()
 
     def get_employee(self):
         if self.__employee == []:
-            employee_str = ""
             with open("./data/employee.csv", newline='', encoding='utf-8-sig') as csvfile:
                 reader = csv.DictReader(csvfile)
                 for row in reader:
+                    new_employee = Employee(row['occupation'], row['id'], row['name'], row['ssn'], row['address'], row['home_phone'], row['cell_phone'], row['email'], row['licence'])
+                    self.__employee.append(new_employee)
+        return self.__employee
 
-                    print(row['occupation_str'] + ', ' + row['id_str'] + ', ' + row['name_str'] + ', ' + row['so_str'] + ', ' + row['address_str'] + ', ' + row['home_phone_str'] + ', ' + row['cell_phone_str'] + ', ' + row['email_str'] + ', ' + row['licence_str'])
 
     def add_destination(self, destination):
         country = destination.get_country()
@@ -52,12 +53,13 @@ class DataAPI:
  
     def get_destinations(self):
         if self.__destinations == []:
-            destination_str = ""
             with open("./data/destinations.csv", newline='', encoding='utf-8-sig') as csvfile:
                 reader = csv.DictReader(csvfile)
                 for row in reader:
-                    print(row['country'] + ', ' + row['airport'] + ', ' + row['duration'] + ', ' + row['distance'] + ', ' + row['contact_name'] + ', ' + row['contact_phone'])
-                 
+                    new_destination = Destination(row['country'], row['airport'], row['duration'], row['distance'], row['contact_name'], row['contact_phone'])
+                    self.__destinations.append(new_destination)
+        return self.__destinations
+
  
     def add_airplane(self, airplane):
         name = airplane.get_name()
@@ -73,8 +75,9 @@ class DataAPI:
  
     def get_airplane(self):
         if self.__airplane == []:
-            airplane_str = ""
             with open("./data/airplanes.csv", newline='', encoding='utf-8-sig') as csvfile:
                 reader = csv.DictReader(csvfile)
                 for row in reader:
-                    print(row['name'] + ', ' + row['model'] + ', ' + row['producer'] + ', ' + row['number_of_seats'])
+                    new_airplane = Airplane(row['name'], row['model'], row['producer'], row['number_of_seats'])
+                    self.__airplane.append(new_airplane)
+        return self.__airplane

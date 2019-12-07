@@ -5,6 +5,9 @@ class Airplane:
         self.model = model
         self.producer = producer
         self.number_of_seats = number_of_seats
+    
+    def __str__(self):
+        return "{}{:20}{}{:20}{}{:25}{}{:20}{}".format('| ', self.name, '| ', self.model, '| ', self.producer, '| ', self.number_of_seats, '|')
  
     def get_name(self):
         return str(self.name)
