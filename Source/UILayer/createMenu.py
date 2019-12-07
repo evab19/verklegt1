@@ -1,11 +1,17 @@
 # from UILayer.mainMenu import Main_menu
 from LogicLayer.DestinationAPI import DestinationAPI
 from models.Destination import Destination
+from models.Employee import Employee
+from models.Airplane import Airplane
+
+ID_COUNTER = 1000 #needs += 1 somewhere
 
 class Create_Menu:
 
     def __init__(self):
         self.__destination_service = DestinationAPI()
+        self.__employee_service = DestinationAPI() #ath að breyta!
+        self.__airplane_service = DestinationAPI()
         # self.create_employee_lst = []
         # self.create_destination_lst = []
         # self.create_flight_lst = []
@@ -23,8 +29,9 @@ class Create_Menu:
             print("")
             print("1: Create employee")
             print("2: Create destination")
-            print("3: Create flight")
-            print("4: Create voyage")
+            print("3: Create airplane")
+            print("4: Create flight")
+            print("5: Create voyage")
             print("b: Back")
             # print("q: Quit")
             print("")
@@ -35,6 +42,8 @@ class Create_Menu:
                 self.__create_employee()
             elif action == "2":
                 self.__create_destination()
+            elif action == "3":
+                self.__create_airplane()
 
     def __success_header(self):
         print("")
@@ -81,33 +90,62 @@ class Create_Menu:
         print("*********************************************")
         print("")
 
+    def __create_airplane_header(self):
+        print("")
+        print("*********************************************")
+        print("*                                           *")
+        print("*              CREATE AIRPLANE              *")
+        print("*                                           *")
+        print("*********************************************")
+        print("")
+
     def __create_employee(self):
-        # action2 = ""
         ''' Þurfum við ekki að hafa test á því að inputið sé á
             réttur formatti, t.d. tölustafir þar sem eiga að
             vera tölustafir og e-mail rétt skráð.'''
+        occupation_choice = ""
+        self.__create_employee_header()
+        print("** Please choose occupation **")
+        print("1: Captain")
+        print("2: Pilot")
+        print("3: Flight Attendant")
+        print("4: Flight Service Manager")
+        print("b: Back")
+            # print("q: Quit")
+        print("")
+
+        occupation_choice = input("Choose an option: ").lower()
+        if occupation_choice == "1":
+            occupation_str = "Captain"
+        elif occupation_choice == "2":
+            occupation_str = "Pilot"
+        elif occupation_choice == "3":
+            occupation_str = "Flight Attendant"
+        elif occupation_choice == "4":
+            occupation_str = "Flight Service Manager"
+        elif occupation_choice == "b":
+            self.create_menu()
+
         self.__create_employee_header()
         print("**  Please fill in the information below   **")
         print("")
+        print("Occupation: ", occupation_str)
+        employee_id_str = occupation_str + str(ID_COUNTER)
+        print("ID: ", employee_id_str)
         name_str = input("Name: ")
-        DOB_str = input("Date of birth (dd/mm/yyyy): ")
+        SO_str = input("Social Security Number: ")
         address_str = input("Address: ")
         home_phone_str = input("Home phone: ")
-        mobile_phone_str = input("Mobile phone: ")
+        cell_phone_str = input("Cell phone: ")
         email_str = input("E-mail: ")
-        occupation_str = input("Occupation: ")
-        airplane_license_str = inptu("Airplane license: ")
+        #airplane_license_str = input("Airplane license: ")
         print("")
-        correct = input("Is this information correct? (Y/N)").lower()
+        correct = input("Is this information correct? (Y/N): ").lower()
 
         if correct == "y":
             self.__success_header()
-            ''' Hér þarf að kalla í API niður í logic layer þar sem inputið
-                er sett í rétt format áður en það fer í data layer til 
-                skráningar.'''
-            print("**   Press enter to return to main menu    **")
-        if correct == "n":
-            self.__create_employee()
+            new_employee = Employee(occupation_str, employee_id_str, name_str, SO_str, address_str, home_phone_str, cell_phone_str, email_str)
+            self.__employee_service.add_employee(new_employee)
     
     def __create_destination(self):
         ''' Þurfum við ekki að hafa test á því að inputið sé á
@@ -123,7 +161,7 @@ class Create_Menu:
         contact_name_str = input("Contact name: ")
         contact_phone_nr_str = input("Contact emergency phone number: ")
         print("")
-        correct = input("Is this information correct? (Y/N)").lower()
+        correct = input("Is this information correct? (Y/N): ").lower()
 
         if correct == "y":
             self.__success_header()
@@ -135,6 +173,25 @@ class Create_Menu:
             print("**   Press enter to return to main menu    **")
         if correct == "n":
             self.__create_destination()
+
+    def __create_airplane(self):
+        self.__create_airplane_header()
+        print("**  Please fill in the information below   **")
+        print("")
+        name_str = input("Name: ")
+        model_str = input("Model: ")
+        producer_str = input("Producer: ")
+        number_of_seats_str = input("Number of seats: ")
+        print("")
+        correct = input("Is this information correct? (Y/N): ").lower()
+ 
+        if correct == "y":
+            self.__success_header()
+            new_airplane = Airplane(name_str, model_str, producer_str, number_of_seats_str)
+            self.__airplane_service.add_airplane(new_airplane)
+            print("**   Press enter to return to main menu    **")
+        if correct == "n":
+            self.__create_airplane()
 
     def __create_flight(self):
         self.__create_flight_header()

@@ -8,6 +8,9 @@ class Destination:
         self.contact_name = contact_name
         self.contact_phone = contact_phone
 
+    def __str__(self):
+        return "{}{:25}{}{:25}{}{:10}{}{:10}{}{:30}{}{:15}{}".format('| ', self.country, '| ', self.airport, '| ', self.duration, '| ', self.distance, '| ', self.contact_name, '| ', self.contact_phone, '|')
+
     def get_country(self):
         return str(self.country)
     
