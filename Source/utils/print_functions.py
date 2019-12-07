@@ -24,15 +24,11 @@ def get_employee_information():
     print("b: Back")
     print("")
 
-<<<<<<< Updated upstream
-def get_employee_by_occupation():
-=======
 def print_employee(employees):
     print("{:-<151}".format(""))
     print("{}{:13}{}{:25}{}{:12}{}{:20}{}{:12}{}{:12}{}{:30}{}{:10}{}{:10}{}".format('| ', 'Occupation', '| ', 'Name', '| ', 'SSN', '| ', 'Address', '| ', 'Home phone', '| ', 'Cell phone', '| ', 'Email', '| ', 'Licence', '| ', 'Status **' '|'))
 
 def print_employee_by_occupation():
->>>>>>> Stashed changes
     print("C for Captain")
     print("P for Pilot")
     print("FA for Flig Attendant")
@@ -81,3 +77,22 @@ def print_voyages(voyages):
         print(item)
     print("{:-<94}".format(""))
     input("\n**   Press any key to return to main menu    **")
+
+def print_airport(destination):
+    print("{:-<28}".format(""))
+    print("{}{:25}{}".format('| ',  'Airport', '|'))
+    print("{:-<28}".format(""))
+    for item in destination:
+        print("{}{:25}{}".format('| ', item.airport, '|'))
+    print("{:-<28}".format(""))
+    print("")
+
+def print_possible_employee_for_update(employees):
+    print("{:-<42}".format(""))
+    print("{}{:25}{}{:12}{}".format('| ', 'Name', '| ', 'SSN', '|'))
+    print("{:-<42}".format(""))
+    for item in employees:
+        name, ssn = item.name, item.ssn
+        print("{}{:25}{}{:12}{}".format('| ', name, '| ', ssn, '|'))
+    print("{:-<42}".format(""))
+    print("")

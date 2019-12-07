@@ -1,10 +1,10 @@
-# from UILayer.mainMenu import Main_menu
-from LogicLayer.DestinationAPI import DestinationAPI
+from LogicLayer.LLAPI import LLAPI
+from utils.print_functions import *
 
 class Update_Menu:
 
     def __init__(self):
-        self.__update_service = DestinationAPI()
+        self.__llapi = LLAPI()
         # self.update_employee_lst = []
         # self.update_destination_lst = []
         # self.update_flight_lst = []
@@ -20,7 +20,7 @@ class Update_Menu:
             print("*********************************************")
             print("")
             print("1: Update employee")
-            print("2: Update destination")
+            print("2: Update aiport contact info")
             print("3: Update flight")
             print("b: Back")
             # print("q: Quit")
@@ -32,9 +32,13 @@ class Update_Menu:
                 new_employee = []
                 action2 = ""
                 self.__update_employee_header()
-                employee = input("What employee would you like to update? ")
+                emp_to_update = self.__llapi.get_employee()
+                print_possible_employee_for_update(emp_to_update)
+                employee = input("Insert SSN of employee you would like to update? ")
                 print("")
+                print("------------------------------------------")
                 print("To leave information unchanged press enter")
+                print("------------------------------------------")
                 new_occupation = input("New occupation: ")
                 new_address = input("New address: ")
                 new_home_phone = input("New home phone: ")
@@ -47,14 +51,16 @@ class Update_Menu:
                 new_employee.append(new_mobile_phone)
                 new_employee.append(new_email)
                 new_employee.append(new_licence)
-                self.__update_service.update_employee(employee, new_employee)
-                
+                self.__llapi.update_employee(employee, new_employee)
+                 
 
             if action == "2":
                 new_contact = []
                 action2 = ""
                 self.__update_destination_header()
-                destination = input("What destination would you like to update? ")
+                airport = self.__llapi.get_destination()
+                print_airport(airport)
+                destination = input("What airport would you like to update? ")
                 print("")
                 print("What information would you like to update?")
                 print("1: Contact name")
@@ -78,7 +84,7 @@ class Update_Menu:
                     new_contact.append(new_name)
                     new_contact.append(new_phone)
                     # print(new_contact)
-                self.__update_service.update_destinations(destination, new_contact)
+                self.__llapi.update_destination(destination, new_contact)
                 
             
             # else:

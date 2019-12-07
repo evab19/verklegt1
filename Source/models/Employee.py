@@ -1,12 +1,7 @@
 class Employee:
 
-<<<<<<< Updated upstream
-    def __init__(self, occupation = "", ID = "", name = "", ssn = "", address = "", home_phone = "", cell_phone = "", email = "", licence = ""):
-=======
     def __init__(self, occupation = "", name = "", ssn = "", address = "", home_phone = "", cell_phone = "", email = "", licence = "", emp_status = "A"):
->>>>>>> Stashed changes
         self.occupation = occupation
-        self.ID = ID
         self.name = name
         self.ssn = ssn
         self.address = address
@@ -21,9 +16,6 @@ class Employee:
 
     def get_occupation(self):
         return str(self.occupation)
-
-    def get_id(self):
-        return str(self.ID)
 
     def get_name(self):
         return str(self.name)
@@ -46,13 +38,10 @@ class Employee:
     def get_licence(self):
         if self.licence:
             return str(self.licence)
-<<<<<<< Updated upstream
-=======
     
     def get_status(self):
         return str(self.status)
     
     def set_occupation(self, occupation):
         self.occupation = occupation
->>>>>>> Stashed changes
 

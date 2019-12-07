@@ -31,6 +31,9 @@ class LLAPI:
     
     def get_employee(self):
         return self.__employee.get_employee()
+
+    def update_employee(self, employee, new_employee):
+        self.__employee.update_employee(employee, new_employee)
     
     def get_employee_information(self, __employee):
         return self.__employee.get_employee_information(__employee)
