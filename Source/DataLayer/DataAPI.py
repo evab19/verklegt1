@@ -1,6 +1,7 @@
 from models.Destination import Destination
 from models.Airplane import Airplane
 from models.Employee import Employee
+from models.Voyage import Voyage
 import csv
 
 class DataAPI:
@@ -9,6 +10,7 @@ class DataAPI:
         self.__destinations = []
         self.__employee = []
         self.__airplane = []
+        self.__voyage = []
 
     def add_employee(self, employee):
         occupation_str = employee.get_occupation()
@@ -32,7 +34,7 @@ class DataAPI:
             with open("./data/employee.csv", newline='', encoding='utf-8-sig') as csvfile:
                 reader = csv.DictReader(csvfile)
                 for row in reader:
-                    new_employee = Employee(row['occupation'], row['id'], row['name'], row['ssn'], row['address'], row['home_phone'], row['cell_phone'], row['email'], row['licence'])
+                    new_employee = Employee(row['occupation'], row['name'], row['ssn'], row['address'], row['home_phone'], row['cell_phone'], row['email'], row['licence'])
                     self.__employee.append(new_employee)
         return self.__employee
 
@@ -81,3 +83,24 @@ class DataAPI:
                     new_airplane = Airplane(row['name'], row['model'], row['producer'], row['number_of_seats'])
                     self.__airplane.append(new_airplane)
         return self.__airplane
+
+    def add_voyage(self, voyage):
+        destination = voyage.get_destination()
+        date = voyage.get_date()
+        time = voyage.get_time()
+        airplane = voyage.get_airplane()
+        with open("./data/voyage.csv", "a+", newline='', encoding='utf-8-sig') as csv_file:
+            fieldnames = ['destination', 'date', 'time', 'airplane']
+            writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+ 
+            writer.writerow({'destination': destination, 'date': date, 'time': time, 'airplane': airplane})
+        csv_file.close()
+ 
+    def get_voyage(self):
+        if self.__voyage == []:
+            with open("./data/voyage.csv", newline='', encoding='utf-8-sig') as csvfile:
+                reader = csv.DictReader(csvfile)
+                for row in reader:
+                    new_voyage = Voyage(row['destination'], row['date'], row['time'], row['airplane'])
+                    self.__voyage.append(new_voyage)
+        return self.__voyage

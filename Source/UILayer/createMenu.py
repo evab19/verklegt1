@@ -2,9 +2,8 @@ from LogicLayer.LLAPI import LLAPI
 from models.Destination import Destination
 from models.Employee import Employee
 from models.Airplane import Airplane
+from models.Voyage import Voyage
 from utils.print_functions import header_string
-
-ID_COUNTER = 1000 #needs += 1 somewhere
 
 class Create_Menu:
 
@@ -14,18 +13,11 @@ class Create_Menu:
     def create_menu(self):
         action = ""
         while(action != "b"):
-            print("")
-            print("*********************************************")
-            print("*                                           *")
-            print("*                  CREATE                   *")
-            print("*                                           *")
-            print("*********************************************")
-            print("")
+            print(header_string("CREATE", 50))
             print("1: Create employee")
             print("2: Create destination")
             print("3: Create airplane")
-            print("4: Create flight")
-            print("5: Create voyage")
+            print("4: Create voyage")
             print("b: Back")
             # print("q: Quit")
             print("")
@@ -38,6 +30,8 @@ class Create_Menu:
                 self.__create_destination()
             elif action == "3":
                 self.__create_airplane()
+            elif action == "4":
+                self.__create_voyage()
 
 
     def __create_employee(self):
@@ -64,29 +58,24 @@ class Create_Menu:
             occupation_str = "Flight Attendant"
         elif occupation_choice == "4":
             occupation_str = "Flight Service Manager"
-        elif occupation_choice == "b":
-            self.create_menu()
+        if occupation_choice != "b":
+            print("**  Please fill in the information below   **")
+            print("")
+            print("Occupation: ", occupation_str)
+            name_str = input("Name: ")
+            SO_str = input("Social Security Number: ")
+            address_str = input("Address: ")
+            home_phone_str = input("Home phone: ")
+            cell_phone_str = input("Cell phone: ")
+            email_str = input("E-mail: ")
+            #airplane_license_str = input("Airplane license: ")
+            print("")
+            correct = input("Is this information correct? (Y/N): ").lower()
 
-        #self.__create_employee_header()
-        print("**  Please fill in the information below   **")
-        print("")
-        print("Occupation: ", occupation_str)
-        employee_id_str = occupation_str + str(ID_COUNTER)
-        print("ID: ", employee_id_str)
-        name_str = input("Name: ")
-        SO_str = input("Social Security Number: ")
-        address_str = input("Address: ")
-        home_phone_str = input("Home phone: ")
-        cell_phone_str = input("Cell phone: ")
-        email_str = input("E-mail: ")
-        #airplane_license_str = input("Airplane license: ")
-        print("")
-        correct = input("Is this information correct? (Y/N): ").lower()
-
-        if correct == "y":
-            print(header_string("SUCCESS!", 50))
-            new_employee = Employee(occupation_str, employee_id_str, name_str, SO_str, address_str, home_phone_str, cell_phone_str, email_str)
-            self.__llapi.add_employee(new_employee)
+            if correct == "y":
+                print(header_string("SUCCESS!", 50))
+                new_employee = Employee(occupation_str, name_str, SO_str, address_str, home_phone_str, cell_phone_str, email_str)
+                self.__llapi.add_employee(new_employee)
     
     def __create_destination(self):
         ''' Þurfum við ekki að hafa test á því að inputið sé á
@@ -140,4 +129,19 @@ class Create_Menu:
 
     def __create_voyage(self):
         print(header_string("CREATE VOYAGE", 50))
-        pass
+        print("**  Please fill in the information below   **")
+        print("")
+        destination_str = input("Destination: ")
+        date_str = input("Date: ")
+        time_str = input("Time: ")
+        airplane_str = input("Airplane: ")
+        print("")
+        correct = input("Is this information correct? (Y/N): ").lower()
+ 
+        if correct == "y":
+            print(header_string("SUCCESS!", 50))
+            new_voyage = Voyage(destination_str, date_str, time_str, airplane_str)
+            self.__llapi.add_voyage(new_voyage)
+            input("\n**   Press any key to return to main menu    **")
+        else:
+            self.__create_voyage()
