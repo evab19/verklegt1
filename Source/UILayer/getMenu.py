@@ -1,18 +1,11 @@
 # from UILayer.mainMenu import Main_menu
-from LogicLayer.DestinationAPI import DestinationAPI
+from LogicLayer.LLAPI import LLAPI
 
 
 class Get_Menu:
 
     def __init__(self):
-        self.__destination_service = DestinationAPI()
-        self.__employee_service = DestinationAPI()
-        self.__airplane_service = DestinationAPI()
-        # self.get_employee_lst = []
-        # self.get_destination_lst = []
-        # self.get_flight_info_lst = []
-        # self.get_flight_schedule_lst = []
-        # self.get_employee_schedule_lst = []
+        self.__llapi = LLAPI()
 
     def get_menu(self):
         action = ""
@@ -39,19 +32,19 @@ class Get_Menu:
             action = input("Choose an option: ").lower()
 
             if action == "1":
-                employees = self.__employee_service.get_employee()
+                employees = self.__llapi.get_employee()
                 print(employees)
                 input("\n**   Press enter to return to main menu    **")
             
             elif action == "2":
-                destinations = self.__destination_service.get_destinations()
+                destinations = self.__llapi.get_destinations()
                 print(destinations)
                 # self.__get_destination()
                 input("\n**   Press enter to return to main menu    **")
 
             elif action == "3":
                 self.__get_airplane_information_header()
-                airplanes = self.__airplane_service.get_airplane()
+                airplanes = self.__llapi.get_airplane()
                 print(airplanes)
                 input("\n**   Press enter to return to main menu    **")
     
