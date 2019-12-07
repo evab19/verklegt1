@@ -1,6 +1,7 @@
 class Update_Menu:
 
     def __init__(self):
+        self.__destination_service = DestinationAPI()
         self.update_employee_lst = []
         self.update_destination_lst = []
         self.update_flight_lst = []
@@ -25,7 +26,35 @@ class Update_Menu:
             action = input("Choose an option: ").lower()
 
             if action == "2":
-                self.__update_destination()
+                new_contact = []
+                action2 = ""
+                self.__update_destination_header()
+                destination = input("What destination would you like to update? ")
+                print("")
+                print("What information would you like to update?")
+                print("1: Contact name")
+                print("2: Contact phone")
+                print("3: Both")
+                print("")
+                action2 = input("Choose an option: ").lower()
+                print("")
+
+                if action2 == "1":
+                    new_name = input("New contact name: ")
+                    new_contact.append(new_name)
+                    new_contact.append("")
+                elif action2 == "2":
+                    new_phone = input("New contact phone: ")
+                    new_contact.append("")
+                    new_contact.append(new_phone)
+                elif action2 == "3":
+                    new_name = input("New contact name: ")
+                    new_phone = input("New contact phone: ")
+                    new_contact.append(new_name)
+                    new_contact.append(new_phone)
+                    # print(new_contact)
+                self.__destination_service.update_destinations(destination, new_contact)
+                
             
             # else:
             #     action = "q"
