@@ -36,6 +36,9 @@ class DataAPI:
     def get_employee_by_status(self, emp_status):
         return self.__get.get_employee_by_status(emp_status)
 
+    def get_pilots_by_airplane(self):
+        return self.__get.get_pilots_by_airplane()
+
 # get föll
     def get_employee(self):
         return self.__get.get_employee()

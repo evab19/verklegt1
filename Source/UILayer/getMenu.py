@@ -88,6 +88,10 @@ class Get_Menu:
             employee_status = input("What status would you like to get? ").upper()
             employee_by_status = self.__llapi.get_employee_by_status(employee_status)
             print_employee(employee_by_status)
+        elif action == "5":
+            print(header_string("GET PILOTS BY AIRPLANE", 50))
+            pilots = self.__llapi.get_pilots_by_airplane()
+            print_pilots_by_airplane(pilots)
 
     def __get_destination(self):
         print(header_string("GET DESTINATION", 50))
@@ -130,6 +134,11 @@ class Get_Menu:
         print(header_string("GET ALL VOYAGES", 50))
         voyages = self.__llapi.get_voyage()
         print_voyages(voyages)
+
+    # def __get_pilots_by_airplane(self):
+    #     print(header_string("GET PILOTS BY AIRPLANE", 50))
+    #     pilots = self.__llapi.get_pilots_by_airplane()
+    #     print_pilots_by_airplane(pilots)
 
     def __get_employee_schedule(self):
         print(header_string("GET EMPLOYEE SCHEDULE", 50))
