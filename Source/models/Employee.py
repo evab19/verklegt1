@@ -1,8 +1,7 @@
 class Employee:
 
-    def __init__(self, occupation = "", ID = "", name = "", ssn = "", address = "", home_phone = "", cell_phone = "", email = "", licence = ""):
+    def __init__(self, occupation = "", name = "", ssn = "", address = "", home_phone = "", cell_phone = "", email = "", licence = ""):
         self.occupation = occupation
-        self.ID = ID
         self.name = name
         self.ssn = ssn
         self.address = address
@@ -16,9 +15,6 @@ class Employee:
 
     def get_occupation(self):
         return str(self.occupation)
-
-    def get_id(self):
-        return str(self.ID)
 
     def get_name(self):
         return str(self.name)

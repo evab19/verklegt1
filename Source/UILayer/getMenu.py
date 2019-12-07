@@ -1,5 +1,5 @@
 from LogicLayer.LLAPI import LLAPI
-from utils.print_functions import header_string
+from utils.print_functions import *
 
 
 class Get_Menu:
@@ -10,60 +10,37 @@ class Get_Menu:
     def get_menu(self):
         action = ""
         while(action != "b"):
-            print("")
-            print("*********************************************")
-            print("*                                           *")
-            print("*                   GET                     *")
-            print("*                                           *")
-            print("*********************************************")
-            print("")
-            print("1: Get employee")
-            print("2: Get destination")
-            print("3: Get airplane information")
-            print("4: Get flight schedule")
-            print("5: Get employee schedule")
-            print("6: Get pilots by ariplane license")
-            print("7: Get pilots by airplane type")
-            print("8: Get all airplanes")
-            print("b: Back")
-            print("")
-            # print("q: Quit")
-
+            print(header_string("GET", 50))
+            get_menu()
             action = input("Choose an option: ").lower()
 
             if action == "1":
-                print(header_string("GET EMPLOYEE", 50))
-                employees = self.__llapi.get_employee()
-                print("{:-<151}".format(""))
-                print("{}{:13}{}{:25}{}{:12}{}{:20}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', 'Occupation', '| ', 'Name', '| ', 'SSN', '| ', 'Address', '| ', 'Home phone', '| ', 'Cell phone', '| ', 'Email', '| ', 'Licence', '|'))
-                print("{:-<151}".format(""))
-                for item in employees:
-                    print(item)
-                print("{:-<151}".format(""))
-                # print("* C = Captain, P = Pilot, FA = Flight attendant")
-                input("\n**   Press enter to return to main menu    **")
+                """ TODO Laga menuið eftir að við ákveðum hvernig við höfum þetta """
+                print(header_string("GET EMPLOYEE INFORMATION", 50))
+                get_employee_information()
+                action = input("Choose an option: ").lower()
+                if action == "1":
+                    print(header_string("GET ALL EMPLOYEES", 50))
+                    employees = self.__llapi.get_employee()
+                    print_employee(employees)
+
+
             
             elif action == "2":
                 print(header_string("GET DESTINATION", 50))
                 destinations = self.__llapi.get_destinations()
-                print("{:-<128}".format(""))
-                print("{}{:25}{}{:25}{}{:10}{}{:10}{}{:30}{}{:15}{}".format('| ', 'Country', '| ',  'Airport', '| ', 'Duration', '| ', 'Distance', '| ', 'Contact name', '| ', 'Contact phone', '|'))
-                print("{:-<128}".format(""))
-                for item in destinations:
-                    print(item)
-                print("{:-<128}".format(""))
-                input("\n**   Press enter to return to main menu    **")
+                print_destination(destinations)
 
             elif action == "3":
                 print(header_string("GET AIRPLANE INFORMATION", 50))
                 airplanes = self.__llapi.get_airplane()
-                print("{:-<94}".format(""))
-                print("{}{:20}{}{:20}{}{:25}{}{:20}{}".format('| ', 'Name', '| ',  'Model', '| ', 'Producer', '| ', 'Number of seats', '|'))
-                print("{:-<94}".format(""))
-                for item in airplanes:
-                    print(item)
-                print("{:-<94}".format(""))
-                input("\n**   Press enter to return to main menu    **")
+                print_airplanes(airplanes)
+
+            elif action == "4":
+                print(header_string("GET ALL VOYAGES", 50))
+                voyages = self.__llapi.get_voyage()
+                print_voyages(voyages)
+
 
     def __get_employee(self):
         print(header_string("GET EMPLOYEE", 50))
