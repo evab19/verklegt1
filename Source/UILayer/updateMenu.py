@@ -1,4 +1,5 @@
 from LogicLayer.LLAPI import LLAPI
+from utils.print_functions import *
 
 class Update_Menu:
 
@@ -31,9 +32,13 @@ class Update_Menu:
                 new_employee = []
                 action2 = ""
                 self.__update_employee_header()
-                employee = input("What employee would you like to update? ")
+                emp_to_update = self.__llapi.get_employee()
+                print_possible_employee_for_update(emp_to_update)
+                employee = input("Insert SSN of employee you would like to update? ")
                 print("")
+                print("------------------------------------------")
                 print("To leave information unchanged press enter")
+                print("------------------------------------------")
                 new_occupation = input("New occupation: ")
                 new_address = input("New address: ")
                 new_home_phone = input("New home phone: ")
@@ -53,6 +58,8 @@ class Update_Menu:
                 new_contact = []
                 action2 = ""
                 self.__update_destination_header()
+                airport = self.__llapi.get_destination()
+                print_airport(airport)
                 destination = input("What airport would you like to update? ")
                 print("")
                 print("What information would you like to update?")
