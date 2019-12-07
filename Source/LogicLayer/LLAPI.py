@@ -32,6 +32,9 @@ class LLAPI:
     def get_employee(self):
         return self.__employee.get_employee()
 
+    def update_employee(self, employee, new_employee):
+        self.__employee.update_employee(employee, new_employee)
+
 #### airplane
     def add_airplane(self, __airplane):
         if self.__airplane.is_valid_airplane(__airplane):

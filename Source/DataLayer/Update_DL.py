@@ -35,3 +35,41 @@ class Update_DL:
                     writer2.writerow(row)
         tempfile.close()
         csvfile.close()
+
+
+    def update_employee(self, employee, new_employee):
+        with open("./data/employee.csv", newline='', encoding='utf-8-sig') as csvfile:
+            fieldnames = ['occupation', 'id', 'name', 'ssn', 'address', 'home_phone', 'cell_phone', 'email', 'licence']
+            reader = csv.DictReader(csvfile)
+            with open("./data/tempfile.csv", "w+", encoding='utf-8-sig') as tempfile:
+                writer = csv.DictWriter(tempfile, fieldnames=fieldnames)
+                writer.writeheader()
+                for row in reader:
+                    if row['ssn'] == employee:
+                        updated_employee = Employee(row['occupation'], row['name'], row['ssn'], row['address'], row['home_phone'], row['cell_phone'], row['email'], row['licence'])
+                        if new_employee[0] != "":
+                            updated_employee.occupation = new_employee[0]
+                        if new_employee[1] != "":
+                            updated_employee.address = new_employee[1]
+                        if new_employee[2] != "":
+                            updated_employee.home_phone = new_employee[2]
+                        if new_employee[3] != "":
+                            updated_employee.cell_phone = new_employee[3]
+                        if new_employee[4] != "":
+                            updated_employee.email = new_employee[4]
+                        if new_employee[5] != "":
+                            updated_employee.licence = new_employee[5]
+                        row = ({'occupation': updated_employee.occupation, 'name': updated_employee.name, 'ssn': updated_employee.ssn, 'address': updated_employee.address, 'home_phone': updated_employee.home_phone, 'cell_phone': updated_employee.cell_phone, 'email': updated_employee.email, 'licence': updated_employee.licence})
+                    writer.writerow(row)
+        csvfile.close()
+        tempfile.close()
+ 
+        with open("./data/tempfile.csv", encoding='utf-8-sig') as tempfile:
+            reader2 = csv.DictReader(tempfile)
+            with open("./data/employee.csv", "w+", encoding='utf-8-sig') as csvfile:
+                writer2 = csv.DictWriter(csvfile, fieldnames=fieldnames)
+                writer2.writeheader()
+                for row in reader2:
+                    writer2.writerow(row)
+        tempfile.close()
+        csvfile.close()

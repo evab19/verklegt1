@@ -17,7 +17,7 @@ class Get_DL:
             with open("./data/employee.csv", newline='', encoding='utf-8-sig') as csvfile:
                 reader = csv.DictReader(csvfile)
                 for row in reader:
-                    new_employee = Employee(row['occupation'], row['id'], row['name'], row['ssn'], row['address'], row['home_phone'], row['cell_phone'], row['email'], row['licence'])
+                    new_employee = Employee(row['occupation'], row['name'], row['ssn'], row['address'], row['home_phone'], row['cell_phone'], row['email'], row['licence'])
                     self.__employee.append(new_employee)
         return self.__employee
 

@@ -40,3 +40,6 @@ class DataAPI:
 # update föll
     def update_destination(self, destination, new_contact):
         return self.__update.update_destination(destination, new_contact)
+
+    def update_employee(self, employee, new_employee):
+        self.__update.update_employee(employee, new_employee)

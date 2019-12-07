@@ -4,9 +4,9 @@ class Update_Menu:
 
     def __init__(self):
         self.__llapi = LLAPI()
-        self.update_employee_lst = []
-        self.update_destination_lst = []
-        self.update_flight_lst = []
+        # self.update_employee_lst = []
+        # self.update_destination_lst = []
+        # self.update_flight_lst = []
 
     def update_menu(self):
         action = ""
@@ -26,6 +26,28 @@ class Update_Menu:
             print("")
 
             action = input("Choose an option: ").lower()
+
+            if action == "1":
+                new_employee = []
+                action2 = ""
+                self.__update_employee_header()
+                employee = input("What employee would you like to update? ")
+                print("")
+                print("To leave information unchanged press enter")
+                new_occupation = input("New occupation: ")
+                new_address = input("New address: ")
+                new_home_phone = input("New home phone: ")
+                new_mobile_phone = input("New mobile phone: ")
+                new_email = input("New e-mail: ")
+                new_licence = input("New licence: ")
+                new_employee.append(new_occupation)
+                new_employee.append(new_address)
+                new_employee.append(new_home_phone)
+                new_employee.append(new_mobile_phone)
+                new_employee.append(new_email)
+                new_employee.append(new_licence)
+                self.__llapi.update_employee(employee, new_employee)
+                 
 
             if action == "2":
                 new_contact = []

@@ -16,3 +16,6 @@ class EmployeeLL:
     
     def get_employee(self):
         return self.__employee_repo.get_employee()
+
+    def update_employee(self, employee, new_employee):
+        self.__employee_repo.update_employee(employee, new_employee)
