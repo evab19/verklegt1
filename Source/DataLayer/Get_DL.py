@@ -1,6 +1,7 @@
 from models.Destination import Destination
 from models.Airplane import Airplane
 from models.Employee import Employee
+from models.Voyage import Voyage
 import csv
 
 class Get_DL:
@@ -9,6 +10,7 @@ class Get_DL:
         self.__destination = []
         self.__employee = []
         self.__airplane = []
+        self.__voyage = []
 
     def get_employee(self):
         if self.__employee == []:
@@ -36,3 +38,12 @@ class Get_DL:
                     new_airplane = Airplane(row['name'], row['model'], row['producer'], row['number_of_seats'])
                     self.__airplane.append(new_airplane)
         return self.__airplane
+
+    def get_voyage(self):
+        if self.__voyage == []:
+            with open("./data/voyage.csv", newline='', encoding='utf-8-sig') as csvfile:
+                reader = csv.DictReader(csvfile)
+                for row in reader:
+                    new_voyage = Voyage(row['destination'], row['date'], row['time'], row['airplane'])
+                    self.__voyage.append(new_voyage)
+        return self.__voyage

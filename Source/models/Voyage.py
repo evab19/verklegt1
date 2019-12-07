@@ -1,4 +1,5 @@
-class Voyage():    
+class Voyage():
+    
     def __init__(self, destination = "", date = "", time = "", airplane = "", pilot = "", flight_attendant = "", fsm = "", captain = ""):
         self.destination = destination
         self.date = date

@@ -44,4 +44,16 @@ class Create_DL:
  
             writer.writerow({'name': name, 'model': model, 'producer': producer, 'number_of_seats': number_of_seats})
         csv_file.close()
+
+    def add_voyage(self, voyage):
+        destination = voyage.get_destination()
+        date = voyage.get_date()
+        time = voyage.get_time()
+        airplane = voyage.get_airplane()
+        with open("./data/voyage.csv", "a+", newline='', encoding='utf-8-sig') as csv_file:
+            fieldnames = ['destination', 'date', 'time', 'airplane']
+            writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+ 
+            writer.writerow({'destination': destination, 'date': date, 'time': time, 'airplane': airplane})
+        csv_file.close()
  
