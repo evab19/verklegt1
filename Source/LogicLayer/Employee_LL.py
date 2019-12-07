@@ -25,3 +25,6 @@ class EmployeeLL:
     
     def get_employee_by_occupation(self, __occupation):
         return self.__employee_repo.get_employee_by_occupation(__occupation)
+
+    def get_employee_by_status(self, __emp_status):
+        return self.__employee_repo.get_employee_by_status(__emp_status)

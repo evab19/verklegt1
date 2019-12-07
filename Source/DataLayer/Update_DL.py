@@ -39,14 +39,14 @@ class Update_DL:
 
     def update_employee(self, employee, new_employee):
         with open("./data/employee.csv", newline='', encoding='utf-8-sig') as csvfile:
-            fieldnames = ['occupation', 'id', 'name', 'ssn', 'address', 'home_phone', 'cell_phone', 'email', 'licence']
+            fieldnames = ['occupation', 'id', 'name', 'ssn', 'address', 'home_phone', 'cell_phone', 'email', 'licence', 'status']
             reader = csv.DictReader(csvfile)
             with open("./data/tempfile.csv", "w+", encoding='utf-8-sig') as tempfile:
                 writer = csv.DictWriter(tempfile, fieldnames=fieldnames)
                 writer.writeheader()
                 for row in reader:
                     if row['ssn'] == employee:
-                        updated_employee = Employee(row['occupation'], row['name'], row['ssn'], row['address'], row['home_phone'], row['cell_phone'], row['email'], row['licence'])
+                        updated_employee = Employee(row['occupation'], row['name'], row['ssn'], row['address'], row['home_phone'], row['cell_phone'], row['email'], row['licence'], row['status'])
                         if new_employee[0] != "":
                             updated_employee.occupation = new_employee[0]
                         if new_employee[1] != "":
@@ -59,7 +59,7 @@ class Update_DL:
                             updated_employee.email = new_employee[4]
                         if new_employee[5] != "":
                             updated_employee.licence = new_employee[5]
-                        row = ({'occupation': updated_employee.occupation, 'name': updated_employee.name, 'ssn': updated_employee.ssn, 'address': updated_employee.address, 'home_phone': updated_employee.home_phone, 'cell_phone': updated_employee.cell_phone, 'email': updated_employee.email, 'licence': updated_employee.licence})
+                        row = ({'occupation': updated_employee.occupation, 'name': updated_employee.name, 'ssn': updated_employee.ssn, 'address': updated_employee.address, 'home_phone': updated_employee.home_phone, 'cell_phone': updated_employee.cell_phone, 'email': updated_employee.email, 'licence': updated_employee.licence, 'status': updated_employee.emp_status})
                     writer.writerow(row)
         csvfile.close()
         tempfile.close()

@@ -40,6 +40,9 @@ class LLAPI:
 
     def get_employee_by_occupation(self, __occupation):
         return self.__employee.get_employee_by_occupation(__occupation)
+    
+    def get_employee_by_status(self, __emp_status):
+        return self.__employee.get_employee_by_status(__emp_status)
 
 #### airplane
     def add_airplane(self, __airplane):

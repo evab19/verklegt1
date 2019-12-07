@@ -78,10 +78,17 @@ class Get_Menu:
             print_employee(employee_information)
         elif action == "3":
             print(header_string("GET EMPLOYEES BY OCCUPATION", 50))
-            get_employee_by_occupation()
+            print_employee_by_occupation()
             occupation = input("What occupation would you like to get? ").upper()
             employee_by_occupation = self.__llapi.get_employee_by_occupation(occupation)
             print_employee(employee_by_occupation)
+
+        elif action == "4":
+            print(header_string("GET EMPLOYEES BY STATUS", 50))
+            print_employee_by_status()
+            employee_status = input("What status would you like to get? ").upper()
+            employee_by_status = self.__llapi.get_employee_by_status(employee_status)
+            print_employee(employee_by_status)
 
     def __get_destination(self):
         print(header_string("GET DESTINATION", 50))
