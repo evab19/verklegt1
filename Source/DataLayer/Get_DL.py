@@ -13,14 +13,14 @@ class Get_DL:
         self.__voyage = []
 
     def get_employee(self):
-        employee = []
-        if employee == []:
+        employee_lst = []
+        if employee_lst == []:
             with open("./data/employee.csv", newline='', encoding='utf-8-sig') as csvfile:
                 reader = csv.DictReader(csvfile)
                 for row in reader:
                     new_employee = Employee(row['occupation'], row['name'], row['ssn'], row['address'], row['home_phone'], row['cell_phone'], row['email'], row['licence'], row['status'])
-                    employee.append(new_employee)
-        return employee
+                    employee_lst.append(new_employee)
+        return employee_lst
 
     def get_employee_information(self, employee):
         employee_info_lst = []
@@ -34,50 +34,53 @@ class Get_DL:
         return employee_info_lst
     
     def get_employee_by_occupation(self, occupation):
-        employee_occupation = []
-        if employee_occupation == []:
+        employee_occupation_lst = []
+        if employee_occupation_lst == []:
             with open("./data/employee.csv", newline='', encoding='utf-8-sig') as csvfile:
                 reader = csv.DictReader(csvfile)
                 for row in reader:
                     if row['occupation'] == occupation:
                         employee_by_occupation = Employee(row['occupation'], row['name'], row['ssn'], row['address'], row['home_phone'], row['cell_phone'], row['email'], row['licence'], row['status'])
-                        employee_occupation.append(employee_by_occupation)
-        return employee_occupation
+                        employee_occupation_lst.append(employee_by_occupation)
+        return employee_occupation_lst
     
     def get_employee_by_status(self, emp_status):
-        employee_status = []
-        if employee_status == []:
+        employee_status_lst = []
+        if employee_status_lst == []:
             with open("./data/employee.csv", newline='', encoding='utf-8-sig') as csvfile:
                 reader = csv.DictReader(csvfile)
                 for row in reader:
                     if row['status'] == emp_status:
                         employee_by_status = Employee(row['occupation'], row['name'], row['ssn'], row['address'], row['home_phone'], row['cell_phone'], row['email'], row['licence'], row['status'])
-                        employee_status.append(employee_by_status)
-        return employee_status
+                        employee_status_lst.append(employee_by_status)
+        return employee_status_lst
 
     def get_destination(self):
-        if self.__destination == []:
+        destination_lst = []
+        if destination_lst == []:
             with open("./data/destinations.csv", newline='', encoding='utf-8-sig') as csvfile:
                 reader = csv.DictReader(csvfile)
                 for row in reader:
                     new_destination = Destination(row['country'], row['airport'], row['duration'], row['distance'], row['contact_name'], row['contact_phone'])
-                    self.__destination.append(new_destination)
-        return self.__destination
+                    destination_lst.append(new_destination)
+        return destination_lst
 
     def get_airplane(self):
-        if self.__airplane == []:
+        airplane_lst = []
+        if airplane_lst == []:
             with open("./data/airplanes.csv", newline='', encoding='utf-8-sig') as csvfile:
                 reader = csv.DictReader(csvfile)
                 for row in reader:
-                    new_airplane = Airplane(row['name'], row['model'], row['producer'], row['number_of_seats'])
-                    self.__airplane.append(new_airplane)
-        return self.__airplane
+                    new_airplane = Airplane(row['name'], row['model'], row['producer'], row['number_of_seats'], row['status'])
+                    airplane_lst.append(new_airplane)
+        return airplane_lst
 
     def get_voyage(self):
-        if self.__voyage == []:
+        voyage_lst = []
+        if voyage_lst == []:
             with open("./data/voyage.csv", newline='', encoding='utf-8-sig') as csvfile:
                 reader = csv.DictReader(csvfile)
                 for row in reader:
                     new_voyage = Voyage(row['destination'], row['date'], row['time'], row['airplane'])
-                    self.__voyage.append(new_voyage)
-        return self.__voyage
+                    voyage_lst.append(new_voyage)
+        return voyage_lst

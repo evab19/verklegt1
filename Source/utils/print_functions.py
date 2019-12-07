@@ -61,12 +61,13 @@ def print_destination(destination):
     input("\n**   Press any key to return to main menu    **")
 
 def print_airplanes(airplane):
-    print("{:-<94}".format(""))
-    print("{}{:20}{}{:20}{}{:25}{}{:20}{}".format('| ', 'Name', '| ',  'Model', '| ', 'Producer', '| ', 'Number of seats', '|'))
-    print("{:-<94}".format(""))
+    print("{:-<106}".format(""))
+    print("{}{:20}{}{:20}{}{:25}{}{:20}{}{:10}{}".format('| ', 'Name', '| ',  'Model', '| ', 'Producer', '| ', 'Number of seats', '| ', 'Status *', '|'))
+    print("{:-<106}".format(""))
     for item in airplane:
         print(item)
-    print("{:-<94}".format(""))
+    print("{:-<106}".format(""))
+    print("* A = Available, I = In the air, LA = Landed abroad")
     input("\n**   Press any key to return to main menu    **")
 
 def print_voyages(voyages):
@@ -80,7 +81,7 @@ def print_voyages(voyages):
 
 def print_airport(destination):
     print("{:-<28}".format(""))
-    print("{}{:25}{}".format('| ',  'Airport', '|'))
+    print("{}{:25}{}".format('| ', 'Airport', '|'))
     print("{:-<28}".format(""))
     for item in destination:
         print(item.airport)

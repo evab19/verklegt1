@@ -1,7 +1,7 @@
-name,model,producer,number_of_seats
-Boing,M1,Bong,2
-MadagasgarAir,T987,Alex the Lion,8
-Bingo,A400,Chuck,100
-Fokker,U,Brainiacs,99
-Loftbelgur,Blaðra1,Seglagerðin,2
-This_is_not_a_boat,Not_a_boat_1,No_boats,100
+name,model,producer,number_of_seats,status
+Boing,M1,Bong,2,A
+MadagasgarAir,T987,Alex the Lion,8,I
+Bingo,A400,Chuck,100,A
+Fokker,U,Brainiacs,99,I
+Loftbelgur,Blaðra1,Seglagerðin,2,A
+This_is_not_a_boat,Not_a_boat_1,No_boats,100,LA
