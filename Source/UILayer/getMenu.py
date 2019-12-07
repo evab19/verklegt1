@@ -82,7 +82,6 @@ class Get_Menu:
             occupation = input("What occupation would you like to get? ").upper()
             employee_by_occupation = self.__llapi.get_employee_by_occupation(occupation)
             print_employee(employee_by_occupation)
-
         elif action == "4":
             print(header_string("GET EMPLOYEES BY STATUS", 50))
             print_employee_by_status()
