@@ -197,3 +197,13 @@ Gunnsteinn setti upp prentun og __str__ föll fyrir airplane og destination - ú
 Eva lagaði m.a. headera og fækkaði línum í kóða um skrilljón
 Thelma fór í að setja __str__ og prentun fyrir employee - sem fékk svo sömu útfærslu og airplane og destination
 Ingibjörg skoðaði ýmsar lagfæringar og git útsetningu
+
+_____________________________________________________________________________________________________________________________
+Dagur 11 7.12.2019
+Laugardagur 
+_____________________________________________________________________________________________________________________________
+
+9:00 Allir mættir í HR
+9.10 Morgunkaffi (Ingibjörg kom með gúmmelaði og kaffi) 
+9.10 Allir pusha inn á github og sameinum mainið okkar þannig allir séu með nýjar uppfærslur
+9.12 
