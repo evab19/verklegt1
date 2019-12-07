@@ -20,6 +20,9 @@ class LLAPI:
 
     def get_destination(self):
          return self.__destination.get_destination()
+
+    def update_destination(self, destination, new_contact):
+        self.__destination.update_destination(destination, new_contact)
     
 #### employee
     def add_employee(self, __employee):

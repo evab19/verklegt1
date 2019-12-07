@@ -39,8 +39,8 @@ class Get_Menu:
 
     def __get_destination(self):
         print(header_string("GET DESTINATION", 50))
-        destinations = self.__llapi.get_destinations()
-        print_destination(destinations)
+        destination = self.__llapi.get_destination()
+        print_destination(destination)
 
         # print("   **    Please insert Airport name     **   ")
         # print("")

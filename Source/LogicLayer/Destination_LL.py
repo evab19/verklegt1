@@ -20,3 +20,6 @@ class DestinationLL:
 
     def get_destinations_by_country(self, country):
         pass
+
+    def update_destination(self, destination, new_contact):
+        self.__destination_repo.update_destination(destination, new_contact)

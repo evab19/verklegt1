@@ -1,7 +1,9 @@
+from LogicLayer.LLAPI import LLAPI
+
 class Update_Menu:
 
     def __init__(self):
-        self.__destination_service = DestinationAPI()
+        self.__llapi = LLAPI()
         self.update_employee_lst = []
         self.update_destination_lst = []
         self.update_flight_lst = []
@@ -17,7 +19,7 @@ class Update_Menu:
             print("*********************************************")
             print("")
             print("1: Update employee")
-            print("2: Update destination")
+            print("2: Update aiport contact info")
             print("3: Update flight")
             print("b: Back")
             # print("q: Quit")
@@ -29,7 +31,7 @@ class Update_Menu:
                 new_contact = []
                 action2 = ""
                 self.__update_destination_header()
-                destination = input("What destination would you like to update? ")
+                destination = input("What airport would you like to update? ")
                 print("")
                 print("What information would you like to update?")
                 print("1: Contact name")
@@ -53,7 +55,7 @@ class Update_Menu:
                     new_contact.append(new_name)
                     new_contact.append(new_phone)
                     # print(new_contact)
-                self.__destination_service.update_destinations(destination, new_contact)
+                self.__llapi.update_destination(destination, new_contact)
                 
             
             # else:
