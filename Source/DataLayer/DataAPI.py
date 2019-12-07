@@ -129,6 +129,18 @@ class DataAPI:
         csvfile.close()
 
 
+<<<<<<< Updated upstream
+=======
+# get föll
+    def get_employee(self):
+        return self.__get.get_employee()
+    
+    def get_employee_information(self, employee):
+        return self.__get.get_employee_information(employee)
+
+    def get_employee_by_occupation(self, occupation):
+        return self.__get.get_employee_by_occupation(occupation)
+>>>>>>> Stashed changes
 
 
     # with open(filename, 'r') as csvfile, tempfile:

@@ -78,6 +78,7 @@ class Get_Menu:
         print("*********************************************")
         print("")
 
+<<<<<<< Updated upstream
     def __get_destination_header(self):
         print("")
         print("*********************************************")
@@ -113,6 +114,28 @@ class Get_Menu:
         print("*                                           *")
         print("*********************************************")
         print("")
+=======
+    def __get_employee(self):
+        """ TODO Laga menuið eftir að við ákveðum hvernig við höfum þetta """
+        print(header_string("GET EMPLOYEE INFORMATION", 50))
+        get_employee_information()
+        action = input("Choose an option: ").lower()
+        if action == "1":
+            print(header_string("GET ALL EMPLOYEES", 50))
+            employees = self.__llapi.get_employee()
+            print_employee(employees)
+        elif action == "2":
+            print(header_string("GET EMPLOYEE INFORMATION", 50))
+            employee = input("Use SSN for the employee you would like to get: ")
+            employee_information = self.__llapi.get_employee_information(employee)
+            print_employee(employee_information)
+        elif action == "3":
+            print(header_string("GET EMPLOYEES BY OCCUPATION", 50))
+            get_employee_by_occupation()
+            occupation = input("What occupation would you like to get? ").upper()
+            employee_by_occupation = self.__llapi.get_employee_by_occupation(occupation)
+            print_employee(employee_by_occupation)
+>>>>>>> Stashed changes
 
     # def __get_employee(self):
     #     self.__get_employee_header()
