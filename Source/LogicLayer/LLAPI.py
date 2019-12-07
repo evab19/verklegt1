@@ -13,16 +13,15 @@ class LLAPI:
 
 #### destination
     def add_destination(self, __destination):
-        if self.is_valid_destination(__destination):
+        if self.__destination.is_valid_destination(__destination):
             self.__destination.add_destination(__destination)
 
-    def get_destinations(self):
-         return self.__destination.get_destinations()
+    def get_destination(self):
+         return self.__destination.get_destination()
     
-
 #### employee
     def add_employee(self, __employee):
-        if self.is_valid_employee(__employee):
+        if self.__employee.is_valid_employee(__employee):
             self.__employee.add_employee(__employee)
     
     def get_employee(self):
@@ -30,7 +29,7 @@ class LLAPI:
 
 #### airplane
     def add_airplane(self, __airplane):
-        if self.is_valid_airplane(__airplane):
+        if self.__airplane.is_valid_airplane(__airplane):
             self.__airplane.add_airplane(__airplane)
  
     def get_airplane(self):

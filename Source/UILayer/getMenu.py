@@ -45,7 +45,7 @@ class Get_Menu:
             
             elif action == "2":
                 print(header_string("GET DESTINATION", 50))
-                destinations = self.__llapi.get_destinations()
+                destinations = self.__llapi.get_destination()
                 print("{:-<128}".format(""))
                 print("{}{:25}{}{:25}{}{:10}{}{:10}{}{:30}{}{:15}{}".format('| ', 'Country', '| ',  'Airport', '| ', 'Duration', '| ', 'Distance', '| ', 'Contact name', '| ', 'Contact phone', '|'))
                 print("{:-<128}".format(""))
