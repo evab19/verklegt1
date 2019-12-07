@@ -39,6 +39,9 @@ class DataAPI:
     def get_pilots_by_airplane(self):
         return self.__get.get_pilots_by_airplane()
 
+    def get_pilots_by_model(self, pilots_model):
+        return self.__get.get_pilots_by_model(pilots_model)
+
 # get föll
     def get_employee(self):
         return self.__get.get_employee()

@@ -95,3 +95,14 @@ class Get_DL:
                         the_planes_and_pilots = Employee(row['occupation'], row['name'], row['ssn'], row['address'], row['home_phone'], row['cell_phone'], row['email'], row['licence'], row['status'])
                         planes_and_pilots.append(the_planes_and_pilots)
         return planes_and_pilots
+
+    def get_pilots_by_model(self, pilots_model):
+        models_and_pilots = []
+        if models_and_pilots == []:
+            with open("./data/employee.csv", newline='', encoding='utf-8-sig') as csvfile:
+                reader = csv.DictReader(csvfile)
+                for row in reader:
+                    if row['licence'] == pilots_model:
+                        the_models_and_pilots = Employee(row['occupation'], row['name'], row['ssn'], row['address'], row['home_phone'], row['cell_phone'], row['email'], row['licence'], row['status'])
+                        models_and_pilots.append(the_models_and_pilots)
+        return models_and_pilots

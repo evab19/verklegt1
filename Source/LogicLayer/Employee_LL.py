@@ -31,3 +31,6 @@ class EmployeeLL:
 
     def get_pilots_by_airplane(self):
         return self.__employee_repo.get_pilots_by_airplane()
+
+    def get_pilots_by_model(self, pilots_model):
+        return self.__employee_repo.get_pilots_by_model(pilots_model)
