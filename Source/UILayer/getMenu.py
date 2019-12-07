@@ -1,8 +1,6 @@
 # from UILayer.mainMenu import Main_menu
 from LogicLayer.LLAPI import LLAPI
 
-
-
 class Get_Menu:
 
     def __init__(self):
@@ -34,7 +32,7 @@ class Get_Menu:
 
             if action == "1":
                 self.__get_employee_header()
-                employees = self.__employee_service.get_employee()
+                employees = self.__llapi.get_employee()
                 print("{:-<151}".format(""))
                 print("{}{:13}{}{:25}{}{:12}{}{:20}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', 'Occupation', '| ', 'Name', '| ', 'SSN', '| ', 'Address', '| ', 'Home phone', '| ', 'Cell phone', '| ', 'Email', '| ', 'Licence', '|'))
                 print("{:-<151}".format(""))
@@ -46,7 +44,7 @@ class Get_Menu:
             
             elif action == "2":
                 self.__get_destination_header()
-                destinations = self.__destination_service.get_destinations()
+                destinations = self.__llapi.get_destinations()
                 print("{:-<128}".format(""))
                 print("{}{:25}{}{:25}{}{:10}{}{:10}{}{:30}{}{:15}{}".format('| ', 'Country', '| ',  'Airport', '| ', 'Duration', '| ', 'Distance', '| ', 'Contact name', '| ', 'Contact phone', '|'))
                 print("{:-<128}".format(""))
@@ -57,7 +55,7 @@ class Get_Menu:
 
             elif action == "3":
                 self.__get_airplane_information_header()
-                airplanes = self.__airplane_service.get_airplane()
+                airplanes = self.__llapi.get_airplane()
                 print("{:-<94}".format(""))
                 print("{}{:20}{}{:20}{}{:25}{}{:20}{}".format('| ', 'Name', '| ',  'Model', '| ', 'Producer', '| ', 'Number of seats', '|'))
                 print("{:-<94}".format(""))
