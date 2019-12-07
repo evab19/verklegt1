@@ -79,13 +79,16 @@ class Create_Menu:
         home_phone_str = input("Home phone: ")
         cell_phone_str = input("Cell phone: ")
         email_str = input("E-mail: ")
-        #airplane_license_str = input("Airplane license: ")
+        if occupation_choice in ["1", "2"]:
+            print("")
+            print('list of airplanes')
+            airplane_license_str = input("Choose airplane: ")
         print("")
         correct = input("Is this information correct? (Y/N): ").lower()
 
         if correct == "y":
             print(header_string("SUCCESS!", 50))
-            new_employee = Employee(occupation_str, employee_id_str, name_str, SO_str, address_str, home_phone_str, cell_phone_str, email_str)
+            new_employee = Employee(occupation_str, employee_id_str, name_str, SO_str, address_str, home_phone_str, cell_phone_str, email_str, airplane_license_str)
             self.__llapi.add_employee(new_employee)
     
     def __create_destination(self):
