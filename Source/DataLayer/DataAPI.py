@@ -24,7 +24,7 @@ class DataAPI:
             fieldnames = ['occupation', 'id', 'name', 'ssn', 'address', 'home_phone', 'cell_phone', 'email', 'licence']
             writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
 
-            writer.writerow({'occupation': occupation_str, 'id': id_str, 'name': name_str, 'ssn': so_str, 'address': address_str, 'home_phone': home_phone_str, 'cell_phone': cell_phone_str, 'email': email_str, 'licence': licence_str})
+            writer.writerow({'occupation': occupation_str, 'id': id_str, 'name': name_str, 'ssn': ssn_str, 'address': address_str, 'home_phone': home_phone_str, 'cell_phone': cell_phone_str, 'email': email_str, 'licence': licence_str})
         csv_file.close()
 
     def get_employee(self):
@@ -35,6 +35,44 @@ class DataAPI:
                     new_employee = Employee(row['occupation'], row['id'], row['name'], row['ssn'], row['address'], row['home_phone'], row['cell_phone'], row['email'], row['licence'])
                     self.__employee.append(new_employee)
         return self.__employee
+    
+    def update_employee(self, employee, new_employee):
+        with open("./data/employee.csv", newline='', encoding='utf-8-sig') as csvfile:
+            fieldnames = ['occupation', 'id', 'name', 'ssn', 'address', 'home_phone', 'cell_phone', 'email', 'licence']
+            reader = csv.DictReader(csvfile)
+            with open("./data/tempfile.csv", "w+", encoding='utf-8-sig') as tempfile:
+                writer = csv.DictWriter(tempfile, fieldnames=fieldnames)
+                writer.writeheader()
+                for row in reader:
+                    if row['ssn'] == employee:
+                        updated_employee = Employee(row['occupation'], row['id'], row['name'], row['ssn'], row['address'], row['home_phone'], row['cell_phone'], row['email'], row['licence'])
+                        if new_employee[0] != "":
+                            updated_employee.occupation = new_employee[0]
+                        if new_employee[1] != "":
+                            updated_employee.address = new_employee[1]
+                        if new_employee[2] != "":
+                            updated_employee.home_phone = new_employee[2]
+                        if new_employee[3] != "":
+                            updated_employee.cell_phone = new_employee[3]
+                        if new_employee[4] != "":
+                            updated_employee.email = new_employee[4]
+                        if new_employee[5] != "":
+                            updated_employee.licence = new_employee[5]
+                        row = ({'occupation': updated_employee.occupation, 'id': updated_employee.ID, 'name': updated_employee.name, 'ssn': updated_employee.ssn, 'address': updated_employee.address, 'home_phone': updated_employee.home_phone, 'cell_phone': updated_employee.cell_phone, 'email': updated_employee.email, 'licence': updated_employee.licence})
+                    writer.writerow(row)
+        csvfile.close()
+        tempfile.close()
+
+        with open("./data/tempfile.csv", encoding='utf-8-sig') as tempfile:
+            reader2 = csv.DictReader(tempfile)
+            with open("./data/employee.csv", "w+", encoding='utf-8-sig') as csvfile:
+                writer2 = csv.DictWriter(csvfile, fieldnames=fieldnames)
+                writer2.writeheader()
+                for row in reader2:
+                    writer2.writerow(row)
+        tempfile.close()
+        csvfile.close()
+
 
 
     def add_destination(self, destination):
@@ -68,8 +106,7 @@ class DataAPI:
                 writer = csv.DictWriter(tempfile, fieldnames=fieldnames)
                 writer.writeheader()
                 for row in reader:
-                    if 
-                    row['airport'] == destination:
+                    if row['airport'] == destination:
                         if new_contact[0] == "":
                             updated_destination = Destination(row['country'], row['airport'], row['duration'], row['distance'], row['contact_name'], new_contact[1])
                         elif new_contact[1] == "":
