@@ -19,8 +19,7 @@ def get_employee_information():
     print("2: Employee information")
     print("3: Employees by occupation")
     print("4: Employee status")
-    print("5: Pilots by licence")
-    print("6: Pilots by airplane type")
+    print("5: Pilots by airplane type")
     print("b: Back")
     print("")
 
@@ -98,3 +97,15 @@ def print_possible_employee_for_update(employees):
     print("* C = Captain, P = Pilot, FA = Flight Attendant, FSM = Flight Service Manager")
     print("")
     
+def print_pilots_by_airplane(pilots):
+    print("{:-<163}".format(""))
+    print("{}{:10}{}{:13}{}{:25}{}{:12}{}{:20}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', 'Licence','| ', 'Occupation *', '| ', 'Name', '| ', 'SSN', '| ', 'Address', '| ', 'Home phone', '| ', 'Cell phone', '| ', 'Email', '| ', 'Status **', '|'))
+    print("{:-<163}".format(""))
+    pilots = sorted(pilots, key=lambda x: x.licence)
+    for item in pilots:
+        licence, occupation , name, ssn, address, home_phone, cell_phone, email, licence, emp_status = item.licence, item.occupation , item.name, item.ssn, item.address, item.home_phone, item.cell_phone, item.email, item.licence, item.emp_status
+        print("{}{:10}{}{:13}{}{:25}{}{:12}{}{:20}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', licence,'| ', occupation, '| ', name, '| ', ssn, '| ', address, '| ', home_phone, '| ', cell_phone, '| ', email, '| ', emp_status, '|'))
+    print("{:-<163}".format(""))
+    print("* C = Captain, P = Pilot")
+    input("\n**   Press any key to return to main menu    **")
+    print("")

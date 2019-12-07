@@ -84,3 +84,14 @@ class Get_DL:
                     new_voyage = Voyage(row['destination'], row['date'], row['time'], row['airplane'])
                     voyage_lst.append(new_voyage)
         return voyage_lst
+
+    def get_pilots_by_airplane(self):
+        planes_and_pilots = []
+        if planes_and_pilots == []:
+            with open("./data/employee.csv", newline='', encoding='utf-8-sig') as csvfile:
+                reader = csv.DictReader(csvfile)
+                for row in reader:
+                    if row['occupation'] == 'C' or row['occupation'] == 'P':
+                        the_planes_and_pilots = Employee(row['occupation'], row['name'], row['ssn'], row['address'], row['home_phone'], row['cell_phone'], row['email'], row['licence'], row['status'])
+                        planes_and_pilots.append(the_planes_and_pilots)
+        return planes_and_pilots
