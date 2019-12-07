@@ -41,4 +41,7 @@ class Employee:
     def get_licence(self):
         if self.licence:
             return str(self.licence)
+    
+    def set_occupation(self, occupation):
+        self.occupation = occupation
 

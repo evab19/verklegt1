@@ -3,6 +3,7 @@ from LogicLayer.LLAPI import LLAPI
 from models.Destination import Destination
 from models.Employee import Employee
 from models.Airplane import Airplane
+from utils.print_functions import header_string
 
 ID_COUNTER = 1000 #needs += 1 somewhere
 
@@ -39,66 +40,13 @@ class Create_Menu:
             elif action == "3":
                 self.__create_airplane()
 
-    def __success_header(self):
-        print("")
-        print("*********************************************")
-        print("*                                           *")
-        print("*                  SUCCESS                  *")
-        print("*                                           *")
-        print("*********************************************")
-        print("")
-    
-    def __create_employee_header(self):
-        print("")
-        print("*********************************************")
-        print("*                                           *")
-        print("*              CREATE EMPLOYEE              *")
-        print("*                                           *")
-        print("*********************************************")
-        print("")
-
-    def __create_destination_header(self):
-        print("")
-        print("*********************************************")
-        print("*                                           *")
-        print("*            CREATE DESTINATION             *")
-        print("*                                           *")
-        print("*********************************************")
-        print("")
-
-    def __create_flight_header(self):
-        print("")
-        print("*********************************************")
-        print("*                                           *")
-        print("*               CREATE FLIGHT               *")
-        print("*                                           *")
-        print("*********************************************")
-        print("")
-
-    def __create_voyage_header(self):
-        print("")
-        print("*********************************************")
-        print("*                                           *")
-        print("*               CREATE VOYAGE               *")
-        print("*                                           *")
-        print("*********************************************")
-        print("")
-
-    def __create_airplane_header(self):
-        print("")
-        print("*********************************************")
-        print("*                                           *")
-        print("*              CREATE AIRPLANE              *")
-        print("*                                           *")
-        print("*********************************************")
-        print("")
 
     def __create_employee(self):
         ''' Þurfum við ekki að hafa test á því að inputið sé á
             réttur formatti, t.d. tölustafir þar sem eiga að
             vera tölustafir og e-mail rétt skráð.'''
         occupation_choice = ""
-        self.__create_employee_header()
+        print(header_string("CREATE EMPLOYEE", 50))
         print("** Please choose occupation **")
         print("1: Captain")
         print("2: Pilot")
@@ -137,7 +85,7 @@ class Create_Menu:
         correct = input("Is this information correct? (Y/N): ").lower()
 
         if correct == "y":
-            self.__success_header()
+            print(header_string("SUCCESS!", 50))
             new_employee = Employee(occupation_str, employee_id_str, name_str, SO_str, address_str, home_phone_str, cell_phone_str, email_str)
             self.__llapi.add_employee(new_employee)
     
@@ -145,7 +93,7 @@ class Create_Menu:
         ''' Þurfum við ekki að hafa test á því að inputið sé á
             réttur formatti, t.d. tölustafir þar sem eiga að
             vera tölustafir og e-mail rétt skráð.'''
-        self.__create_destination_header()
+        print(header_string("CREATE DESTINATION", 50))
         print("**  Please fill in the information below   **")
         print("")
         country_str = input("Country: ")
@@ -158,7 +106,7 @@ class Create_Menu:
         correct = input("Is this information correct? (Y/N): ").lower()
 
         if correct == "y":
-            self.__success_header()
+            print(header_string("SUCCESS!", 50))
             new_destination = Destination(country_str, airport_str, duration_str, distance_str, contact_name_str, contact_phone_nr_str)
             self.__llapi.add_destination(new_destination)
             ''' Hér þarf að kalla í API niður í logic layer þar sem inputið
@@ -169,7 +117,7 @@ class Create_Menu:
             self.__create_destination()
 
     def __create_airplane(self):
-        self.__create_airplane_header()
+        print(header_string("CREATE AIRPLANE", 50))
         print("**  Please fill in the information below   **")
         print("")
         name_str = input("Name: ")
@@ -180,7 +128,7 @@ class Create_Menu:
         correct = input("Is this information correct? (Y/N): ").lower()
  
         if correct == "y":
-            self.__success_header()
+            print(header_string("SUCCESS!", 50))
             new_airplane = Airplane(name_str, model_str, producer_str, number_of_seats_str)
             self.__llapi.add_airplane(new_airplane)
             print("**   Press enter to return to main menu    **")
@@ -188,9 +136,9 @@ class Create_Menu:
             self.__create_airplane()
 
     def __create_flight(self):
-        self.__create_flight_header()
+        print(header_string("CREATE FLIGHT", 50))
         pass
 
     def __create_voyage(self):
-        self.__create_voyage_header()
+        print(header_string("CREATE VOYAGE", 50))
         pass

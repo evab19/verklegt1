@@ -1,0 +1,86 @@
+mainMenu.py
+	1. Sé að print föllin eru rosalega mikið að gera það sama.
+	Í staðinn fyrir að endurtaka kóðann í hvert skipti myndi ég búa til 'utils' möppu undir rótinni
+	og gera skrá þar inni sem heitir t.d. print_functions.py
+	Hún gæti þá haldið utan um print virkni sem þið eruð að gera allavega oftar en einu sinni, t.d. 
+	print_header(text)
+        print("\n*********************************************")
+        print("*                                           *")
+        print("*            " + text + "           *")
+        print("*                                           *")
+        print("*********************************************\n")
+		Hinsvegar, þar sem að text breytan er mislöng þá þarf að laga til whitespace. Getið nýtt ykkur 'center' fallið fyrir strengi
+		(eða eitthvað annað, hraðgúglaði) til að passa upp á bilin ykkar.
+		Þá væri þetta meira svona:
+		print("\n" + "*" * 45)
+		print("*" + " " * 43 + "*")
+		print(text.center(45, '*') # <--- á að passa að text plús stjörnurnar séu 45 karakterar í heildina.
+		print("*" + " " * 43 + "*")
+		print("*" * 45 + "\n")
+	Þið gætuð líka ákveðið að láta þessi föll ekki prenta þetta út sjálft heldur smíða þennan streng og skila honum.
+	Þá getur kóðinn sem kallar í fallið ákveðið hvort það prentar hann út eða gerir eitthvað annað við hann.
+	Kostur:
+		Ef þið ætlið að gera breytingu sem á að vera í öllum headers þarf bara að breyta print_header fallinu í print_functions
+	Bónusstig ef þið skilgreinið auka parameter sem er line_length. Þá í staðinn fyrir að 45 sé harðkóðuð línulengd ræður parameterinn því.
+	
+	2. Eva er að tuða í mér að þetta sé ekki tilbúið en ég kommenta samt á þetta. Á að henda mér úr mainMenu ef ég slæ inn ólöglegt input 
+		eða á ekki while loopan bara að endurtaka allt?
+
+createMenu.py
+	1. Lína 103, kommentið. Mæli innilega með að öll komment sem eru í raun "to do" séu merkt í byrjun með TODO. Þá er auðvelt að ctrl+shift+f leita að þannig pælingum.
+	2. Sama pæling og í mainMenu.py með headerana, sjáið að þið sparið ykkur fáránlega mikið af línum með því að gera sameiginlegt print fall.
+	3. Ég fýla pælinguna með að 'b' input leyfi fallinu bara að klárast og skilast til baka. Þarf að hugsa meira út í það hvort það sé brothætt en so far so good.
+	4. Nevermind createMenu með input '1' --> __create_employee með input 'b' --> createMenu með input 'b' --> brotnar. O ó.
+	   Getið breytt create_employee í línu 127 að í staðinn fyrir að kalla´i self.create_menu(), gerið þá í staðinn eitthvað svona:
+	   elif occupation_choice == "4":
+	      occupation_str = "Flight Service Manager"
+	   if occupation_choice != "b":
+	      restin af fallinu sem er fyrir þarna.
+	      self.__create_employee_header()
+	   Hugmyndin er þá að þið keyrið bara afganginn af kóðanum svo lengi sem að inputtið var ekki b. Þessi kóði leyfir samt ólöglegt input sem er hvorki 1-4 né b en þið getið lagað það. 
+	   Þetta ætti allavega að skila ykkur aftur í create_menu fallið og normal virkni hefst aftur.
+	5. create_employee: spurning að nota bara uuid.uuid4() fyrir employee ID-ið? Skilst að Gylfi sé reiður út í global breytur, það myndi örugglega spara ykkur pínu höfuðverk
+		að generate-a bara unique identifier fyrir hvern nýjan starfsmann. 
+	   6. Svona fyrir framtíðina ef þið hafið allan tíma í heiminum: Mögulega athuga hvort að þið séuð að búa til nýjan starfsmann sem er með kennitölu sem er þegar í notkun.
+	7. Lína 174: Örugglega einfaldara að í staðinn fyrir að user vitleysingurinn slái inn "n" að þá triggeri allt nema y/Y restart á create_destination. Sama gildir fyrir önnur create föll.
+	8. Lína 191. Spurning að í staðinn fyrir að kalla beint í að búa til flugvélina að kalla fyrst í fallið sem að athugar hvort að flugvélin sé legit. Ef það skilar false aftur í __create_airplane
+	   þá getur það fall prentað út villuskilaboð og endurtekið leikinn með að búa til flugvélina.
+	   Annað option er að create_airplane kalli áfram í sama fall, add_airplane. add_airplane hinsvegar skilar boolean til baka hvort það gekk upp að búa til flugvél eða ekki. 
+	   is_valid_airplane getur þá hugsalega prentað út hvað nákvæmlega var að inputtinu, skilað false til add_airplane, það skilar false aftur til create_airplane og create_airplane höndlar það á einhvern hátt.
+	  
+Módelin:
+	WTB setters fyrir breyturnar í módelunum ykkar. Skilst að þau séu á leiðinni samt.
+	
+DataAPI.py	
+	1. Ef ég er að skilja grafið ykkar rétt ætti DataAPI ekki að vera að halda utan um lista af destinations, employee og airplane. Grunar að þetta sé tímabundið mix 
+	meðan við græjið Voyage_LL. Mæli með samt að klára ASAP flæðið frá UI niður í Data layer samkvæmt hönnuninni ykkar. DataAPI á allavega ekki að vera að geyma neitt sjálft heldur bara sækja.
+	2. .txt en ekki .csv?
+	3. Spurning að bæta við try / catch á allt sem tengist að opna fæla. Ég luva að hafa utils föll þannig það er hægt að græja eitt stykki fall þar
+	sem sér um að opna file með stillingum skv parameters og vera með try / catch í kringum. 
+	4. Hugsanlega einmitt hafa print_error fall í utils sem sér um að prenta út generic villuskilaboð sem að #3 getur kallað í.
+	5. Af hverju er get_employee að prenta út strengi í staðinn fyrir að skila lista af Employee klasanum?
+	6. Sama spurning fyrir get_destinations. 
+	7. Sama spurning fyrir get_airplane
+	
+getMenu.py
+	1. Veit ég er óþolandi en header pæling aftur.
+	2. Lína 44: Þetta er líka strengur sem gæti verið að koma upp úr sameiginlegu utils falli, eins og hitt. Lína af breidd x (úr parameter) með texta í miðjunni.
+	   Gott case fyrir af hverju print_functions.py ætti að vera str_functions.py í staðinn. Þ.e. utils föllin ykkar ættu ekki að vera að prenta út sjálf heldur að smíða strengi
+	   og hver sá sem að kallar þá í utils föllin getur prentað strengina út sjálfur, eða hent þeim inn í input fall eða whatever.
+	   Also "Press any key" í stað press enter? :^)
+	
+	filename = 'my.csv'
+tempfile = NamedTemporaryFile(mode='w', delete=False)
+
+fields = ['ID', 'Name', 'Course', 'Year']
+
+with open(filename, 'r') as csvfile, tempfile:
+    reader = csv.DictReader(csvfile, fieldnames=fields)
+    writer = csv.DictWriter(tempfile, fieldnames=fields)
+    for row in reader:
+        if row['id_str'] == str(employee.get_id()):
+            row['Name'], row['Course'], row['Year'] = employee.get_name(), employee.ge
+        row = {'ID': row['ID'], 'Name': row['Name'], 'Course': row['Course'], 'Year': row['Year']}
+        writer.writerow(row)
+
+shutil.move(tempfile.name, filename)
