@@ -1,9 +1,9 @@
-﻿occupation,id,name,ssn,address,home_phone,cell_phone,email,licence
-Captain,Captain1000,Eva,2904882309,Sudurholar,4782040,6626148,evabjoss@gmail.com,None
-Pilot,Pilot1000,Pikachu,5555886699,viridian,5555555,4444444,pikachu@nintendo.com,None
-Flight Service Manager,,Brian,0101903369,Happy Camper Street,5554477,1114455,brian_the_man@nanair.com,
-Captain,C1000,Eva,2904882309,Sudurholar,4782040,6626148,evabjoss@gmail.com,None
-Pilot,P1001,Pikachu,5555886699,viridian,5555555,4444444,pikachu@nintendo.com,None
-Pilot,,Harry Potter,7788996655,Hogwarts með T!,4445656,8885252,griffindor_rules@nanair.com,
-Captain,,Thor,0000000001,Ásgarður,0000000,6665555,fucking_god@thunder.com,Mjölnir
-Flight Attendant,,Borat,7788552211,kazakhstan,can-phone3,can-phone1,what_is_email@nanair.com,
+occupation,name,ssn,address,home_phone,cell_phone,email,licence
+C,Eva,2904882309,Sudurholar,4782040,6626148,evabjoss@gmail.com,None
+P,Pikachu,5555886699,viridian,5555555,4444444,pikachu@nintendo.com,None
+FSM,Brian,0101903369,Happy Camper Street,5554477,1114455,brian_the_man@nanair.com,
+C,Eva,2904882309,Sudurholar,4782040,6626148,evabjoss@gmail.com,None
+P,Pikachu,5555886699,viridian,5555555,4444444,pikachu@nintendo.com,None
+P,Harry Potter,7788996655,Hogwards,4445656,8885252,griffindor_rules@nanair.com,
+C,Thor,0000000001,Ásgarður,5556666,6665555,god_of_thunder@nanair.com,
+FA,Borat,7788552211,kazakhstan,can-phone3,can-phone1,what_is_email@nanair.com,

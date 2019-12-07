@@ -27,11 +27,22 @@ def get_employee_information():
 def print_employee(employees):
     print("{:-<151}".format(""))
     print("{}{:13}{}{:25}{}{:12}{}{:20}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', 'Occupation', '| ', 'Name', '| ', 'SSN', '| ', 'Address', '| ', 'Home phone', '| ', 'Cell phone', '| ', 'Email', '| ', 'Licence', '|'))
+
+def get_employee_by_occupation():
+    print("C for Captain")
+    print("P for Pilot")
+    print("FA for Flig Attendant")
+    print("FSM for Flight Service Manager")
+    print("")
+
+def print_employee(employees):
+    print("{:-<151}".format(""))
+    print("{}{:13}{}{:25}{}{:12}{}{:20}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', 'Occupation *', '| ', 'Name', '| ', 'SSN', '| ', 'Address', '| ', 'Home phone', '| ', 'Cell phone', '| ', 'Email', '| ', 'Licence', '|'))
     print("{:-<151}".format(""))
     for item in employees:
         print(item)
     print("{:-<151}".format(""))
-    # print("* C = Captain, P = Pilot, FA = Flight attendant")
+    print("* C = Captain, P = Pilot, FA = Flight Attendant, FSM = Flight Service Manager")
     input("\n**   Press any key to return to main menu    **")
 
 def print_destination(destination):

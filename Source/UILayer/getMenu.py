@@ -26,6 +26,41 @@ class Get_Menu:
             elif action == "4":
                 self.__get_voyage()
 
+    def __get_destination_header(self):
+        print("")
+        print("*********************************************")
+        print("*                                           *")
+        print("*              GET DESTINATION              *")
+        print("*                                           *")
+        print("*********************************************")
+        print("")
+    
+    def __get_airplane_information_header(self):
+        print("")
+        print("*********************************************")
+        print("*                                           *")
+        print("*         GET AIRPLANE INFORMATION          *")
+        print("*                                           *")
+        print("*********************************************")
+        print("")
+    
+    def __get_flight_schedule_header(self):
+        print("")
+        print("*********************************************")
+        print("*                                           *")
+        print("*            GET FLIGHT SCHEDULE            *")
+        print("*                                           *")
+        print("*********************************************")
+        print("")
+    
+    def __get_employee_schedule_header(self):
+        print("")
+        print("*********************************************")
+        print("*                                           *")
+        print("*         GET EMPLOYEE INFORMATION          *")
+        print("*                                           *")
+        print("*********************************************")
+        print("")
 
     def __get_employee(self):
         """ TODO Laga menuið eftir að við ákveðum hvernig við höfum þetta """
@@ -36,6 +71,17 @@ class Get_Menu:
             print(header_string("GET ALL EMPLOYEES", 50))
             employees = self.__llapi.get_employee()
             print_employee(employees)
+        elif action == "2":
+            print(header_string("GET EMPLOYEE INFORMATION", 50))
+            employee = input("Use SSN for the employee you would like to get: ")
+            employee_information = self.__llapi.get_employee_information(employee)
+            print_employee(employee_information)
+        elif action == "3":
+            print(header_string("GET EMPLOYEES BY OCCUPATION", 50))
+            get_employee_by_occupation()
+            occupation = input("What occupation would you like to get? ").upper()
+            employee_by_occupation = self.__llapi.get_employee_by_occupation(occupation)
+            print_employee(employee_by_occupation)
 
     def __get_destination(self):
         print(header_string("GET DESTINATION", 50))

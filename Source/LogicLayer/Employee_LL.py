@@ -19,3 +19,9 @@ class EmployeeLL:
 
     def update_employee(self, employee, new_employee):
         self.__employee_repo.update_employee(employee, new_employee)
+    
+    def get_employee_information(self, __employee):
+        return self.__employee_repo.get_employee_information(__employee)
+    
+    def get_employee_by_occupation(self, __occupation):
+        return self.__employee_repo.get_employee_by_occupation(__occupation)

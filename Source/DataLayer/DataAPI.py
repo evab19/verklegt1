@@ -27,6 +27,16 @@ class DataAPI:
 # get föll
     def get_employee(self):
         return self.__get.get_employee()
+    
+    def get_employee_information(self, employee):
+        return self.__get.get_employee_information(employee)
+
+    def get_employee_by_occupation(self, occupation):
+        return self.__get.get_employee_by_occupation(occupation)
+
+# get föll
+    def get_employee(self):
+        return self.__get.get_employee()
 
     def get_destination(self):
         return self.__get.get_destination()
