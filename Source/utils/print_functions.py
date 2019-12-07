@@ -87,10 +87,13 @@ def print_airport(destination):
     print("{:-<28}".format(""))
 
 def print_possible_employee_for_update(employees):
-    print("{:-<42}".format(""))
-    print("{}{:25}{}{:12}{}".format('| ', 'Name', '| ', 'SSN', '|'))
-    print("{:-<42}".format(""))
+    print("{:-<57}".format(""))
+    print("{}{:13}{}{:25}{}{:12}{}".format('| ', 'Occupation *','| ', 'Name', '| ', 'SSN', '|'))
+    print("{:-<57}".format(""))
     for item in employees:
-        name, ssn = item.name, item.ssn
-        print("{}{:25}{}{:12}{}".format('| ', name, '| ', ssn, '|'))
-    print("{:-<42}".format(""))
+        occupation, name, ssn = item.occupation, item.name, item.ssn
+        print("{}{:13}{}{:25}{}{:12}{}".format('| ', occupation,'| ', name, '| ', ssn, '|'))
+    print("{:-<57}".format(""))
+    print("* C = Captain, P = Pilot, FA = Flight Attendant, FSM = Flight Service Manager")
+    print("")
+    
