@@ -206,4 +206,6 @@ ________________________________________________________________________________
 9:00 Allir mættir í HR
 9.10 Morgunkaffi (Ingibjörg kom með gúmmelaði og kaffi) 
 9.10 Allir pusha inn á github og sameinum mainið okkar þannig allir séu með nýjar uppfærslur
-9.12 
+9.12 vinnudagur hefst allir í sínum verkefnum eftir vinnulista á Teams - fórum vel yfir kröfulista og gerðum checklista fyrir all sem á ða vera í kerfinu
+
+
