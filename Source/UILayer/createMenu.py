@@ -1,4 +1,3 @@
-# from UILayer.mainMenu import Main_menu
 from LogicLayer.LLAPI import LLAPI
 from models.Destination import Destination
 from models.Employee import Employee

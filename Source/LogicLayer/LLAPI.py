@@ -19,19 +19,11 @@ class LLAPI:
     def get_destinations(self):
          return self.__destination.get_destinations()
     
-    def is_valid_destination(self, __destination):
-        #here should be some code to 
-        #validate the video
-        return True
 
 #### employee
     def add_employee(self, __employee):
         if self.is_valid_employee(__employee):
             self.__employee.add_employee(__employee)
-
-    def is_valid_employee(self, __employee):
-        #add code here to verify
-        return True
     
     def get_employee(self):
         return self.__employee.get_employee()
@@ -40,11 +32,6 @@ class LLAPI:
     def add_airplane(self, __airplane):
         if self.is_valid_airplane(__airplane):
             self.__airplane.add_airplane(__airplane)
-     
-    def is_valid_airplane(self, __airplane):
-        #here should be some code to 
-        #validate the video
-        return True
  
     def get_airplane(self):
         return self.__airplane.get_airplane()

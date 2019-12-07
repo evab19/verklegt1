@@ -1,5 +1,3 @@
-# from UILayer.mainMenu import Main_menu
-
 class Update_Menu:
 
     def __init__(self):

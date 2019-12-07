@@ -1,4 +1,3 @@
-# from UILayer.mainMenu import Main_menu
 from LogicLayer.LLAPI import LLAPI
 from utils.print_functions import header_string
 
@@ -65,13 +64,6 @@ class Get_Menu:
                     print(item)
                 print("{:-<94}".format(""))
                 input("\n**   Press enter to return to main menu    **")
-
-                #"{}{:20}{}{:20}{}{:25}{}{:20}{}".format('| ', self.name, '| ', self.model, '| ', self.producer, '| ', self.number_of_seats, '|')
-
-                # print(header_string("GET AIRPLANE INFORMATION", 50))
-                # airplanes = self.__llapi.get_airplane()
-                # print(airplanes)
-                # input("\n**   Press enter to return to main menu    **")
 
     def __get_employee(self):
         print(header_string("GET EMPLOYEE", 50))
