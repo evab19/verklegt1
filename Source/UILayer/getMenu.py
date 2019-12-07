@@ -33,7 +33,7 @@ class Get_Menu:
             action = input("Choose an option: ").lower()
 
             if action == "1":
-                self.__get_employee_header()
+                print(header_string("GET EMPLOYEE", 50))
                 employees = self.__llapi.get_employee()
                 print("{:-<151}".format(""))
                 print("{}{:13}{}{:25}{}{:12}{}{:20}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', 'Occupation', '| ', 'Name', '| ', 'SSN', '| ', 'Address', '| ', 'Home phone', '| ', 'Cell phone', '| ', 'Email', '| ', 'Licence', '|'))
@@ -45,7 +45,7 @@ class Get_Menu:
                 input("\n**   Press enter to return to main menu    **")
             
             elif action == "2":
-                self.__get_destination_header()
+                print(header_string("GET DESTINATION", 50))
                 destinations = self.__llapi.get_destinations()
                 print("{:-<128}".format(""))
                 print("{}{:25}{}{:25}{}{:10}{}{:10}{}{:30}{}{:15}{}".format('| ', 'Country', '| ',  'Airport', '| ', 'Duration', '| ', 'Distance', '| ', 'Contact name', '| ', 'Contact phone', '|'))
@@ -68,10 +68,10 @@ class Get_Menu:
 
                 #"{}{:20}{}{:20}{}{:25}{}{:20}{}".format('| ', self.name, '| ', self.model, '| ', self.producer, '| ', self.number_of_seats, '|')
 
-                print(header_string("GET AIRPLANE INFORMATION", 50))
-                airplanes = self.__airplane_service.get_airplane()
-                print(airplanes)
-                input("\n**   Press enter to return to main menu    **")
+                # print(header_string("GET AIRPLANE INFORMATION", 50))
+                # airplanes = self.__llapi.get_airplane()
+                # print(airplanes)
+                # input("\n**   Press enter to return to main menu    **")
 
     def __get_employee(self):
         print(header_string("GET EMPLOYEE", 50))

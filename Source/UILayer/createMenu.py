@@ -68,7 +68,7 @@ class Create_Menu:
         elif occupation_choice == "b":
             self.create_menu()
 
-        self.__create_employee_header()
+        #self.__create_employee_header()
         print("**  Please fill in the information below   **")
         print("")
         print("Occupation: ", occupation_str)
