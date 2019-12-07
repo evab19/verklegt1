@@ -44,7 +44,7 @@ class Get_Menu:
 
             elif action == "3":
                 self.__get_airplane_information_header()
-                airplanes = self.__airplane_service.get_airplane()
+                airplanes = self.__llapi.get_airplane()
                 print(airplanes)
                 input("\n**   Press enter to return to main menu    **")
     

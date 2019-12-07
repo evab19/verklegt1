@@ -10,13 +10,6 @@ class Create_Menu:
 
     def __init__(self):
         self.__llapi = LLAPI()
-        # self.__destination_service = LLAPI()
-        # self.__employee_service = LLAPI() #ath að breyta!
-        # self.__airplane_service = LLAPI()
-        # self.create_employee_lst = []
-        # self.create_destination_lst = []
-        # self.create_flight_lst = []
-        # self.create_voyage_lst = []
 
     def create_menu(self):
         action = ""
@@ -189,7 +182,7 @@ class Create_Menu:
         if correct == "y":
             self.__success_header()
             new_airplane = Airplane(name_str, model_str, producer_str, number_of_seats_str)
-            self.__airplane_service.add_airplane(new_airplane)
+            self.__llapi.add_airplane(new_airplane)
             print("**   Press enter to return to main menu    **")
         if correct == "n":
             self.__create_airplane()
