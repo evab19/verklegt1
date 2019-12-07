@@ -140,6 +140,12 @@ class DataAPI:
 
     def get_employee_by_occupation(self, occupation):
         return self.__get.get_employee_by_occupation(occupation)
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+    
+    def get_employee_by_status(self, emp_status):
+        return self.__get.get_employee_by_status(emp_status)
 >>>>>>> Stashed changes
 
 

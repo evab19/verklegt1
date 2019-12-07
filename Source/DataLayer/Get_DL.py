@@ -13,33 +13,54 @@ class Get_DL:
         self.__voyage = []
 
     def get_employee(self):
-        if self.__employee == []:
+        employee = []
+        if employee == []:
             with open("./data/employee.csv", newline='', encoding='utf-8-sig') as csvfile:
                 reader = csv.DictReader(csvfile)
                 for row in reader:
+<<<<<<< Updated upstream
                     new_employee = Employee(row['occupation'], row['name'], row['ssn'], row['address'], row['home_phone'], row['cell_phone'], row['email'], row['licence'])
                     self.__employee.append(new_employee)
         return self.__employee
     
+=======
+                    new_employee = Employee(row['occupation'], row['name'], row['ssn'], row['address'], row['home_phone'], row['cell_phone'], row['email'], row['licence'], row['status'])
+                    employee.append(new_employee)
+        return employee
+
+>>>>>>> Stashed changes
     def get_employee_information(self, employee):
-        if self.__employee == []:
+        employee_info_lst = []
+        if employee_info_lst == []:
             with open("./data/employee.csv", newline='', encoding='utf-8-sig') as csvfile:
                 reader = csv.DictReader(csvfile)
                 for row in reader:
                     if row['ssn'] == employee:
-                        employee_info = Employee(row['occupation'], row['name'], row['ssn'], row['address'], row['home_phone'], row['cell_phone'], row['email'], row['licence'])
-                        self.__employee.append(employee_info)
-        return self.__employee
+                        employee_info = Employee(row['occupation'], row['name'], row['ssn'], row['address'], row['home_phone'], row['cell_phone'], row['email'], row['licence'], row['status'])
+                        employee_info_lst.append(employee_info)
+        return employee_info_lst
     
     def get_employee_by_occupation(self, occupation):
-        if self.__employee == []:
+        employee_occupation = []
+        if employee_occupation == []:
             with open("./data/employee.csv", newline='', encoding='utf-8-sig') as csvfile:
                 reader = csv.DictReader(csvfile)
                 for row in reader:
                     if row['occupation'] == occupation:
-                        employee_by_occupation = Employee(row['occupation'], row['name'], row['ssn'], row['address'], row['home_phone'], row['cell_phone'], row['email'], row['licence'])
-                        self.__employee.append(employee_by_occupation)
-        return self.__employee
+                        employee_by_occupation = Employee(row['occupation'], row['name'], row['ssn'], row['address'], row['home_phone'], row['cell_phone'], row['email'], row['licence'], row['status'])
+                        employee_occupation.append(employee_by_occupation)
+        return employee_occupation
+    
+    def get_employee_by_status(self, emp_status):
+        employee_status = []
+        if employee_status == []:
+            with open("./data/employee.csv", newline='', encoding='utf-8-sig') as csvfile:
+                reader = csv.DictReader(csvfile)
+                for row in reader:
+                    if row['status'] == emp_status:
+                        employee_by_status = Employee(row['occupation'], row['name'], row['ssn'], row['address'], row['home_phone'], row['cell_phone'], row['email'], row['licence'], row['status'])
+                        employee_status.append(employee_by_status)
+        return employee_status
 
     def get_destination(self):
         if self.__destination == []:
