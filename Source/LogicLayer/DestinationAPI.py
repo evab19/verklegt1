@@ -18,6 +18,9 @@ class DestinationAPI:
 
     def get_destinations(self):
         return self.__destination_repo.get_destinations()
+    
+    def update_destinations(self, destination, new_contact):
+        self.__destination_repo.update_destination(destination, new_contact)
 
     def get_destinations_by_country(self, country):
         pass

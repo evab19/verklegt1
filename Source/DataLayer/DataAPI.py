@@ -59,7 +59,51 @@ class DataAPI:
                     new_destination = Destination(row['country'], row['airport'], row['duration'], row['distance'], row['contact_name'], row['contact_phone'])
                     self.__destinations.append(new_destination)
         return self.__destinations
+    
+    def update_destination(self, destination, new_contact):
+        with open("./data/destinations.csv", encoding='utf-8-sig') as csvfile:
+            fieldnames = ['country', 'airport', 'duration', 'distance', 'contact_name', 'contact_phone']
+            reader = csv.DictReader(csvfile)
+            with open("./data/tempfile.csv", "w+", encoding='utf-8-sig') as tempfile:
+                writer = csv.DictWriter(tempfile, fieldnames=fieldnames)
+                writer.writeheader()
+                for row in reader:
+                    if 
+                    row['airport'] == destination:
+                        if new_contact[0] == "":
+                            updated_destination = Destination(row['country'], row['airport'], row['duration'], row['distance'], row['contact_name'], new_contact[1])
+                        elif new_contact[1] == "":
+                            updated_destination = Destination(row['country'], row['airport'], row['duration'], row['distance'], new_contact[0], row['contact_phone'])
+                        else:
+                            updated_destination = Destination(row['country'], row['airport'], row['duration'], row['distance'], new_contact[0], new_contact[1])
+                        row = ({'country': updated_destination.country, 'airport': updated_destination.airport, 'duration': updated_destination.duration, 'distance': updated_destination.distance, 'contact_name': updated_destination.contact_name, 'contact_phone': updated_destination.contact_phone})
+                    writer.writerow(row)
+        csvfile.close()
+        tempfile.close()
 
+        with open("./data/tempfile.csv", encoding='utf-8-sig') as tempfile:
+            reader2 = csv.DictReader(tempfile)
+            with open("./data/destinations.csv", "w+", encoding='utf-8-sig') as csvfile:
+                writer2 = csv.DictWriter(csvfile, fieldnames=fieldnames)
+                writer2.writeheader()
+                for row in reader2:
+                    writer2.writerow(row)
+        tempfile.close()
+        csvfile.close()
+
+
+
+
+    # with open(filename, 'r') as csvfile, tempfile:
+    # reader = csv.DictReader(csvfile, fieldnames=fields)
+    # writer = csv.DictWriter(tempfile, fieldnames=fields)
+    # for row in reader:
+    #     if row['id_str'] == str(employee.get_id()):
+    #         row['Name'], row['Course'], row['Year'] = employee.get_name(), employee.ge
+    #     row = {'ID': row['ID'], 'Name': row['Name'], 'Course': row['Course'], 'Year': row['Year']}
+    #     writer.writerow(row)
+
+    # shutil.move(tempfile.name, filename)
  
     def add_airplane(self, airplane):
         name = airplane.get_name()
@@ -81,3 +125,6 @@ class DataAPI:
                     new_airplane = Airplane(row['name'], row['model'], row['producer'], row['number_of_seats'])
                     self.__airplane.append(new_airplane)
         return self.__airplane
+
+    
+
