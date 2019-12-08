@@ -16,3 +16,6 @@ class VoyageLL:
     
     def get_voyage_destination(self, voyage_destination, year_int, month_int, day_int):
         return self.__voyage_repo.get_voyage_destination(voyage_destination, year_int, month_int, day_int)
+
+    def get_the_voyage(self, voyage_destination, year_int, month_int, day_int, flight_number):
+        return self.__voyage_repo.get_the_voyage(voyage_destination, year_int, month_int, day_int, flight_number)

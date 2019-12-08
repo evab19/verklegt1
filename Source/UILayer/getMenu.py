@@ -86,6 +86,9 @@ class Get_Menu:
         day_int = int(input("Day: "))
         voyages = self.__llapi.get_voyage_destination(voyage_destination, year_int, month_int, day_int)
         print_voyages_destination(voyages, voyage_destination)
+        flight_number = input("Please insert flight number for the voyage: ").upper()
+        the_voyage = self.__llapi.get_the_voyage(voyage_destination, year_int, month_int, day_int, flight_number)
+        
 
     def __get_employee_schedule(self):
         print(header_string("GET EMPLOYEE SCHEDULE", 50))
