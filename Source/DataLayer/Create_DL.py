@@ -4,7 +4,7 @@ class Create_DL:
 
     def add_employee(self, employee):
         occupation_str = employee.get_occupation()
-        id_str = employee.get_id()
+        # id_str = employee.get_id()
         name_str = employee.get_name()
         ssn_str = employee.get_ssn()
         address_str = employee.get_address()
@@ -13,10 +13,10 @@ class Create_DL:
         email_str = employee.get_email()
         licence_str = employee.get_licence()
         with open("./data/employee.csv", "a+", newline='', encoding='utf-8-sig') as csv_file:
-            fieldnames = ['occupation', 'id', 'name', 'ssn', 'address', 'home_phone', 'cell_phone', 'email', 'licence']
+            fieldnames = ['occupation', 'name', 'ssn', 'address', 'home_phone', 'cell_phone', 'email', 'licence']
             writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
 
-            writer.writerow({'occupation': occupation_str, 'id': id_str, 'name': name_str, 'ssn': ssn_str, 'address': address_str, 'home_phone': home_phone_str, 'cell_phone': cell_phone_str, 'email': email_str, 'licence': licence_str})
+            writer.writerow({'occupation': occupation_str, 'name': name_str, 'ssn': ssn_str, 'address': address_str, 'home_phone': home_phone_str, 'cell_phone': cell_phone_str, 'email': email_str, 'licence': licence_str})
         csv_file.close()
 
     def add_destination(self, destination):
@@ -38,11 +38,12 @@ class Create_DL:
         model = airplane.get_model()
         producer = airplane.get_producer()
         number_of_seats = airplane.get_number_of_seats()
+        plane_status = airplane.get_plane_status()
         with open("./data/airplanes.csv", "a+", newline='', encoding='utf-8-sig') as csv_file:
-            fieldnames = ['name', 'model', 'producer', 'number_of_seats']
+            fieldnames = ['name', 'model', 'producer', 'number_of_seats', 'status']
             writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
  
-            writer.writerow({'name': name, 'model': model, 'producer': producer, 'number_of_seats': number_of_seats})
+            writer.writerow({'name': name, 'model': model, 'producer': producer, 'number_of_seats': number_of_seats, 'status': plane_status})
         csv_file.close()
 
     def add_voyage(self, voyage):

@@ -77,6 +77,7 @@ class Create_Menu:
                 print(header_string("SUCCESS!", 50))
                 new_employee = Employee(occupation_str, name_str, SO_str, address_str, home_phone_str, cell_phone_str, email_str)
                 self.__llapi.add_employee(new_employee)
+                input("**   Press enter to return to main menu    **")
     
     def __create_destination(self):
         ''' Þurfum við ekki að hafa test á því að inputið sé á
@@ -101,7 +102,7 @@ class Create_Menu:
             ''' Hér þarf að kalla í API niður í logic layer þar sem inputið
                 er sett í rétt format áður en það fer í data layer til 
                 skráningar.'''
-            print("**   Press enter to return to main menu    **")
+            input("**   Press enter to return to main menu    **")
         if correct == "n":
             self.__create_destination()
 
@@ -120,7 +121,7 @@ class Create_Menu:
             print(header_string("SUCCESS!", 50))
             new_airplane = Airplane(name_str, model_str, producer_str, number_of_seats_str)
             self.__llapi.add_airplane(new_airplane)
-            print("**   Press enter to return to main menu    **")
+            input("**   Press enter to return to main menu    **")
         if correct == "n":
             self.__create_airplane()
 
@@ -173,6 +174,6 @@ class Create_Menu:
             print(header_string("SUCCESS!", 50))
             new_voyage = Voyage(destination_str, date_str, time_str, airplane_str)
             self.__llapi.add_voyage(new_voyage)
-            input("\n**   Press any key to return to main menu    **")
+            input("**   Press any key to return to main menu    **")
         else:
             self.__create_voyage()
