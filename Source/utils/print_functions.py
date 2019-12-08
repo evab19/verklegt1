@@ -138,12 +138,25 @@ def print_pilots_by_model(pilots_model):
     print("{:-<163}".format(""))
     print("{}{:10}{}{:13}{}{:25}{}{:12}{}{:20}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', 'Licence','| ', 'Occupation *', '| ', 'Name', '| ', 'SSN', '| ', 'Address', '| ', 'Home phone', '| ', 'Cell phone', '| ', 'Email', '| ', 'Status **', '|'))
     print("{:-<163}".format(""))
+    pilots_model = sorted(pilots_model, key=lambda x: x.occupation)
     for item in pilots_model:
         licence, occupation , name, ssn, address, home_phone, cell_phone, email, licence, emp_status = item.licence, item.occupation , item.name, item.ssn, item.address, item.home_phone, item.cell_phone, item.email, item.licence, item.emp_status
         print("{}{:10}{}{:13}{}{:25}{}{:12}{}{:20}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', licence,'| ', occupation, '| ', name, '| ', ssn, '| ', address, '| ', home_phone, '| ', cell_phone, '| ', email, '| ', emp_status, '|'))
     print("{:-<163}".format(""))
     print("* C = Captain, P = Pilot")
     input("\n**   Press any key to return to main menu    **")
+    print("")
+
+def print_flight_attendants(flight_attendants):
+    print("{:-<153}".format(""))
+    print("{}{:10}{}{:13}{}{:25}{}{:12}{}{:20}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', 'Licence','| ', 'Occupation *', '| ', 'Name', '| ', 'SSN', '| ', 'Address', '| ', 'Home phone', '| ', 'Cell phone', '| ', 'Email', '| ', 'Status **', '|'))
+    print("{:-<153}".format(""))
+    flight_attendants = sorted(flight_attendants, key=lambda x: x.licence)
+    for item in flight_attendants:
+        occupation , name, ssn, address, home_phone, cell_phone, email, licence, emp_status = item.occupation , item.name, item.ssn, item.address, item.home_phone, item.cell_phone, item.email, item.licence, item.emp_status
+        print("{}{:13}{}{:25}{}{:12}{}{:20}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', occupation, '| ', name, '| ', ssn, '| ', address, '| ', home_phone, '| ', cell_phone, '| ', email, '| ', emp_status, '|'))
+    print("{:-<153}".format(""))
+    print("* FSM = Flight Service Manager, FA = Flight Attendant")
     print("")
 
 # def print_voyage(voyage):

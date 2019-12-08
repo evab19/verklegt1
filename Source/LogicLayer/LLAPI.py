@@ -50,6 +50,9 @@ class LLAPI:
     def get_pilots_by_model(self, pilots_model):
         return self.__employee.get_pilots_by_model(pilots_model)
 
+    def get_flight_attendants(self):
+        return self.__employee.get_flight_attendants()
+
 #### airplane
     def add_airplane(self, __airplane):
         if self.__airplane.is_valid_airplane(__airplane):

@@ -42,6 +42,9 @@ class DataAPI:
     def get_pilots_by_model(self, pilots_model):
         return self.__get.get_pilots_by_model(pilots_model)
 
+    def get_flight_attendants(self):
+        return self.__get.get_flight_attendants()
+
 # get föll
     def get_employee(self):
         return self.__get.get_employee()

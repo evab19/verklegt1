@@ -3,7 +3,7 @@ from models.Destination import Destination
 from models.Employee import Employee
 from models.Airplane import Airplane
 from models.Voyage import Voyage
-from utils.print_functions import header_string
+from utils.print_functions import *
 import datetime
 
 class Create_Menu:
@@ -153,18 +153,30 @@ class Create_Menu:
 
         if man_voyage == "y":
             ''' Prenta lausa flugstjóra'''
+            airplanes = self.__llapi.get_airplane()
+            for item in airplanes:
+                if airplane_str == item.name:
+                    model = item.model
+            pilots_model = self.__llapi.get_pilots_by_model(model)
+            print_pilots_by_model(pilots_model)
+
             captain_str = input("What Captain should be on this voyage (input SSN)? ")
             ''' Virkni til að setja flugstjóra á voyage'''
-            ''' Prenta lausa flugmenn'''
+            ''' Útbúa villutjékk þannig að aðeins sé hægt að velja occupation C'''
+
             pilot_str = input("What Pilot should be on this voyage (input SSN)? ")
             ''' Virkni til að setja flugmann á voyage'''
+            ''' Útbúa villutjékk þannig að aðeins sé hægt að velja occupation P'''
+            
+            
             ''' Prenta lausa FSM '''
+            flight_attendants = self.__llapi.get_flight_attendants()
+
             fsm_str = input("What Flight Service Manager should serve on this voyage (input SSN)? ")
             ''' Virkni til að setja FSM á voyage'''
             fa_on_voyage_str = input("Would you like to add a Fligh Attendant on this woyage? (Y/N): ").lower()
 
             if fa_on_voyage_str == "y":
-                ''' Prenta lausa FA'''
                 fa_str = input("What Flight Attendant should serve on this voyage (input SSN)? ")
         
         correct = input("Is this information correct? (Y/N): ").lower()

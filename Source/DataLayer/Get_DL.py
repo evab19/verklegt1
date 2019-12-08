@@ -106,3 +106,14 @@ class Get_DL:
                         the_models_and_pilots = Employee(row['occupation'], row['name'], row['ssn'], row['address'], row['home_phone'], row['cell_phone'], row['email'], row['licence'], row['status'])
                         models_and_pilots.append(the_models_and_pilots)
         return models_and_pilots
+
+    def get_flight_attendants(self):
+        flight_attendants = []
+        if flight_attendants == []:
+            with open("./data/employee.csv", newline='', encoding='utf-8-sig') as csvfile:
+                reader = csv.DictReader(csvfile)
+                for row in reader:
+                    if row['occupation'] == 'FA' or row['occupation'] == 'FSM':
+                        the_flight_attendants = Employee(row['occupation'], row['name'], row['ssn'], row['address'], row['home_phone'], row['cell_phone'], row['email'], row['licence'], row['status'])
+                        flight_attendants.append(the_flight_attendants)
+        return flight_attendants
