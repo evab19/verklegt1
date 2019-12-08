@@ -26,6 +26,12 @@ class Get_Menu:
             elif action == "4":
                 self.__get_voyage()
 
+            elif action == 'b':
+                pass
+            else:
+                print(header_string('WRONG INPUT, please select from the list!', 50))
+                input("\n**   Press any key to return to menu    **")
+
     def __get_destination_header(self):
         print("")
         print("*********************************************")
@@ -150,3 +156,9 @@ class Get_Menu:
     def __get_employee_schedule(self):
         print(header_string("GET EMPLOYEE SCHEDULE", 50))
         pass
+
+    def __error_message(self):
+        print(header_string('Wrong input, please select from the list!', 100))
+        input("\n**   Press any key to return to menu    **")
+        
+        

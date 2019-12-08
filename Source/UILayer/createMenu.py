@@ -32,6 +32,10 @@ class Create_Menu:
                 self.__create_airplane()
             elif action == "4":
                 self.__create_voyage()
+            elif action == "b":
+                pass
+            else:
+                self.__error_message()
 
 
     def __create_employee(self):
@@ -76,6 +80,8 @@ class Create_Menu:
                 print(header_string("SUCCESS!", 50))
                 new_employee = Employee(occupation_str, name_str, SO_str, address_str, home_phone_str, cell_phone_str, email_str)
                 self.__llapi.add_employee(new_employee)
+            else:
+                self.__error_message()
     
     def __create_destination(self):
         ''' Þurfum við ekki að hafa test á því að inputið sé á
@@ -103,6 +109,8 @@ class Create_Menu:
             print("**   Press enter to return to main menu    **")
         if correct == "n":
             self.__create_destination()
+        else:
+            self.__error_message()
 
     def __create_airplane(self):
         print(header_string("CREATE AIRPLANE", 50))
@@ -122,6 +130,8 @@ class Create_Menu:
             print("**   Press enter to return to main menu    **")
         if correct == "n":
             self.__create_airplane()
+        else:
+            self.__error_message()
 
     def __create_flight(self):
         print(header_string("CREATE FLIGHT", 50))
@@ -145,3 +155,8 @@ class Create_Menu:
             input("\n**   Press any key to return to main menu    **")
         else:
             self.__create_voyage()
+    
+    def __error_message(self):
+        print(header_string('WRONG INPUT, please select from the list!', 50))
+        input("\n**   Press any key to return to menu    **")
+

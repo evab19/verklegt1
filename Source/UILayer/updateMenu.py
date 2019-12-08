@@ -84,9 +84,18 @@ class Update_Menu:
                     new_contact.append(new_name)
                     new_contact.append(new_phone)
                     # print(new_contact)
+                else:
+                    print(header_string('WRONG INPUT, please select from the list!', 50))
+                    input("\n**   Press any key to return to menu    **")
+            
                 self.__llapi.update_destination(destination, new_contact)
                 
-            
+            elif action == 'b':
+                break
+            else:
+                print(header_string('WRONG INPUT, please select from the list!', 50))
+                input("\n**   Press any key to return to menu    **")
+
             # else:
             #     action = "q"
 

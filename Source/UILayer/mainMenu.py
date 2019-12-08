@@ -28,5 +28,11 @@ class Main_menu:
             elif action == "3":
                 ui = Update_Menu()
                 ui.update_menu()
+            elif action == 'q':
+                break
             else:
-                action = "q"
+                print(header_string('WRONG INPUT, please select from the list!', 50))
+                input("\n**   Press any key to return to menu    **")
+
+
+   
