@@ -3,7 +3,8 @@ from models.Airplane import Airplane
 from models.Employee import Employee
 from models.Voyage import Voyage
 import csv
-from dateutil import parser
+# from dateutil import parser
+import dateutil.parser
 
 class Get_DL:
     
@@ -131,7 +132,7 @@ class Get_DL:
                         voyage_month = voyage_departure.month
                         voyage_day = voyage_departure.day
                         if voyage_year == year_int and voyage_month == month_int and voyage_day == day_int:
-                            the_voyage_destination = Voyage(row['destination'], row['departure_date_time'], row['airplane_name'], row['captain_ssn'], row['pilot_ssn'], row['fsm_ssn'], row['fa_ssn'], row['fligt_out'], row['flight_in'])
+                            the_voyage_destination = Voyage(row['destination'], row['departure_date_time'], row['airplane_name'], row['captain_ssn'], row['pilot_ssn'], row['fsm_ssn'], row['fa_ssn'], row['flight_out'], row['flight_in'])
                             voyage_destination_lst.append(the_voyage_destination)
         return voyage_destination_lst
 

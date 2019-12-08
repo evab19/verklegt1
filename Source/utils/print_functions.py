@@ -167,9 +167,9 @@ def print_voyages_destination(voyage, airport):
         print("{:-<67}".format(""))
         print("{}{:20}{}{:25}{}{:15}{}".format('| ', 'Destination', '| ', 'Departure time', '| ', 'Flight number', '|'))
         print("{:-<67}".format(""))
-        voyage = sorted(voyage, key=lambda x: x.fligt_out)
+        voyage = sorted(voyage, key=lambda x: x.flight_out)
         for item in voyage:
-            destination, departure_date_time, flight_out = item.destination, item.departure_date_time, item.flight_out
+            destination, departure_date_time, flight_out = item.destination, item.departure, item.flight_out
             print("{}{:20}{}{:25}{}{:15}{}".format('| ', destination, '| ', departure_date_time, '| ', flight_out, '|'))
             print("{:-<67}".format(""))
     print("")
