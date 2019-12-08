@@ -15,8 +15,11 @@ class DestinationLL:
         #validate the video
         return True
 
-    def get_destinations(self):
-        return self.__destination_repo.get_destinations()
+    def get_destination(self):
+        return self.__destination_repo.get_destination()
 
     def get_destinations_by_country(self, country):
         pass
+
+    def update_destination(self, destination, new_contact):
+        self.__destination_repo.update_destination(destination, new_contact)

@@ -1,6 +1,9 @@
-country,airport,duration,distance,contact_name,contact_phone
-Greenland,Nuuk,5,500,John,444-4444
-Jemen,Jeman Airport,8:00,785,Chandler Bing,4561144
-Bora Bora,Rassa Bora,10:10,548,Bora Ínef,5556633
-NOCCO,Koffín,10:20,105,Sveinki,3306655
-Tæland,PiriPiri,12:00,876,Cho,4447788
+﻿country,airport,duration,distance,contact_name,contact_phone
+Greenland,Nuuk,5,500,Gunnsteinn,444-4444
+Jemen,Jeman Airport,8:00,785,Chandler Bing,4561144
+Bora Bora,Rassa Bora,10:10,548,Bora Ínef,5556633
+NOCCO,Koffín,10:20,105,Stúfur,3306655
+Tæland,PiriPiri,12:00,876,Cho,4447788
+Hel,DownUnder,00:30,1,Satan,6969696
+Tunglið,Nasa,99:99,384.400,Neil Armstrong,1112233
+Ljósuklettar,Flugstöð Simba,55:44,810,Timon,0002211
