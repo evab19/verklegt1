@@ -169,7 +169,6 @@ class Create_Menu:
             ''' Virkni til að setja flugmann á voyage'''
             ''' Útbúa villutjékk þannig að aðeins sé hægt að velja occupation P'''
             
-            
             ''' Prenta lausa FSM '''
             flight_attendants = self.__llapi.get_flight_attendants()
             print_flight_attendants(flight_attendants)

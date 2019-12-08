@@ -14,5 +14,5 @@ class VoyageLL:
         #add code here to verify
         return True
     
-    def get_voyage(self):
-        return self.__voyage_repo.get_voyage()
+    def get_voyage_destination(self, voyage_destination, year_int, month_int, day_int):
+        return self.__voyage_repo.get_voyage_destination(voyage_destination, year_int, month_int, day_int)

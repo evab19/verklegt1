@@ -1,6 +1,6 @@
 from LogicLayer.LLAPI import LLAPI
 from utils.print_functions import *
-
+import datetime
 
 class Get_Menu:
 
@@ -25,42 +25,6 @@ class Get_Menu:
 
             elif action == "4":
                 self.__get_voyage()
-
-    def __get_destination_header(self):
-        print("")
-        print("*********************************************")
-        print("*                                           *")
-        print("*              GET DESTINATION              *")
-        print("*                                           *")
-        print("*********************************************")
-        print("")
-    
-    def __get_airplane_information_header(self):
-        print("")
-        print("*********************************************")
-        print("*                                           *")
-        print("*         GET AIRPLANE INFORMATION          *")
-        print("*                                           *")
-        print("*********************************************")
-        print("")
-    
-    def __get_flight_schedule_header(self):
-        print("")
-        print("*********************************************")
-        print("*                                           *")
-        print("*            GET FLIGHT SCHEDULE            *")
-        print("*                                           *")
-        print("*********************************************")
-        print("")
-    
-    def __get_employee_schedule_header(self):
-        print("")
-        print("*********************************************")
-        print("*                                           *")
-        print("*         GET EMPLOYEE INFORMATION          *")
-        print("*                                           *")
-        print("*********************************************")
-        print("")
 
     def __get_employee(self):
         """ TODO Laga menuið eftir að við ákveðum hvernig við höfum þetta """
@@ -105,47 +69,23 @@ class Get_Menu:
         destination = self.__llapi.get_destination()
         print_destination(destination)
 
-        # print("   **    Please insert Airport name     **   ")
-        # print("")
-        # airport_name_str = input("Airport name: ")
-        # ''' Hér kæmi þá virknin sem þarf til að kalla í API, sem
-        #     síðan kallar áfram í data layer til að sækja upplýsingar
-        #     um þetta destination.'''
-        # ''' Hér kæmi virknin sem þarf til að birta gögnin sem logic
-        #     layer API skilar upp.'''
-        # print(header_string("GET DESTINATION", 50))
-        # print("     **    Destination information    **     ")
-        # print("")
-        # print("Country: " + "Grænland") #Breyturnar eru ekki tilbúnar
-        # print("Airport: " + "Nuuk") #Breyturnar eru ekki tilbúnar
-        # print("Flight duration: " + "02:30") #Breyturnar eru ekki tilbúnar
-        # print("Distance from Iceland: " + "1.000 " + "km.") #Breyturnar eru ekki tilbúnar
-        # print("Contact name: " + "Chuck Norris") #Breyturnar eru ekki tilbúnar
-        # print("Contact emergency phone number: " + "+11 444-5555") #Breyturnar eru ekki tilbúnar
-        # print("")
-        # print("**   Press enter to return to main menu    **")
-
 
     def __get_airplane_information(self):
         print(header_string("GET AIRPLANE INFORMATION", 50))
         airplanes = self.__llapi.get_airplane()
         print_airplanes(airplanes)
-        # print("    **    Please an Airplane name     **     ")
-        # print("")
-        # ''' Hér langar mig að fá lista þannig að hægt sé að velja
-        #     rétta flugvél í staðinn fyrir að þurfa að muna nafnið
-        #     á vélinni.'''
-        # airplane_name_str = ""
 
     def __get_voyage(self):
-        print(header_string("GET ALL VOYAGES", 50))
-        voyages = self.__llapi.get_voyage()
-        print_voyages(voyages)
-
-    # def __get_pilots_by_airplane(self):
-    #     print(header_string("GET PILOTS BY AIRPLANE", 50))
-    #     pilots = self.__llapi.get_pilots_by_airplane()
-    #     print_pilots_by_airplane(pilots)
+        print(header_string("GET A VOYAGES", 50))
+        airport = self.__llapi.get_destination()
+        print_airport(airport)
+        voyage_destination = input("What voyage would you like to get (insert airport name)? ")
+        print("What date are you looking for? (only use numbers)")
+        year_int = int(input("Year: "))
+        month_int = int(input("Month: "))
+        day_int = int(input("Day: "))
+        voyages = self.__llapi.get_voyage_destination(voyage_destination, year_int, month_int, day_int)
+        print_voyages_destination(voyages, voyage_destination)
 
     def __get_employee_schedule(self):
         print(header_string("GET EMPLOYEE SCHEDULE", 50))
