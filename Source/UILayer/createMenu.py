@@ -4,6 +4,7 @@ from models.Employee import Employee
 from models.Airplane import Airplane
 from models.Voyage import Voyage
 from utils.print_functions import header_string
+import datetime
 
 class Create_Menu:
 
@@ -131,6 +132,8 @@ class Create_Menu:
         print(header_string("CREATE VOYAGE", 50))
         print("**  Please fill in the information below   **")
         print("")
+        airport = self.__llapi.get_destination()
+        print_airport(airport)
         destination_str = input("Destination (airport): ")
         print("Departure date (only use numbers)")
         year_int = int(input("Year: "))
@@ -140,12 +143,11 @@ class Create_Menu:
         print("four departure times per hour, on minutes 00, 15, 30, and 45)")
         hour_int = int(input("Hour: "))
         minutes_int = int(input("Minutes: "))
-        # date_str = input("Date: ")
-        # time_str = input("Time: ")
+        new_departure_time = datetime.datetime(year_int, month_int, day_int, hour_int, minutes_int, 0).isoformat()
         airplanes = self.__llapi.get_airplane()
         print_airplane_name_and_models(airplanes)
         print("Choose an airplane for the voyage, use airplane name")
-        airplane_str = input("Airplane: ")
+        airplane_str = input("Airplane (name): ")
         print("")
         man_voyage = input("Would you like to man the voyage at this time? (Y/N): ").lower()
 

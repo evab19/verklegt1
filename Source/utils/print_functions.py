@@ -146,5 +146,5 @@ def print_pilots_by_model(pilots_model):
     input("\n**   Press any key to return to main menu    **")
     print("")
 
-def print_voyage(voyage):
+# def print_voyage(voyage):
     
