@@ -31,7 +31,7 @@ def print_employee(employees):
 def print_employee_by_occupation():
     print("C for Captain")
     print("P for Pilot")
-    print("FA for Flig Attendant")
+    print("FA for Flight Attendant")
     print("FSM for Flight Service Manager")
     print("")
 
