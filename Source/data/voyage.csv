@@ -1,1 +1,2 @@
-destination,departure_date_time,airplane_name,captain_ssn,pilot_ssn,fsm_ssn,fa_ssn,fligt_no_out,flight_no_back
+destination,departure_date_time,airplane_name,captain_ssn,pilot_ssn,fsm_ssn,fa_ssn,fligt_out,flight_in
+Rassa Bora,2020-01-12T08:30:00,Loftbelgur,0000000001,7788996655,0101903369,7788552211,,

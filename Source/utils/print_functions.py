@@ -129,6 +129,7 @@ def print_airplane_name_and_models(airplanes):
     print("{}{:20}{}{:20}{}".format('| ', 'Name', '| ', 'Model', '|'))
     print("{:-<45}".format(""))
     # unique_models = set()
+    airplanes = sorted(airplanes, key=lambda x: x.model)
     for item in airplanes:
         print("{}{:20}{}{:20}{}".format('| ', item.name, '| ', item.model, '|'))
     print("{:-<45}".format(""))
@@ -144,14 +145,14 @@ def print_pilots_by_model(pilots_model):
         print("{}{:10}{}{:13}{}{:25}{}{:12}{}{:20}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', licence,'| ', occupation, '| ', name, '| ', ssn, '| ', address, '| ', home_phone, '| ', cell_phone, '| ', email, '| ', emp_status, '|'))
     print("{:-<163}".format(""))
     print("* C = Captain, P = Pilot")
-    input("\n**   Press any key to return to main menu    **")
+    input("\n**   Press any key to return to continue    **")
     print("")
 
 def print_flight_attendants(flight_attendants):
     print("{:-<153}".format(""))
     print("{}{:10}{}{:13}{}{:25}{}{:12}{}{:20}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', 'Licence','| ', 'Occupation *', '| ', 'Name', '| ', 'SSN', '| ', 'Address', '| ', 'Home phone', '| ', 'Cell phone', '| ', 'Email', '| ', 'Status **', '|'))
     print("{:-<153}".format(""))
-    flight_attendants = sorted(flight_attendants, key=lambda x: x.licence)
+    flight_attendants = sorted(flight_attendants, key=lambda x: x.occupation)
     for item in flight_attendants:
         occupation , name, ssn, address, home_phone, cell_phone, email, licence, emp_status = item.occupation , item.name, item.ssn, item.address, item.home_phone, item.cell_phone, item.email, item.licence, item.emp_status
         print("{}{:13}{}{:25}{}{:12}{}{:20}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', occupation, '| ', name, '| ', ssn, '| ', address, '| ', home_phone, '| ', cell_phone, '| ', email, '| ', emp_status, '|'))

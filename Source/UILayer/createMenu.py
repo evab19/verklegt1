@@ -171,7 +171,7 @@ class Create_Menu:
             
             ''' Prenta lausa FSM '''
             flight_attendants = self.__llapi.get_flight_attendants()
-
+            print_flight_attendants(flight_attendants)
             fsm_str = input("What Flight Service Manager should serve on this voyage (input SSN)? ")
             ''' Virkni til að setja FSM á voyage'''
             fa_on_voyage_str = input("Would you like to add a Fligh Attendant on this woyage? (Y/N): ").lower()
@@ -183,8 +183,9 @@ class Create_Menu:
  
         if correct == "y":
             print(header_string("SUCCESS!", 50))
-            new_voyage = Voyage(destination_str, date_str, time_str, airplane_str)
+            new_voyage = Voyage(destination_str, new_departure_time, airplane_str, captain_str, pilot_str, fsm_str, fa_str)
             self.__llapi.add_voyage(new_voyage)
             input("\n**   Press any key to return to main menu    **")
         else:
+
             self.__create_voyage()

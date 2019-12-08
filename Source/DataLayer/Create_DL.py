@@ -47,13 +47,18 @@ class Create_DL:
 
     def add_voyage(self, voyage):
         destination = voyage.get_destination()
-        date = voyage.get_date()
-        time = voyage.get_time()
+        departure = voyage.get_departure()
         airplane = voyage.get_airplane()
+        captain = voyage.get_captain()
+        pilot = voyage.get_pilot()
+        fsm = voyage.get_fsm()
+        fa = voyage.get_flight_attendant()
+        flight_out = voyage.get_flight_out()
+        flight_in = voyage.get_flight_in()
         with open("./data/voyage.csv", "a+", newline='', encoding='utf-8-sig') as csv_file:
-            fieldnames = ['destination', 'date', 'time', 'airplane']
+            fieldnames = ['destination', 'departure', 'airplane', 'captain', 'pilot', 'fsm', 'fa', 'flight_out', 'flight_in']
             writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
  
-            writer.writerow({'destination': destination, 'date': date, 'time': time, 'airplane': airplane})
+            writer.writerow({'destination': destination, 'departure': departure, 'airplane': airplane, 'captain': captain, 'pilot': pilot, 'fsm': fsm, 'fa': fa, 'flight_out': flight_out, 'flight_in': flight_in})
         csv_file.close()
  
