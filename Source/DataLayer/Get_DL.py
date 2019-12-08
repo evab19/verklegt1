@@ -170,7 +170,7 @@ class Get_DL:
                         voyage_month = voyage_departure.month
                         voyage_day = voyage_departure.day
                         if voyage_year == year_int and voyage_month == month_int and voyage_day == day_int and row['flight_out'] == flight_number:
-                            the_voyage = Voyage(row['destination'], row['departure_date_time'], row['airplane_name'], row['captain_ssn'], row['pilot_ssn'], row['fsm_ssn'], row['fa_ssn'], row['flight_out'], row['flight_in'])
+                            the_voyage = Voyage(row['destination'], row['departure_date_time'], row['airplane_name'], row['captain_ssn'], row['pilot_ssn'], row['fsm_ssn'], row['fa_ssn'], row['flight_out'], row['flight_in'], row['arrival_at_dest'], row['departure_from_dest'], row['arrival_back_home'])
                             voyage_lst_inst.append(the_voyage)
                             the_airport = row['destination']
                             the_destination = self.get_destination_by_airport_class(the_airport)

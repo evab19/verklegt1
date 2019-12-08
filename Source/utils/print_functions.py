@@ -188,10 +188,10 @@ def print_the_voyage(the_voyage_lst):
     print("   Destination: " + the_destination.airport)
     print("   Flight number from Iceland: " + the_voyage.flight_out)
     print("   Departure time from Iceland: " + the_voyage.departure)
-    print("   Arrival time at " + the_destination.airport + ": ") #vantar útreikning fyrir þetta
+    print("   Arrival time at " + the_destination.airport + ": " + the_voyage.arrival_at_dest)
     print("   Flight number to Iceland: " + the_voyage.flight_in)
-    print("   Departure time from " + the_destination.airport + ": ") #vantar útreikning fyrir þetta
-    print("   Arrival time in Iceland: " ) #vantar útreikning fyrir þetta
+    print("   Departure time from " + the_destination.airport + ": " + the_voyage.departure_from_dest) #vantar útreikning fyrir þetta
+    print("   Arrival time in Iceland: " + the_voyage.arrival_back_home) #vantar útreikning fyrir þetta
     print("   Crew: ")
     if the_captain == 'N/A' and the_pilot == 'N/A' and the_fsm == 'N/A' and the_fa == 'N/A':
         print("      Crew has not been assigned to this voyage!")
