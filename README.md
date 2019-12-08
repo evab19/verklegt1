@@ -157,6 +157,7 @@ Morgunfundur 17.00 plús online spjall frá cirka 10-...
 
 <<<<<<< HEAD
 17.00 Mæting í HR staðfestum að allt sé komið niður á blað og fórum í að skoða kóða.
+<<<<<<< Updated upstream
 =======
 17.00 Mæting í HR staðfestum að allt sé komið niður á blað og fórum í að skoða kóða.
 
@@ -209,3 +210,6 @@ ________________________________________________________________________________
 9.12 vinnudagur hefst allir í sínum verkefnum eftir vinnulista á Teams - fórum vel yfir kröfulista og gerðum checklista fyrir all sem á ða vera í kerfinu
 
 
+=======
+17.10 - github 
+>>>>>>> Stashed changes
