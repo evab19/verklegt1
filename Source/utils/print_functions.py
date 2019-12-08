@@ -1,3 +1,5 @@
+import dateutil.parser
+
 def header_string(text, length):
     string = ("\n" + "*" * length + "\n")
     string += ("*" + " " * (length - 2) + "*" + "\n")
@@ -173,4 +175,36 @@ def print_voyages_destination(voyage, airport):
             print("{}{:20}{}{:25}{}{:15}{}".format('| ', destination, '| ', departure_date_time, '| ', flight_out, '|'))
             print("{:-<67}".format(""))
     print("")
-    
+
+def print_the_voyage(the_voyage_lst):
+    the_voyage = the_voyage_lst[0]
+    the_destination = the_voyage_lst[1]
+    the_captain = the_voyage_lst[2]
+    the_pilot = the_voyage_lst[3]
+    the_fsm = the_voyage_lst[4]
+    the_fa = the_voyage_lst[5]
+    print("Information for voyage to " + the_destination.airport + "at " + the_voyage.departure)
+    print("")
+    print("   Destination: " + the_destination.airport)
+    print("   Flight number from Iceland: " + the_voyage.flight_out)
+    print("   Departure time from Iceland: " + the_voyage.departure)
+    print("   Arrival time at " + the_destination.airport + ": ") #vantar útreikning fyrir þetta
+    print("   Flight number to Iceland: " + the_voyage.flight_in)
+    print("   Departure time from " + the_destination.airport + ": ") #vantar útreikning fyrir þetta
+    print("   Arrival time in Iceland: " ) #vantar útreikning fyrir þetta
+    print("   Crew: ")
+    if the_captain == 'N/A' and the_pilot == 'N/A' and the_fsm == 'N/A' and the_fa == 'N/A':
+        print("      Crew has not been assigned to this voyage!")
+    else:
+        print("      Captain: " + the_captain.name)
+        print("      Pilot: " + the_pilot.name)
+        print("      Flight Service Manager: " + the_fsm.name)
+        if the_fa == 'N/A':
+            print("      No Flight Attendant has been assigned to this voyage!")
+        else:
+            print("      Flight Attendant: " + the_fa.name)
+    print("   Contact person: " + the_destination.contact_name)
+    print("   Contact person's phone number: " + the_destination.contact_phone)
+    # print("   Total seats on plane for this voyage: " + )
+    input("\n**   Press any key to return to main menu    **")
+    print("")

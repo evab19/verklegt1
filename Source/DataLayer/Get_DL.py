@@ -136,9 +136,31 @@ class Get_DL:
                             voyage_destination_lst.append(the_voyage_destination)
         return voyage_destination_lst
 
+    def get_destination_by_airport_class(self, airport):
+        destination_lst = []
+        if destination_lst == []:
+            with open("./data/destinations.csv", newline='', encoding='utf-8-sig') as csvfile:
+                reader = csv.DictReader(csvfile)
+                for row in reader:
+                    if row['airport'] == airport:
+                        new_destination = Destination(row['country'], row['airport'], row['duration'], row['distance'], row['contact_name'], row['contact_phone'])
+                        # destination_lst.append(new_destination)
+        return new_destination
+    
+    def get_employee_information_class(self, employee):
+        employee_info_lst = []
+        if employee_info_lst == []:
+            with open("./data/employee.csv", newline='', encoding='utf-8-sig') as csvfile:
+                reader = csv.DictReader(csvfile)
+                for row in reader:
+                    if row['ssn'] == employee:
+                        employee_info = Employee(row['occupation'], row['name'], row['ssn'], row['address'], row['home_phone'], row['cell_phone'], row['email'], row['licence'], row['status'])
+                        # employee_info_lst.append(employee_info)
+        return employee_info
+
     def get_the_voyage(self, voyage_destination, year_int, month_int, day_int, flight_number):
-        voyage_lst = []
-        if voyage_lst == []:
+        voyage_lst_inst = []
+        if voyage_lst_inst == []:
             with open("./data/voyage.csv", newline='', encoding='utf-8-sig') as csvfile:
                 reader = csv.DictReader(csvfile)
                 for row in reader:
@@ -149,20 +171,29 @@ class Get_DL:
                         voyage_day = voyage_departure.day
                         if voyage_year == year_int and voyage_month == month_int and voyage_day == day_int and row['flight_out'] == flight_number:
                             the_voyage = Voyage(row['destination'], row['departure_date_time'], row['airplane_name'], row['captain_ssn'], row['pilot_ssn'], row['fsm_ssn'], row['fa_ssn'], row['flight_out'], row['flight_in'])
-                            voyage_lst.append(the_voyage)
-                            the_airport = the_voyage.destination
-                            the_destination = get_destination_by_airport(the_airport)
-                            voyage_lst.append(the_destination)
-                            
-        return voyage_lst
+                            voyage_lst_inst.append(the_voyage)
+                            the_airport = row['destination']
+                            the_destination = self.get_destination_by_airport_class(the_airport)
+                            voyage_lst_inst.append(the_destination)
+                            if row['captain_ssn'] == 'N/A':
+                                voyage_lst_inst.append('N/A')
+                            else:
+                                the_captain = self.get_employee_information_class(row['captain_ssn'])
+                                voyage_lst_inst.append(the_captain)
+                            if row['pilot_ssn'] == 'N/A':
+                                voyage_lst_inst.append('N/A')
+                            else:
+                                the_pilot = self.get_employee_information_class(row['pilot_ssn'])
+                                voyage_lst_inst.append(the_pilot)
+                            if row['fsm_ssn'] == 'N/A':
+                                voyage_lst_inst.append('N/A')
+                            else:
+                                the_fsm = self.get_employee_information_class(row['fsm_ssn'])
+                                voyage_lst_inst.append(the_fsm)
+                            if row['fa_ssn'] == 'N/A':
+                                voyage_lst_inst.append('N/A')
+                            else:
+                                the_fa = self.get_employee_information_class(row['fa_ssn'])
+                                voyage_lst_inst.append(the_fa)
+        return voyage_lst_inst
     
-    def get_destination_by_airport(self, airport):
-        destination_lst = []
-        if destination_lst == []:
-            with open("./data/destinations.csv", newline='', encoding='utf-8-sig') as csvfile:
-                reader = csv.DictReader(csvfile)
-                for row in reader:
-                    if row['airport'] == airport:
-                        new_destination = Destination(row['country'], row['airport'], row['duration'], row['distance'], row['contact_name'], row['contact_phone'])
-                        # destination_lst.append(new_destination)
-        return new_destination
