@@ -1,2 +1,5 @@
-destination,departure_date_time,airplane_name,captain_ssn,pilot_ssn,fsm_ssn,fa_ssn,flight_out,flight_in
-Rassa Bora,2020-01-12T08:30:00,Loftbelgur,0000000001,7788996655,0101903369,7788552211,NA010,NA011
+destination,departure_date_time,airplane_name,captain_ssn,pilot_ssn,fsm_ssn,fa_ssn,flight_out,flight_in,arrival_at_dest
+Rassa Bora,2020-01-12T08:30:00,Loftbelgur,0000000001,7788996655,0101903369,7788552211,NA010,NA011,
+LFC,2019-12-08T21:30:00,Loftbelgur,0000000001,7788996655,0101903369,7788552211,NA020,NA021,
+
+LFC,2020-02-22T10:00:00,Loftbelgur,0000000001,7788996655,0101903369,7788552211,N/A,N/A,2020-02-22T10:01:00

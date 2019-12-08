@@ -56,10 +56,11 @@ class Create_DL:
         fa = voyage.get_flight_attendant()
         flight_out = voyage.get_flight_out()
         flight_in = voyage.get_flight_in()
+        arrival_at_dest = voyage.get_arrival_at_dest()
         with open("./data/voyage.csv", "a+", newline='', encoding='utf-8-sig') as csv_file:
-            fieldnames = ['destination', 'departure', 'airplane', 'captain', 'pilot', 'fsm', 'fa', 'flight_out', 'flight_in']
+            fieldnames = ['destination', 'departure', 'airplane', 'captain', 'pilot', 'fsm', 'fa', 'flight_out', 'flight_in', 'arrival_at_dest']
             writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
  
-            writer.writerow({'destination': destination, 'departure': departure, 'airplane': airplane, 'captain': captain, 'pilot': pilot, 'fsm': fsm, 'fa': fa, 'flight_out': flight_out, 'flight_in': flight_in})
+            writer.writerow({'destination': destination, 'departure': departure, 'airplane': airplane, 'captain': captain, 'pilot': pilot, 'fsm': fsm, 'fa': fa, 'flight_out': flight_out, 'flight_in': flight_in, 'arrival_at_dest': arrival_at_dest})
         csv_file.close()
  

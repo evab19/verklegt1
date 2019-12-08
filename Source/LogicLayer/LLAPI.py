@@ -62,9 +62,9 @@ class LLAPI:
         return self.__airplane.get_airplane()
 
 #### voyage
-    def add_voyage(self, __voyage):
-        #if self.is_valid_voyage(__voyage):
-        self.__voyage.add_voyage(__voyage)
+    def add_voyage(self, voyage):
+        #if self.is_valid_voyage(voyage):
+        self.__voyage.add_voyage(voyage)
  
     def get_voyage_destination(self, voyage_destination, year_int, month_int, day_int):
         return self.__voyage.get_voyage_destination(voyage_destination, year_int, month_int, day_int)
