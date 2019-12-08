@@ -24,10 +24,6 @@ def get_employee_information():
     print("b: Back")
     print("")
 
-def print_employee(employees):
-    print("{:-<151}".format(""))
-    print("{}{:13}{}{:25}{}{:12}{}{:20}{}{:12}{}{:12}{}{:30}{}{:10}{}{:10}{}".format('| ', 'Occupation', '| ', 'Name', '| ', 'SSN', '| ', 'Address', '| ', 'Home phone', '| ', 'Cell phone', '| ', 'Email', '| ', 'Licence', '| ', 'Status **' '|'))
-
 def print_employee_by_occupation():
     print("C for Captain")
     print("P for Pilot")

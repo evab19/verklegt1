@@ -17,6 +17,7 @@ class LLAPI:
     def add_destination(self, __destination):
         if self.__destination.is_valid_destination(__destination):
             self.__destination.add_destination(__destination)
+            return True
 
     def get_destination(self):
          return self.__destination.get_destination()
@@ -28,6 +29,7 @@ class LLAPI:
     def add_employee(self, __employee):
         if self.__employee.is_valid_employee(__employee):
             self.__employee.add_employee(__employee)
+            return True
     
     def get_employee(self):
         return self.__employee.get_employee()

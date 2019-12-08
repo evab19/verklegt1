@@ -31,7 +31,6 @@ class Update_Menu:
 
     def __update_employee(self):
         new_employee = []
-        action2 = ""
         print(header_string("UPDATE EMPLOYEE", 50))
         emp_to_update = self.__llapi.get_employee()
         print_possible_employee_for_update(emp_to_update)

@@ -75,11 +75,16 @@ class Create_Menu:
             correct = input("Is this information correct? (Y/N): ").lower()
 
             if correct == "y":
-                print(header_string("SUCCESS!", 50))
                 new_employee = Employee(occupation_str, name_str, SO_str, address_str, home_phone_str, cell_phone_str, email_str)
-                self.__llapi.add_employee(new_employee)
+                if self.__llapi.add_employee(new_employee):
+                    print(header_string("SUCCESS!", 50))
+                    input("\n**   Press any key to return to main menu    **")
+                else:
+                    print("Oh-oh something went wrong! The social security number should be 10 digits.")
+                    input("\n**   Press any key to try again    **")
+                    self.__create_employee()
             else:
-                self.__create_employee
+                self.__create_employee()
     
     def __create_destination(self):
         ''' Þurfum við ekki að hafa test á því að inputið sé á
@@ -98,14 +103,15 @@ class Create_Menu:
         correct = input("Is this information correct? (Y/N): ").lower()
 
         if correct == "y":
-            print(header_string("SUCCESS!", 50))
             new_destination = Destination(country_str, airport_str, duration_str, distance_str, contact_name_str, contact_phone_nr_str)
-            self.__llapi.add_destination(new_destination)
-            ''' Hér þarf að kalla í API niður í logic layer þar sem inputið
-                er sett í rétt format áður en það fer í data layer til 
-                skráningar.'''
-            print("**   Press enter to return to main menu    **")
-        if correct == "n":
+            if self.__llapi.add_destination(new_destination):
+                print(header_string("SUCCESS!", 50))
+                input("\n**   Press any key to return to the main menu    **")
+            else:
+                print("Oh no something went wrong! Please try again.")
+                input("\n**   Press any key to try again    **")
+                self.__create_destination()
+        elif correct == "n":
             self.__create_destination()
 
     def __create_airplane(self):

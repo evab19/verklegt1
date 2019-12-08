@@ -70,25 +70,6 @@ class Get_Menu:
         destination = self.__llapi.get_destination()
         print_destination(destination)
 
-        # print("   **    Please insert Airport name     **   ")
-        # print("")
-        # airport_name_str = input("Airport name: ")
-        # ''' Hér kæmi þá virknin sem þarf til að kalla í API, sem
-        #     síðan kallar áfram í data layer til að sækja upplýsingar
-        #     um þetta destination.'''
-        # ''' Hér kæmi virknin sem þarf til að birta gögnin sem logic
-        #     layer API skilar upp.'''
-        # print(header_string("GET DESTINATION", 50))
-        # print("     **    Destination information    **     ")
-        # print("")
-        # print("Country: " + "Grænland") #Breyturnar eru ekki tilbúnar
-        # print("Airport: " + "Nuuk") #Breyturnar eru ekki tilbúnar
-        # print("Flight duration: " + "02:30") #Breyturnar eru ekki tilbúnar
-        # print("Distance from Iceland: " + "1.000 " + "km.") #Breyturnar eru ekki tilbúnar
-        # print("Contact name: " + "Chuck Norris") #Breyturnar eru ekki tilbúnar
-        # print("Contact emergency phone number: " + "+11 444-5555") #Breyturnar eru ekki tilbúnar
-        # print("")
-        # print("**   Press enter to return to main menu    **")
 
 
     def __get_airplane_information(self):

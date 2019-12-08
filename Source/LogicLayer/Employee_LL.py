@@ -1,5 +1,4 @@
 from models.Employee import Employee
-
 class EmployeeLL:
 
     def __init__(self, dapi_in):
@@ -9,10 +8,20 @@ class EmployeeLL:
     def add_employee(self, __employee):
         if self.is_valid_employee(__employee):
             self.__employee_repo.add_employee(__employee)
+            return True
+        else:
+            return False
 
     def is_valid_employee(self, __employee):
-        #add code here to verify
-        return True
+        self.__ssn = __employee.ssn
+        length = len(self.__ssn)
+        if __employee.name and __employee.occupation and __employee.ssn and __employee.cell_phone and __employee.address != "":
+            if length == 10 and int(self.__ssn):
+                return True
+            else:
+                return False
+        else:
+            return False
     
     def get_employee(self):
         return self.__employee_repo.get_employee()

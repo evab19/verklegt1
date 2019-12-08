@@ -4,7 +4,6 @@ class Create_DL:
 
     def add_employee(self, employee):
         occupation_str = employee.get_occupation()
-        id_str = employee.get_id()
         name_str = employee.get_name()
         ssn_str = employee.get_ssn()
         address_str = employee.get_address()
@@ -16,7 +15,7 @@ class Create_DL:
             fieldnames = ['occupation', 'id', 'name', 'ssn', 'address', 'home_phone', 'cell_phone', 'email', 'licence']
             writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
 
-            writer.writerow({'occupation': occupation_str, 'id': id_str, 'name': name_str, 'ssn': ssn_str, 'address': address_str, 'home_phone': home_phone_str, 'cell_phone': cell_phone_str, 'email': email_str, 'licence': licence_str})
+            writer.writerow({'occupation': occupation_str, 'name': name_str, 'ssn': ssn_str, 'address': address_str, 'home_phone': home_phone_str, 'cell_phone': cell_phone_str, 'email': email_str, 'licence': licence_str})
         csv_file.close()
 
     def add_destination(self, destination):
