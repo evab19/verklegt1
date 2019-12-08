@@ -84,8 +84,9 @@ def print_airport(destination):
     print("{}{:25}{}".format('| ', 'Airport', '|'))
     print("{:-<28}".format(""))
     for item in destination:
-        print(item.airport)
+        print("{}{:25}{}".format('| ', item.airport, '|'))
     print("{:-<28}".format(""))
+    print("")
 
 def print_possible_employee_for_update(employees):
     print("{:-<57}".format(""))
@@ -119,9 +120,19 @@ def print_airplane_models(airplanes):
     for item in airplanes:
         unique_models.add(item.model)
     for item in unique_models:
-        print(item)
-    # print(unique_models)
+        print("{}{:20}{}".format('| ', item, '|'))
     print("{:-<23}".format(""))
+    print("")
+
+def print_airplane_name_and_models(airplanes):
+    print("{:-<45}".format(""))
+    print("{}{:20}{}{:20}{}".format('| ', 'Name', '| ', 'Model', '|'))
+    print("{:-<45}".format(""))
+    # unique_models = set()
+    for item in airplanes:
+        print("{}{:20}{}{:20}{}".format('| ', item.name, '| ', item.model, '|'))
+    print("{:-<45}".format(""))
+    print("")
 
 def print_pilots_by_model(pilots_model):
     print("{:-<163}".format(""))
@@ -134,3 +145,6 @@ def print_pilots_by_model(pilots_model):
     print("* C = Captain, P = Pilot")
     input("\n**   Press any key to return to main menu    **")
     print("")
+
+def print_voyage(voyage):
+    

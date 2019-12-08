@@ -1,4 +1,1 @@
-destination,date,time,airplane
-Nuuk,222222,3333,Charmander
-Kulusuk,224455,443,Eva
-BoraBora,20/12/19,12:00,Plane 1
+destination,departure_date_time,airplane_name,captain_ssn,pilot_ssn,fsm_ssn,fa_ssn,fligt_no_out,flight_no_back

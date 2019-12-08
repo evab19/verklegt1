@@ -131,11 +131,40 @@ class Create_Menu:
         print(header_string("CREATE VOYAGE", 50))
         print("**  Please fill in the information below   **")
         print("")
-        destination_str = input("Destination: ")
-        date_str = input("Date: ")
-        time_str = input("Time: ")
+        destination_str = input("Destination (airport): ")
+        print("Departure date (only use numbers)")
+        year_int = int(input("Year: "))
+        month_int = int(input("Month: "))
+        day_int = int(input("Day: "))
+        print("Departure time (Departures from Iceland are between 08:00 and 20:00 (including both),")
+        print("four departure times per hour, on minutes 00, 15, 30, and 45)")
+        hour_int = int(input("Hour: "))
+        minutes_int = int(input("Minutes: "))
+        # date_str = input("Date: ")
+        # time_str = input("Time: ")
+        airplanes = self.__llapi.get_airplane()
+        print_airplane_name_and_models(airplanes)
+        print("Choose an airplane for the voyage, use airplane name")
         airplane_str = input("Airplane: ")
         print("")
+        man_voyage = input("Would you like to man the voyage at this time? (Y/N): ").lower()
+
+        if man_voyage == "y":
+            ''' Prenta lausa flugstjóra'''
+            captain_str = input("What Captain should be on this voyage (input SSN)? ")
+            ''' Virkni til að setja flugstjóra á voyage'''
+            ''' Prenta lausa flugmenn'''
+            pilot_str = input("What Pilot should be on this voyage (input SSN)? ")
+            ''' Virkni til að setja flugmann á voyage'''
+            ''' Prenta lausa FSM '''
+            fsm_str = input("What Flight Service Manager should serve on this voyage (input SSN)? ")
+            ''' Virkni til að setja FSM á voyage'''
+            fa_on_voyage_str = input("Would you like to add a Fligh Attendant on this woyage? (Y/N): ").lower()
+
+            if fa_on_voyage_str == "y":
+                ''' Prenta lausa FA'''
+                fa_str = input("What Flight Attendant should serve on this voyage (input SSN)? ")
+        
         correct = input("Is this information correct? (Y/N): ").lower()
  
         if correct == "y":
