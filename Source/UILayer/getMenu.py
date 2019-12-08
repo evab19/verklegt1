@@ -26,41 +26,6 @@ class Get_Menu:
             elif action == "4":
                 self.__get_voyage()
 
-    def __get_destination_header(self):
-        print("")
-        print("*********************************************")
-        print("*                                           *")
-        print("*              GET DESTINATION              *")
-        print("*                                           *")
-        print("*********************************************")
-        print("")
-    
-    def __get_airplane_information_header(self):
-        print("")
-        print("*********************************************")
-        print("*                                           *")
-        print("*         GET AIRPLANE INFORMATION          *")
-        print("*                                           *")
-        print("*********************************************")
-        print("")
-    
-    def __get_flight_schedule_header(self):
-        print("")
-        print("*********************************************")
-        print("*                                           *")
-        print("*            GET FLIGHT SCHEDULE            *")
-        print("*                                           *")
-        print("*********************************************")
-        print("")
-    
-    def __get_employee_schedule_header(self):
-        print("")
-        print("*********************************************")
-        print("*                                           *")
-        print("*         GET EMPLOYEE INFORMATION          *")
-        print("*                                           *")
-        print("*********************************************")
-        print("")
 
     def __get_employee(self):
         """ TODO Laga menuið eftir að við ákveðum hvernig við höfum þetta """

@@ -32,6 +32,8 @@ class Create_Menu:
                 self.__create_airplane()
             elif action == "4":
                 self.__create_voyage()
+            else:
+                action = "b"
 
 
     def __create_employee(self):
@@ -76,6 +78,8 @@ class Create_Menu:
                 print(header_string("SUCCESS!", 50))
                 new_employee = Employee(occupation_str, name_str, SO_str, address_str, home_phone_str, cell_phone_str, email_str)
                 self.__llapi.add_employee(new_employee)
+            else:
+                self.__create_employee
     
     def __create_destination(self):
         ''' Þurfum við ekki að hafa test á því að inputið sé á
