@@ -69,6 +69,8 @@ class Update_Menu:
                 print("")
                 action2 = input("Choose an option: ").lower()
                 print("")
+            
+           
 
                 if action2 == "1":
                     new_name = input("New contact name: ")
@@ -88,9 +90,17 @@ class Update_Menu:
                     self.__error_message()
                     
                 self.__llapi.update_destination(destination, new_contact)
-                
+            
+            elif action == '3':
+                updated_flight = []
+                action2 = ""
+                self.__update_flight_header
+                flight_to_update = self.__llapi.get_destination()
+                pass
+
             elif action == 'b':
                 break
+            
             else:
                 self.__error_message()
 
