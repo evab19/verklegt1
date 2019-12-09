@@ -29,8 +29,7 @@ class Get_Menu:
             elif action == 'b':
                 pass
             else:
-                print(header_string('WRONG INPUT, please select from the list!', 50))
-                input("\n**   Press any key to return to menu    **")
+                self.__error_message()
 
     def __get_destination_header(self):
         print("")
@@ -105,6 +104,12 @@ class Get_Menu:
             model_to_find = input("What status would you like to get? ")
             pilots_model = self.__llapi.get_pilots_by_model(model_to_find)
             print_pilots_by_model(pilots_model)
+        elif action == 'b':
+            pass
+        else:
+            self.__error_message()
+
+
 
     def __get_destination(self):
         print(header_string("GET DESTINATION", 50))

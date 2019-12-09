@@ -85,19 +85,15 @@ class Update_Menu:
                     new_contact.append(new_phone)
                     # print(new_contact)
                 else:
-                    print(header_string('WRONG INPUT, please select from the list!', 50))
-                    input("\n**   Press any key to return to menu    **")
-            
+                    self.__error_message()
+                    
                 self.__llapi.update_destination(destination, new_contact)
                 
             elif action == 'b':
                 break
             else:
-                print(header_string('WRONG INPUT, please select from the list!', 50))
-                input("\n**   Press any key to return to menu    **")
+                self.__error_message()
 
-            # else:
-            #     action = "q"
 
     def __update_employee_header(self):
         print("")
@@ -165,3 +161,8 @@ class Update_Menu:
     def __update_flight(self):
         self.__update_flight_header()
         pass
+
+    def __error_message(self):
+        print(header_string('Wrong input, please select from the list!', 100))
+        input("\n**   Press any key to return to menu    **")
+        
