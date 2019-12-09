@@ -1,8 +1,16 @@
-﻿occupation,id,name,ssn,address,home_phone,cell_phone,email,licence,status
-c,,Eva,2904882309,Sleepstreet 4,4782040,6626148,evabjoss@gmail.com,Plane1,A
-P,,Pikachu,5555886699,viridian,5555555,4444444,pikachu@nintendo.com,Plane2,A
-C,,Brian,0101903369,Happy Camper Street,5554477,1114455,brian_the_man@nanair.com,,B
-c,,Eva,2904882309,Sleepstreet 4,4782040,6626148,evabjoss@gmail.com,Plane1,A
-P,,Harry Potter,7788996655,Hogwards,4445656,8885252,griffindor_rules@nanair.com,Plane3,A
-C,,Thor,0000000001,Ásgarður,5556666,6665555,god_of_thunder@nanair.com,Plane3,A
-FA,,Borat,7788552211,kazakhstan,can-phone3,can-phone1,what_is_email@nanair.com,,B
+occupation,name,ssn,address,home_phone,cell_phone,email,licence,status
+
+C,Eva,2904882309,Sudurholar,4782040,6626148,evabjoss@gmail.com,Plane1,A
+
+P,Pikachu,5555886699,viridian,5555555,4444444,pikachu@nintendo.com,Plane2,A
+
+FSM,Brian,0101903369,Happy Camper Street,5554477,1114455,brian_the_man@nanair.com,,B
+
+C,Eva,2904882309,Sudurholar,4782040,6626148,evabjoss@gmail.com,Plane1,A
+
+P,Harry Potter,7788996655,Hogwards,4445656,8885252,griffindor_rules@nanair.com,Plane3,A
+
+C,Thor,0000000001,Ásgarður,5556666,6665555,god_of_thunder@nanair.com,Plane3,A
+
+FA,Borat,7788552211,kazakhstan,can-phone3,can-phone1,what_is_email@nanair.com,,B
+
