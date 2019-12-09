@@ -54,6 +54,28 @@ class VoyageLL:
         else:
             arrival_time_hour = dep_hour + flight_time_hours
             arrival_time_min = dep_min + flight_time_min
+        
+        if arrival_time_hour >= 24:
+            arrival_time_hour -= 24
+            dep_day += 1
+        
+        if dep_month in [4, 6, 9, 11]:
+            if dep_day > 30:
+                dep_month += 1
+                dep_day -= 30
+        elif dep_month == 2:
+            if dep_day > 28:
+                dep_month += 1
+                dep_day -= 28
+        elif dep_month in [1, 3, 5, 7, 8, 10]:
+            if dep_day > 31:
+                dep_month += 1
+                dep_day -= 31
+        elif dep_month == 12:
+            if dep_day > 31:
+                dep_month = 1
+                dep_day -= 31
+                dep_year += 1
 
         new_time = datetime.datetime(dep_year, dep_month, dep_day, arrival_time_hour, arrival_time_min, 0).isoformat()
         return new_time
