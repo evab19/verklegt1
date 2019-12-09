@@ -28,6 +28,9 @@ class LLAPI:
 #### employee
     def check_if_ssn_unique(self, ssn):
         return self.__employee.check_if_ssn_unique(ssn)
+
+    def is_ssn_valid(self, ssn):
+        return self.__employee.is_ssn_valid(ssn)
     
     def add_employee(self, __employee):
         if self.__employee.is_valid_employee(__employee):
@@ -57,6 +60,9 @@ class LLAPI:
 
     def get_flight_attendants(self):
         return self.__employee.get_flight_attendants()
+
+    def get_phone(self, name):
+        return self.__employee.get_phone(name)
 
 #### airplane
     def add_airplane(self, __airplane):

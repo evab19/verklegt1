@@ -22,6 +22,35 @@ class EmployeeLL:
         employees = self.get_employee()
         return not(any(employee.ssn == ssn for employee in employees))
     
+    def is_ssn_valid(self, ssn):
+        if len(ssn) != 10:
+            return False
+        elif ssn[9] not in ["8","9","0"]:
+            return False
+        else:
+            try:
+                int(ssn)
+                return True
+            except ValueError:
+                return False
+
+    def get_phone(self, name):
+        number = input("{} phone: ".format(name))
+        while number != "":
+            try:
+                int(number)
+            except ValueError:
+                print("Please insert a valid phone number or leave it blank")
+                number = input("{} phone: ".format(name))
+        
+            if len(number) >= 7:
+                return number
+            else:
+                print("Please insert a valid phone number or leave it blank")
+                number = input("{} phone: ".format(name))
+        else:
+            return number
+    
     def get_employee(self):
         return self.__employee_repo.get_employee()
 

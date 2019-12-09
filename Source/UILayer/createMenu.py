@@ -59,25 +59,27 @@ class Create_Menu:
             name_str = input("Name: ")
             SO_str = input("Social Security Number: ")
             if self.__llapi.check_if_ssn_unique(SO_str):
-                address_str = input("Address: ")
-                home_phone_str = self.__get_phone("Home")
-                cell_phone_str = self.__get_phone("Cell")
-                email_str = input("E-mail: ")
-                print("")
-                correct = input("Is this information correct? (Y/N): ").lower()
+                if self.__llapi.is_ssn_valid(SO_str):
+                    address_str = input("Address: ")
+                    home_phone_str = self.__llapi.get_phone("Home")
+                    cell_phone_str = self.__llapi.get_phone("Cell")
+                    email_str = input("E-mail: ")
+                    print("")
+                    correct = input("Is this information correct? (Y/N): ").lower()
 
-                if correct == "y":
-                    new_employee = Employee(occupation_str, name_str, SO_str, address_str, home_phone_str, cell_phone_str, email_str)
-                    if self.__llapi.add_employee(new_employee):
-                        print(header_string("SUCCESS!", 50))
-                        input("\n**   Press any key to return to main menu    **")
+                    if correct == "y":
+                        new_employee = Employee(occupation_str, name_str, SO_str, address_str, home_phone_str, cell_phone_str, email_str)
+                        if self.__llapi.add_employee(new_employee):
+                            print(header_string("SUCCESS!", 50))
+                            input("\n**   Press any key to return to main menu    **")
+                        else:
+                            print("Oh-oh something went wrong! Please fill in all information")
+                            input("\n**   Press any key to try again    **")
+                            self.__create_employee()
                     else:
-                        print("Oh-oh something went wrong! Please fill in all information")
-                        input("\n**   Press any key to try again    **")
                         self.__create_employee()
                 else:
-                    self.__create_employee()           
-            
+                    print("Please insert a valid social security number (10 digits)")               
             else:
                 print("The SSN aldready exists!")
                 input("\n**   Press any key to return to the create menu    **")
@@ -191,20 +193,20 @@ class Create_Menu:
         else:
             self.__create_voyage()
 
-    def __get_phone(self, name):
-        number = input("{} phone: ".format(name))
-        while number != "":
-            try:
-                int(number)
-            except ValueError:
-                print("Please insert a valid phone number or leave it blank")
-                number = input("{} phone: ".format(name))
+    # def __get_phone(self, name):
+    #     number = input("{} phone: ".format(name))
+    #     while number != "":
+    #         try:
+    #             int(number)
+    #         except ValueError:
+    #             print("Please insert a valid phone number or leave it blank")
+    #             number = input("{} phone: ".format(name))
         
-            if len(number) >= 7:
-                return number
-            else:
-                print("Please insert a valid phone number or leave it blank")
-                number = input("{} phone: ".format(name))
-        else:
-            return number
+    #         if len(number) >= 7:
+    #             return number
+    #         else:
+    #             print("Please insert a valid phone number or leave it blank")
+    #             number = input("{} phone: ".format(name))
+    #     else:
+    #         return number
 
