@@ -10,10 +10,11 @@ class AirplaneLL:
         if self.is_valid_airplane(airplane):
             self.__airplane_repo.add_airplane(airplane)
      
-    def is_valid_airplane(self, airplane):
-        #here should be some code to 
-        #validate the video
-        return True
+    def is_valid_airplane(self, __airplane):
+        if __airplane.name and __airplane.model and __airplane.producer and __airplane.number_of_seats and __airplane.status != "":
+            return True
+        else:
+            return False
  
     def get_airplane(self):
         return self.__airplane_repo.get_airplane()

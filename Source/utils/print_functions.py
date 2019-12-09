@@ -26,10 +26,6 @@ def get_employee_information():
     print("b: Back")
     print("")
 
-def print_employee(employees):
-    print("{:-<151}".format(""))
-    print("{}{:13}{}{:25}{}{:12}{}{:20}{}{:12}{}{:12}{}{:30}{}{:10}{}{:10}{}".format('| ', 'Occupation', '| ', 'Name', '| ', 'SSN', '| ', 'Address', '| ', 'Home phone', '| ', 'Cell phone', '| ', 'Email', '| ', 'Licence', '| ', 'Status **' '|'))
-
 def print_employee_by_occupation():
     print("C for Captain")
     print("P for Pilot")
@@ -207,4 +203,13 @@ def print_the_voyage(the_voyage_lst):
     print("   Contact person's phone number: " + the_destination.contact_phone)
     # print("   Total seats on plane for this voyage: " + )
     input("\n**   Press any key to return to main menu    **")
+    print("")
+
+def choose_occupation():
+    print("** Please choose occupation **")
+    print("1: Captain")
+    print("2: Pilot")
+    print("3: Flight Attendant")
+    print("4: Flight Service Manager")
+    print("b: Back")
     print("")

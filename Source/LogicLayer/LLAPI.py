@@ -17,6 +17,7 @@ class LLAPI:
     def add_destination(self, destination):
         if self.__destination.is_valid_destination(destination):
             self.__destination.add_destination(destination)
+            return True
 
     def get_destination(self):
          return self.__destination.get_destination()
@@ -25,9 +26,16 @@ class LLAPI:
         self.__destination.update_destination(destination, new_contact)
     
 #### employee
+    def check_if_ssn_unique(self, ssn):
+        return self.__employee.check_if_ssn_unique(ssn)
+
+    def is_ssn_valid(self, ssn):
+        return self.__employee.is_ssn_valid(ssn)
+    
     def add_employee(self, employee):
         if self.__employee.is_valid_employee(employee):
             self.__employee.add_employee(employee)
+            return True
     
     def get_employee(self):
         return self.__employee.get_employee()
@@ -52,6 +60,9 @@ class LLAPI:
 
     def get_flight_attendants(self):
         return self.__employee.get_flight_attendants()
+
+    def get_phone(self, name):
+        return self.__employee.get_phone(name)
 
 #### airplane
     def add_airplane(self, airplane):

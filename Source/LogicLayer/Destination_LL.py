@@ -9,11 +9,16 @@ class DestinationLL:
     def add_destination(self, destination):
         if self.is_valid_destination(destination):
             self.__destination_repo.add_destination(destination)
+            return True
+        else:
+            return False
     
     def is_valid_destination(self, destination):
-        #here should be some code to 
-        #validate the video
-        return True
+        #self, country = "", airport = "", duration = "", distance = "", contact_name = "", contact_phone = ""):
+        if destination.country and destination.airport and destination.duration and destination.distance and destination.contact_name and destination.contact_phone != "":
+            return True
+        else:
+            return False
 
     def get_destination(self):
         return self.__destination_repo.get_destination()

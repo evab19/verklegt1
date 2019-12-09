@@ -1,5 +1,4 @@
 from models.Employee import Employee
-
 class EmployeeLL:
 
     def __init__(self, dapi_in):
@@ -9,10 +8,48 @@ class EmployeeLL:
     def add_employee(self, employee):
         if self.is_valid_employee(employee):
             self.__employee_repo.add_employee(employee)
+            return True
+        else:
+            return False
 
     def is_valid_employee(self, employee):
-        #add code here to verify
-        return True
+        if employee.name and employee.occupation and employee.ssn and employee.cell_phone and employee.address != "":
+            return True
+        else:
+            return False
+
+    def check_if_ssn_unique(self, ssn):
+        employees = self.get_employee()
+        return not(any(employee.ssn == ssn for employee in employees))
+    
+    def is_ssn_valid(self, ssn):
+        if len(ssn) != 10:
+            return False
+        elif ssn[9] not in ["8","9","0"]:
+            return False
+        else:
+            try:
+                int(ssn)
+                return True
+            except ValueError:
+                return False
+
+    def get_phone(self, name):
+        number = input("{} phone: ".format(name))
+        while number != "":
+            try:
+                int(number)
+            except ValueError:
+                print("Please insert a valid phone number or leave it blank")
+                number = input("{} phone: ".format(name))
+        
+            if len(number) >= 7:
+                return number
+            else:
+                print("Please insert a valid phone number or leave it blank")
+                number = input("{} phone: ".format(name))
+        else:
+            return number
     
     def get_employee(self):
         return self.__employee_repo.get_employee()

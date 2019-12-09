@@ -26,6 +26,7 @@ class Get_Menu:
             elif action == "4":
                 self.__get_voyage()
 
+
     def __get_employee(self):
         """ TODO Laga menuið eftir að við ákveðum hvernig við höfum þetta """
         print(header_string("GET EMPLOYEE INFORMATION", 50))
@@ -68,6 +69,7 @@ class Get_Menu:
         print(header_string("GET DESTINATION", 50))
         destination = self.__llapi.get_destination()
         print_destination(destination)
+
 
 
     def __get_airplane_information(self):
