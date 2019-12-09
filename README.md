@@ -255,8 +255,8 @@ ________________________________________________________________________________
 
 9.00 MORGUNFUNDUR on the line - facebook spjall 
 - fórum yfir það sem er komið  --- *Steinarnir nánast búnir að útfæra voyage
-- Eva er að vinna í is-valid
-- Thelma var að klára error- message
+- Eva er að vinna í is-valid notar daginn til kl.5 til að vinna í því.
+- Thelma var að klára error- message og notar daginn til kl.5 í að skrifa docstrings og comment
 - Ingibjörg heldur utan um notendaprófanir og to do listann
 - Vinnudagur á að hefjast kl.17 í dag
 
