@@ -76,6 +76,9 @@ class LLAPI:
         return self.__airplane.get_airplane_status(year_int, month_int, day_int)
 
 #### voyage
+    def get_voyage_airport(self):
+        return self.__voyage.get_voyage_airport()
+
     def add_voyage(self, voyage):
         #if self.is_valid_voyage(voyage):
         self.__voyage.add_voyage(voyage)
@@ -88,3 +91,9 @@ class LLAPI:
 
     def get_all_voyage_at_date(self, year_int, month_int, day_int):
         return self.__voyage.get_all_voyage_at_date(year_int, month_int, day_int)
+        
+    def get_departure_date(self):
+        return self.__voyage.get_departure_date()
+
+    def get_departure_time(self):
+        return self.__voyage.get_departure_time()
