@@ -208,4 +208,55 @@ ________________________________________________________________________________
 9.10 Allir pusha inn á github og sameinum mainið okkar þannig allir séu með nýjar uppfærslur
 9.12 vinnudagur hefst allir í sínum verkefnum eftir vinnulista á Teams - fórum vel yfir kröfulista og gerðum checklista fyrir all sem á ða vera í kerfinu
 
+15.30 Eva, Ingibjörg og Thelma fóru heim
+22.30 *Steinarnir fóru heim
+
+Það sem er hægt að gera:
+- Skrá starfsmenn
+- Lista starfsmenn
+- Lista starfsmenn eftir starfsheiti
+- velja ákveðin starfsmann og ná í upplýsingar um hann
+- Breyta upplýsingum um starfsmann
+- Skrá áfangastað
+- Lista áfangastað
+- Breyta áfangastöðum
+- Bóka vinnuferð (50% búið)
+- Lista vinnuferð
+- Breyta áfangastöðum
+- lista lausa starfsmenn (sem eru ekki að fljúga)
+- Lista starfsmenn sem eru EKKI lausir (eru að vinna)
+- Vista vinnuferð án áhafnar
+- Skrá flugvélategund
+- Skrá flugleyfi á flugmenn
+- Lista flugmenn eftir leyfi á flugvél (raðað eftir flugvélategund)
+- Sækja flugmenn á ákveðna flugvélategund og lista þá
+- Ásamt allskonar smínki á útprentun og auka upplýsingum til að bæta notendaupplifun
+
+_____________________________________________________________________________________________________________________________
+Dagur 12 7.12.2019
+Sunnudagur 
+_____________________________________________________________________________________________________________________________
+
+12.00 Gunnsteinn mættur
+12.30 Thelma mætt
+13.00 Allir mættir
+13.10 Thelma og Ingibjörg fara í notendaprófanir - renna í gegnum öll use case-in nema það sem á við vinnuferð(virknin er enn í vinnslu fyrir það)
+- *Steinarnir halda áfram að vinna í voyage virkni
+- Eva fór að gera is-valid virkni í update og create hlutunum.
+- Thelma bætti við error message ef ekkert af lista er valið, er rangt valið
+
+23.50 *Steinarnir búnir að koma mestri virkni fyrir voyage í gang
+
+
+_____________________________________________________________________________________________________________________________
+Dagur 13 8.12.2019
+Mánudagur
+__________________________________________________________________________________________________________________________
+
+9.00 MORGUNFUNDUR on the line - facebook spjall 
+- fórum yfir það sem er komið  --- *Steinarnir nánast búnir að útfæra voyage
+- Eva er að vinna í is-valid notar daginn til kl.5 til að vinna í því.
+- Thelma var að klára error- message og notar daginn til kl.5 í að skrifa docstrings og comment
+- Ingibjörg heldur utan um notendaprófanir og to do listann
+- Vinnudagur á að hefjast kl.17 í dag
 

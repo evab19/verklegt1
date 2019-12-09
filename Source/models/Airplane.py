@@ -8,7 +8,7 @@ class Airplane:
         self.plane_status = plane_status
     
     def __str__(self):
-        return "{}{:20}{}{:20}{}{:25}{}{:20}{}{:10}{}".format('| ', self.name, '| ', self.model, '| ', self.producer, '| ', self.number_of_seats, '| ', self.plane_status, '|')
+        return "{}{:20}{}{:20}{}{:25}{}{:20}{}{:10}{}".format('| ', self.name, '| ', self.model, '| ', self.producer, '| ', str(self.number_of_seats), '| ', str(self.plane_status), '|')
  
     def get_name(self):
         return str(self.name)
