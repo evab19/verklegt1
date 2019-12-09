@@ -3,6 +3,7 @@ from models.Destination import Destination
 from DataLayer.Get_DL import Get_DL
 import dateutil.parser
 import datetime
+import time
 
 class VoyageLL:
 
@@ -79,3 +80,46 @@ class VoyageLL:
 
         new_time = datetime.datetime(dep_year, dep_month, dep_day, arrival_time_hour, arrival_time_min, 0).isoformat()
         return new_time
+
+    def get_voyage_airport(self):
+        airport_str = input("Please enter airport: ").lower()
+        while not(self.airport_is_valid(airport_str)):
+            print("Please insert a valid airport from the list.")
+            airport_str = input("Please enter airport: ").lower()          
+        else:
+            return airport_str
+        
+    def airport_is_valid(self, airport):
+        destinations = self.__get.get_destination()
+        return any(destination.airport.lower() == airport for destination in destinations)
+
+
+    def get_departure_date(self):
+        print("Departure date (only use numbers)")
+        check = False
+        while not check:
+            date_str = input("Enter departure date (YYYY-MM-DD): ")
+            date_list = date_str.split("-")
+            try:
+                time.strptime(date_str, '%Y-%m-%d')
+                return date_list
+            except ValueError:
+                print("Invalid format. Please enter a valid date")
+
+    def get_departure_time(self):
+        print("Departure time (Departures from Iceland are between 08:00 and 19:45 (including both)")
+        print("four departure times per hour, on minutes 00, 15, 30, and 45)")
+        HOURS = ["08","09","10","11","12","13","14","15","16","17","18","19"]
+        MINUTES = ["00","15","30","45"]
+        check = False
+        while not check:
+            time_str = input("Enter departure time (hh:mm): ")
+            time_list = time_str.split(":")
+            if len(str(time_list[0])) == 2 and len(str(time_list[1])) == 2:
+                if time_list[0] in HOURS:
+                    if time_list[1] in MINUTES:
+                        return time_list
+            else:
+                print("Invalid format. Please enter a valid time")
+        
+

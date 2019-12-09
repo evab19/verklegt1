@@ -137,26 +137,20 @@ class Get_DL:
         return voyage_destination_lst
 
     def get_destination_by_airport_class(self, airport):
-        destination_lst = []
-        if destination_lst == []:
-            with open("./data/destinations.csv", newline='', encoding='utf-8-sig') as csvfile:
-                reader = csv.DictReader(csvfile)
-                for row in reader:
-                    if row['airport'] == airport:
-                        new_destination = Destination(row['country'], row['airport'], row['duration'], row['distance'], row['contact_name'], row['contact_phone'])
-                        # destination_lst.append(new_destination)
-        return new_destination
+        with open("./data/destinations.csv", newline='', encoding='utf-8-sig') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                if row['airport'].lower() == airport.lower():
+                    new_destination = Destination(row['country'], row['airport'], row['duration'], row['distance'], row['contact_name'], row['contact_phone'])
+                    return new_destination
     
     def get_employee_information_class(self, employee):
-        employee_info_lst = []
-        if employee_info_lst == []:
-            with open("./data/employee.csv", newline='', encoding='utf-8-sig') as csvfile:
-                reader = csv.DictReader(csvfile)
-                for row in reader:
-                    if row['ssn'] == employee:
-                        employee_info = Employee(row['occupation'], row['name'], row['ssn'], row['address'], row['home_phone'], row['cell_phone'], row['email'], row['licence'], row['status'])
-                        # employee_info_lst.append(employee_info)
-        return employee_info
+        with open("./data/employee.csv", newline='', encoding='utf-8-sig') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                if row['ssn'] == employee:
+                    employee_info = Employee(row['occupation'], row['name'], row['ssn'], row['address'], row['home_phone'], row['cell_phone'], row['email'], row['licence'], row['status'])
+                    return employee_info
 
     def get_the_voyage(self, voyage_destination, year_int, month_int, day_int, flight_number):
         voyage_lst_inst = []

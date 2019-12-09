@@ -25,7 +25,7 @@ class EmployeeLL:
     def is_ssn_valid(self, ssn):
         if len(ssn) != 10:
             return False
-        elif ssn[9] not in ["8","9","0"]:
+        elif ssn[9] not in ["9","0"]:
             return False
         else:
             try:

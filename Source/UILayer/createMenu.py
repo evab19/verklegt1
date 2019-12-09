@@ -60,8 +60,11 @@ class Create_Menu:
             print("Occupation: ", occupation_str)
             name_str = input("Name: ")
             SO_str = input("Social Security Number: ")
+            while not(self.__llapi.is_ssn_valid(SO_str)):
+                print("Please insert a valid 10-digit social security number.")
+                SO_str = input("Social Security Number: ")
+
             if self.__llapi.check_if_ssn_unique(SO_str):
-                if self.__llapi.is_ssn_valid(SO_str):
                     address_str = input("Address: ")
                     home_phone_str = self.__llapi.get_phone("Home")
                     cell_phone_str = self.__llapi.get_phone("Cell")
@@ -79,11 +82,9 @@ class Create_Menu:
                             input("\n**   Press any key to try again    **")
                             self.__create_employee()
                     else:
-                        self.__create_employee()
-                else:
-                    print("Please insert a valid social security number (10 digits)")               
+                        self.__create_employee()               
             else:
-                print("The SSN aldready exists!")
+                print("The SSN already exists!")
                 input("\n**   Press any key to return to the create menu    **")
             #airplane_license_str = input("Airplane license: ")
     
@@ -145,16 +146,10 @@ class Create_Menu:
         print("")
         airport = self.__llapi.get_destination()
         print_airport(airport)
-        destination_str = input("Destination (airport): ")
-        print("Departure date (only use numbers)")
-        year_int = int(input("Year: "))
-        month_int = int(input("Month: "))
-        day_int = int(input("Day: "))
-        print("Departure time (Departures from Iceland are between 08:00 and 20:00 (including both),")
-        print("four departure times per hour, on minutes 00, 15, 30, and 45)")
-        hour_int = int(input("Hour: "))
-        minutes_int = int(input("Minutes: "))
-        new_departure_time = datetime.datetime(year_int, month_int, day_int, hour_int, minutes_int, 0).isoformat()
+        destination_str = self.__llapi.get_voyage_airport()
+        year_str, month_str, day_str = self.__llapi.get_departure_date()
+        hour_str, minutes_str = self.__llapi.get_departure_time()
+        new_departure_time = datetime.datetime(int(year_str), int(month_str), int(day_str), int(hour_str), int(minutes_str), 0).isoformat()
         airplanes = self.__llapi.get_airplane()
         print_airplane_name_and_models(airplanes)
         print("Choose an airplane for the voyage, use airplane name")
@@ -189,15 +184,18 @@ class Create_Menu:
             if fa_on_voyage_str == "y":
                 fa_str = input("What Flight Attendant should serve on this voyage (input SSN)? ")
         
-        correct = input("Is this information correct? (Y/N): ").lower()
- 
-        if correct == "y":
-            print(header_string("SUCCESS!", 50))
-            new_voyage = Voyage(destination_str, new_departure_time, airplane_str, captain_str, pilot_str, fsm_str, fa_str)
-            self.__llapi.add_voyage(new_voyage)
-            input("**   Press any key to return to main menu    **")
+            correct = input("Is this information correct? (Y/N): ").lower()
+    
+            if correct == "y":
+                print(header_string("SUCCESS!", 50))
+                new_voyage = Voyage(destination_str, new_departure_time, airplane_str, captain_str, pilot_str, fsm_str, fa_str)
+                self.__llapi.add_voyage(new_voyage)
+                input("**   Press any key to return to main menu    **")
+            else:
+                self.__create_voyage()
         else:
-            self.__create_voyage()
+            new_voyage = Voyage(destination_str, new_departure_time, airplane_str)
+            self.__llapi.add_voyage(new_voyage)
     
     def __error_message(self):
         print(header_string('WRONG INPUT, please select from the list!', 50))
