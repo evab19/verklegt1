@@ -22,7 +22,7 @@ class VoyageLL:
 
             parseDate_dep = dateutil.parser.parse(voyage.departure)
             dep_year, dep_month, dep_day = parseDate_dep.year, parseDate_dep.month, parseDate_dep.day
-            # dep_year, dep_month, dep_day, dep_hour, dep_min = self.parse_date(voyage.departure)
+
             voyage.flight_out, voyage.flight_in = self.generate_flight_number(voyage.destination, dep_year, dep_month, dep_day)
 
             self.__voyage_repo.add_voyage(voyage)

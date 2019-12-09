@@ -23,6 +23,7 @@ def get_employee_information():
     print("4: Employee status")
     print("5: All pilots by airplane model")
     print("6: Pilots by an airplane model")
+    print("7: Testing")
     print("b: Back")
     print("")
 
@@ -147,7 +148,7 @@ def print_pilots_by_model(pilots_model):
         print("{}{:10}{}{:13}{}{:25}{}{:12}{}{:20}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', licence,'| ', occupation, '| ', name, '| ', ssn, '| ', address, '| ', home_phone, '| ', cell_phone, '| ', email, '| ', emp_status, '|'))
     print("{:-<163}".format(""))
     print("* C = Captain, P = Pilot")
-    input("\n**   Press any key to return to continue    **")
+    input("\n**   Press any key to continue    **")
     print("")
 
 def print_flight_attendants(flight_attendants):
@@ -190,8 +191,9 @@ def print_the_voyage(the_voyage_lst):
     print("   Departure time from Iceland: " + the_voyage.departure)
     print("   Arrival time at " + the_destination.airport + ": " + the_voyage.arrival_at_dest)
     print("   Flight number to Iceland: " + the_voyage.flight_in)
-    print("   Departure time from " + the_destination.airport + ": " + the_voyage.departure_from_dest) #vantar útreikning fyrir þetta
-    print("   Arrival time in Iceland: " + the_voyage.arrival_back_home) #vantar útreikning fyrir þetta
+    print("   Departure time from " + the_destination.airport + ": " + the_voyage.departure_from_dest)
+    print("   Arrival time in Iceland: " + the_voyage.arrival_back_home)
+    print("")
     print("   Crew: ")
     if the_captain == 'N/A' and the_pilot == 'N/A' and the_fsm == 'N/A' and the_fa == 'N/A':
         print("      Crew has not been assigned to this voyage!")
@@ -205,6 +207,30 @@ def print_the_voyage(the_voyage_lst):
             print("      Flight Attendant: " + the_fa.name)
     print("   Contact person: " + the_destination.contact_name)
     print("   Contact person's phone number: " + the_destination.contact_phone)
-    # print("   Total seats on plane for this voyage: " + )
+    input("\n**   Press any key to return to main menu    **")
+    print("")
+
+def print_employee_schedule():
+    length = 23
+    times = 7
+    day_1, day_2, day_3, day_4, day_5, day_6, day_7 = "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"
+    print("Schedule for Jón Jónsson")
+    print("Week 3, 2020-01-13 to 2020-01-19")
+    print("{:-<169}".format(""))
+    print(("|" + " " * length) * times + '|')
+    print("|" + day_1.center((length), " ") + "|" + day_2.center((length), " ") + "|" + day_3.center((length), " ") + "|" + day_4.center((length), " ") + "|" + day_5.center((length), " ") + "|" + day_6.center((length), " ") + "|" + day_7.center((length), " ") + "|")
+    print(("|" + " " * length) * times + '|')
+    print("{:-<169}".format(""))
+    print(("|" + " " * length) * times + '|')
+    print(("|" + "Destination:".center(length)) * times + "|")
+    print(("|" + "Nuuk".center(length)) * times + "|")
+    print(("|" + " " * length) * times + '|')
+    print(("|" + "Departure:".center(length)) * times + "|")
+    print(("|" + "10:00".center(length)) * times + "|")
+    print(("|" + " " * length) * times + '|')
+    print(("|" + "Arrival:".center(length)) * times + "|")
+    print(("|" + "17:00".center(length)) * times + "|")
+    print(("|" + " " * length) * times + '|')
+    print("{:-<169}".format(""))
     input("\n**   Press any key to return to main menu    **")
     print("")

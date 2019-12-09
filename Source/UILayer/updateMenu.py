@@ -12,16 +12,10 @@ class Update_Menu:
     def update_menu(self):
         action = ""
         while(action != "b"):
-            print("")
-            print("*********************************************")
-            print("*                                           *")
-            print("*                 UPDATE                    *")
-            print("*                                           *")
-            print("*********************************************")
-            print("")
+            print(header_string("UPDATE", 50))
             print("1: Update employee")
-            print("2: Update aiport contact info")
-            print("3: Update flight")
+            print("2: Update airport contact info")
+            print("3: Update voyage")
             print("b: Back")
             # print("q: Quit")
             print("")
