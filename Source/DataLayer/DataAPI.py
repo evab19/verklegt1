@@ -28,28 +28,26 @@ class DataAPI:
         employees = self.get_employee()
         return not(any(employee.ssn == ssn for employee in employees))
 
-# # get föll
-#     def get_employee(self):
-#         return self.__get.get_employee()
+# get föll
+    def get_employee(self):
+        return self.__get.get_employee()
     
-#     def get_employee_information(self, employee):
-#         return self.__get.get_employee_information(employee)
+    def get_employee_information(self, employee):
+        return self.__get.get_employee_information(employee)
 
-#     def get_employee_by_occupation(self, occupation):
-#         return self.__get.get_employee_by_occupation(occupation)
-#     def get_employee_by_status(self, emp_status):
-#         return self.__get.get_employee_by_status(emp_status)
+    def get_employee_by_occupation(self, occupation):
+        return self.__get.get_employee_by_occupation(occupation)
+    def get_employee_by_status(self, emp_status):
+        return self.__get.get_employee_by_status(emp_status)
 
-#     def get_pilots_by_airplane(self):
-#         return self.__get.get_pilots_by_airplane()
+    def get_pilots_by_airplane(self):
+        return self.__get.get_pilots_by_airplane()
 
-#     def get_pilots_by_model(self, pilots_model):
-#         return self.__get.get_pilots_by_model(pilots_model)
+    def get_pilots_by_model(self, pilots_model):
+        return self.__get.get_pilots_by_model(pilots_model)
 
     def get_flight_attendants(self):
         return self.__get.get_flight_attendants()
-
-# get föll
 
     def get_destination(self):
         return self.__get.get_destination()
