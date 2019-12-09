@@ -233,7 +233,7 @@ ________________________________________________________________________________
 - Ásamt allskonar smínki á útprentun og auka upplýsingum til að bæta notendaupplifun
 
 _____________________________________________________________________________________________________________________________
-Dagur 12 7.12.2019
+Dagur 12 8.12.2019
 Sunnudagur 
 _____________________________________________________________________________________________________________________________
 
@@ -249,7 +249,7 @@ ________________________________________________________________________________
 
 
 _____________________________________________________________________________________________________________________________
-Dagur 13 8.12.2019
+Dagur 13 9.12.2019
 Mánudagur
 __________________________________________________________________________________________________________________________
 
@@ -259,4 +259,10 @@ ________________________________________________________________________________
 - Thelma var að klára error- message og notar daginn til kl.5 í að skrifa docstrings og comment
 - Ingibjörg heldur utan um notendaprófanir og to do listann
 - Vinnudagur á að hefjast kl.17 í dag
-
+-----------
+17.00 Allir mættir
+- Skiptum með okkur verkum skv. todo lista.
+- Ingibjörg er ábyrg fyrir skýrslunni og byrjuð að upfæra hana
+- Eva er að uppfæra is-valid things í kóðanum
+- Steinarnir halda áfram að uppfæra voyage í kóðanum
+- Thelma bætti við docstrings og uppfærði stöðuritin
