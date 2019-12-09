@@ -1,6 +1,25 @@
 import dateutil.parser
 
+'''Print functions
+    
+    documented in seperated print_functions.py file to be called in other parts of the system
+
+    print functions are re-used in many parts of the system, for ease of access and change-ability they are
+    included in one file.
+
+'''
+
 def header_string(text, length):
+    ''' Header string print function
+
+    Args:
+        param1(str): text specified
+        param2(int): length of print functions, can be changed to suit the length of the text (param1)
+
+    Returns:
+        prints chosen string and text string specified
+
+    '''
     string = ("\n" + "*" * length + "\n")
     string += ("*" + " " * (length - 2) + "*" + "\n")
     string += ("*" + text.center((length-2), " ") + "*" + "\n")

@@ -4,6 +4,17 @@ from UILayer.updateMenu import Update_Menu
 from utils.print_functions import header_string
 
 class Main_menu:
+      '''Main menu for options
+
+        This class allows the user to choose what to update.
+    
+    Attributes:
+        Create_Menu = indicates if we would like to see create options 
+        Get_Menu = indicates if we would like to see get options
+        Update_Menu = indicates if we would like to see update options
+        quit = exit program
+
+    '''
 
     #def __init__(self):
 
