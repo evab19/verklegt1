@@ -3,7 +3,19 @@ from utils.print_functions import *
 import datetime
 
 class Get_Menu:
+    '''Menu for Get options
 
+        This class allows the user to choose what to see/get.
+    
+    Attributes:
+        Get_employee = indicates if we would like to get a list of employee information 
+        Get_destination = indicates if we would like to get a list of destinations
+        Get_airplane = indicates if we would like to get airplane information
+        Get_Voyage = indicates if we would like to get voyage information
+        back = go back to main menu
+
+
+    '''
     def __init__(self):
         self.__llapi = LLAPI()
 

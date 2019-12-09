@@ -2,6 +2,16 @@ from LogicLayer.LLAPI import LLAPI
 from utils.print_functions import *
 
 class Update_Menu:
+    '''Menu for update options
+
+        This class allows the user to choose what to update.
+    
+    Attributes:
+        update_employee = indicates if we would like to update employee information 
+        update_destination = indicates if we would like to update airport contact information
+        update_flight = indicates if we would like to update flight information
+
+    '''
 
     def __init__(self):
         self.__llapi = LLAPI()
