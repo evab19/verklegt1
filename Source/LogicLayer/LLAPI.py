@@ -14,15 +14,9 @@ class LLAPI:
         self.__voyage = VoyageLL(self.__dapi)
 
 #### destination
-<<<<<<< HEAD
-    def add_destination(self, __destination):
-        if self.__destination.is_valid_destination(__destination):
-            self.__destination.add_destination(__destination)
-=======
     def add_destination(self, destination):
         if self.__destination.is_valid_destination(destination):
             self.__destination.add_destination(destination)
->>>>>>> parent of f01caa6... Merge branch 'Eva' into Thorsteinn
 
     def get_destination(self):
          return self.__destination.get_destination()
@@ -31,15 +25,9 @@ class LLAPI:
         self.__destination.update_destination(destination, new_contact)
     
 #### employee
-<<<<<<< HEAD
-    def add_employee(self, __employee):
-        if self.__employee.is_valid_employee(__employee):
-            self.__employee.add_employee(__employee)
-=======
     def add_employee(self, employee):
         if self.__employee.is_valid_employee(employee):
             self.__employee.add_employee(employee)
->>>>>>> parent of f01caa6... Merge branch 'Eva' into Thorsteinn
     
     def get_employee(self):
         return self.__employee.get_employee()
@@ -62,12 +50,9 @@ class LLAPI:
     def get_pilots_by_model(self, pilots_model):
         return self.__employee.get_pilots_by_model(pilots_model)
 
-<<<<<<< HEAD
-=======
     def get_flight_attendants(self):
         return self.__employee.get_flight_attendants()
 
->>>>>>> parent of f01caa6... Merge branch 'Eva' into Thorsteinn
 #### airplane
     def add_airplane(self, __airplane):
         if self.__airplane.is_valid_airplane(__airplane):

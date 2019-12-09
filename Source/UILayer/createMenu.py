@@ -32,13 +32,6 @@ class Create_Menu:
                 self.__create_airplane()
             elif action == "4":
                 self.__create_voyage()
-<<<<<<< HEAD
-            elif action == "b":
-                pass
-            else:
-                self.__error_message()
-=======
->>>>>>> parent of f01caa6... Merge branch 'Eva' into Thorsteinn
 
 
     def __create_employee(self):
@@ -83,12 +76,7 @@ class Create_Menu:
                 print(header_string("SUCCESS!", 50))
                 new_employee = Employee(occupation_str, name_str, SO_str, address_str, home_phone_str, cell_phone_str, email_str)
                 self.__llapi.add_employee(new_employee)
-<<<<<<< HEAD
-            else:
-                self.__error_message()
-=======
                 input("**   Press enter to return to main menu    **")
->>>>>>> parent of f01caa6... Merge branch 'Eva' into Thorsteinn
     
     def __create_destination(self):
         ''' Þurfum við ekki að hafa test á því að inputið sé á
@@ -113,11 +101,7 @@ class Create_Menu:
             ''' Hér þarf að kalla í API niður í logic layer þar sem inputið
                 er sett í rétt format áður en það fer í data layer til 
                 skráningar.'''
-<<<<<<< HEAD
-            print("**   Press enter to return to main menu    **")
-=======
             input("**   Press enter to return to main menu    **")
->>>>>>> parent of f01caa6... Merge branch 'Eva' into Thorsteinn
         if correct == "n":
             self.__create_destination()
         else:
@@ -165,13 +149,5 @@ class Create_Menu:
             self.__llapi.add_voyage(new_voyage)
             input("\n**   Press any key to return to main menu    **")
         else:
-<<<<<<< HEAD
-            self.__create_voyage()
-    
-    def __error_message(self):
-        print(header_string('WRONG INPUT, please select from the list!', 50))
-        input("\n**   Press any key to return to menu    **")
-=======
->>>>>>> parent of f01caa6... Merge branch 'Eva' into Thorsteinn
 
             self.__create_voyage()

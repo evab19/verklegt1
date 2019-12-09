@@ -6,19 +6,11 @@ class DestinationLL:
         self.__destination_repo = dapi_in 
         self.__destination = Destination()
 
-<<<<<<< HEAD
-    def add_destination(self, __destination):
-        if self.is_valid_destination(__destination):
-            self.__destination_repo.add_destination(__destination)
-    
-    def is_valid_destination(self, __destination):
-=======
     def add_destination(self, destination):
         if self.is_valid_destination(destination):
             self.__destination_repo.add_destination(destination)
     
     def is_valid_destination(self, destination):
->>>>>>> parent of f01caa6... Merge branch 'Eva' into Thorsteinn
         #here should be some code to 
         #validate the video
         return True

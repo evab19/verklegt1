@@ -84,24 +84,9 @@ class Update_Menu:
                     new_contact.append(new_name)
                     new_contact.append(new_phone)
                     # print(new_contact)
-<<<<<<< HEAD
-                else:
-                    print(header_string('WRONG INPUT, please select from the list!', 50))
-                    input("\n**   Press any key to return to menu    **")
-            
-                self.__llapi.update_destination(destination, new_contact)
-                
-            elif action == 'b':
-                break
-            else:
-                print(header_string('WRONG INPUT, please select from the list!', 50))
-                input("\n**   Press any key to return to menu    **")
-
-=======
                 self.__llapi.update_destination(destination, new_contact)
                 
             
->>>>>>> parent of f01caa6... Merge branch 'Eva' into Thorsteinn
             # else:
             #     action = "q"
 
@@ -115,17 +100,6 @@ class Update_Menu:
         print("")
 
     def __update_destination_header(self):
-<<<<<<< HEAD
-        print("")
-        print("*********************************************")
-        print("*                                           *")
-        print("*            UPDATE DESTINATION             *")
-        print("*                                           *")
-        print("*********************************************")
-        print("")
-    
-    def __update_flight_header(self):
-=======
         print("")
         print("*********************************************")
         print("*                                           *")
@@ -141,7 +115,6 @@ class Update_Menu:
         print("*               UPDATE FLIGHT               *")
         print("*                                           *")
         print("*********************************************")
->>>>>>> parent of f01caa6... Merge branch 'Eva' into Thorsteinn
         print("")
         print("*********************************************")
         print("*                                           *")
@@ -154,28 +127,6 @@ class Update_Menu:
         self.__update_employee_header()
         pass
 
-<<<<<<< HEAD
-    def __update_destination(self):
-        self.__update_destination_header()
-        print("   **    Please insert Airport name     **   ")
-        print("")
-        airport_name_str = input("Airport name: ")
-        ''' Hér þarf að gera ráð fyrir kóðanum til að kalla í 
-            API sem síðan sækir gögnin niður í data layer og
-            skilar þeim aftur.'''
-        self.__update_destination_header()
-        print("     **    Destination information    **     ")
-        print("")
-        print("Country: " + "Grænland") #Breyturnar eru ekki tilbúnar
-        print("Airport: " + "Nuuk") #Breyturnar eru ekki tilbúnar
-        print("Flight duration: " + "02:30") #Breyturnar eru ekki tilbúnar
-        print("Distance from Iceland: " + "1.000 " + "km.") #Breyturnar eru ekki tilbúnar
-        print("Contact name: " + "Chuck Norris") #Breyturnar eru ekki tilbúnar
-        print("Contact emergency phone number: " + "+11 444-5555") #Breyturnar eru ekki tilbúnar
-        print("")
-        correct_str = input("Is this the correct Airport? (Y/N): ").lower()
-
-=======
     def __update_employee(self):
         self.__update_employee_header()
         pass
@@ -200,7 +151,6 @@ class Update_Menu:
         print("")
         correct_str = input("Is this the correct Airport? (Y/N): ").lower()
 
->>>>>>> parent of f01caa6... Merge branch 'Eva' into Thorsteinn
         if correct_str == "y":
             self.__update_destination_header()
             print("*********************************************")

@@ -26,51 +26,6 @@ class Get_Menu:
             elif action == "4":
                 self.__get_voyage()
 
-<<<<<<< HEAD
-            elif action == 'b':
-                pass
-            else:
-                print(header_string('WRONG INPUT, please select from the list!', 50))
-                input("\n**   Press any key to return to menu    **")
-
-    def __get_destination_header(self):
-        print("")
-        print("*********************************************")
-        print("*                                           *")
-        print("*              GET DESTINATION              *")
-        print("*                                           *")
-        print("*********************************************")
-        print("")
-    
-    def __get_airplane_information_header(self):
-        print("")
-        print("*********************************************")
-        print("*                                           *")
-        print("*         GET AIRPLANE INFORMATION          *")
-        print("*                                           *")
-        print("*********************************************")
-        print("")
-    
-    def __get_flight_schedule_header(self):
-        print("")
-        print("*********************************************")
-        print("*                                           *")
-        print("*            GET FLIGHT SCHEDULE            *")
-        print("*                                           *")
-        print("*********************************************")
-        print("")
-    
-    def __get_employee_schedule_header(self):
-        print("")
-        print("*********************************************")
-        print("*                                           *")
-        print("*         GET EMPLOYEE INFORMATION          *")
-        print("*                                           *")
-        print("*********************************************")
-        print("")
-
-=======
->>>>>>> parent of f01caa6... Merge branch 'Eva' into Thorsteinn
     def __get_employee(self):
         """ TODO Laga menuið eftir að við ákveðum hvernig við höfum þetta """
         print(header_string("GET EMPLOYEE INFORMATION", 50))
