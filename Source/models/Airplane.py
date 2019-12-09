@@ -1,19 +1,4 @@
 class Airplane:
-    '''Module Airplane class
-
-        Module classes are used by the logic layer classes to create new instances of Airplane
-    
-        
-        gets an instance of a Airplane information list
-
-        returns:
-            name
-            model
-            producer
-            number_of_seats
-            plane_status
-    '''
-    
  
     def __init__(self, name = "", model = "", producer = "", number_of_seats = "", plane_status = "A"):
         self.name = name

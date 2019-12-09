@@ -2,19 +2,12 @@ from LogicLayer.LLAPI import LLAPI
 from utils.print_functions import *
 
 class Update_Menu:
-    '''Menu for update options
-
-        This class allows the user to choose what to update.
-    
-    Attributes:
-        update_employee = indicates if we would like to update employee information 
-        update_destination = indicates if we would like to update airport contact information
-        update_flight = indicates if we would like to update flight information
-
-    '''
 
     def __init__(self):
         self.__llapi = LLAPI()
+        # self.update_employee_lst = []
+        # self.update_destination_lst = []
+        # self.update_flight_lst = []
 
     def update_menu(self):
         action = ""
@@ -34,11 +27,6 @@ class Update_Menu:
                  
             elif action == "2":
                 self.__update_destination()
-
-            elif action == 'b':
-                pass
-            else:
-                self.__error_message()
 
     def __update_employee(self):
         new_employee = []
@@ -98,10 +86,4 @@ class Update_Menu:
 
 
     def __update_flight(self):
-        self.__update_flight_header()
         pass
-
-    def __error_message(self):
-        print(header_string('Wrong input, please select from the list!', 100))
-        input("\n**   Press any key to return to menu    **")
-        

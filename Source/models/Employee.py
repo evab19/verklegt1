@@ -1,23 +1,4 @@
 class Employee:
-    '''Module Employee class
-
-        Module classes are used by the logic layer classes to create new instances of employee
-    
-        
-        gets an instance of a Employee information list
-
-        returns:
-            occupation
-            name
-            ssn
-            address
-            home_phone
-            cell_phone
-            email
-            licence
-            emp_status
-
-    '''
     def __init__(self, occupation = "", name = "", ssn = "", address = "", home_phone = "", cell_phone = "", email = "", licence = "", emp_status = "A"):
         self.occupation = occupation
         self.name = name
@@ -61,4 +42,4 @@ class Employee:
         self.occupation = occupation
     
     def get_status(self):
-        return str(self.emp_status)
+        return str(self.status)

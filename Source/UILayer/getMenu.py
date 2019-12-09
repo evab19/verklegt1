@@ -3,19 +3,7 @@ from utils.print_functions import *
 import datetime
 
 class Get_Menu:
-    '''Menu for Get options
 
-        This class allows the user to choose what to see/get.
-    
-    Attributes:
-        Get_employee = indicates if we would like to get a list of employee information 
-        Get_destination = indicates if we would like to get a list of destinations
-        Get_airplane = indicates if we would like to get airplane information
-        Get_Voyage = indicates if we would like to get voyage information
-        back = go back to main menu
-
-
-    '''
     def __init__(self):
         self.__llapi = LLAPI()
 
@@ -37,12 +25,6 @@ class Get_Menu:
 
             elif action == "4":
                 self.__get_voyage()
-
-            elif action == 'b':
-                pass
-            else:
-                self.__error_message()
-
 
 
     def __get_employee(self):
@@ -82,12 +64,6 @@ class Get_Menu:
             model_to_find = input("What status would you like to get? ")
             pilots_model = self.__llapi.get_pilots_by_model(model_to_find)
             print_pilots_by_model(pilots_model)
-        elif action == 'b':
-            pass
-        else:
-            self.__error_message()
-
-
 
     def __get_destination(self):
         print(header_string("GET DESTINATION", 50))

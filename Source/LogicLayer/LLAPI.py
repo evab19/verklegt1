@@ -6,12 +6,6 @@ from DataLayer.DataAPI import DataAPI
 
 
 class LLAPI:
-    '''LLAPI data receiver and transmitter
-
-        LLAPI receives information input by user in the UI layer and sends it to Logic Layer classes.
-        LLAPI also receives information from the Logic Layer which is then displayed on users menu.
-
-    '''
     def __init__(self):
         self.__dapi = DataAPI()
         self.__employee = EmployeeLL(self.__dapi)

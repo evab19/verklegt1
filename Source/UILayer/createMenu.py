@@ -7,16 +7,6 @@ from utils.print_functions import *
 import datetime
 
 class Create_Menu:
-    '''Menu for Create options
-
-        This class allows the user to choose what to create.
-    
-    Attributes:
-        create_employee = indicates if we would like to create new employee on the system 
-        create_destination = indicates if we would like to create new destination on the system
-        create_airplane = indicates if we would like to create new airplane on the system
-        create__voyage = indicates if we woule like to create new voyage on the system
-    '''
 
     def __init__(self):
         self.__llapi = LLAPI()
