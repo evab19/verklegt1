@@ -248,4 +248,15 @@ ________________________________________________________________________________
 23.50 *Steinarnir búnir að koma mestri virkni fyrir voyage í gang
 
 
+_____________________________________________________________________________________________________________________________
+Dagur 13 8.12.2019
+Mánudagur
+__________________________________________________________________________________________________________________________
+
+9.00 MORGUNFUNDUR on the line - facebook spjall 
+- fórum yfir það sem er komið  --- *Steinarnir nánast búnir að útfæra voyage
+- Eva er að vinna í is-valid
+- Thelma var að klára error- message
+- Ingibjörg heldur utan um notendaprófanir og to do listann
+- Vinnudagur á að hefjast kl.17 í dag
 
