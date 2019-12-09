@@ -1,24 +1,23 @@
 class Voyage():
     
-    def __init__(self, destination = "", departure = "", airplane = "", captain = "N/A", pilot = "N/A", fsm = "N/A", fa = "N/A", flight_out = "N/A", flight_in = "N/A", arrival_at_dest = "", departure_from_dest = "", arrival_back_home = ""):
+    def __init__(self, destination = "", date = "", time = "", airplane = "", pilot = "", flight_attendant = "", fsm = "", captain = ""):
         self.destination = destination
-        self.departure = departure
+        self.date = date
+        self.time = time
         self.captain = captain
         self.pilot = pilot
-        self.flight_attendant = fa
+        self.flight_attendant = flight_attendant
         self.fsm = fsm
         self.airplane = airplane
-        self.flight_out = flight_out
-        self.flight_in = flight_in
-        self.arrival_at_dest = arrival_at_dest
-        self.departure_from_dest = departure_from_dest
-        self.arrival_back_home = arrival_back_home
 
     def get_destination(self):
         return self.destination
     
-    def get_departure(self):
-        return self.departure
+    def get_date(self):
+        return self.date
+    
+    def get_time(self):
+        return self.time
     
     def get_captain(self):
         return self.captain
@@ -34,24 +33,10 @@ class Voyage():
 
     def get_airplane(self):
         return self.airplane
+
     
-    def get_flight_out(self):
-        return self.flight_out
-
-    def get_flight_in(self):
-        return self.flight_in
-
-    def get_arrival_at_dest(self):
-        return self.arrival_at_dest
-    
-    def get_departure_from_dest(self):
-        return self.departure_from_dest
-
-    def get_arrival_back_home(self):
-        return self.arrival_back_home
-
-    # def __str__(self):
-    #     return "{}{:13}{}{:25}{}{:12}{}{:20}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', self.destination, '| ', self.departure, '| ', self.airplane, '|', self.captain, '| ', self.pilot, '| ', self.fsm, '| ', self.flight_attendant, '| ')
+    def __str__(self):
+        return "{}{:13}{}{:25}{}{:12}{}{:20}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', self.destination, '| ', self.date, '| ', self.time, '| ', self.airplane, '|', self.captain, '| ', self.pilot, '| ', self.fsm, '| ', self.flight_attendant, '| ')
 
 
 

@@ -1,13 +1,10 @@
-country,airport,duration,distance,contact_name,contact_phone
-Greenland,Nuuk,5,500,Gunnsteinn,444-4444
-Jemen,Jeman Airport,8:00,785,Chandler Bing,4561144
-Bora Bora,Rassa Bora,10:10,548,Bora Ínef,5556633
-NOCCO,Koffín,10:20,105,Stúfur,3306655
-Tæland,PiriPiri,12:00,876,Cho,4447788
-Hel,DownUnder,00:30,1,Satan,6969696
-Tunglið,Nasa,99:99,384.400,Neil Armstrong,1112233
-Ljósuklettar,Flugstöð Simba,55:44,810,Timon,0002211
-Liverpool,LFC,00:01,200,Klopp,6666666
-Kosovo,Koslavi,01:50,200,Kos,22336699
-Bradislava,Tuki,02:10,352,Nombred,77445511
-Kaffi,Vanilla,00:20,500,Kea,5556633
+﻿country,airport,duration,distance,contact_name,contact_phone
+Greenland,Nuuk,5,500,Inuk,444-4444
+Jemen,Jeman Airport,8:00,785,Chandler Bing,4561144
+Bora Bora,Rassa Bora,10:10,548,Bora Ínef,5556633
+NOCCO,Koffín,10:20,105,Stúfur,3306655
+Tæland,PiriPiri,12:00,876,Cho,4447788
+Hel,DownUnder,00:30,1,Satan,6969696
+Tunglið,Nasa,99:99,384.400,Neil Armstrong,1112233
+Ljósuklettar,Flugstöð Simba,55:44,810,Timon,0002211
+Turkey,Arsenal,2,1400,Scrubber,90909090

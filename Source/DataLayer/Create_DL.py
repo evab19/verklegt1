@@ -4,7 +4,7 @@ class Create_DL:
 
     def add_employee(self, employee):
         occupation_str = employee.get_occupation()
-        # id_str = employee.get_id()
+        id_str = employee.get_id()
         name_str = employee.get_name()
         ssn_str = employee.get_ssn()
         address_str = employee.get_address()
@@ -13,10 +13,10 @@ class Create_DL:
         email_str = employee.get_email()
         #licence_str = employee.get_licence()
         with open("./data/employee.csv", "a+", newline='', encoding='utf-8-sig') as csv_file:
-            fieldnames = ['occupation', 'name', 'ssn', 'address', 'home_phone', 'cell_phone', 'email', 'licence']
+            fieldnames = ['occupation', 'id', 'name', 'ssn', 'address', 'home_phone', 'cell_phone', 'email']
             writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
 
-            writer.writerow({'occupation': occupation_str, 'name': name_str, 'ssn': ssn_str, 'address': address_str, 'home_phone': home_phone_str, 'cell_phone': cell_phone_str, 'email': email_str, 'licence': licence_str})
+            writer.writerow({'occupation': occupation_str, 'id': id_str, 'name': name_str, 'ssn': ssn_str, 'address': address_str, 'home_phone': home_phone_str, 'cell_phone': cell_phone_str, 'email': email_str})
         csv_file.close()
 
     def add_destination(self, destination):
@@ -38,31 +38,22 @@ class Create_DL:
         model = airplane.get_model()
         producer = airplane.get_producer()
         number_of_seats = airplane.get_number_of_seats()
-        plane_status = airplane.get_plane_status()
         with open("./data/airplanes.csv", "a+", newline='', encoding='utf-8-sig') as csv_file:
-            fieldnames = ['name', 'model', 'producer', 'number_of_seats', 'status']
+            fieldnames = ['name', 'model', 'producer', 'number_of_seats']
             writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
  
-            writer.writerow({'name': name, 'model': model, 'producer': producer, 'number_of_seats': number_of_seats, 'status': plane_status})
+            writer.writerow({'name': name, 'model': model, 'producer': producer, 'number_of_seats': number_of_seats})
         csv_file.close()
 
     def add_voyage(self, voyage):
         destination = voyage.get_destination()
-        departure = voyage.get_departure()
+        date = voyage.get_date()
+        time = voyage.get_time()
         airplane = voyage.get_airplane()
-        captain = voyage.get_captain()
-        pilot = voyage.get_pilot()
-        fsm = voyage.get_fsm()
-        fa = voyage.get_flight_attendant()
-        flight_out = voyage.get_flight_out()
-        flight_in = voyage.get_flight_in()
-        arrival_at_dest = voyage.get_arrival_at_dest()
-        departure_from_dest = voyage.get_departure_from_dest()
-        arrival_back_home = voyage.get_arrival_back_home()
         with open("./data/voyage.csv", "a+", newline='', encoding='utf-8-sig') as csv_file:
-            fieldnames = ['destination', 'departure', 'airplane', 'captain', 'pilot', 'fsm', 'fa', 'flight_out', 'flight_in', 'arrival_at_dest', 'departure_from_dest', 'arrival_back_home']
+            fieldnames = ['destination', 'date', 'time', 'airplane']
             writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
  
-            writer.writerow({'destination': destination, 'departure': departure, 'airplane': airplane, 'captain': captain, 'pilot': pilot, 'fsm': fsm, 'fa': fa, 'flight_out': flight_out, 'flight_in': flight_in, 'arrival_at_dest': arrival_at_dest, 'departure_from_dest': departure_from_dest, 'arrival_back_home': arrival_back_home})
+            writer.writerow({'destination': destination, 'date': date, 'time': time, 'airplane': airplane})
         csv_file.close()
  

@@ -14,10 +14,9 @@ class LLAPI:
         self.__voyage = VoyageLL(self.__dapi)
 
 #### destination
-    def add_destination(self, destination):
-        if self.__destination.is_valid_destination(destination):
-            self.__destination.add_destination(destination)
-            return True
+    def add_destination(self, __destination):
+        if self.__destination.is_valid_destination(__destination):
+            self.__destination.add_destination(__destination)
 
     def get_destination(self):
          return self.__destination.get_destination()
@@ -26,16 +25,9 @@ class LLAPI:
         self.__destination.update_destination(destination, new_contact)
     
 #### employee
-    def check_if_ssn_unique(self, ssn):
-        return self.__employee.check_if_ssn_unique(ssn)
-
-    def is_ssn_valid(self, ssn):
-        return self.__employee.is_ssn_valid(ssn)
-    
-    def add_employee(self, employee):
-        if self.__employee.is_valid_employee(employee):
-            self.__employee.add_employee(employee)
-            return True
+    def add_employee(self, __employee):
+        if self.__employee.is_valid_employee(__employee):
+            self.__employee.add_employee(__employee)
     
     def get_employee(self):
         return self.__employee.get_employee()
@@ -43,14 +35,14 @@ class LLAPI:
     def update_employee(self, employee, new_employee):
         self.__employee.update_employee(employee, new_employee)
     
-    def get_employee_information(self, employee):
-        return self.__employee.get_employee_information(employee)
+    def get_employee_information(self, __employee):
+        return self.__employee.get_employee_information(__employee)
 
-    def get_employee_by_occupation(self, occupation):
-        return self.__employee.get_employee_by_occupation(occupation)
+    def get_employee_by_occupation(self, __occupation):
+        return self.__employee.get_employee_by_occupation(__occupation)
     
-    def get_employee_by_status(self, emp_status):
-        return self.__employee.get_employee_by_status(emp_status)
+    def get_employee_by_status(self, __emp_status):
+        return self.__employee.get_employee_by_status(__emp_status)
         
     def get_pilots_by_airplane(self):
         return self.__employee.get_pilots_by_airplane()
@@ -58,27 +50,18 @@ class LLAPI:
     def get_pilots_by_model(self, pilots_model):
         return self.__employee.get_pilots_by_model(pilots_model)
 
-    def get_flight_attendants(self):
-        return self.__employee.get_flight_attendants()
-
-    def get_phone(self, name):
-        return self.__employee.get_phone(name)
-
 #### airplane
-    def add_airplane(self, airplane):
-        if self.__airplane.is_valid_airplane(airplane):
-            self.__airplane.add_airplane(airplane)
+    def add_airplane(self, __airplane):
+        if self.__airplane.is_valid_airplane(__airplane):
+            self.__airplane.add_airplane(__airplane)
  
     def get_airplane(self):
         return self.__airplane.get_airplane()
 
 #### voyage
-    def add_voyage(self, voyage):
-        #if self.is_valid_voyage(voyage):
-        self.__voyage.add_voyage(voyage)
+    def add_voyage(self, __voyage):
+        #if self.is_valid_voyage(__voyage):
+        self.__voyage.add_voyage(__voyage)
  
-    def get_voyage_destination(self, voyage_destination, year_int, month_int, day_int):
-        return self.__voyage.get_voyage_destination(voyage_destination, year_int, month_int, day_int)
-    
-    def get_the_voyage(self, voyage_destination, year_int, month_int, day_int, flight_number):
-        return self.__voyage.get_the_voyage(voyage_destination, year_int, month_int, day_int, flight_number)
+    def get_voyage(self):
+        return self.__voyage.get_voyage()
