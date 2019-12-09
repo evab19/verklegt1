@@ -1,5 +1,6 @@
 from models.Voyage import Voyage
 from models.Destination import Destination
+from models.Airplane import Airplane
 from DataLayer.Get_DL import Get_DL
 import dateutil.parser
 import datetime
@@ -31,6 +32,9 @@ class VoyageLL:
 
     def get_the_voyage(self, voyage_destination, year_int, month_int, day_int, flight_number):
         return self.__voyage_repo.get_the_voyage(voyage_destination, year_int, month_int, day_int, flight_number)
+
+    def get_all_voyage_at_date(self, year_int, month_int, day_int):
+        return self.__voyage_repo.get_all_voyage_at_date(year_int, month_int, day_int)
 
     def parse_date(self, departure_time):
         voyage_departure = dateutil.parser.parse(self.__voyage.departure)
@@ -79,3 +83,5 @@ class VoyageLL:
 
         new_time = datetime.datetime(dep_year, dep_month, dep_day, arrival_time_hour, arrival_time_min, 0).isoformat()
         return new_time
+
+    

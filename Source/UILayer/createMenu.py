@@ -181,10 +181,25 @@ class Create_Menu:
         hour_int = int(input("Hour: "))
         minutes_int = int(input("Minutes: "))
         new_departure_time = datetime.datetime(year_int, month_int, day_int, hour_int, minutes_int, 0).isoformat()
-        airplanes = self.__llapi.get_airplane()
-        print_airplane_name_and_models(airplanes)
+
+        availableplanes = self.__llapi.get_airplane_status(year_int, month_int, day_int)
+        temp_lst = []
+        for item in availableplanes:
+            temp_lst.append(item.name)
+
+        print_airplane_name_and_models(availableplanes)
+        print("The listed airplanes are available for the given date and time")
         print("Choose an airplane for the voyage, use airplane name")
-        airplane_str = input("Airplane (name): ")
+        
+        air_input = 0
+        while air_input != 1:
+            airplane_str = input("Airplane (name): ")
+            if airplane_str not in temp_lst:
+                print("Wrong input or airplane not available")
+                print("Please choose an airplane from the list")
+            else:
+                air_input = 1
+
         print("")
         man_voyage = input("Would you like to man the voyage at this time? (Y/N): ").lower()
 
