@@ -157,7 +157,6 @@ Morgunfundur 17.00 plús online spjall frá cirka 10-...
 
 <<<<<<< HEAD
 17.00 Mæting í HR staðfestum að allt sé komið niður á blað og fórum í að skoða kóða.
-<<<<<<< Updated upstream
 =======
 17.00 Mæting í HR staðfestum að allt sé komið niður á blað og fórum í að skoða kóða.
 
@@ -209,7 +208,39 @@ ________________________________________________________________________________
 9.10 Allir pusha inn á github og sameinum mainið okkar þannig allir séu með nýjar uppfærslur
 9.12 vinnudagur hefst allir í sínum verkefnum eftir vinnulista á Teams - fórum vel yfir kröfulista og gerðum checklista fyrir all sem á ða vera í kerfinu
 
+15.30 Eva, Ingibjörg og Thelma fóru heim
+22.30 *Steinarnir fóru heim
 
-=======
-17.10 - github 
->>>>>>> Stashed changes
+Það sem er hægt að gera:
+- Skrá starfsmenn
+- Lista starfsmenn
+- Lista starfsmenn eftir starfsheiti
+- velja ákveðin starfsmann og ná í upplýsingar um hann
+- Breyta upplýsingum um starfsmann
+- Skrá áfangastað
+- Lista áfangastað
+- Breyta áfangastöðum
+- Bóka vinnuferð (50% búið)
+- Lista vinnuferð
+- Breyta áfangastöðum
+- lista lausa starfsmenn (sem eru ekki að fljúga)
+- Lista starfsmenn sem eru EKKI lausir (eru að vinna)
+- Vista vinnuferð án áhafnar
+- Skrá flugvélategund
+- Skrá flugleyfi á flugmenn
+- Lista flugmenn eftir leyfi á flugvél (raðað eftir flugvélategund)
+- Sækja flugmenn á ákveðna flugvélategund og lista þá
+- Ásamt allskonar smínki á útprentun og auka upplýsingum til að bæta notendaupplifun
+
+_____________________________________________________________________________________________________________________________
+Dagur 12 7.12.2019
+Sunnudagur 
+_____________________________________________________________________________________________________________________________
+
+12.00 Gunnsteinn mættur
+12.30 Thelma mætt
+13.00 Ingibjörg mætt
+13.10 Thelma og Ingibjörg fara í notendaprófanir - renna í gegnum öll use case-in nema það sem á við vinnuferð(virknin er enn í vinnslu fyrir það)
+
+
+
