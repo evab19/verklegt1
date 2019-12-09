@@ -22,7 +22,7 @@ class VoyageLL:
 
             self.__voyage_repo.add_voyage(voyage)
 
-    def is_valid_voyage(self, __voyage):
+    def is_valid_voyage(self, voyage):
         #add code here to verify
         return True
     
