@@ -214,9 +214,9 @@ def print_employee_schedule():
     length = 23
     times = 7
     day_1, day_2, day_3, day_4, day_5, day_6, day_7 = "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"
-    print("Schedule for Jón Jónsson")
+    print("\nSchedule for Jón Jónsson")
     print("Week 3, 2020-01-13 to 2020-01-19")
-    print("{:-<169}".format(""))
+    print("\n{:-<169}".format(""))
     print(("|" + " " * length) * times + '|')
     print("|" + day_1.center((length), " ") + "|" + day_2.center((length), " ") + "|" + day_3.center((length), " ") + "|" + day_4.center((length), " ") + "|" + day_5.center((length), " ") + "|" + day_6.center((length), " ") + "|" + day_7.center((length), " ") + "|")
     print(("|" + " " * length) * times + '|')
