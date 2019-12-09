@@ -239,8 +239,13 @@ ________________________________________________________________________________
 
 12.00 Gunnsteinn mættur
 12.30 Thelma mætt
-13.00 Ingibjörg mætt
+13.00 Allir mættir
 13.10 Thelma og Ingibjörg fara í notendaprófanir - renna í gegnum öll use case-in nema það sem á við vinnuferð(virknin er enn í vinnslu fyrir það)
+- *Steinarnir halda áfram að vinna í voyage virkni
+- Eva fór að gera is-valid virkni í update og create hlutunum.
+- Thelma bætti við error message ef ekkert af lista er valið, er rangt valið
+
+23.50 *Steinarnir búnir að koma mestri virkni fyrir voyage í gang
 
 
 
