@@ -13,15 +13,14 @@ class EmployeeLL:
             return False
 
     def is_valid_employee(self, __employee):
-        self.__ssn = __employee.ssn
-        length = len(self.__ssn)
         if __employee.name and __employee.occupation and __employee.ssn and __employee.cell_phone and __employee.address != "":
-            if length == 10 and int(self.__ssn):
-                return True
-            else:
-                return False
+            return True
         else:
             return False
+
+    def check_if_ssn_unique(self, ssn):
+        employees = self.get_employee()
+        return not(any(employee.ssn == ssn for employee in employees))
     
     def get_employee(self):
         return self.__employee_repo.get_employee()

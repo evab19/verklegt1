@@ -204,3 +204,12 @@ def print_the_voyage(the_voyage_lst):
     # print("   Total seats on plane for this voyage: " + )
     input("\n**   Press any key to return to main menu    **")
     print("")
+
+def choose_occupation():
+    print("** Please choose occupation **")
+    print("1: Captain")
+    print("2: Pilot")
+    print("3: Flight Attendant")
+    print("4: Flight Service Manager")
+    print("b: Back")
+    print("")

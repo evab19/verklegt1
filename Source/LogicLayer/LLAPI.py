@@ -26,6 +26,9 @@ class LLAPI:
         self.__destination.update_destination(destination, new_contact)
     
 #### employee
+    def check_if_ssn_unique(self, ssn):
+        return self.__employee.check_if_ssn_unique(ssn)
+    
     def add_employee(self, __employee):
         if self.__employee.is_valid_employee(__employee):
             self.__employee.add_employee(__employee)

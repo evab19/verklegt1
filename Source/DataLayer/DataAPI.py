@@ -23,6 +23,10 @@ class DataAPI:
 
     def add_voyage(self, voyage):
         return self.__create.add_voyage(voyage)
+    
+    def check_if_ssn_unique(self, ssn):
+        employees = self.get_employee()
+        return not(any(employee.ssn == ssn for employee in employees))
 
 # get föll
     def get_employee(self):

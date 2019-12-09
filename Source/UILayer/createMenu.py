@@ -38,19 +38,9 @@ class Create_Menu:
 
 
     def __create_employee(self):
-        ''' Þurfum við ekki að hafa test á því að inputið sé á
-            réttur formatti, t.d. tölustafir þar sem eiga að
-            vera tölustafir og e-mail rétt skráð.'''
         occupation_choice = ""
         print(header_string("CREATE EMPLOYEE", 50))
-        print("** Please choose occupation **")
-        print("1: Captain")
-        print("2: Pilot")
-        print("3: Flight Attendant")
-        print("4: Flight Service Manager")
-        print("b: Back")
-            # print("q: Quit")
-        print("")
+        choose_occupation()
 
         occupation_choice = input("Choose an option: ").lower()
         if occupation_choice == "1":
@@ -62,36 +52,38 @@ class Create_Menu:
         elif occupation_choice == "4":
             occupation_str = "Flight Service Manager"
         if occupation_choice != "b":
+
             print("**  Please fill in the information below   **")
             print("")
             print("Occupation: ", occupation_str)
             name_str = input("Name: ")
             SO_str = input("Social Security Number: ")
-            address_str = input("Address: ")
-            home_phone_str = input("Home phone: ")
-            cell_phone_str = input("Cell phone: ")
-            email_str = input("E-mail: ")
-            #airplane_license_str = input("Airplane license: ")
-            print("")
-            correct = input("Is this information correct? (Y/N): ").lower()
+            if self.__llapi.check_if_ssn_unique(SO_str):
+                address_str = input("Address: ")
+                home_phone_str = self.__get_phone("Home")
+                cell_phone_str = self.__get_phone("Cell")
+                email_str = input("E-mail: ")
+                print("")
+                correct = input("Is this information correct? (Y/N): ").lower()
 
-            if correct == "y":
-                new_employee = Employee(occupation_str, name_str, SO_str, address_str, home_phone_str, cell_phone_str, email_str)
-                if self.__llapi.add_employee(new_employee):
-                    print(header_string("SUCCESS!", 50))
-                    input("\n**   Press any key to return to main menu    **")
+                if correct == "y":
+                    new_employee = Employee(occupation_str, name_str, SO_str, address_str, home_phone_str, cell_phone_str, email_str)
+                    if self.__llapi.add_employee(new_employee):
+                        print(header_string("SUCCESS!", 50))
+                        input("\n**   Press any key to return to main menu    **")
+                    else:
+                        print("Oh-oh something went wrong! Please fill in all information")
+                        input("\n**   Press any key to try again    **")
+                        self.__create_employee()
                 else:
-                    print("Oh-oh something went wrong! The social security number should be 10 digits.")
-                    input("\n**   Press any key to try again    **")
-                    self.__create_employee()
+                    self.__create_employee()           
+            
             else:
-                self.__create_employee()
-                input("**   Press enter to return to main menu    **")
+                print("The SSN aldready exists!")
+                input("\n**   Press any key to return to the create menu    **")
+            #airplane_license_str = input("Airplane license: ")
     
     def __create_destination(self):
-        ''' Þurfum við ekki að hafa test á því að inputið sé á
-            réttur formatti, t.d. tölustafir þar sem eiga að
-            vera tölustafir og e-mail rétt skráð.'''
         print(header_string("CREATE DESTINATION", 50))
         print("**  Please fill in the information below   **")
         print("")
@@ -197,5 +189,22 @@ class Create_Menu:
             self.__llapi.add_voyage(new_voyage)
             input("**   Press any key to return to main menu    **")
         else:
-
             self.__create_voyage()
+
+    def __get_phone(self, name):
+        number = input("{} phone: ".format(name))
+        while number != "":
+            try:
+                int(number)
+            except ValueError:
+                print("Please insert a valid phone number or leave it blank")
+                number = input("{} phone: ".format(name))
+        
+            if len(number) >= 7:
+                return number
+            else:
+                print("Please insert a valid phone number or leave it blank")
+                number = input("{} phone: ".format(name))
+        else:
+            return number
+
