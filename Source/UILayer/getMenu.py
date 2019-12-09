@@ -64,6 +64,8 @@ class Get_Menu:
             model_to_find = input("What status would you like to get? ")
             pilots_model = self.__llapi.get_pilots_by_model(model_to_find)
             print_pilots_by_model(pilots_model)
+        elif action == "7":
+            print_employee_schedule()
 
     def __get_destination(self):
         print(header_string("GET DESTINATION", 50))
