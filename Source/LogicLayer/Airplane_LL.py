@@ -10,7 +10,11 @@ class AirplaneLL:
         if self.is_valid_airplane(__airplane):
             self.__airplane_repo.add_airplane(__airplane)
      
+<<<<<<< HEAD
     def is_valid_airplane(self, __airplane):
+=======
+    def is_valid_airplane(self, airplane):
+>>>>>>> parent of f01caa6... Merge branch 'Eva' into Thorsteinn
         #here should be some code to 
         #validate the video
         return True

@@ -26,6 +26,7 @@ class Get_Menu:
             elif action == "4":
                 self.__get_voyage()
 
+<<<<<<< HEAD
             elif action == 'b':
                 pass
             else:
@@ -68,6 +69,8 @@ class Get_Menu:
         print("*********************************************")
         print("")
 
+=======
+>>>>>>> parent of f01caa6... Merge branch 'Eva' into Thorsteinn
     def __get_employee(self):
         """ TODO Laga menuið eftir að við ákveðum hvernig við höfum þetta """
         print(header_string("GET EMPLOYEE INFORMATION", 50))
@@ -130,7 +133,6 @@ class Get_Menu:
         # print("Contact emergency phone number: " + "+11 444-5555") #Breyturnar eru ekki tilbúnar
         # print("")
         # print("**   Press enter to return to main menu    **")
-
 
     def __get_airplane_information(self):
         print(header_string("GET AIRPLANE INFORMATION", 50))

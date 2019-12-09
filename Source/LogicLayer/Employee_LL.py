@@ -6,11 +6,19 @@ class EmployeeLL:
         self.__employee_repo = dapi_in 
         self.__employee = Employee()
 
+<<<<<<< HEAD
     def add_employee(self, __employee):
         if self.is_valid_employee(__employee):
             self.__employee_repo.add_employee(__employee)
 
     def is_valid_employee(self, __employee):
+=======
+    def add_employee(self, employee):
+        if self.is_valid_employee(employee):
+            self.__employee_repo.add_employee(employee)
+
+    def is_valid_employee(self, employee):
+>>>>>>> parent of f01caa6... Merge branch 'Eva' into Thorsteinn
         #add code here to verify
         return True
     

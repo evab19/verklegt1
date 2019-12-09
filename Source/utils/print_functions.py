@@ -133,4 +133,8 @@ def print_pilots_by_model(pilots_model):
     print("{:-<163}".format(""))
     print("* C = Captain, P = Pilot")
     input("\n**   Press any key to return to main menu    **")
+<<<<<<< HEAD
     print("")
+=======
+    print("")
+>>>>>>> parent of f01caa6... Merge branch 'Eva' into Thorsteinn
