@@ -197,3 +197,18 @@ class Get_DL:
                                 voyage_lst_inst.append(the_fa)
         return voyage_lst_inst
     
+    def get_voyage_on_date(self, voyage_destination, year_int, month_int, day_int):
+        voyage_by_date_lst = []
+        if voyage_by_date_lst == []:
+            with open("./data/voyage.csv", newline='', encoding='utf-8-sig') as csvfile:
+                reader = csv.DictReader(csvfile)
+                for row in reader:
+                    if row['destination'] == voyage_destination:
+                        voyage_departure = dateutil.parser.parse(row['departure_date_time'])
+                        voyage_year = voyage_departure.year
+                        voyage_month = voyage_departure.month
+                        voyage_day = voyage_departure.day
+                        if voyage_year == year_int and voyage_month == month_int and voyage_day == day_int:
+                            the_voyage = Voyage(row['destination'], row['departure_date_time'], row['airplane_name'], row['captain_ssn'], row['pilot_ssn'], row['fsm_ssn'], row['fa_ssn'], row['flight_out'], row['flight_in'], row['arrival_at_dest'], row['departure_from_dest'], row['arrival_back_home'])
+                            voyage_by_date_lst.append(the_voyage)
+        return voyage_lst_inst

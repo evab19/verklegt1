@@ -20,6 +20,11 @@ class VoyageLL:
             voyage.departure_from_dest = self.calculate_time(voyage.arrival_at_dest, "01:00")
             voyage.arrival_back_home = self.calculate_time(voyage.departure_from_dest, destination.duration)
 
+            parseDate_dep = dateutil.parser.parse(voyage.departure)
+            dep_year, dep_month, dep_day = parseDate_dep.year, parseDate_dep.month, parseDate_dep.day
+            # dep_year, dep_month, dep_day, dep_hour, dep_min = self.parse_date(voyage.departure)
+            voyage.flight_out, voyage.flight_in = self.generate_flight_number(voyage.destination, dep_year, dep_month, dep_day)
+
             self.__voyage_repo.add_voyage(voyage)
 
     def is_valid_voyage(self, voyage):
@@ -79,3 +84,22 @@ class VoyageLL:
 
         new_time = datetime.datetime(dep_year, dep_month, dep_day, arrival_time_hour, arrival_time_min, 0).isoformat()
         return new_time
+    
+    def generate_flight_number(self, destination, voyage_year, voyage_month, voyage_day):
+        voyage_on_the_day = self.__get.get_voyage_destination(destination, voyage_year, voyage_month, voyage_day)
+        destination_lst = self.__get.get_destination()
+        for index, item in enumerate(destination_lst):
+            if destination == item.airport:
+                dest_number_int = index + 1
+                if dest_number_int < 10:
+                    dest_number_str = "0" + str(dest_number_int)
+                else:
+                    dest_number_str = str(dest_number_int)
+
+        flight_extention_out = (len(voyage_on_the_day)) * 2
+        flight_extention_home = ((len(voyage_on_the_day)) * 2) + 1
+
+        flight_number_out = "NA" + dest_number_str + str(flight_extention_out)
+        flight_number_home = "NA" + dest_number_str + str(flight_extention_home)
+
+        return flight_number_out, flight_number_home
