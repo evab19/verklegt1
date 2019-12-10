@@ -14,13 +14,7 @@ class Create_Menu:
         action = ""
         while(action != "b"):
             print(header_string("CREATE", 50))
-            print("1: Create employee")
-            print("2: Create destination")
-            print("3: Create airplane")
-            print("4: Create voyage")
-            print("b: Back")
-            # print("q: Quit")
-            print("")
+            print_create_menu()
 
             action = input("Choose an option: ").lower()
 
@@ -32,6 +26,10 @@ class Create_Menu:
                 self.__create_airplane()
             elif action == "4":
                 self.__create_voyage()
+            elif action == "b":
+                pass
+            else:
+                error_message()
 
 
     def __create_employee(self):
@@ -49,6 +47,7 @@ class Create_Menu:
             # print("q: Quit")
         print("")
 
+        choose_occupation()
         occupation_choice = input("Choose an option: ").lower()
         if occupation_choice == "1":
             occupation_str = "Captain"
@@ -58,35 +57,11 @@ class Create_Menu:
             occupation_str = "Flight Attendant"
         elif occupation_choice == "4":
             occupation_str = "Flight Service Manager"
-        elif occupation_choice == "b":
-            self.create_menu()
 
-        #self.__create_employee_header()
-        print("**  Please fill in the information below   **")
-        print("")
-        print("Occupation: ", occupation_str)
-        employee_id_str = occupation_str + str(ID_COUNTER)
-        print("ID: ", employee_id_str)
-        name_str = input("Name: ")
-        SO_str = input("Social Security Number: ")
-        address_str = input("Address: ")
-        home_phone_str = input("Home phone: ")
-        cell_phone_str = input("Cell phone: ")
-        email_str = input("E-mail: ")
-        if occupation_choice in ["1", "2"]:
-            print("")
-            print('list of airplanes')
-            airplane_license_str = input("Choose airplane: ")
-        print("")
-        correct = input("Is this information correct? (Y/N): ").lower()
-
-        if correct == "y":
-            print(header_string("SUCCESS!", 50))
-            new_employee = Employee(occupation_str, employee_id_str, name_str, SO_str, address_str, home_phone_str, cell_phone_str, email_str, airplane_license_str)
-            self.__llapi.add_employee(new_employee)
         if occupation_choice != "b":
             print("**  Please fill in the information below   **")
             print("")
+            print(please_fill_info())
             print("Occupation: ", occupation_str)
             name_str = input("Name: ")
             SO_str = input("Social Security Number: ")
@@ -103,17 +78,23 @@ class Create_Menu:
                     home_phone_str = self.__llapi.get_phone("Home")
                     cell_phone_str = self.__llapi.get_phone("Cell")
                     email_str = input("E-mail: ")
+                    if occupation_choice in ["1", "2"]:
+                        print("")
+                        print('list of airplanes')
+                        airplane_license_str = input("Choose airplane: ")
+                    else:
+                        airplane_license_str = "N/A"
                     print("")
                     correct = input("Is this information correct? (Y/N): ").lower()
 
                     if correct == "y":
-                        new_employee = Employee(occupation_str, name_str, SO_str, address_str, home_phone_str, cell_phone_str, email_str)
+                        new_employee = Employee(occupation_str, name_str, SO_str, address_str, home_phone_str, cell_phone_str, email_str, airplane_license_str)
                         if self.__llapi.add_employee(new_employee):
                             print(header_string("SUCCESS!", 50))
                             input("\n**   Press any key to return to main menu    **")
                         else:
                             print("Oh-oh something went wrong! Please fill in all information")
-                            input("\n**   Press any key to try again    **")
+                            try_again()
                             self.__create_employee()
                     else:
                         self.__create_employee()               
@@ -135,8 +116,7 @@ class Create_Menu:
             réttur formatti, t.d. tölustafir þar sem eiga að
             vera tölustafir og e-mail rétt skráð.'''
         print(header_string("CREATE DESTINATION", 50))
-        print("**  Please fill in the information below   **")
-        print("")
+        print(please_fill_info())
         country_str = input("Country: ")
         airport_str = input("Airport: ")
         duration_str = input("Flight duration (hh:mm): ")
@@ -155,14 +135,21 @@ class Create_Menu:
                 skráningar.'''
             input("**   Press enter to return to main menu    **")
         if correct == "n":
+            if self.__llapi.add_destination(new_destination):
+                print(header_string("SUCCESS!", 50))
+                input("\n**   Press any key to return to the main menu    **")
+            else:
+                print("Oh no something went wrong! Please try again.")
+                try_again()
+                self.__create_destination()
+        elif correct == "n":
             self.__create_destination()
         else:
-            self.__error_message()
+            error_message()
 
     def __create_airplane(self):
         print(header_string("CREATE AIRPLANE", 50))
-        print("**  Please fill in the information below   **")
-        print("")
+        print(please_fill_info())
         name_str = input("Name: ")
         model_str = input("Model: ")
         producer_str = input("Producer: ")
@@ -178,7 +165,7 @@ class Create_Menu:
         if correct == "n":
             self.__create_airplane()
         else:
-            self.__error_message()
+            error_message()
 
     def __create_flight(self):
         print(header_string("CREATE FLIGHT", 50))
@@ -201,6 +188,7 @@ class Create_Menu:
             self.__llapi.add_voyage(new_voyage)
             input("\n**   Press any key to return to main menu    **")
         else:
+        print(please_fill_info())
         airport = self.__llapi.get_destination()
         print_airport(airport)
 
@@ -239,23 +227,18 @@ class Create_Menu:
             pilots_model = self.__llapi.get_pilots_by_model(model)
             print_pilots_by_model(pilots_model)
 
-            captain_str = input("What Captain should be on this voyage (input SSN)? ")
-            ''' Virkni til að setja flugstjóra á voyage'''
-            ''' Útbúa villutjékk þannig að aðeins sé hægt að velja occupation C'''
+            captain_str = self.__llapi.get_crew("captain") 
+            pilot_str = self.__llapi.get_crew("pilot")
 
-            pilot_str = input("What Pilot should be on this voyage (input SSN)? ")
-            ''' Virkni til að setja flugmann á voyage'''
-            ''' Útbúa villutjékk þannig að aðeins sé hægt að velja occupation P'''
-            
-            ''' Prenta lausa FSM '''
             flight_attendants = self.__llapi.get_flight_attendants()
             print_flight_attendants(flight_attendants)
-            fsm_str = input("What Flight Service Manager should serve on this voyage (input SSN)? ")
-            ''' Virkni til að setja FSM á voyage'''
-            fa_on_voyage_str = input("Would you like to add a Fligh Attendant on this woyage? (Y/N): ").lower()
 
+            fsm_str = self.__llapi.get_crew("flight service manager")
+            fa_on_voyage_str = input("Would you like to add a Fligh Attendant on this woyage? (Y/N): ").lower()
             if fa_on_voyage_str == "y":
-                fa_str = input("What Flight Attendant should serve on this voyage (input SSN)? ")
+                fa_str = self.__llapi.get_crew("flight attendant")
+            else:
+                fa_str = ""
         
             correct = input("Is this information correct? (Y/N): ").lower()
     
@@ -270,8 +253,6 @@ class Create_Menu:
             new_voyage = Voyage(destination_str, new_departure_time, airplane_str)
             self.__llapi.add_voyage(new_voyage)
     
-    def __error_message(self):
-        print(header_string('WRONG INPUT, please select from the list!', 50))
-        input("\n**   Press any key to return to menu    **")
+
 
             self.__create_voyage()

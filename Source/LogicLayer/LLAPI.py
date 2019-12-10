@@ -61,6 +61,8 @@ class LLAPI:
 
     def get_week_schedule(self, employee, input_year, input_month, input_day):
         return self.__employee.get_week_schedule(employee, input_year, input_month, input_day)
+    def get_crew(self, occupation):
+        return self.__employee.get_crew(occupation)
 
 #### airplane
     def add_airplane(self, __airplane):

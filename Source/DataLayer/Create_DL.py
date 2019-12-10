@@ -11,6 +11,8 @@ class Create_DL:
         home_phone_str = employee.get_home_phone()
         cell_phone_str = employee.get_cell_phone()
         email_str = employee.get_email()
+        licence_str = employee.get_licence()
+        
         #licence_str = employee.get_licence()
         with open("./data/employee.csv", "a+", newline='', encoding='utf-8-sig') as csv_file:
             fieldnames = ['occupation', 'id', 'name', 'ssn', 'address', 'home_phone', 'cell_phone', 'email']
