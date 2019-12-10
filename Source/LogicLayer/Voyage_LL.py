@@ -137,6 +137,7 @@ class VoyageLL:
     def generate_flight_number(self, destination, voyage_year, voyage_month, voyage_day):
         voyage_on_the_day = self.__get.get_voyage_destination(destination, voyage_year, voyage_month, voyage_day)
         destination_lst = self.__get.get_destination()
+        dest_number_str = ""
         for index, item in enumerate(destination_lst):
             if destination == item.airport:
                 dest_number_int = index + 1
@@ -145,10 +146,10 @@ class VoyageLL:
                 else:
                     dest_number_str = str(dest_number_int)
 
-        flight_extention_out = (len(voyage_on_the_day)) * 2
-        flight_extention_home = ((len(voyage_on_the_day)) * 2) + 1
+            flight_extention_out = (len(voyage_on_the_day)) * 2
+            flight_extention_home = ((len(voyage_on_the_day)) * 2) + 1
 
-        flight_number_out = "NA" + dest_number_str + str(flight_extention_out)
-        flight_number_home = "NA" + dest_number_str + str(flight_extention_home)
+            flight_number_out = "NA" + dest_number_str + str(flight_extention_out)
+            flight_number_home = "NA" + dest_number_str + str(flight_extention_home)
 
         return flight_number_out, flight_number_home
