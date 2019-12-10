@@ -58,6 +58,32 @@ class Create_Menu:
             occupation_str = "Flight Attendant"
         elif occupation_choice == "4":
             occupation_str = "Flight Service Manager"
+        elif occupation_choice == "b":
+            self.create_menu()
+
+        #self.__create_employee_header()
+        print("**  Please fill in the information below   **")
+        print("")
+        print("Occupation: ", occupation_str)
+        employee_id_str = occupation_str + str(ID_COUNTER)
+        print("ID: ", employee_id_str)
+        name_str = input("Name: ")
+        SO_str = input("Social Security Number: ")
+        address_str = input("Address: ")
+        home_phone_str = input("Home phone: ")
+        cell_phone_str = input("Cell phone: ")
+        email_str = input("E-mail: ")
+        if occupation_choice in ["1", "2"]:
+            print("")
+            print('list of airplanes')
+            airplane_license_str = input("Choose airplane: ")
+        print("")
+        correct = input("Is this information correct? (Y/N): ").lower()
+
+        if correct == "y":
+            print(header_string("SUCCESS!", 50))
+            new_employee = Employee(occupation_str, employee_id_str, name_str, SO_str, address_str, home_phone_str, cell_phone_str, email_str, airplane_license_str)
+            self.__llapi.add_employee(new_employee)
         if occupation_choice != "b":
             print("**  Please fill in the information below   **")
             print("")
@@ -68,6 +94,32 @@ class Create_Menu:
             home_phone_str = input("Home phone: ")
             cell_phone_str = input("Cell phone: ")
             email_str = input("E-mail: ")
+            while not(self.__llapi.is_ssn_valid(SO_str)):
+                print("Please insert a valid 10-digit social security number.")
+                SO_str = input("Social Security Number: ")
+
+            if self.__llapi.check_if_ssn_unique(SO_str):
+                    address_str = input("Address: ")
+                    home_phone_str = self.__llapi.get_phone("Home")
+                    cell_phone_str = self.__llapi.get_phone("Cell")
+                    email_str = input("E-mail: ")
+                    print("")
+                    correct = input("Is this information correct? (Y/N): ").lower()
+
+                    if correct == "y":
+                        new_employee = Employee(occupation_str, name_str, SO_str, address_str, home_phone_str, cell_phone_str, email_str)
+                        if self.__llapi.add_employee(new_employee):
+                            print(header_string("SUCCESS!", 50))
+                            input("\n**   Press any key to return to main menu    **")
+                        else:
+                            print("Oh-oh something went wrong! Please fill in all information")
+                            input("\n**   Press any key to try again    **")
+                            self.__create_employee()
+                    else:
+                        self.__create_employee()               
+            else:
+                print("The SSN already exists!")
+                input("\n**   Press any key to return to the create menu    **")
             #airplane_license_str = input("Airplane license: ")
             print("")
             correct = input("Is this information correct? (Y/N): ").lower()
@@ -149,5 +201,77 @@ class Create_Menu:
             self.__llapi.add_voyage(new_voyage)
             input("\n**   Press any key to return to main menu    **")
         else:
+        airport = self.__llapi.get_destination()
+        print_airport(airport)
+
+        destination_str = self.__llapi.get_voyage_airport()
+        year_str, month_str, day_str = self.__llapi.get_departure_date()
+        hour_str, minutes_str = self.__llapi.get_departure_time()
+        new_departure_time = datetime.datetime(int(year_str), int(month_str), int(day_str), int(hour_str), int(minutes_str), 0).isoformat()
+       
+
+        availableplanes = self.__llapi.get_airplane_status(int(year_str), int(month_str), int(day_str))
+        temp_lst = []
+        for item in availableplanes:
+            temp_lst.append(item.name)
+
+        print_airplane_name_and_models(availableplanes)
+        print("The listed airplanes are available for the given date and time")
+        
+        air_input = 0
+        while air_input != 1:
+            airplane_str = input("Airplane (name): ")
+            if airplane_str not in temp_lst:
+                print("Wrong input or airplane not available")
+                print("Please choose an airplane from the list")
+            else:
+                air_input = 1
+
+        print("")
+        man_voyage = input("Would you like to man the voyage at this time? (Y/N): ").lower()
+
+        if man_voyage == "y":
+            ''' Prenta lausa flugstjóra'''
+            airplanes = self.__llapi.get_airplane()
+            for item in airplanes:
+                if airplane_str == item.name:
+                    model = item.model
+            pilots_model = self.__llapi.get_pilots_by_model(model)
+            print_pilots_by_model(pilots_model)
+
+            captain_str = input("What Captain should be on this voyage (input SSN)? ")
+            ''' Virkni til að setja flugstjóra á voyage'''
+            ''' Útbúa villutjékk þannig að aðeins sé hægt að velja occupation C'''
+
+            pilot_str = input("What Pilot should be on this voyage (input SSN)? ")
+            ''' Virkni til að setja flugmann á voyage'''
+            ''' Útbúa villutjékk þannig að aðeins sé hægt að velja occupation P'''
+            
+            ''' Prenta lausa FSM '''
+            flight_attendants = self.__llapi.get_flight_attendants()
+            print_flight_attendants(flight_attendants)
+            fsm_str = input("What Flight Service Manager should serve on this voyage (input SSN)? ")
+            ''' Virkni til að setja FSM á voyage'''
+            fa_on_voyage_str = input("Would you like to add a Fligh Attendant on this woyage? (Y/N): ").lower()
+
+            if fa_on_voyage_str == "y":
+                fa_str = input("What Flight Attendant should serve on this voyage (input SSN)? ")
+        
+            correct = input("Is this information correct? (Y/N): ").lower()
+    
+            if correct == "y":
+                print(header_string("SUCCESS!", 50))
+                new_voyage = Voyage(destination_str, new_departure_time, airplane_str, captain_str, pilot_str, fsm_str, fa_str)
+                self.__llapi.add_voyage(new_voyage)
+                input("**   Press any key to return to main menu    **")
+            else:
+                self.__create_voyage()
+        else:
+            new_voyage = Voyage(destination_str, new_departure_time, airplane_str)
+            self.__llapi.add_voyage(new_voyage)
+    
+    def __error_message(self):
+        print(header_string('WRONG INPUT, please select from the list!', 50))
+        input("\n**   Press any key to return to menu    **")
 
             self.__create_voyage()

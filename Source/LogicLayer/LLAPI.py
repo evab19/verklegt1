@@ -53,6 +53,15 @@ class LLAPI:
     def get_flight_attendants(self):
         return self.__employee.get_flight_attendants()
 
+    def get_phone(self, name):
+        return self.__employee.get_phone(name)
+
+    def get_week_lst(self, input_year, input_month, input_day):
+        return self.__employee.get_start_of_week(input_year, input_month, input_day)
+
+    def get_week_schedule(self, employee, input_year, input_month, input_day):
+        return self.__employee.get_week_schedule(employee, input_year, input_month, input_day)
+
 #### airplane
     def add_airplane(self, __airplane):
         if self.__airplane.is_valid_airplane(__airplane):
@@ -60,6 +69,9 @@ class LLAPI:
  
     def get_airplane(self):
         return self.__airplane.get_airplane()
+    
+    def get_airplane_status(self, year_int, month_int, day_int):
+        return self.__airplane.get_airplane_status(year_int, month_int, day_int)
 
 #### voyage
     def add_voyage(self, __voyage):
@@ -68,3 +80,24 @@ class LLAPI:
  
     def get_voyage(self):
         return self.__voyage.get_voyage()
+    def get_voyage_airport(self):
+        return self.__voyage.get_voyage_airport()
+
+    def add_voyage(self, voyage):
+        #if self.is_valid_voyage(voyage):
+        self.__voyage.add_voyage(voyage)
+ 
+    def get_voyage_destination(self, voyage_destination, year_int, month_int, day_int):
+        return self.__voyage.get_voyage_destination(voyage_destination, year_int, month_int, day_int)
+    
+    def get_the_voyage(self, voyage_destination, year_int, month_int, day_int, flight_number):
+        return self.__voyage.get_the_voyage(voyage_destination, year_int, month_int, day_int, flight_number)
+
+    def get_all_voyage_at_date(self, year_int, month_int, day_int):
+        return self.__voyage.get_all_voyage_at_date(year_int, month_int, day_int)
+        
+    def get_departure_date(self):
+        return self.__voyage.get_departure_date()
+
+    def get_departure_time(self):
+        return self.__voyage.get_departure_time()

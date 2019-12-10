@@ -63,6 +63,18 @@ class Get_Menu:
             model_to_find = input("What status would you like to get? ")
             pilots_model = self.__llapi.get_pilots_by_model(model_to_find)
             print_pilots_by_model(pilots_model)
+        elif action == "7":
+            print(header_string("GET WEEK SCHEDULE FOR AN EMPLOYEE", 50))
+            employee = input("Use SSN for the employee you would like to get the schedule for: ")
+            print("\nPlease insert date and you will get the week schedule that includes that date.")
+            input_year = input("\nYear: ")
+            input_month = input("Month: ")
+            input_day = input("Day: ")
+            employee_information = self.__llapi.get_employee_information(employee)
+            week_dates = self.__llapi.get_week_lst(input_year, input_month, input_day)
+            week_schedule_lst = self.__llapi.get_week_schedule(employee, input_year, input_month, input_day)
+            print_employee_schedule(employee_information, week_dates, week_schedule_lst)
+        
 
     def __get_destination(self):
         print(header_string("GET DESTINATION", 50))
