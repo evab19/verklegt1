@@ -15,13 +15,7 @@ class Create_Menu:
         action = ""
         while(action != "b"):
             print(header_string("CREATE", 50))
-            print("1: Create employee")
-            print("2: Create destination")
-            print("3: Create airplane")
-            print("4: Create voyage")
-            print("b: Back")
-            # print("q: Quit")
-            print("")
+            print_create_menu()
 
             action = input("Choose an option: ").lower()
 
@@ -54,8 +48,7 @@ class Create_Menu:
             occupation_str = "Flight Service Manager"
 
         if occupation_choice != "b":
-            print("**  Please fill in the information below   **")
-            print("")
+            print(please_fill_info())
             print("Occupation: ", occupation_str)
             name_str = input("Name: ")
             SO_str = input("Social Security Number: ")
@@ -94,8 +87,7 @@ class Create_Menu:
     
     def __create_destination(self):
         print(header_string("CREATE DESTINATION", 50))
-        print("**  Please fill in the information below   **")
-        print("")
+        print(please_fill_info())
         country_str = input("Country: ")
         airport_str = input("Airport: ")
         duration_str = input("Flight duration (hh:mm): ")
@@ -121,8 +113,7 @@ class Create_Menu:
 
     def __create_airplane(self):
         print(header_string("CREATE AIRPLANE", 50))
-        print("**  Please fill in the information below   **")
-        print("")
+        print(please_fill_info())
         name_str = input("Name: ")
         model_str = input("Model: ")
         producer_str = input("Producer: ")

@@ -11,7 +11,7 @@ class Get_Menu:
         action = ""
         while(action != "b"):
             print(header_string("GET", 50))
-            get_menu()
+            print_get_menu()
             action = input("Choose an option: ").lower()
 
             if action == "1":
@@ -71,7 +71,6 @@ class Get_Menu:
         print(header_string("GET DESTINATION", 50))
         destination = self.__llapi.get_destination()
         print_destination(destination)
-
 
 
     def __get_airplane_information(self):

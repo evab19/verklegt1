@@ -12,8 +12,15 @@ def please_fill_info():
     string = ("\n" + "**  Please fill in the information below   **" + "\n")
     return string
 
+def print_create_menu():
+    print("1: Create employee")
+    print("2: Create destination")
+    print("3: Create airplane")
+    print("4: Create voyage")
+    print("b: Back")
+    print("")
 
-def get_menu():
+def print_get_menu():
     print("1: Get employee information")
     print("2: Get destination")
     print("3: Get airplane information")
