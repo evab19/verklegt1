@@ -142,9 +142,9 @@ class VoyageLL:
             if destination == item.airport:
                 dest_number_int = index + 1
                 if dest_number_int < 10:
-                    dest_number_str = "0" + str(dest_number_int)
+                    dest_number_str += "0" + str(dest_number_int)
                 else:
-                    dest_number_str = str(dest_number_int)
+                    dest_number_str += str(dest_number_int)
 
             flight_extention_out = (len(voyage_on_the_day)) * 2
             flight_extention_home = ((len(voyage_on_the_day)) * 2) + 1

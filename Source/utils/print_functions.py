@@ -35,7 +35,7 @@ def get_employee_information():
     print("4: Employee status")
     print("5: All pilots by airplane model")
     print("6: Pilots by an airplane model")
-    print("7: Testing")
+    print("7: Employee week schedule")
     print("b: Back")
     print("")
 
@@ -217,31 +217,101 @@ def print_the_voyage(the_voyage_lst):
     input("\n**   Press any key to return to main menu    **")
     print("")
 
-def print_employee_schedule():
-    length = 23
+def print_employee_schedule(employee, week_lst, schedule_lst):
+    length = 17
     times = 7
+    length_header = length * 3
+    employee_name = employee[0].name
+    start_date = str(week_lst[0])
+    start_date_print = str(start_date[:4]) + "-" + str(start_date[4:6]) + "-" + str(start_date[6:])
+    end_date = str(week_lst[6])
+    end_date_print = str(end_date[:4]) + "-" + str(end_date[4:6]) + "-" + str(end_date[6:])
+
+    def check_hour_min(check_num1, check_num2):
+        if check_num1 < 10:
+            check_num1 = "0" + str(check_num1)
+        if check_num2 < 10:
+            check_num2 = "0" + str(check_num2)
+        return check_num1, check_num2
+    
+    def parse_hour_min(temp_dep_time, temp_arr_time):
+        dep_time = dateutil.parser.parse(temp_dep_time)
+        dep_hour, dep_min = dep_time.hour, dep_time.minute
+        dep_hour, dep_min = check_hour_min(dep_hour, dep_min)
+        
+        arr_time = dateutil.parser.parse(temp_arr_time)
+        arr_hour, arr_min = arr_time.hour, arr_time.minute
+        arr_hour, arr_min = check_hour_min(arr_hour, arr_min)
+        
+        return dep_hour, dep_min, arr_hour, arr_min
+
+    if schedule_lst[0] == "N/A":
+        mon_destination, mon_departure, mon_arrival = "DAY OFF", "---", "---"
+    else:
+        mon_dep_hour, mon_dep_min, mon_arr_hour, mon_arr_min = parse_hour_min(schedule_lst[0].departure, schedule_lst[0].arrival_back_home)
+        mon_destination, mon_departure, mon_arrival = schedule_lst[0].destination, str(mon_dep_hour) + ":" + str(mon_dep_min), str(mon_arr_hour) + ":" + str(mon_arr_min)
+    if schedule_lst[1] == "N/A":
+        tue_destination, tue_departure, tue_arrival = "DAY OFF", "---", "---"
+    else:
+        tue_dep_hour, tue_dep_min, tue_arr_hour, tue_arr_min = parse_hour_min(schedule_lst[1].departure, schedule_lst[1].arrival_back_home)
+        tue_destination, tue_departure, tue_arrival = schedule_lst[1].destination, str(tue_dep_hour) + ":" + str(tue_dep_min), str(tue_arr_hour) + ":" + str(tue_arr_min)
+    if schedule_lst[2] == "N/A":
+        wed_destination, wed_departure, wed_arrival = "DAY OFF", "---", "---"
+    else:
+        wed_dep_hour, wed_dep_min, wed_arr_hour, wed_arr_min = parse_hour_min(schedule_lst[2].departure, schedule_lst[2].arrival_back_home)
+        wed_destination, wed_departure, wed_arrival = schedule_lst[2].destination, str(wed_dep_hour) + ":" + str(wed_dep_min), str(wed_arr_hour) + ":" + str(wed_arr_min)
+    if schedule_lst[3] == "N/A":
+        thu_destination, thu_departure, thu_arrival = "DAY OFF", "---", "---"
+    else:
+        thu_dep_hour, thu_dep_min, thu_arr_hour, thu_arr_min = parse_hour_min(schedule_lst[3].departure, schedule_lst[3].arrival_back_home)
+        thu_destination, thu_departure, thu_arrival = schedule_lst[3].destination, str(thu_dep_hour) + ":" + str(thu_dep_min), str(thu_arr_hour) + ":" + str(thu_arr_min)
+    if schedule_lst[4] == "N/A":
+        fri_destination, fri_departure, fri_arrival = "DAY OFF", "---", "---"
+    else:
+        fri_dep_hour, fri_dep_min, fri_arr_hour, fri_arr_min = parse_hour_min(schedule_lst[4].departure, schedule_lst[4].arrival_back_home)
+        fri_destination, fri_departure, fri_arrival = schedule_lst[4].destination, str(fri_dep_hour) + ":" + str(fri_dep_min), str(fri_arr_hour) + ":" + str(fri_arr_min)
+    if schedule_lst[5] == "N/A":
+        sat_destination, sat_departure, sat_arrival = "DAY OFF", "---", "---"
+    else:
+        sat_dep_hour, sat_dep_min, sat_arr_hour, sat_arr_min = parse_hour_min(schedule_lst[5].departure, schedule_lst[5].arrival_back_home)
+        sat_destination, sat_departure, sat_arrival = schedule_lst[5].destination, str(sat_dep_hour) + ":" + str(sat_dep_min), str(sat_arr_hour) + ":" + str(sat_arr_min)
+    if schedule_lst[6] == "N/A":
+        sun_destination, sun_departure, sun_arrival = "DAY OFF", "---", "---"
+    else:
+        sun_dep_hour, sun_dep_min, sun_arr_hour, sun_arr_min = parse_hour_min(schedule_lst[6].departure, schedule_lst[6].arrival_back_home)
+        sun_destination, sun_departure, sun_arrival = schedule_lst[6].destination, str(sun_dep_hour) + ":" + str(sun_dep_min), str(sun_arr_hour) + ":" + str(sun_arr_min)
+
     day_1, day_2, day_3, day_4, day_5, day_6, day_7 = "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"
-    print("\nSchedule for Jón Jónsson")
-    print("Week 3, 2020-01-13 to 2020-01-19")
-    print("\n{:-<169}".format(""))
-    print(("|" + " " * length) * times + '|')
-    print("|" + day_1.center((length), " ") + "|" + day_2.center((length), " ") + "|" + day_3.center((length), " ") + "|" + day_4.center((length), " ") + "|" + day_5.center((length), " ") + "|" + day_6.center((length), " ") + "|" + day_7.center((length), " ") + "|")
-    print(("|" + " " * length) * times + '|')
-    print("{:-<169}".format(""))
-    print(("|" + " " * length) * times + '|')
-    print(("|" + "Destination:".center(length)) * times + "|")
-    print(("|" + "Nuuk".center(length)) * times + "|")
-    print(("|" + " " * length) * times + '|')
-    print(("|" + "Departure:".center(length)) * times + "|")
-    print(("|" + "10:00".center(length)) * times + "|")
-    print(("|" + " " * length) * times + '|')
-    print(("|" + "Arrival:".center(length)) * times + "|")
-    print(("|" + "17:00".center(length)) * times + "|")
-    print(("|" + " " * length) * times + '|')
-    print("{:-<169}".format(""))
+    
+    temp_schedule_str = " Schedule for " + employee_name
+    temp_date_str = " For the week of " + start_date_print + " to " + end_date_print
+    schedule_str = "\n" + "-" * (length_header + 4) + "\n"
+    schedule_str += "|" + (" " * (length_header + 2)) + "|\n"
+    schedule_str += "|" + temp_schedule_str + (" " * ((length_header + 2) - len(temp_schedule_str))) + "|\n"
+    schedule_str += "|" + temp_date_str + (" " * ((length_header + 2) - len(temp_date_str))) + "|\n"
+    schedule_str += "|" + (" " * (length_header + 2)) + "|\n"
+    schedule_str += "-" * ((length * times) + 8) + "\n"
+    schedule_str += (("|" + " " * length) * times) + "|\n"
+    schedule_str += ("|" + day_1.center((length), " ") + "|" + day_2.center((length), " ") + "|" + day_3.center((length), " ") + "|" + day_4.center((length), " ") + "|" + day_5.center((length), " ") + "|" + day_6.center((length), " ") + "|" + day_7.center((length), " ") + "|\n")
+    schedule_str += (("|" + " " * length) * times) + "|\n"
+    schedule_str += "-" * ((length * times) + 8) + "\n"
+    schedule_str += (("|" + " " * length) * times) + "|\n"
+    schedule_str += (("|" + "Destination:".center(length)) * times + "|\n")
+    schedule_str += ("|" + mon_destination.center(length) + "|" + tue_destination.center(length) + "|" + wed_destination.center(length) + "|" + thu_destination.center(length) + "|" + fri_destination.center(length) + "|" + sat_destination.center(length) + "|" + sun_destination.center(length) + "|\n")
+    schedule_str += (("|" + " " * length) * times + '|\n')
+    schedule_str += (("|" + "Departure".center(length)) * times + "|\n")
+    schedule_str += (("|" + "from Iceland:".center(length)) * times + "|\n")
+    schedule_str += ("|" + mon_departure.center(length) + "|" + tue_departure.center(length) + "|" + wed_departure.center(length) + "|" + thu_departure.center(length) + "|" + fri_departure.center(length) + "|" + sat_departure.center(length) + "|" + sun_departure.center(length) + "|\n")
+    schedule_str += (("|" + " " * length) * times + '|\n')
+    schedule_str += (("|" + "Arrival".center(length)) * times + "|\n")
+    schedule_str += (("|" + "in Iceland:".center(length)) * times + "|\n")
+    schedule_str += ("|" + mon_arrival.center(length) + "|" + tue_arrival.center(length) + "|" + wed_arrival.center(length) + "|" + thu_arrival.center(length) + "|" + fri_arrival.center(length) + "|" + sat_arrival.center(length) + "|" + sun_arrival.center(length) + "|\n")
+    schedule_str += (("|" + " " * length) * times + '|\n')
+    schedule_str += ("{:-<127}".format(""))
+    print(schedule_str)
     input("\n**   Press any key to return to main menu    **")
     print("")
-
+    
 def choose_occupation():
     print("** Please choose occupation **")
     print("1: Captain")

@@ -206,3 +206,22 @@ class Get_DL:
                         the_voyage_by_date = Voyage(row['destination'], row['departure_date_time'], row['airplane_name'], row['captain_ssn'], row['pilot_ssn'], row['fsm_ssn'], row['fa_ssn'], row['flight_out'], row['flight_in'])
                         voyage_destination_lst.append(the_voyage_by_date)
         return voyage_destination_lst
+
+    def get_voyage_by_date_and_employee(self, employee, year_int, month_int, day_int):
+        # voyage_destination_lst = []
+        # if voyage_destination_lst == []:
+        with open("./data/voyage.csv", newline='', encoding='utf-8-sig') as csvfile:
+            reader = csv.DictReader(csvfile)
+            the_voyage_by_date_and_employee = "N/A"
+            for row in reader:
+                voyage_departure = dateutil.parser.parse(row['departure_date_time'])
+                voyage_year = voyage_departure.year
+                voyage_month = voyage_departure.month
+                voyage_day = voyage_departure.day
+                if voyage_year == year_int and voyage_month == month_int and voyage_day == day_int:
+                    if row['captain_ssn'] == employee or row['pilot_ssn'] == employee or row['fsm_ssn'] == employee or row['fa_ssn'] == employee:
+                        the_voyage_by_date_and_employee = Voyage(row['destination'], row['departure_date_time'], row['airplane_name'], row['captain_ssn'], row['pilot_ssn'], row['fsm_ssn'], row['fa_ssn'], row['flight_out'], row['flight_in'], row['arrival_at_dest'], row['departure_from_dest'], row['arrival_back_home'])
+                    # voyage_destination_lst.append(the_voyage_by_date)
+                    # else:
+                    #     the_voyage_by_date_and_employee = "N/A"
+            return the_voyage_by_date_and_employee

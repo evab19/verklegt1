@@ -1,12 +1,16 @@
 from models.Employee import Employee
-from datetime import date
 import dateutil.parser
+from models.Voyage import Voyage
+from DataLayer.Get_DL import Get_DL
+from datetime import *
+import time
 
 class EmployeeLL:
 
     def __init__(self, dapi_in):
         self.__employee_repo = dapi_in 
         self.__employee = Employee()
+        self.__get = Get_DL()
 
     def add_employee(self, employee):
         if self.is_valid_employee(employee):
@@ -87,6 +91,7 @@ class EmployeeLL:
     def get_flight_attendants(self):
         return self.__employee_repo.get_flight_attendants()
 
+<<<<<<< HEAD
     def get_employee_status(self, year_int, month_int, day_int):
         employees = self.__employee_repo.get_employee()
         voyages_at_same_date = self.__employee_repo.get_all_voyage_at_date(year_int, month_int, day_int)
@@ -126,3 +131,60 @@ class EmployeeLL:
         
         else:
             return staff_ssn_str
+=======
+    def get_week_schedule(self, employee, input_year, input_month, input_day):
+        dates_of_week = self.get_start_of_week(input_year, input_month, input_day)
+        
+        schedule_for_employee = self.get_schedule(employee, dates_of_week)
+
+        return schedule_for_employee
+    
+    def get_input_date_string(self, input_year, input_month, input_day):
+        date_weekday = datetime(int(input_year), int(input_month), int(input_day)).isoweekday()
+        date_str = str(input_year) + str(input_month) + str(input_day)
+        return date_weekday, date_str
+
+    def get_start_of_week(self, input_year, input_month, input_day):
+        input_date_weekday, input_date_str = self.get_input_date_string(input_year, input_month, input_day)
+
+        if input_date_weekday == 1:
+            dates_of_week = self.get_year_month_day(input_date_str)
+        elif input_date_weekday == 2:
+            temp_date_str = str(((datetime.strptime(input_date_str, "%Y%m%d")) + timedelta(days=-1)).strftime("%Y%m%d"))
+            dates_of_week = self.get_year_month_day(temp_date_str)
+        elif input_date_weekday == 3:
+            temp_date_str = str(((datetime.strptime(input_date_str, "%Y%m%d")) + timedelta(days=-2)).strftime("%Y%m%d"))
+            dates_of_week = self.get_year_month_day(temp_date_str)
+        elif input_date_weekday == 4:
+            temp_date_str = str(((datetime.strptime(input_date_str, "%Y%m%d")) + timedelta(days=-3)).strftime("%Y%m%d"))
+            dates_of_week = self.get_year_month_day(temp_date_str)
+        elif input_date_weekday == 5:
+            temp_date_str = str(((datetime.strptime(input_date_str, "%Y%m%d")) + timedelta(days=-4)).strftime("%Y%m%d"))
+            dates_of_week = self.get_year_month_day(temp_date_str)
+        elif input_date_weekday == 6:
+            temp_date_str = str(((datetime.strptime(input_date_str, "%Y%m%d")) + timedelta(days=-5)).strftime("%Y%m%d"))
+            dates_of_week = self.get_year_month_day(temp_date_str)
+        elif input_date_weekday == 7:
+            temp_date_str = str(((datetime.strptime(input_date_str, "%Y%m%d")) + timedelta(days=-6)).strftime("%Y%m%d"))
+            dates_of_week = self.get_year_month_day(temp_date_str)
+        return dates_of_week
+
+    def get_year_month_day(self, start_date):
+        week_dates_lst = []
+        i = 0
+        while i < 7:
+            week_day_str = str(((datetime.strptime(start_date, "%Y%m%d")) + timedelta(days=i)).strftime("%Y%m%d"))
+            week_dates_lst.append(week_day_str)
+            i += 1
+        return week_dates_lst
+
+    def get_schedule(self, employee, dates_lst):
+        schedule_lst = []
+        for item in dates_lst:
+            dates_year = item[:4]
+            dates_month = item[4:6]
+            dates_day = item[6:]
+            a_voyage = self.__get.get_voyage_by_date_and_employee(employee, int(dates_year), int(dates_month), int(dates_day))
+            schedule_lst.append(a_voyage)
+        return schedule_lst
+>>>>>>> 5edc90f... Virkni sett upp til að sækja viku áætlun starfsm.
