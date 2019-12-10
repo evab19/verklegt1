@@ -8,19 +8,7 @@ def header_string(text, length):
     string += ("*" * length + "\n")
     return string
 
-def please_fill_info():
-    string = ("\n" + "**  Please fill in the information below   **" + "\n")
-    return string
-
-def print_create_menu():
-    print("1: Create employee")
-    print("2: Create destination")
-    print("3: Create airplane")
-    print("4: Create voyage")
-    print("b: Back")
-    print("")
-
-def print_get_menu():
+def get_menu():
     print("1: Get employee information")
     print("2: Get destination")
     print("3: Get airplane information")
@@ -39,14 +27,10 @@ def get_employee_information():
     print("b: Back")
     print("")
 
-def print_employee(employees):
-    print("{:-<151}".format(""))
-    print("{}{:13}{}{:25}{}{:12}{}{:20}{}{:12}{}{:12}{}{:30}{}{:10}{}{:10}{}".format('| ', 'Occupation', '| ', 'Name', '| ', 'SSN', '| ', 'Address', '| ', 'Home phone', '| ', 'Cell phone', '| ', 'Email', '| ', 'Licence', '| ', 'Status **' '|'))
-
 def print_employee_by_occupation():
     print("C for Captain")
     print("P for Pilot")
-    print("FA for Flig Attendant")
+    print("FA for Flight Attendant")
     print("FSM for Flight Service Manager")
     print("")
 
@@ -99,8 +83,9 @@ def print_airport(destination):
     print("{}{:25}{}".format('| ', 'Airport', '|'))
     print("{:-<28}".format(""))
     for item in destination:
-        print(item.airport)
+        print("{}{:25}{}".format('| ', item.airport, '|'))
     print("{:-<28}".format(""))
+    print("")
 
 def print_possible_employee_for_update(employees):
     print("{:-<57}".format(""))
@@ -134,21 +119,31 @@ def print_airplane_models(airplanes):
     for item in airplanes:
         unique_models.add(item.model)
     for item in unique_models:
-        print(item)
-    # print(unique_models)
+        print("{}{:20}{}".format('| ', item, '|'))
     print("{:-<23}".format(""))
+    print("")
+
+def print_airplane_name_and_models(airplanes):
+    print("{:-<45}".format(""))
+    print("{}{:20}{}{:20}{}".format('| ', 'Name', '| ', 'Model', '|'))
+    print("{:-<45}".format(""))
+    # unique_models = set()
+    airplanes = sorted(airplanes, key=lambda x: x.model)
+    for item in airplanes:
+        print("{}{:20}{}{:20}{}".format('| ', item.name, '| ', item.model, '|'))
+    print("{:-<45}".format(""))
+    print("")
 
 def print_pilots_by_model(pilots_model):
     print("{:-<163}".format(""))
     print("{}{:10}{}{:13}{}{:25}{}{:12}{}{:20}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', 'Licence','| ', 'Occupation *', '| ', 'Name', '| ', 'SSN', '| ', 'Address', '| ', 'Home phone', '| ', 'Cell phone', '| ', 'Email', '| ', 'Status **', '|'))
     print("{:-<163}".format(""))
+    pilots_model = sorted(pilots_model, key=lambda x: x.occupation)
     for item in pilots_model:
         licence, occupation , name, ssn, address, home_phone, cell_phone, email, licence, emp_status = item.licence, item.occupation , item.name, item.ssn, item.address, item.home_phone, item.cell_phone, item.email, item.licence, item.emp_status
         print("{}{:10}{}{:13}{}{:25}{}{:12}{}{:20}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', licence,'| ', occupation, '| ', name, '| ', ssn, '| ', address, '| ', home_phone, '| ', cell_phone, '| ', email, '| ', emp_status, '|'))
     print("{:-<163}".format(""))
     print("* C = Captain, P = Pilot")
-    input("\n**   Press any key to return to main menu    **")
-    print("")
     input("\n**   Press any key to continue    **")
     print("")
 
@@ -314,10 +309,3 @@ def choose_occupation():
     print("4: Flight Service Manager")
     print("b: Back")
     print("")
-
-def try_again():
-    input("\n**   Press any key to try again    **")
-
-def error_message():
-    print(header_string('WRONG INPUT, please select from the list!', 50))
-    input("\n**   Press any key to return to menu    **")

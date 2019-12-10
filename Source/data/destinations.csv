@@ -1,7 +1,6 @@
-﻿country,airport,duration,distance,contact_name,contact_phone
-Greenland,Nuuk,3:20,500,Gunnsteinn,1234567
-Greenland,Kulusuk,1:50,250,Þorsteinn,2345671
-Faroe Island,Thorshavn,1:25,240,Eva,3456712
-Shetland,Tingwall,2:00,300,Thelma,4567123
-Svalbard,Longyearbyen,5:00,800,Ingibjörg,5671234
-Íslandia,Básendi,10:00,200,Birna,2221144
+country,airport,duration,distance,contact_name,contact_phone
+Greenland,Nuuk,3:20,500,Gunnsteinn,1234567
+Greenland,Kulusuk,1:50,250,Þorsteinn,2345671
+Faroe Island,Thorshavn,1:25,240,Eva,3456712
+Shetland,Tingwall,2:00,300,Thelma,4567123
+Svalbard,Longyearbyen,5:00,800,Ingibjörg,5671234

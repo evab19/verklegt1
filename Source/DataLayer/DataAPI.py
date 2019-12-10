@@ -23,6 +23,10 @@ class DataAPI:
 
     def add_voyage(self, voyage):
         return self.__create.add_voyage(voyage)
+    
+    def check_if_ssn_unique(self, ssn):
+        employees = self.get_employee()
+        return not(any(employee.ssn == ssn for employee in employees))
 
 # get föll
     def get_employee(self):
@@ -51,8 +55,11 @@ class DataAPI:
     def get_airplane(self):
         return self.__get.get_airplane()
 
-    def get_voyage(self):
-        return self.__get.get_voyage()
+    def get_voyage_destination(self, voyage_destination, year_int, month_int, day_int):
+        return self.__get.get_voyage_destination(voyage_destination, year_int, month_int, day_int)
+    
+    def get_the_voyage(self, voyage_destination, year_int, month_int, day_int, flight_number):
+        return self.__get.get_the_voyage(voyage_destination, year_int, month_int, day_int, flight_number)
 
     def get_all_voyage_at_date(self, year_int, month_int, day_int):
         return self.__get.get_all_voyage_at_date(year_int, month_int, day_int)
