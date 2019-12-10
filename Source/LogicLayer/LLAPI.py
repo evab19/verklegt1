@@ -64,6 +64,9 @@ class LLAPI:
     def get_phone(self, name):
         return self.__employee.get_phone(name)
 
+    def get_crew(self, occupation):
+        return self.__employee.get_crew(occupation)
+
 #### airplane
     def add_airplane(self, airplane):
         if self.__airplane.is_valid_airplane(airplane):

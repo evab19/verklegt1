@@ -153,3 +153,5 @@ class VoyageLL:
             flight_number_home = "NA" + dest_number_str + str(flight_extention_home)
 
         return flight_number_out, flight_number_home
+
+

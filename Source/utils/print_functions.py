@@ -149,7 +149,6 @@ def print_pilots_by_model(pilots_model):
         print("{}{:10}{}{:13}{}{:25}{}{:12}{}{:20}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', licence,'| ', occupation, '| ', name, '| ', ssn, '| ', address, '| ', home_phone, '| ', cell_phone, '| ', email, '| ', emp_status, '|'))
     print("{:-<163}".format(""))
     print("* C = Captain, P = Pilot")
-    input("\n**   Press any key to continue    **")
     print("")
 
 def print_flight_attendants(flight_attendants):
@@ -247,3 +246,7 @@ def choose_occupation():
 
 def try_again():
     input("\n**   Press any key to try again    **")
+
+def error_message():
+    print(header_string('WRONG INPUT, please select from the list!', 50))
+    input("\n**   Press any key to return to menu    **")

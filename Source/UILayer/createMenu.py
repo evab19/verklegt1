@@ -36,7 +36,7 @@ class Create_Menu:
             elif action == "b":
                 pass
             else:
-                self.__error_message()
+                error_message()
 
 
     def __create_employee(self):
@@ -117,7 +117,7 @@ class Create_Menu:
         elif correct == "n":
             self.__create_destination()
         else:
-            self.__error_message()
+            error_message()
 
     def __create_airplane(self):
         print(header_string("CREATE AIRPLANE", 50))
@@ -138,7 +138,7 @@ class Create_Menu:
         if correct == "n":
             self.__create_airplane()
         else:
-            self.__error_message()
+            error_message()
 
     def __create_flight(self):
         print(header_string("CREATE FLIGHT", 50))
@@ -185,30 +185,16 @@ class Create_Menu:
             pilots_model = self.__llapi.get_pilots_by_model(model)
             print_pilots_by_model(pilots_model)
 
-            captain_str = input("What Captain should be on this voyage (input SSN)? ")
-            ''' Virkni til að setja flugstjóra á voyage'''
-            ''' Útbúa villutjékk þannig að aðeins sé hægt að velja occupation C'''
-            while not(self.__llapi.is_ssn_valid(captain_str)):
-                print("Please insert a valid 10-digit social security number. ")
-                captain_str = input("What Captain should be on this voyage (input SSN)? ")
+            captain_str = self.__llapi.get_crew("captain") 
+            pilot_str = self.__llapi.get_crew("pilot")
 
-            while self.__llapi.check_if_ssn_unique(captain_str):
-                print("This employee does not exist.")
-                captain_str = input("What Captain should be on this voyage (input SSN)? ")
-
-            pilot_str = input("What Pilot should be on this voyage (input SSN)? ")
-            ''' Virkni til að setja flugmann á voyage'''
-            ''' Útbúa villutjékk þannig að aðeins sé hægt að velja occupation P'''
-            
-            ''' Prenta lausa FSM '''
             flight_attendants = self.__llapi.get_flight_attendants()
             print_flight_attendants(flight_attendants)
-            fsm_str = input("What Flight Service Manager should serve on this voyage (input SSN)? ")
-            ''' Virkni til að setja FSM á voyage'''
-            fa_on_voyage_str = input("Would you like to add a Fligh Attendant on this woyage? (Y/N): ").lower()
 
+            fsm_str = self.__llapi.get_crew("flight service manager")
+            fa_on_voyage_str = input("Would you like to add a Fligh Attendant on this woyage? (Y/N): ").lower()
             if fa_on_voyage_str == "y":
-                fa_str = input("What Flight Attendant should serve on this voyage (input SSN)? ")
+                fa_str = self.__llapi.get_crew("flight attendant")
             else:
                 fa_str = ""
         
@@ -225,7 +211,5 @@ class Create_Menu:
             new_voyage = Voyage(destination_str, new_departure_time, airplane_str)
             self.__llapi.add_voyage(new_voyage)
     
-    def __error_message(self):
-        print(header_string('WRONG INPUT, please select from the list!', 50))
-        input("\n**   Press any key to return to menu    **")
+
 

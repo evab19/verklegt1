@@ -112,3 +112,17 @@ class EmployeeLL:
         parseDate = dateutil.parser.parse(date)
         year, month, day, hour, min = parseDate.year, parseDate.month, parseDate.day, parseDate.hour, parseDate.minute
         return year, month, day
+
+    def get_crew(self, occupation):
+        ''' returns the ssn of a valid employee for each role '''
+        staff_ssn_str = input("What {} should be on this voyage (input SSN)? ".format(occupation))
+        while not(self.is_ssn_valid(staff_ssn_str)):
+            print("Please insert a valid 10-digit social security number. ")
+            staff_ssn_str = input("What {} should be on this voyage (input SSN)? ".format(occupation))
+
+        while self.check_if_ssn_unique(staff_ssn_str):
+            print("This employee does not exist.")
+            staff_ssn_str = input("What {} should be on this voyage (input SSN)? ".format(occupation))
+        
+        else:
+            return staff_ssn_str
