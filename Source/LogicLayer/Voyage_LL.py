@@ -21,17 +21,18 @@ class VoyageLL:
         return True
     
     def get_voyage(self):
+    
+        voyage.arrival_at_dest = self.calculate_time(voyage.departure, destination.duration)
+        voyage.departure_from_dest = self.calculate_time(voyage.arrival_at_dest, "01:00")
+        voyage.arrival_back_home = self.calculate_time(voyage.departure_from_dest, destination.duration)
+
+        parseDate_dep = dateutil.parser.parse(voyage.departure)
+        dep_year, dep_month, dep_day = parseDate_dep.year, parseDate_dep.month, parseDate_dep.day
+
+        voyage.flight_out, voyage.flight_in = self.generate_flight_number(voyage.destination, dep_year, dep_month, dep_day)
+
+        self.__voyage_repo.add_voyage(voyage)
         return self.__voyage_repo.get_voyage()
-            voyage.arrival_at_dest = self.calculate_time(voyage.departure, destination.duration)
-            voyage.departure_from_dest = self.calculate_time(voyage.arrival_at_dest, "01:00")
-            voyage.arrival_back_home = self.calculate_time(voyage.departure_from_dest, destination.duration)
-
-            parseDate_dep = dateutil.parser.parse(voyage.departure)
-            dep_year, dep_month, dep_day = parseDate_dep.year, parseDate_dep.month, parseDate_dep.day
-
-            voyage.flight_out, voyage.flight_in = self.generate_flight_number(voyage.destination, dep_year, dep_month, dep_day)
-
-            self.__voyage_repo.add_voyage(voyage)
     
     def get_voyage_destination(self, voyage_destination, year_int, month_int, day_int):
         return self.__voyage_repo.get_voyage_destination(voyage_destination, year_int, month_int, day_int)

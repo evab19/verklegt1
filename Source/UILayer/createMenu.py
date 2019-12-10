@@ -188,7 +188,7 @@ class Create_Menu:
             self.__llapi.add_voyage(new_voyage)
             input("\n**   Press any key to return to main menu    **")
         else:
-        print(please_fill_info())
+            print(please_fill_info())
         airport = self.__llapi.get_destination()
         print_airport(airport)
 

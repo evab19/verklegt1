@@ -1,3 +1,5 @@
+import dateutil.parser
+
 def header_string(text, length):
     string = ("\n" + "*" * length + "\n")
     string += ("*" + " " * (length - 2) + "*" + "\n")
