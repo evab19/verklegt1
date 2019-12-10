@@ -85,6 +85,11 @@ class EmployeeLL:
     def get_week_schedule(self, employee, input_year, input_month, input_day):
         dates_of_week = self.get_start_of_week(input_year, input_month, input_day)
         
+        else:
+            return staff_ssn_str
+    def get_week_schedule(self, employee, input_year, input_month, input_day):
+        dates_of_week = self.get_start_of_week(input_year, input_month, input_day)
+        
         schedule_for_employee = self.get_schedule(employee, dates_of_week)
 
         return schedule_for_employee

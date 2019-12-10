@@ -64,6 +64,9 @@ class LLAPI:
     def get_phone(self, name):
         return self.__employee.get_phone(name)
 
+    def get_crew(self, occupation):
+        return self.__employee.get_crew(occupation)
+        
     def get_week_lst(self, input_year, input_month, input_day):
         return self.__employee.get_start_of_week(input_year, input_month, input_day)
 
