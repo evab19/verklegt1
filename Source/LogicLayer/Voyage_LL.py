@@ -146,10 +146,10 @@ class VoyageLL:
                 else:
                     dest_number_str = str(dest_number_int)
 
-        flight_extention_out = (len(voyage_on_the_day)) * 2
-        flight_extention_home = ((len(voyage_on_the_day)) * 2) + 1
+            flight_extention_out = (len(voyage_on_the_day)) * 2
+            flight_extention_home = ((len(voyage_on_the_day)) * 2) + 1
 
-        flight_number_out = "NA" + dest_number_str + str(flight_extention_out)
-        flight_number_home = "NA" + dest_number_str + str(flight_extention_home)
+            flight_number_out = "NA" + dest_number_str + str(flight_extention_out)
+            flight_number_home = "NA" + dest_number_str + str(flight_extention_home)
 
         return flight_number_out, flight_number_home

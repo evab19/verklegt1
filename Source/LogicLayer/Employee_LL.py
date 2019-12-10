@@ -1,4 +1,7 @@
 from models.Employee import Employee
+from datetime import date
+import dateutil.parser
+
 class EmployeeLL:
 
     def __init__(self, dapi_in):
@@ -51,7 +54,17 @@ class EmployeeLL:
             return number
     
     def get_employee(self):
-        return self.__employee_repo.get_employee()
+        our_employees = self.__employee_repo.get_employee()
+        today = date.today()
+        available_empl = self.get_employee_status(today.year, today.month, today.day)
+        for empl in our_employees:
+            for a_empl in available_empl:
+                if empl.ssn == a_empl.ssn:
+                    empl.emp_status = "A"
+                    break
+                else:
+                    empl.emp_status = "B"
+        return our_employees
 
     def update_employee(self, employee, new_employee):
         self.__employee_repo.update_employee(employee, new_employee)
@@ -73,3 +86,29 @@ class EmployeeLL:
 
     def get_flight_attendants(self):
         return self.__employee_repo.get_flight_attendants()
+
+    def get_employee_status(self, year_int, month_int, day_int):
+        employees = self.__employee_repo.get_employee()
+        voyages_at_same_date = self.__employee_repo.get_all_voyage_at_date(year_int, month_int, day_int)
+        available_employees = []
+        busy_employees = []
+        for voyage in voyages_at_same_date:
+            dep_year, dep_month, dep_day = self.parse_date(voyage.departure)
+            arr_year, arr_month, arr_day = self.parse_date(voyage.departure)
+
+            if ((dep_year == year_int and dep_month == month_int and dep_day == day_int)
+                or (arr_year == year_int and arr_month == month_int and arr_day == day_int)):
+                busy_employees.append(voyage.captain)
+                busy_employees.append(voyage.pilot)
+                busy_employees.append(voyage.flight_attendant)
+                busy_employees.append(voyage.fsm)
+        
+        for employee in employees:
+            if employee.ssn not in busy_employees:
+                available_employees.append(employee)
+        return available_employees
+
+    def parse_date(self, date):
+        parseDate = dateutil.parser.parse(date)
+        year, month, day, hour, min = parseDate.year, parseDate.month, parseDate.day, parseDate.hour, parseDate.minute
+        return year, month, day
