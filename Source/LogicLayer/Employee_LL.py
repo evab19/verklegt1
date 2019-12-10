@@ -91,7 +91,6 @@ class EmployeeLL:
     def get_flight_attendants(self):
         return self.__employee_repo.get_flight_attendants()
 
-<<<<<<< HEAD
     def get_employee_status(self, year_int, month_int, day_int):
         employees = self.__employee_repo.get_employee()
         voyages_at_same_date = self.__employee_repo.get_all_voyage_at_date(year_int, month_int, day_int)
@@ -131,7 +130,6 @@ class EmployeeLL:
         
         else:
             return staff_ssn_str
-=======
     def get_week_schedule(self, employee, input_year, input_month, input_day):
         dates_of_week = self.get_start_of_week(input_year, input_month, input_day)
         
@@ -187,4 +185,3 @@ class EmployeeLL:
             a_voyage = self.__get.get_voyage_by_date_and_employee(employee, int(dates_year), int(dates_month), int(dates_day))
             schedule_lst.append(a_voyage)
         return schedule_lst
->>>>>>> 5edc90f... Virkni sett upp til að sækja viku áætlun starfsm.
