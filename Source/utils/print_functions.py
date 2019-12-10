@@ -8,6 +8,11 @@ def header_string(text, length):
     string += ("*" * length + "\n")
     return string
 
+def please_fill_info():
+    string = ("\n" + "**  Please fill in the information below   **" + "\n")
+    return string
+
+
 def get_menu():
     print("1: Get employee information")
     print("2: Get destination")
@@ -239,3 +244,6 @@ def choose_occupation():
     print("4: Flight Service Manager")
     print("b: Back")
     print("")
+
+def try_again():
+    input("\n**   Press any key to try again    **")

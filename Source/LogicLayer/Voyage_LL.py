@@ -137,6 +137,7 @@ class VoyageLL:
     def generate_flight_number(self, destination, voyage_year, voyage_month, voyage_day):
         voyage_on_the_day = self.__get.get_voyage_destination(destination, voyage_year, voyage_month, voyage_day)
         destination_lst = self.__get.get_destination()
+        dest_number_str = ""
         for index, item in enumerate(destination_lst):
             if destination == item.airport:
                 dest_number_int = index + 1

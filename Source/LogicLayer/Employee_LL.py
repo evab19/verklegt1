@@ -39,13 +39,12 @@ class EmployeeLL:
         while number != "":
             try:
                 int(number)
+                if len(number) >= 7:
+                    return number
+                else:
+                    print("Please insert a valid phone number or leave it blank")
+                    number = input("{} phone: ".format(name))
             except ValueError:
-                print("Please insert a valid phone number or leave it blank")
-                number = input("{} phone: ".format(name))
-        
-            if len(number) >= 7:
-                return number
-            else:
                 print("Please insert a valid phone number or leave it blank")
                 number = input("{} phone: ".format(name))
         else:
