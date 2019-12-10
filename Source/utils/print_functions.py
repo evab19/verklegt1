@@ -8,7 +8,19 @@ def header_string(text, length):
     string += ("*" * length + "\n")
     return string
 
-def get_menu():
+def please_fill_info():
+    string = ("\n" + "**  Please fill in the information below   **" + "\n")
+    return string
+
+def print_create_menu():
+    print("1: Create employee")
+    print("2: Create destination")
+    print("3: Create airplane")
+    print("4: Create voyage")
+    print("b: Back")
+    print("")
+
+def print_get_menu():
     print("1: Get employee information")
     print("2: Get destination")
     print("3: Get airplane information")
@@ -144,7 +156,6 @@ def print_pilots_by_model(pilots_model):
         print("{}{:10}{}{:13}{}{:25}{}{:12}{}{:20}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', licence,'| ', occupation, '| ', name, '| ', ssn, '| ', address, '| ', home_phone, '| ', cell_phone, '| ', email, '| ', emp_status, '|'))
     print("{:-<163}".format(""))
     print("* C = Captain, P = Pilot")
-    input("\n**   Press any key to continue    **")
     print("")
 
 def print_flight_attendants(flight_attendants):
@@ -309,3 +320,10 @@ def choose_occupation():
     print("4: Flight Service Manager")
     print("b: Back")
     print("")
+
+def try_again():
+    input("\n**   Press any key to try again    **")
+
+def error_message():
+    print(header_string('WRONG INPUT, please select from the list!', 50))
+    input("\n**   Press any key to return to menu    **")

@@ -1,4 +1,5 @@
 from models.Airplane import Airplane
+from datetime import date
 
 class AirplaneLL:
 
@@ -17,14 +18,24 @@ class AirplaneLL:
             return False
  
     def get_airplane(self):
-        return self.__airplane_repo.get_airplane()
+        our_airplanes = self.__airplane_repo.get_airplane()
+        today = date.today()
+        available_planes = self.get_airplane_status(today.year, today.month, today.day)
+        for plane in our_airplanes:
+            for a_planes in available_planes:
+                if plane.name == a_planes.name:
+                    plane.plane_status = "A"
+                    break
+                else:
+                    plane.plane_status = "B"
+        return our_airplanes
 
     def get_airplane_status(self, year_int, month_int, day_int):
         airplanes = self.__airplane_repo.get_airplane()
-        other_voyages = self.__airplane_repo.get_all_voyage_at_date(year_int, month_int, day_int)
+        voyages_at_same_date = self.__airplane_repo.get_all_voyage_at_date(year_int, month_int, day_int)
         available_planes = []
         busy_planes = []
-        for voyage in other_voyages:
+        for voyage in voyages_at_same_date:
             busy_planes.append(voyage.airplane)
         for airplane in airplanes:
             if airplane.name not in busy_planes:
