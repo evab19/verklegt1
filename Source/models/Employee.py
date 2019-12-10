@@ -42,4 +42,4 @@ class Employee:
         self.occupation = occupation
     
     def get_status(self):
-        return str(self.emp_status)
+        return str(self.status)
