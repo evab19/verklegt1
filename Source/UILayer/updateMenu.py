@@ -14,8 +14,8 @@ class Update_Menu:
         while(action != "b"):
             print(header_string("UPDATE", 50))
             print("1: Update employee")
-            print("2: Update aiport contact info")
-            print("3: Update flight")
+            print("2: Update airport contact info")
+            print("3: Update voyage")
             print("b: Back")
             # print("q: Quit")
             print("")

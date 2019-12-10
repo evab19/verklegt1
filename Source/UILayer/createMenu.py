@@ -53,6 +53,32 @@ class Create_Menu:
             occupation_str = "Flight Attendant"
         elif occupation_choice == "4":
             occupation_str = "Flight Service Manager"
+        elif occupation_choice == "b":
+            self.create_menu()
+
+        #self.__create_employee_header()
+        print("**  Please fill in the information below   **")
+        print("")
+        print("Occupation: ", occupation_str)
+        employee_id_str = occupation_str + str(ID_COUNTER)
+        print("ID: ", employee_id_str)
+        name_str = input("Name: ")
+        SO_str = input("Social Security Number: ")
+        address_str = input("Address: ")
+        home_phone_str = input("Home phone: ")
+        cell_phone_str = input("Cell phone: ")
+        email_str = input("E-mail: ")
+        if occupation_choice in ["1", "2"]:
+            print("")
+            print('list of airplanes')
+            airplane_license_str = input("Choose airplane: ")
+        print("")
+        correct = input("Is this information correct? (Y/N): ").lower()
+
+        if correct == "y":
+            print(header_string("SUCCESS!", 50))
+            new_employee = Employee(occupation_str, employee_id_str, name_str, SO_str, address_str, home_phone_str, cell_phone_str, email_str, airplane_license_str)
+            self.__llapi.add_employee(new_employee)
         if occupation_choice != "b":
 
             print("**  Please fill in the information below   **")
@@ -146,14 +172,30 @@ class Create_Menu:
         print("")
         airport = self.__llapi.get_destination()
         print_airport(airport)
+
         destination_str = self.__llapi.get_voyage_airport()
         year_str, month_str, day_str = self.__llapi.get_departure_date()
         hour_str, minutes_str = self.__llapi.get_departure_time()
         new_departure_time = datetime.datetime(int(year_str), int(month_str), int(day_str), int(hour_str), int(minutes_str), 0).isoformat()
-        airplanes = self.__llapi.get_airplane()
-        print_airplane_name_and_models(airplanes)
-        print("Choose an airplane for the voyage, use airplane name")
-        airplane_str = input("Airplane (name): ")
+       
+
+        availableplanes = self.__llapi.get_airplane_status(int(year_str), int(month_str), int(day_str))
+        temp_lst = []
+        for item in availableplanes:
+            temp_lst.append(item.name)
+
+        print_airplane_name_and_models(availableplanes)
+        print("The listed airplanes are available for the given date and time")
+        
+        air_input = 0
+        while air_input != 1:
+            airplane_str = input("Airplane (name): ")
+            if airplane_str not in temp_lst:
+                print("Wrong input or airplane not available")
+                print("Please choose an airplane from the list")
+            else:
+                air_input = 1
+
         print("")
         man_voyage = input("Would you like to man the voyage at this time? (Y/N): ").lower()
 
