@@ -21,16 +21,20 @@ class EmployeeLL:
             if occupation_choice == "b":
                 return False
             if occupation_choice == "1":
-                occupation_str = "Captain"
+                occupation_str = "C"
+                return occupation_str
             elif occupation_choice == "2":
-                occupation_str = "Pilot"
+                occupation_str = "P"
+                return occupation_str
             elif occupation_choice == "3":
-                occupation_str = "Flight Attendant"
+                occupation_str = "FA"
+                return occupation_str
             elif occupation_choice == "4":
-                occupation_str = "Flight Service Manager"
+                occupation_str = "FSM"
+                return occupation_str
             else:
                 print("Invalid input. Please choose from the list")
-            return occupation_str
+        
 
     def add_employee(self, employee):
         if self.is_valid_employee(employee):
@@ -62,7 +66,7 @@ class EmployeeLL:
                 return False
 
     def get_phone(self, name):
-        if name.lower() == "contact":
+        if name.lower() == "contact" or name.lower() == "new contact":
             print_str = "Please insert a valid phone number"
         else:
             print_str = "Please insert a valid phone number or leave it blank"

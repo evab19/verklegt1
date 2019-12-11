@@ -12,7 +12,7 @@ class AirplaneLL:
             self.__airplane_repo.add_airplane(airplane)
      
     def is_valid_airplane(self, __airplane):
-        if __airplane.name and __airplane.model and __airplane.producer and __airplane.number_of_seats and __airplane.status != "":
+        if __airplane.name and __airplane.model and __airplane.producer and __airplane.number_of_seats != "":
             return True
         else:
             return False

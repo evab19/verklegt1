@@ -1,4 +1,5 @@
 import dateutil.parser
+from validate_email import validate_email
 
 def header_string(text, length):
     string = ("\n" + "*" * length + "\n")
@@ -43,9 +44,9 @@ def get_employee_information():
     print("2: Employee information")
     print("3: Employees by occupation")
     print("4: Employee status")
-    print("5: All pilots by airplane model")
-    print("6: Pilots by an airplane model")
-    print("7: Employee week schedule")
+    print("5: Employee week schedule")
+    print("6: All pilots by airplane model")
+    print("7: Pilots by an airplane model")
     print("b: Back")
     print("")
 
@@ -335,6 +336,11 @@ def print_choose_occupation():
 def try_again():
     input("\n**   Press any key to try again    **")
 
+def press_any_key():
+    input("\n**   Press any key to return to menu    **")
+    print("")
+
+
 def error_message():
     print(header_string('WRONG INPUT, please select a valid input!', 50))
 
@@ -354,4 +360,12 @@ def get_number(category):
             return input_str
         else:
             print("Please insert a valid {}".format((category).lower()))
+
+def get_email():
+    while True:
+        input_str = input("Please enter an e-mail: ")
+        if validate_email(input_str):
+            return input_str
+        else:
+            print("Invalid e-mail address. Please try again.")
 

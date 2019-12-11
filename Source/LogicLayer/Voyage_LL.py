@@ -2,6 +2,7 @@ from models.Voyage import Voyage
 from models.Destination import Destination
 from models.Airplane import Airplane
 from DataLayer.Get_DL import Get_DL
+from utils.print_functions import *
 import dateutil.parser
 import datetime
 import time
@@ -151,6 +152,15 @@ class VoyageLL:
             flight_number_home = "NA" + dest_number_str + str(flight_extention_home)
 
         return flight_number_out, flight_number_home
+
+    def get_flight_number(self, destination, year, month, day):
+        while True:
+            flight_number = input("Please insert flight number for the voyage: ").upper()
+            the_voyage = self.get_the_voyage(destination, int(year), int(month), int(day), flight_number)
+            if the_voyage != []:
+                return(print_the_voyage(the_voyage))                
+            else:
+                print("Wrong flight number. Please try again.")
 
 
     def update_voyage(self, the_voyage, captain_str, pilot_str, fsm_str, fa_str):
