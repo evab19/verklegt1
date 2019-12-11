@@ -34,9 +34,7 @@ class Create_Menu:
 
 
     def __create_employee(self):
-        occupation_choice = ""
         print(header_string("CREATE EMPLOYEE", 50))
-        print_choose_occupation()
         occupation_str = self.__llapi.choose_occupation()
         if occupation_str:
             print(please_fill_info())
@@ -52,10 +50,12 @@ class Create_Menu:
                     home_phone_str = self.__llapi.get_phone("Home")
                     cell_phone_str = self.__llapi.get_phone("Cell")
                     email_str = input("E-mail: ")
-                    if occupation_choice in ["1", "2"]:
+                    if occupation_str in ["Captain", "Pilot"]:
                         print("")
-                        print('list of airplanes')
-                        airplane_license_str = input("Choose airplane: ")
+                        print('List of airplanes')
+                        airplanes = self.__llapi.get_airplane()
+                        print_airplanes(airplanes)
+                        airplane_license_str = input("Choose airplane (use the name): ")
                     else:
                         airplane_license_str = "N/A"
                     print("")
@@ -163,7 +163,7 @@ class Create_Menu:
             print_flight_attendants(flight_attendants)
 
             fsm_str = self.__llapi.get_crew("flight service manager")
-            fa_on_voyage_str = input("Would you like to add a Fligh Attendant on this woyage? (Y/N): ").lower()
+            fa_on_voyage_str = input("Would you like to add a Flight Attendant on this voyage? (Y/N): ").lower()
             if fa_on_voyage_str == "y":
                 fa_str = self.__llapi.get_crew("flight attendant")
             else:
