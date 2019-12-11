@@ -94,15 +94,14 @@ class Get_Menu:
         print_airport(airport)
         voyage_destination = input("What voyage would you like to get (insert airport name)? ")
         print("What date are you looking for? (only use numbers)")
-        year_int = int(input("Year: "))
-        month_int = int(input("Month: "))
-        day_int = int(input("Day: "))
-        voyages = self.__llapi.get_voyage_destination(voyage_destination, year_int, month_int, day_int)
-        print_voyages_destination(voyages, voyage_destination)
-        flight_number = input("Please insert flight number for the voyage: ").upper()
-        the_voyage = self.__llapi.get_the_voyage(voyage_destination, year_int, month_int, day_int, flight_number)
-        print_the_voyage(the_voyage)
-        
+        year_str, month_str, day_str = self.__llapi.get_voyage_date()
+        voyages = self.__llapi.get_voyage_destination(voyage_destination, int(year_str), int(month_str), int(day_str))
+        if print_voyages_destination(voyages, voyage_destination):
+            flight_number = input("Please insert flight number for the voyage: ").upper()
+            the_voyage = self.__llapi.get_the_voyage(voyage_destination, int(year_str), int(month_str), int(day_str), flight_number)
+            print_the_voyage(the_voyage)
+        input("\n**   Press any key to return to main menu    **")
+        print("")
 
     def __get_employee_schedule(self):
         print(header_string("GET EMPLOYEE SCHEDULE", 50))
