@@ -278,3 +278,14 @@ ________________________________________________________________________________
  --- Allir eru með verkefni að klára frá því í gær ætlum að vinna heima í dag vegna veðurs
 - github hreynsað og lagfært
 24:00 Vinnudag lauk
+
+------------------------------------------------------------------------------------------------------------------------------
+Dagur 15 11.12.2019
+Miðvikudagur
+------------------------------------------------------------------------------------------------------------------------------
+
+10:00 Morgunfundur - Plönum að leggja lokahönd á kóða í kvöld
+- Steinarnir klára A kröfur og B kröfur 
+- Eva fer yfir error og isvalid vesen - sér um GitHub líka
+- Thelma error checks og docstring
+- Ingibjörg og Thelma gerðu notanda prófanir, uppfærðu to do lista og fóru yfir að kröfur séu komnar (amk.A og helst B)
