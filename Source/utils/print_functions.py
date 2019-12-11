@@ -8,6 +8,16 @@ def header_string(text, length):
     string += ("*" * length + "\n")
     return string
 
+def is_correct():
+    check = input("Is this information correct? (Y/N): ").lower()
+    while check != "y" and check != "n":
+        error_message()
+        check = input("Is this information correct? (Y/N): ").lower()
+    if check == "y":
+        return True
+    elif check == "n":
+        return False
+
 def please_fill_info():
     string = ("\n" + "**  Please fill in the information below   **" + "\n")
     return string
@@ -325,5 +335,5 @@ def try_again():
     input("\n**   Press any key to try again    **")
 
 def error_message():
-    print(header_string('WRONG INPUT, please select from the list!', 50))
-    input("\n**   Press any key to return to menu    **")
+    print(header_string('WRONG INPUT, please select a valid input!', 50))
+

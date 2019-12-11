@@ -68,9 +68,8 @@ class Create_Menu:
                     else:
                         airplane_license_str = "N/A"
                     print("")
-                    correct = input("Is this information correct? (Y/N): ").lower()
 
-                    if correct == "y":
+                    if is_correct():
                         new_employee = Employee(occupation_str, name_str, SO_str, address_str, home_phone_str, cell_phone_str, email_str, airplane_license_str)
                         if self.__llapi.add_employee(new_employee):
                             print(header_string("SUCCESS!", 50))
@@ -95,9 +94,8 @@ class Create_Menu:
         contact_name_str = input("Contact name: ")
         contact_phone_nr_str = input("Contact emergency phone number: ")
         print("")
-        correct = input("Is this information correct? (Y/N): ").lower()
 
-        if correct == "y":
+        if is_correct():
             new_destination = Destination(country_str, airport_str, duration_str, distance_str, contact_name_str, contact_phone_nr_str)
             if self.__llapi.add_destination(new_destination):
                 print(header_string("SUCCESS!", 50))
@@ -106,10 +104,8 @@ class Create_Menu:
                 print("Oh no something went wrong! Please try again.")
                 try_again()
                 self.__create_destination()
-        elif correct == "n":
-            self.__create_destination()
         else:
-            error_message()
+            self.__create_destination()
 
     def __create_airplane(self):
         print(header_string("CREATE AIRPLANE", 50))
@@ -119,17 +115,14 @@ class Create_Menu:
         producer_str = input("Producer: ")
         number_of_seats_str = input("Number of seats: ")
         print("")
-        correct = input("Is this information correct? (Y/N): ").lower()
- 
-        if correct == "y":
+        if is_correct():
             print(header_string("SUCCESS!", 50))
             new_airplane = Airplane(name_str, model_str, producer_str, number_of_seats_str)
             self.__llapi.add_airplane(new_airplane)
             input("**   Press enter to return to main menu    **")
-        if correct == "n":
-            self.__create_airplane()
         else:
-            error_message()
+            self.__create_airplane()
+
 
     def __create_flight(self):
         print(header_string("CREATE FLIGHT", 50))
@@ -188,10 +181,8 @@ class Create_Menu:
                 fa_str = self.__llapi.get_crew("flight attendant")
             else:
                 fa_str = ""
-        
-            correct = input("Is this information correct? (Y/N): ").lower()
     
-            if correct == "y":
+            if is_correct():
                 print(header_string("SUCCESS!", 50))
                 new_voyage = Voyage(destination_str, new_departure_time, airplane_str, captain_str, pilot_str, fsm_str, fa_str)
                 self.__llapi.add_voyage(new_voyage)
