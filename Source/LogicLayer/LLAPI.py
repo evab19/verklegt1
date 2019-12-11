@@ -29,6 +29,10 @@ class LLAPI:
         return self.__destination.get_destination_duration()
     
 #### employee
+
+    def choose_occupation(self):
+        return self.__employee.choose_occupation()
+
     def check_if_ssn_unique(self, ssn):
         return self.__employee.check_if_ssn_unique(ssn)
 

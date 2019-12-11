@@ -1,7 +1,11 @@
-﻿country,airport,duration,distance,contact_name,contact_phone
-Greenland,Nuuk,3:20,500,Gunnsteinn,1234567
-Greenland,Kulusuk,1:50,250,Þorsteinn,2345671
-Faroe Island,Thorshavn,1:25,240,Eva,3456712
-Shetland,Tingwall,2:00,300,Thelma,4567123
-Svalbard,Longyearbyen,5:00,800,Ingibjörg,5671234
-Íslandia,Básendi,10:00,200,Birna,2221144
+﻿occupation,id,name,ssn,address,home_phone,cell_phone,email,licence,status
+Captain,,Eva,2904882309,23,4782040,1,2,Plane1,
+P,,Pikachu,5555886699,viridian,5555555,4444444,pikachu@nintendo.com,Plane1,
+FSM,,Brian,0101903369,Happy Camper Street,5554477,1114455,brian_the_man@nanair.com,,
+Captain,,Eva,2904882309,23,4782040,1,2,Plane1,
+P,,Harry Potter,7788996655,Hogwards,4445656,8885252,griffindor_rules@nanair.com,Plane1,
+C,,Thor,0000000001,Ásgarður,5556666,6665555,god_of_thunder@nanair.com,Plane1,
+FA,,Borat,7788552211,kazakhstan,can-phone3,can-phone1,what_is_email@nanair.com,,
+FA,,Júlla,7744774477,Vesturbær,1122332,4545454,what_is_this@nanair.com,,
+FSM,,Kisi,3322332233,Austurbær,1122232,4545452,is_this@nanair.com,,
+Flight Service Manager,,Syndra,1010101010,Suðurhólar4,,6626148,syndra@cool.com,N/A,

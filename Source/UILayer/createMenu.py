@@ -36,18 +36,9 @@ class Create_Menu:
     def __create_employee(self):
         occupation_choice = ""
         print(header_string("CREATE EMPLOYEE", 50))
-        choose_occupation()
-        occupation_choice = input("Choose an option: ").lower()
-        if occupation_choice == "1":
-            occupation_str = "Captain"
-        elif occupation_choice == "2":
-            occupation_str = "Pilot"
-        elif occupation_choice == "3":
-            occupation_str = "Flight Attendant"
-        elif occupation_choice == "4":
-            occupation_str = "Flight Service Manager"
-
-        if occupation_choice != "b":
+        print_choose_occupation()
+        occupation_str = self.__llapi.choose_occupation()
+        if occupation_str:
             print(please_fill_info())
             print("Occupation: ", occupation_str)
             name_str = get_string("Name")
