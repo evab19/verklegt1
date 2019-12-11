@@ -2,6 +2,12 @@ from models.Destination import Destination
 import datetime
 
 class DestinationLL:
+    '''Logic Layer Destination Class
+       -----------------------------
+
+        Logic layer classes receive information from the LLAPI class for processing.
+        Information is passed on to IOAPI which interacts with data layer classes
+    '''
 
     def __init__(self, dapi_in):
         self.__destination_repo = dapi_in 

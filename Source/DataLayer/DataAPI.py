@@ -5,6 +5,20 @@ import csv
 
 
 class DataAPI:
+    '''Data Layer API
+       --------------
+
+        DataApi receives data from the logic layer which is either sent 
+        for storage to data tables or uses IDs received from logic layer to 
+        collect data from data layer and returns this back up.
+
+        Param:
+        ------
+        get: 
+        create:
+        update:
+        
+    '''
 
     def __init__(self):
         self.__get = Get_DL()

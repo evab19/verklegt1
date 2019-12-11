@@ -1,6 +1,15 @@
 import dateutil.parser
 
 def header_string(text, length):
+    ''' Header string print function
+
+        param1(str): text specified
+        param2(int): length of print functions, can be changed to suit the length of the text (param1)
+
+    Returns:
+        prints chosen string and text string specified
+
+    '''
     string = ("\n" + "*" * length + "\n")
     string += ("*" + " " * (length - 2) + "*" + "\n")
     string += ("*" + text.center((length-2), " ") + "*" + "\n")
@@ -11,7 +20,7 @@ def header_string(text, length):
 def is_correct():
     check = input("Is this information correct? (Y/N): ").lower()
     while check != "y" and check != "n":
-        error_message()
+        header_string('WRONG INPUT, please select a valid input!',50) #ath. Eva is this ok?? þú var með error_message()
         check = input("Is this information correct? (Y/N): ").lower()
     if check == "y":
         return True
@@ -335,8 +344,10 @@ def print_choose_occupation():
 def try_again():
     input("\n**   Press any key to try again    **")
 
-def error_message():
-    print(header_string('WRONG INPUT, please select a valid input!', 50))
+# def error_message():
+#     print(header_string('WRONG INPUT, please select a valid input!', 50))
+#     input("\n**   Press any key to return to menu    **")
+
 
 def get_string(category):
     while True: 
