@@ -71,7 +71,6 @@ def print_employee(employees):
     print("{:-<163}".format(""))
     print("* C = Captain, P = Pilot, FA = Flight Attendant, FSM = Flight Service Manager")
     print("** A = Available, B = Busy")
-    input("\n**   Press any key to return to main menu    **")
 
 def print_destination(destination):
     print("{:-<128}".format(""))
@@ -80,7 +79,7 @@ def print_destination(destination):
     for item in destination:
         print(item)
     print("{:-<128}".format(""))
-    input("\n**   Press any key to return to main menu    **")
+
 
 def print_airplanes(airplane):
     print("{:-<106}".format(""))
@@ -99,7 +98,6 @@ def print_voyages(voyages):
     for item in voyages:
         print(item)
     print("{:-<94}".format(""))
-    input("\n**   Press any key to return to main menu    **")
 
 def print_airport(destination):
     print("{:-<28}".format(""))
@@ -131,8 +129,7 @@ def print_pilots_by_airplane(pilots):
         print("{}{:10}{}{:13}{}{:25}{}{:12}{}{:20}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', licence,'| ', occupation, '| ', name, '| ', ssn, '| ', address, '| ', home_phone, '| ', cell_phone, '| ', email, '| ', emp_status, '|'))
     print("{:-<163}".format(""))
     print("* C = Captain, P = Pilot")
-    input("\n**   Press any key to return to main menu    **")
-    print("")
+
 
 def print_airplane_models(airplanes):
     print("{:-<23}".format(""))
@@ -321,8 +318,7 @@ def print_employee_schedule(employee, week_lst, schedule_lst):
     schedule_str += (("|" + " " * length) * times + '|\n')
     schedule_str += ("{:-<127}".format(""))
     print(schedule_str)
-    input("\n**   Press any key to return to main menu    **")
-    print("")
+
     
 def print_choose_occupation():
     print("** Please choose occupation **")

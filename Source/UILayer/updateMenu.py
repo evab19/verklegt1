@@ -60,7 +60,7 @@ class Update_Menu:
         action2 = ""
         airport = self.__llapi.get_destination()
         print_airport(airport)
-        destination = input("What airport would you like to update? ")
+        destination = self.__llapi.get_voyage_airport()
         print("")
         print("What information would you like to update?")
         print("1: Contact name")
@@ -92,7 +92,7 @@ class Update_Menu:
         '''Lista upp Destination'''
         airport = self.__llapi.get_destination()
         print_airport(airport)
-        voyage_destination = input("What voyage would you like to get (insert airport name)? ")
+        voyage_destination = self.__llapi.get_voyage_airport()
         '''Velja dagsetningu'''
         print("What date are you looking for? (only use numbers)")
         year_str, month_str, day_str = self.__llapi.get_voyage_date()
@@ -100,8 +100,7 @@ class Update_Menu:
         voyages = self.__llapi.get_voyage_destination(voyage_destination, int(year_str), int(month_str), int(day_str))
         '''Láta velja voyage'''
         if print_voyages_destination(voyages, voyage_destination):
-            flight_number = input("Please insert flight number for the voyage: ").upper()
-            the_voyage_lst = self.__llapi.get_the_voyage(voyage_destination, int(year_str), int(month_str), int(day_str), flight_number)
+            the_voyage_lst = self.__llapi.get_flight_number(voyage_destination, year_str, month_str, day_str)
             the_voyage = the_voyage_lst[0]
         
         airplanes = self.__llapi.get_airplane()
@@ -122,13 +121,11 @@ class Update_Menu:
         if fa_on_voyage_str == "y":
             fa_str = self.__llapi.get_crew("flight attendant")
         else:
-            fa_str = ""
+            fa_str = "N/A"
 
         if is_correct():
             print(header_string("SUCCESS!", 50))
             self.__llapi.update_voyage(the_voyage, captain_str, pilot_str, fsm_str, fa_str)
-            # new_voyage = Voyage(destination_str, new_departure_time, airplane_str, captain_str, pilot_str, fsm_str, fa_str)
-            # self.__llapi.add_voyage(new_voyage)
             input("**   Press any key to return to main menu    **")
         else:
             self.__update_voyage()

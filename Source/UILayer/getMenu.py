@@ -39,9 +39,15 @@ class Get_Menu:
             press_any_key()
         elif action == "2":
             print(header_string("GET EMPLOYEE INFORMATION", 50))
-            employee = input("Use SSN for the employee you would like to get: ")
-            employee_information = self.__llapi.get_employee_information(employee)
-            print_employee(employee_information)
+            SO_str = input("Social Security Number for the employee: ")
+            while not(self.__llapi.is_ssn_valid(SO_str)):
+                print("Please insert a valid 10-digit social security number.")
+                SO_str = input("Social Security Number: ")
+            if not self.__llapi.check_if_ssn_unique(SO_str):
+                employee_information = self.__llapi.get_employee_information(SO_str)
+                print_employee(employee_information)
+            else:
+                print("Employee doesn't exist")
             press_any_key()
         elif action == "3":
             print(header_string("GET EMPLOYEES BY OCCUPATION", 50))
@@ -90,26 +96,27 @@ class Get_Menu:
         print(header_string("GET DESTINATIONS", 50))
         destination = self.__llapi.get_destination()
         print_destination(destination)
+        press_any_key()
 
 
     def __get_airplane_information(self):
         print(header_string("GET AIRPLANE INFORMATION", 50))
         airplanes = self.__llapi.get_airplane()
         print_airplanes(airplanes)
-        input("\n**   Press any key to return to main menu    **")
+        press_any_key()
 
     def __get_voyage(self):
         print(header_string("GET VOYAGE INFORMATION", 50))
         airport = self.__llapi.get_destination()
         print_airport(airport)
-        voyage_destination = input("What voyage would you like to get (insert airport name)? ")
+        voyage_destination = self.__llapi.get_voyage_airport()
         print("What date are you looking for? (only use numbers)")
         year_str, month_str, day_str = self.__llapi.get_voyage_date()
         voyages = self.__llapi.get_voyage_destination(voyage_destination, int(year_str), int(month_str), int(day_str))
         if print_voyages_destination(voyages, voyage_destination):
-           self.__llapi.get_flight_number(voyage_destination, year_str, month_str, day_str) 
-        input("\n**   Press any key to return to main menu    **")
-        print("")
+           voyage = self.__llapi.get_flight_number(voyage_destination, year_str, month_str, day_str)
+           print_the_voyage(voyage)
+        press_any_key()
 
     def __get_employee_schedule(self):
         print(header_string("GET EMPLOYEE SCHEDULE", 50))
