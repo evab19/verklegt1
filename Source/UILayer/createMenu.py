@@ -50,7 +50,7 @@ class Create_Menu:
         if occupation_choice != "b":
             print(please_fill_info())
             print("Occupation: ", occupation_str)
-            name_str = input("Name: ")
+            name_str = get_string("Name")
             SO_str = input("Social Security Number: ")
             while not(self.__llapi.is_ssn_valid(SO_str)):
                 print("Please insert a valid 10-digit social security number.")
@@ -87,12 +87,12 @@ class Create_Menu:
     def __create_destination(self):
         print(header_string("CREATE DESTINATION", 50))
         print(please_fill_info())
-        country_str = input("Country: ")
-        airport_str = input("Airport: ")
-        duration_str = input("Flight duration (hh:mm): ")
-        distance_str = input("Distance from Iceland (km): ")
-        contact_name_str = input("Contact name: ")
-        contact_phone_nr_str = input("Contact emergency phone number: ")
+        country_str = get_string("Country")
+        airport_str = get_string("Airport")
+        duration_str = self.__llapi.get_destination_duration()
+        distance_str = get_number("Distance from Iceland (km): ")
+        contact_name_str = get_string("Contact name")
+        contact_phone_nr_str = self.__llapi.get_phone("Contact")
         print("")
 
         if is_correct():
@@ -110,10 +110,10 @@ class Create_Menu:
     def __create_airplane(self):
         print(header_string("CREATE AIRPLANE", 50))
         print(please_fill_info())
-        name_str = input("Name: ")
+        name_str = get_string("Name")
         model_str = input("Model: ")
         producer_str = input("Producer: ")
-        number_of_seats_str = input("Number of seats: ")
+        number_of_seats_str = get_number("Number of seats: ")
         print("")
         if is_correct():
             print(header_string("SUCCESS!", 50))
@@ -124,10 +124,6 @@ class Create_Menu:
             self.__create_airplane()
 
 
-    def __create_flight(self):
-        print(header_string("CREATE FLIGHT", 50))
-        pass
-
     def __create_voyage(self):
         print(header_string("CREATE VOYAGE", 50))
         print(please_fill_info())
@@ -135,8 +131,8 @@ class Create_Menu:
         print_airport(airport)
 
         destination_str = self.__llapi.get_voyage_airport()
-        year_str, month_str, day_str = self.__llapi.get_departure_date()
-        hour_str, minutes_str = self.__llapi.get_departure_time()
+        year_str, month_str, day_str = self.__llapi.get_voyage_date()
+        hour_str, minutes_str = self.__llapi.get_voyage_time()
         new_departure_time = datetime.datetime(int(year_str), int(month_str), int(day_str), int(hour_str), int(minutes_str), 0).isoformat()
        
 
@@ -150,7 +146,7 @@ class Create_Menu:
         
         air_input = 0
         while air_input != 1:
-            airplane_str = input("Airplane (name): ")
+            airplane_str = get_string("Airplane (name): ")
             if airplane_str not in temp_lst:
                 print("Wrong input or airplane not available")
                 print("Please choose an airplane from the list")

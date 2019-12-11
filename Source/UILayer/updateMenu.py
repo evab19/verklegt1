@@ -17,7 +17,6 @@ class Update_Menu:
             print("2: Update airport contact info")
             print("3: Update voyage")
             print("b: Back")
-            # print("q: Quit")
             print("")
 
             action = input("Choose an option: ").lower()
@@ -27,6 +26,9 @@ class Update_Menu:
                  
             elif action == "2":
                 self.__update_destination()
+
+            elif action == "3":
+                self.__update_voyage()
 
     def __update_employee(self):
         new_employee = []
@@ -85,5 +87,5 @@ class Update_Menu:
         self.__llapi.update_destination(destination, new_contact)
 
 
-    def __update_flight(self):
+    def __update_voyage(self):
         pass

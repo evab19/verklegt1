@@ -183,6 +183,7 @@ def print_flight_attendants(flight_attendants):
 def print_voyages_destination(voyage, airport):
     if voyage == []:
         print("No voyage to " + airport + " on selected date!")
+        return False
     else:
         print("{:-<67}".format(""))
         print("{}{:20}{}{:25}{}{:15}{}".format('| ', 'Destination', '| ', 'Departure time', '| ', 'Flight number', '|'))
@@ -336,4 +337,21 @@ def try_again():
 
 def error_message():
     print(header_string('WRONG INPUT, please select a valid input!', 50))
+
+def get_string(category):
+    while True: 
+        input_str = input("{}: ".format(category))
+        input_check = ''.join(input_str.split())
+        if input_check.isalpha():
+            return input_str
+        else:
+            print("Please insert a valid {}".format((category).lower()))
+
+def get_number(category):
+    while True:
+        input_str = input("{}: ".format(category))
+        if input_str.isalnum():
+            return input_str
+        else:
+            print("Please insert a valid {}".format((category).lower()))
 

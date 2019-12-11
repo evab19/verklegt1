@@ -104,11 +104,9 @@ class VoyageLL:
         return any(destination.airport.lower() == airport for destination in destinations)
 
 
-    def get_departure_date(self):
-        print("Departure date (only use numbers)")
-        check = False
-        while not check:
-            date_str = input("Enter departure date (YYYY-MM-DD): ")
+    def get_voyage_date(self):
+        while True:
+            date_str = input("Enter date (YYYY-MM-DD): ")
             date_list = date_str.split("-")
             try:
                 time.strptime(date_str, '%Y-%m-%d')
@@ -116,7 +114,7 @@ class VoyageLL:
             except ValueError:
                 print("Invalid format. Please enter a valid date")
 
-    def get_departure_time(self):
+    def get_voyage_time(self):
         print("Departure time (Departures from Iceland are between 08:00 and 19:45 (including both)")
         print("four departure times per hour, on minutes 00, 15, 30, and 45)")
         HOURS = ["08","09","10","11","12","13","14","15","16","17","18","19"]

@@ -42,6 +42,10 @@ class EmployeeLL:
                 return False
 
     def get_phone(self, name):
+        if name.lower() == "contact":
+            print_str = "Please insert a valid phone number"
+        else:
+            print_str = "Please insert a valid phone number or leave it blank"
         number = input("{} phone: ".format(name))
         while number != "":
             try:
@@ -49,13 +53,12 @@ class EmployeeLL:
                 if len(number) >= 7:
                     return number
                 else:
-                    print("Please insert a valid phone number or leave it blank")
+                    print(print_str)
                     number = input("{} phone: ".format(name))
             except ValueError:
-                print("Please insert a valid phone number or leave it blank")
+                print(print_str)
                 number = input("{} phone: ".format(name))
-        else:
-            return number
+        return number
     
     def get_employee(self):
         our_employees = self.__employee_repo.get_employee()
