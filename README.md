@@ -276,3 +276,5 @@ ________________________________________________________________________________
 
 10.00 Morgunfundur On the line
  --- Allir eru með verkefni að klára frá því í gær ætlum að vinna heima í dag vegna veðurs
+- github hreynsað og lagfært
+24:00 Vinnudag lauk
