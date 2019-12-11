@@ -93,16 +93,28 @@ class VoyageLL:
 
     
     def get_voyage_airport(self):
-        airport_str = input("Please enter airport: ").lower()
+        airport_str = input("Please enter airport: ")
         while not(self.airport_is_valid(airport_str)):
             print("Please insert a valid airport from the list.")
-            airport_str = input("Please enter airport: ").lower()          
+            airport_str = input("Please enter airport: ")          
         else:
             return airport_str
         
     def airport_is_valid(self, airport):
         destinations = self.__get.get_destination()
-        return any(destination.airport.lower() == airport for destination in destinations)
+        return any(destination.airport == airport for destination in destinations)
+
+    def get_voyage_airplane(self, plane_list):
+        airplanes_list = plane_list
+        air_input = 0
+        while air_input != 1:
+            airplane_str = get_string("Airplane (name)")
+            if airplane_str not in airplanes_list:
+                print("Wrong input or airplane not available")
+                print("Please choose an airplane from the list")
+            else:
+                air_input = 1
+                return airplane_str
 
 
     def get_voyage_date(self):
@@ -158,7 +170,7 @@ class VoyageLL:
             flight_number = input("Please insert flight number for the voyage: ").upper()
             the_voyage = self.get_the_voyage(destination, int(year), int(month), int(day), flight_number)
             if the_voyage != []:
-                return(print_the_voyage(the_voyage))                
+                return (the_voyage)                
             else:
                 print("Wrong flight number. Please try again.")
 

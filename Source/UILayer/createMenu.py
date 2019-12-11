@@ -81,7 +81,7 @@ class Create_Menu:
         country_str = get_string("Country")
         airport_str = get_string("Airport")
         duration_str = self.__llapi.get_destination_duration()
-        distance_str = get_number("Distance from Iceland (km): ")
+        distance_str = get_number("Distance from Iceland (km)")
         contact_name_str = get_string("Contact name")
         contact_phone_nr_str = self.__llapi.get_phone("Contact")
         print("")
@@ -104,7 +104,7 @@ class Create_Menu:
         name_str = get_string("Name")
         model_str = input("Model: ")
         producer_str = input("Producer: ")
-        number_of_seats_str = get_number("Number of seats: ")
+        number_of_seats_str = get_number("Number of seats")
         print("")
         if is_correct():
             print(header_string("SUCCESS!", 50))
@@ -134,16 +134,7 @@ class Create_Menu:
 
         print_airplane_name_and_models(availableplanes)
         print("The listed airplanes are available for the given date and time")
-        
-        air_input = 0
-        while air_input != 1:
-            airplane_str = get_string("Airplane (name): ")
-            if airplane_str not in temp_lst:
-                print("Wrong input or airplane not available")
-                print("Please choose an airplane from the list")
-            else:
-                air_input = 1
-
+        airplane_str = self.__llapi.get_voyage_airplane()
         print("")
         man_voyage = input("Would you like to man the voyage at this time? (Y/N): ").lower()
 
