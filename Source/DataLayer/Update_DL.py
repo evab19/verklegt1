@@ -73,3 +73,28 @@ class Update_DL:
                     writer2.writerow(row)
         tempfile.close()
         csvfile.close()
+    
+    def update_voyage(self, the_voyage, captain_str, pilot_str, fsm_str, fa_str):
+        with open("./data/voyage.csv", newline='', encoding='utf-8-sig') as csvfile:
+            fieldnames = ['destination', 'departure_date_time', 'airplane_name', 'captain_ssn', 'pilot_ssn', 'fsm_ssn', 'fa_ssn', 'flight_out', 'flight_in', 'arrival_at_dest', 'departure_from_dest', 'arrival_back_home']
+            reader = csv.DictReader(csvfile)
+            with open("./data/tempfile.csv", "w+", encoding='utf-8-sig') as tempfile:
+                writer = csv.DictWriter(tempfile, fieldnames=fieldnames)
+                writer.writeheader()
+                for row in reader:
+                    if row['destination'] == the_voyage.destination and row['departure_date_time'] == the_voyage.departure and row['airplane_name'] == the_voyage.airplane and row['flight_out'] == the_voyage.flight_out and row['flight_in'] == the_voyage.flight_in:
+                        updated_voyage = Voyage(row['destination'], row['departure_date_time'], row['airplane_name'], captain_str, pilot_str, fsm_str, fa_str, row['flight_out'], row['flight_in'], row['arrival_at_dest'], row['departure_from_dest'], row['arrival_back_home'])
+                        row = ({'destination': updated_voyage.destination, 'departure_date_time': updated_voyage.departure, 'airplane_name': updated_voyage.airplane, 'captain_ssn': updated_voyage.captain, 'pilot_ssn': updated_voyage.pilot, 'fsm_ssn': updated_voyage.fsm, 'fa_ssn': updated_voyage.flight_attendant, 'flight_out': updated_voyage.flight_out, 'flight_in': updated_voyage.flight_in, 'arrival_at_dest': updated_voyage.arrival_at_dest, 'departure_from_dest': updated_voyage.departure_from_dest, 'arrival_back_home': updated_voyage.arrival_back_home})
+                    writer.writerow(row)
+        csvfile.close()
+        tempfile.close()
+
+        with open("./data/tempfile.csv", encoding='utf-8-sig') as tempfile:
+            reader2 = csv.DictReader(tempfile)
+            with open("./data/voyage.csv", "w+", encoding='utf-8-sig') as csvfile:
+                writer2 = csv.DictWriter(csvfile, fieldnames=fieldnames)
+                writer2.writeheader()
+                for row in reader2:
+                    writer2.writerow(row)
+        tempfile.close()
+        csvfile.close()

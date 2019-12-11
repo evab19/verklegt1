@@ -70,3 +70,6 @@ class DataAPI:
 
     def update_employee(self, employee, new_employee):
         self.__update.update_employee(employee, new_employee)
+    
+    def update_voyage(self, the_voyage, captain_str, pilot_str, fsm_str, fa_str):
+        self.__update.update_voyage(the_voyage, captain_str, pilot_str, fsm_str, fa_str)

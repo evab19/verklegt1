@@ -113,3 +113,6 @@ class LLAPI:
 
     def get_voyage_time(self):
         return self.__voyage.get_voyage_time()
+    
+    def update_voyage(self, the_voyage, captain_str, pilot_str, fsm_str, fa_str):
+        return self.__voyage.update_voyage(the_voyage, captain_str, pilot_str, fsm_str, fa_str)
