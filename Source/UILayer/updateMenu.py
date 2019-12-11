@@ -10,6 +10,17 @@ class Update_Menu:
         # self.update_flight_lst = []
 
     def update_menu(self):
+        '''Menu for update options
+
+        This class allows the user to choose what to update.
+        ----------------------------------------------------
+        
+            - update_employee = indicates if we would like to update employee information 
+            - update_destination = indicates if we would like to update airport contact information
+            - update_flight = indicates if we would like to update flight information
+            
+        '''
+
         action = ""
         while(action != "b"):
             print(header_string("UPDATE", 50))
@@ -27,6 +38,12 @@ class Update_Menu:
                  
             elif action == "2":
                 self.__update_destination()
+            elif action == "3":
+                pass
+            elif action != 'b':
+                print(header_string('WRONG INPUT, please select a valid input!',50))
+                try_again()
+
 
     def __update_employee(self):
         new_employee = []
@@ -82,8 +99,12 @@ class Update_Menu:
             new_contact.append(new_name)
             new_contact.append(new_phone)
             # print(new_contact)
+        elif action2 != 'b':
+            print(header_string('WRONG INPUT, please select a valid input!',50))
+            try_again()
         self.__llapi.update_destination(destination, new_contact)
 
 
     def __update_flight(self):
         pass
+

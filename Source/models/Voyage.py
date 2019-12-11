@@ -1,4 +1,27 @@
 class Voyage():
+    '''Module Voyage class
+
+        Module classes are used by the logic layer classes to create new instances of voyage
+    
+        
+        Returns an instance of a voyage information list
+        ---------------------------------------------
+   
+
+            destination
+            departure
+            captain
+            pilot
+            fa
+            fsm
+            airplane
+            flight_out
+            flight_in
+            arrival_at_dest
+            departure_from_dest
+            arrival_back_home
+
+    '''
     
     def __init__(self, destination = "", departure = "", airplane = "", captain = "N/A", pilot = "N/A", fsm = "N/A", fa = "N/A", flight_out = "N/A", flight_in = "N/A", arrival_at_dest = "", departure_from_dest = "", arrival_back_home = ""):
         self.destination = destination

@@ -5,6 +5,14 @@ from models.Voyage import Voyage
 import csv
 
 class Update_DL:
+    '''Data Layer Update Class
+       -----------------------
+
+        Data Layer classes either add data to data files or 
+        get information from data files using Data_ID and return
+        to DataApi
+
+    '''
 
     def update_destination(self, destination, new_contact):
         with open("./data/destinations.csv", encoding='utf-8-sig') as csvfile:

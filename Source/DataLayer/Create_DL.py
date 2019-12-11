@@ -1,6 +1,14 @@
 import csv
 
 class Create_DL:
+    '''Data Layer Create Class
+       -----------------------
+
+        Data Layer classes either add data to data files or 
+        get information from data files using Data_ID and return
+        to DataApi  
+
+    '''
 
     def add_employee(self, employee):
         occupation_str = employee.get_occupation()
