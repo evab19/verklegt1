@@ -153,3 +153,5 @@ class VoyageLL:
         return flight_number_out, flight_number_home
 
 
+    def update_voyage(self, the_voyage, captain_str, pilot_str, fsm_str, fa_str):
+        return self.__voyage_repo.update_voyage(the_voyage, captain_str, pilot_str, fsm_str, fa_str)

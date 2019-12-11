@@ -1,4 +1,5 @@
 from LogicLayer.LLAPI import LLAPI
+from models.Voyage import Voyage
 from utils.print_functions import *
 
 class Update_Menu:
@@ -88,4 +89,49 @@ class Update_Menu:
 
 
     def __update_voyage(self):
-        pass
+        print(header_string("MAN A VOYAGE", 50))
+        '''Lista upp Destination'''
+        airport = self.__llapi.get_destination()
+        print_airport(airport)
+        voyage_destination = input("What voyage would you like to get (insert airport name)? ")
+        '''Velja dagsetningu'''
+        print("What date are you looking for? (only use numbers)")
+        year_str, month_str, day_str = self.__llapi.get_voyage_date()
+        '''Lista upp ómannaðar voyages'''
+        voyages = self.__llapi.get_voyage_destination(voyage_destination, int(year_str), int(month_str), int(day_str))
+        '''Láta velja voyage'''
+        if print_voyages_destination(voyages, voyage_destination):
+            flight_number = input("Please insert flight number for the voyage: ").upper()
+            the_voyage_lst = self.__llapi.get_the_voyage(voyage_destination, int(year_str), int(month_str), int(day_str), flight_number)
+            the_voyage = the_voyage_lst[0]
+        
+        airplanes = self.__llapi.get_airplane()
+        for item in airplanes:
+            if the_voyage.airplane == item.name:
+                model = item.model
+        pilots_model = self.__llapi.get_pilots_by_model(model)
+        print_pilots_by_model(pilots_model)
+    
+        captain_str = self.__llapi.get_crew("captain") 
+        pilot_str = self.__llapi.get_crew("pilot")
+
+        flight_attendants = self.__llapi.get_flight_attendants()
+        print_flight_attendants(flight_attendants)
+
+        fsm_str = self.__llapi.get_crew("flight service manager")
+        fa_on_voyage_str = input("Would you like to add a Flight Attendant on this voyage? (Y/N): ").lower()
+        if fa_on_voyage_str == "y":
+            fa_str = self.__llapi.get_crew("flight attendant")
+        else:
+            fa_str = ""
+
+        if is_correct():
+            print(header_string("SUCCESS!", 50))
+            self.__llapi.update_voyage(the_voyage, captain_str, pilot_str, fsm_str, fa_str)
+            # new_voyage = Voyage(destination_str, new_departure_time, airplane_str, captain_str, pilot_str, fsm_str, fa_str)
+            # self.__llapi.add_voyage(new_voyage)
+            input("**   Press any key to return to main menu    **")
+        else:
+            self.__update_voyage()
+
+        '''Láta uppfæra'''
