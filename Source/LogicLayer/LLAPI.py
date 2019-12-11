@@ -116,3 +116,6 @@ class LLAPI:
     
     def update_voyage(self, the_voyage, captain_str, pilot_str, fsm_str, fa_str):
         return self.__voyage.update_voyage(the_voyage, captain_str, pilot_str, fsm_str, fa_str)
+
+    def get_flight_number(self, destination, year, month, day):
+        return self.__voyage.get_flight_number(destination, year, month, day)

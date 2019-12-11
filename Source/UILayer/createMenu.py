@@ -49,7 +49,7 @@ class Create_Menu:
                     address_str = input("Address: ")
                     home_phone_str = self.__llapi.get_phone("Home")
                     cell_phone_str = self.__llapi.get_phone("Cell")
-                    email_str = input("E-mail: ")
+                    email_str = get_email()
                     if occupation_str in ["Captain", "Pilot"]:
                         print("")
                         print('List of airplanes')

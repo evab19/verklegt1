@@ -37,17 +37,16 @@ class Update_Menu:
         emp_to_update = self.__llapi.get_employee()
         print_possible_employee_for_update(emp_to_update)
         employee = input("Insert SSN of employee you would like to update? ")
+        new_occupation = self.__llapi.choose_occupation()
+        print("Occupation: ", new_occupation)
         print("")
         print("------------------------------------------")
         print("To leave information unchanged press enter")
         print("------------------------------------------")
-        
-        new_occupation = self.__llapi.choose_occupation()
-        print("Occupation: ", new_occupation)
         new_address = input("New address: ")
         new_home_phone = self.__llapi.get_phone("Home")
         new_cell_phone = self.__llapi.get_phone("Cell")
-        new_email = input("New e-mail: ")
+        new_email = get_email()
         new_licence = input("New licence: ")
         if is_correct():
             new_employee.extend([new_occupation, new_address, new_home_phone, new_cell_phone, new_email, new_licence])
@@ -72,16 +71,16 @@ class Update_Menu:
         print("")
 
         if action2 == "1":
-            new_name = input("New contact name: ")
+            new_name = get_string("New contact name")
             new_contact.append(new_name)
             new_contact.append("")
         elif action2 == "2":
-            new_phone = input("New contact phone: ")
+            new_phone = self.__llapi.get_phone("New contact")
             new_contact.append("")
             new_contact.append(new_phone)
         elif action2 == "3":
-            new_name = input("New contact name: ")
-            new_phone = input("New contact phone: ")
+            new_name = get_string("New contact name")
+            new_phone = self.__llapi.get_phone("New contact")
             new_contact.append(new_name)
             new_contact.append(new_phone)
             # print(new_contact)
