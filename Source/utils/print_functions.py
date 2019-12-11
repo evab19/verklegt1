@@ -225,8 +225,7 @@ def print_the_voyage(the_voyage_lst):
             print("      Flight Attendant: " + the_fa.name)
     print("   Contact person: " + the_destination.contact_name)
     print("   Contact person's phone number: " + the_destination.contact_phone)
-    input("\n**   Press any key to return to main menu    **")
-    print("")
+
 
 def print_employee_schedule(employee, week_lst, schedule_lst):
     length = 17
@@ -323,7 +322,7 @@ def print_employee_schedule(employee, week_lst, schedule_lst):
     input("\n**   Press any key to return to main menu    **")
     print("")
     
-def choose_occupation():
+def print_choose_occupation():
     print("** Please choose occupation **")
     print("1: Captain")
     print("2: Pilot")

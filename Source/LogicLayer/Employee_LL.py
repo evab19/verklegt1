@@ -4,6 +4,7 @@ from models.Voyage import Voyage
 from DataLayer.Get_DL import Get_DL
 from datetime import *
 import time
+from utils.print_functions import *
 
 class EmployeeLL:
 
@@ -11,6 +12,25 @@ class EmployeeLL:
         self.__employee_repo = dapi_in 
         self.__employee = Employee()
         self.__get = Get_DL()
+
+    def choose_occupation(self):
+        print_choose_occupation()
+        occupation_str = ""
+        while True:
+            occupation_choice = input("Choose an option: ")
+            if occupation_choice == "b":
+                return False
+            if occupation_choice == "1":
+                occupation_str = "Captain"
+            elif occupation_choice == "2":
+                occupation_str = "Pilot"
+            elif occupation_choice == "3":
+                occupation_str = "Flight Attendant"
+            elif occupation_choice == "4":
+                occupation_str = "Flight Service Manager"
+            else:
+                print("Invalid input. Please choose from the list")
+            return occupation_str
 
     def add_employee(self, employee):
         if self.is_valid_employee(employee):
