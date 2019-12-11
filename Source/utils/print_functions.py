@@ -98,7 +98,7 @@ def print_airplanes(airplane):
         print(item)
     print("{:-<106}".format(""))
     print("* A = Available, I = In the air, LA = Landed abroad")
-    input("\n**   Press any key to return to main menu    **")
+
 
 def print_voyages(voyages):
     print("{:-<94}".format(""))
@@ -192,6 +192,7 @@ def print_flight_attendants(flight_attendants):
 def print_voyages_destination(voyage, airport):
     if voyage == []:
         print("No voyage to " + airport + " on selected date!")
+        return False
     else:
         print("{:-<67}".format(""))
         print("{}{:20}{}{:25}{}{:15}{}".format('| ', 'Destination', '| ', 'Departure time', '| ', 'Flight number', '|'))
@@ -202,6 +203,7 @@ def print_voyages_destination(voyage, airport):
             print("{}{:20}{}{:25}{}{:15}{}".format('| ', destination, '| ', departure_date_time, '| ', flight_out, '|'))
             print("{:-<67}".format(""))
     print("")
+    return True
 
 def print_the_voyage(the_voyage_lst):
     the_voyage = the_voyage_lst[0]
@@ -233,8 +235,7 @@ def print_the_voyage(the_voyage_lst):
             print("      Flight Attendant: " + the_fa.name)
     print("   Contact person: " + the_destination.contact_name)
     print("   Contact person's phone number: " + the_destination.contact_phone)
-    input("\n**   Press any key to return to main menu    **")
-    print("")
+
 
 def print_employee_schedule(employee, week_lst, schedule_lst):
     length = 17
@@ -331,7 +332,7 @@ def print_employee_schedule(employee, week_lst, schedule_lst):
     input("\n**   Press any key to return to main menu    **")
     print("")
     
-def choose_occupation():
+def print_choose_occupation():
     print("** Please choose occupation **")
     print("1: Captain")
     print("2: Pilot")
@@ -347,4 +348,21 @@ def try_again():
 #     print(header_string('WRONG INPUT, please select a valid input!', 50))
 #     input("\n**   Press any key to return to menu    **")
 
+
+def get_string(category):
+    while True: 
+        input_str = input("{}: ".format(category))
+        input_check = ''.join(input_str.split())
+        if input_check.isalpha():
+            return input_str
+        else:
+            print("Please insert a valid {}".format((category).lower()))
+
+def get_number(category):
+    while True:
+        input_str = input("{}: ".format(category))
+        if input_str.isalnum():
+            return input_str
+        else:
+            print("Please insert a valid {}".format((category).lower()))
 

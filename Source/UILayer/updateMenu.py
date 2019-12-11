@@ -28,7 +28,6 @@ class Update_Menu:
             print("2: Update airport contact info")
             print("3: Update voyage")
             print("b: Back")
-            # print("q: Quit")
             print("")
 
             action = input("Choose an option: ").lower()
@@ -45,6 +44,9 @@ class Update_Menu:
                 try_again()
 
 
+            elif action == "3":
+                self.__update_voyage()
+
     def __update_employee(self):
         new_employee = []
         print(header_string("UPDATE EMPLOYEE", 50))
@@ -55,19 +57,19 @@ class Update_Menu:
         print("------------------------------------------")
         print("To leave information unchanged press enter")
         print("------------------------------------------")
-        new_occupation = input("New occupation: ")
+        
+        new_occupation = self.__llapi.choose_occupation()
+        print("Occupation: ", new_occupation)
         new_address = input("New address: ")
-        new_home_phone = input("New home phone: ")
-        new_mobile_phone = input("New mobile phone: ")
+        new_home_phone = self.__llapi.get_phone("Home")
+        new_cell_phone = self.__llapi.get_phone("Cell")
         new_email = input("New e-mail: ")
         new_licence = input("New licence: ")
-        new_employee.append(new_occupation)
-        new_employee.append(new_address)
-        new_employee.append(new_home_phone)
-        new_employee.append(new_mobile_phone)
-        new_employee.append(new_email)
-        new_employee.append(new_licence)
-        self.__llapi.update_employee(employee, new_employee)
+        if is_correct():
+            new_employee.extend([new_occupation, new_address, new_home_phone, new_cell_phone, new_email, new_licence])
+            self.__llapi.update_employee(employee, new_employee)
+            print(header_string("SUCCESS!", 50))
+            input("\n**   Press any key to return to main menu    **")
 
     def __update_destination(self):
         print(header_string("UPDATE DESTINATION", 50))
@@ -104,7 +106,5 @@ class Update_Menu:
             try_again()
         self.__llapi.update_destination(destination, new_contact)
 
-
-    def __update_flight(self):
+    def __update_voyage(self):
         pass
-

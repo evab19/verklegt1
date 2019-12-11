@@ -26,12 +26,19 @@ class LLAPI:
             return True
 
     def get_destination(self):
-         return self.__destination.get_destination()
+        return self.__destination.get_destination()
 
     def update_destination(self, destination, new_contact):
-        self.__destination.update_destination(destination, new_contact)
+        return self.__destination.update_destination(destination, new_contact)
+
+    def get_destination_duration(self):
+        return self.__destination.get_destination_duration()
     
 #### employee
+
+    def choose_occupation(self):
+        return self.__employee.choose_occupation()
+
     def check_if_ssn_unique(self, ssn):
         return self.__employee.check_if_ssn_unique(ssn)
 
@@ -107,8 +114,8 @@ class LLAPI:
     def get_all_voyage_at_date(self, year_int, month_int, day_int):
         return self.__voyage.get_all_voyage_at_date(year_int, month_int, day_int)
         
-    def get_departure_date(self):
-        return self.__voyage.get_departure_date()
+    def get_voyage_date(self):
+        return self.__voyage.get_voyage_date()
 
-    def get_departure_time(self):
-        return self.__voyage.get_departure_time()
+    def get_voyage_time(self):
+        return self.__voyage.get_voyage_time()

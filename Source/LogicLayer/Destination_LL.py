@@ -1,4 +1,5 @@
 from models.Destination import Destination
+import datetime
 
 class DestinationLL:
     '''Logic Layer Destination Class
@@ -34,3 +35,13 @@ class DestinationLL:
 
     def update_destination(self, destination, new_contact):
         self.__destination_repo.update_destination(destination, new_contact)
+
+    def get_destination_duration(self):
+        timeformat = "%H:%M"
+        while True:
+            duration_str = input("Flight duration (hh:mm): ")
+            try:
+                datetime.datetime.strptime(duration_str, timeformat)
+                return duration_str
+            except ValueError:
+                print("Invalid format. Please try again.")
