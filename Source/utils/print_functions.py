@@ -89,7 +89,7 @@ def print_airplanes(airplane):
         print(item)
     print("{:-<106}".format(""))
     print("* A = Available, I = In the air, LA = Landed abroad")
-    input("\n**   Press any key to return to main menu    **")
+
 
 def print_voyages(voyages):
     print("{:-<94}".format(""))
@@ -194,6 +194,7 @@ def print_voyages_destination(voyage, airport):
             print("{}{:20}{}{:25}{}{:15}{}".format('| ', destination, '| ', departure_date_time, '| ', flight_out, '|'))
             print("{:-<67}".format(""))
     print("")
+    return True
 
 def print_the_voyage(the_voyage_lst):
     the_voyage = the_voyage_lst[0]

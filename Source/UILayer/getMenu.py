@@ -68,9 +68,7 @@ class Get_Menu:
             print(header_string("GET WEEK SCHEDULE FOR AN EMPLOYEE", 50))
             employee = input("Use SSN for the employee you would like to get the schedule for: ")
             print("\nPlease insert date and you will get the week schedule that includes that date.")
-            input_year = input("\nYear: ")
-            input_month = input("Month: ")
-            input_day = input("Day: ")
+            input_year, input_month, input_day = self.__llapi.get_voyage_date()
             employee_information = self.__llapi.get_employee_information(employee)
             week_dates = self.__llapi.get_week_lst(input_year, input_month, input_day)
             week_schedule_lst = self.__llapi.get_week_schedule(employee, input_year, input_month, input_day)
@@ -78,7 +76,7 @@ class Get_Menu:
         
 
     def __get_destination(self):
-        print(header_string("GET DESTINATION", 50))
+        print(header_string("GET DESTINATIONS", 50))
         destination = self.__llapi.get_destination()
         print_destination(destination)
 
@@ -87,9 +85,10 @@ class Get_Menu:
         print(header_string("GET AIRPLANE INFORMATION", 50))
         airplanes = self.__llapi.get_airplane()
         print_airplanes(airplanes)
+        input("\n**   Press any key to return to main menu    **")
 
     def __get_voyage(self):
-        print(header_string("GET A VOYAGES", 50))
+        print(header_string("GET VOYAGE INFORMATION", 50))
         airport = self.__llapi.get_destination()
         print_airport(airport)
         voyage_destination = input("What voyage would you like to get (insert airport name)? ")
