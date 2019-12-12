@@ -64,7 +64,7 @@ def print_employee_by_status():
 
 def print_employee(employees):
     print("{:-<163}".format(""))
-    print("{}{:13}{}{:25}{}{:12}{}{:20}{}{:12}{}{:12}{}{:30}{}{:10}{}{:10}{}".format('| ', 'Occupation *', '| ', 'Name', '| ', 'SSN', '| ', 'Address', '| ', 'Home phone', '| ', 'Cell phone', '| ', 'Email', '| ', 'Licence', '| ', 'Status **', '|'))
+    print("{}{:13}{}{:25}{}{:12}{}{:20}{}{:12}{}{:12}{}{:30}{}{:10}{}{:10}{}".format('| ','Occupation *', '| ', 'Name', '| ', 'SSN', '| ', 'Address', '| ', 'Home phone', '| ', 'Cell phone', '| ', 'Email', '| ', 'Licence', '|', 'Status **','| ', ))
     print("{:-<163}".format(""))
     for item in employees:
         print(item)
@@ -357,11 +357,23 @@ def get_number(category):
         else:
             print("Please insert a valid {}".format((category).lower()))
 
-def get_email():
-    while True:
+def get_email(status = ""):
+    if status == "update":
         input_str = input("Please enter an e-mail: ")
-        if validate_email(input_str):
+        if input_str == "":
             return input_str
         else:
-            print("Invalid e-mail address. Please try again.")
+            while True:
+                if validate_email(input_str):
+                    return input_str
+                else:
+                    print("Invalid e-mail address. Please try again.")
+                    input_str = input("Please enter an e-mail: ")
+    else:
+        while True:
+            input_str = input("Please enter an e-mail: ")
+            if validate_email(input_str):
+                return input_str
+            else:
+                print("Invalid e-mail address. Please try again.")
 

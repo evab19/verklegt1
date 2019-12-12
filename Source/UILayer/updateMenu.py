@@ -36,23 +36,39 @@ class Update_Menu:
         print(header_string("UPDATE EMPLOYEE", 50))
         emp_to_update = self.__llapi.get_employee()
         print_possible_employee_for_update(emp_to_update)
-        employee = input("Insert SSN of employee you would like to update? ")
-        new_occupation = self.__llapi.choose_occupation()
-        print("Occupation: ", new_occupation)
-        print("")
-        print("------------------------------------------")
-        print("To leave information unchanged press enter")
-        print("------------------------------------------")
-        new_address = input("New address: ")
-        new_home_phone = self.__llapi.get_phone("Home")
-        new_cell_phone = self.__llapi.get_phone("Cell")
-        new_email = get_email()
-        new_licence = input("New licence: ")
-        if is_correct():
-            new_employee.extend([new_occupation, new_address, new_home_phone, new_cell_phone, new_email, new_licence])
-            self.__llapi.update_employee(employee, new_employee)
-            print(header_string("SUCCESS!", 50))
-            input("\n**   Press any key to return to main menu    **")
+        employee = input("Social Security Number: ")
+        while not(self.__llapi.is_ssn_valid(employee)):
+            print("Please insert a valid 10-digit social security number.")
+            employee = input("Social Security Number: ")
+        if not self.__llapi.check_if_ssn_unique(employee):
+            employee_information = self.__llapi.get_employee_information(employee)
+            print_employee(employee_information)
+            new_occupation = self.__llapi.choose_occupation()
+            print("Occupation: ", new_occupation)
+            print("")
+            print("------------------------------------------")
+            print("To leave information unchanged press enter")
+            print("------------------------------------------")
+            new_address = input("New address: ")
+            new_home_phone = self.__llapi.get_phone("Home")
+            new_cell_phone = self.__llapi.get_phone("Cell")
+            new_email = get_email("update")
+            if new_occupation in ["C", "P"]:
+                print("")
+                print('List of airplanes')
+                airplanes = self.__llapi.get_airplanes()
+                print_airplanes(airplanes)
+                new_licence = self.__llapi.get_airplane_model("update")
+            if is_correct():
+                new_employee.extend([new_occupation, new_address, new_home_phone, new_cell_phone, new_email, new_licence])
+                self.__llapi.update_employee(employee, new_employee)
+                print(header_string("SUCCESS!", 50))
+                press_any_key()
+            else:
+                self.__update_employee()
+        else:
+            print("Employee doesn't exist")
+            press_any_key()
 
     def __update_destination(self):
         print(header_string("UPDATE DESTINATION", 50))
@@ -84,7 +100,12 @@ class Update_Menu:
             new_contact.append(new_name)
             new_contact.append(new_phone)
             # print(new_contact)
-        self.__llapi.update_destination(destination, new_contact)
+        if is_correct():
+            print(header_string("SUCCESS!", 50))
+            self.__llapi.update_destination(destination, new_contact)
+            press_any_key()
+        else:
+            self.__update_destination()
 
 
     def __update_voyage(self):
@@ -103,7 +124,7 @@ class Update_Menu:
             the_voyage_lst = self.__llapi.get_flight_number(voyage_destination, year_str, month_str, day_str)
             the_voyage = the_voyage_lst[0]
         
-        airplanes = self.__llapi.get_airplane()
+        airplanes = self.__llapi.get_airplanes()
         for item in airplanes:
             if the_voyage.airplane == item.name:
                 model = item.model
@@ -126,7 +147,7 @@ class Update_Menu:
         if is_correct():
             print(header_string("SUCCESS!", 50))
             self.__llapi.update_voyage(the_voyage, captain_str, pilot_str, fsm_str, fa_str)
-            input("**   Press any key to return to main menu    **")
+            press_any_key()
         else:
             self.__update_voyage()
 

@@ -44,7 +44,7 @@ class EmployeeLL:
             return False
 
     def is_valid_employee(self, employee):
-        if employee.name and employee.occupation and employee.ssn and employee.cell_phone and employee.address != "":
+        if employee.name and employee.occupation and employee.ssn and (employee.cell_phone or employee.home_phone) and employee.address:
             return True
         else:
             return False
@@ -63,7 +63,7 @@ class EmployeeLL:
                 int(ssn)
                 return True
             except ValueError:
-                return False
+                return False            
 
     def get_phone(self, name):
         if name.lower() == "contact" or name.lower() == "new contact":
@@ -141,7 +141,7 @@ class EmployeeLL:
 
     def parse_date(self, date):
         parseDate = dateutil.parser.parse(date)
-        year, month, day, hour, min = parseDate.year, parseDate.month, parseDate.day, parseDate.hour, parseDate.minute
+        year, month, day, hour, minute = parseDate.year, parseDate.month, parseDate.day, parseDate.hour, parseDate.minute
         return year, month, day
 
     def get_crew(self, occupation):

@@ -50,12 +50,12 @@ class Create_Menu:
                     home_phone_str = self.__llapi.get_phone("Home")
                     cell_phone_str = self.__llapi.get_phone("Cell")
                     email_str = get_email()
-                    if occupation_str in ["Captain", "Pilot"]:
+                    if occupation_str in ["C", "P"]:
                         print("")
                         print('List of airplanes')
-                        airplanes = self.__llapi.get_airplane()
+                        airplanes = self.__llapi.get_airplanes()
                         print_airplanes(airplanes)
-                        airplane_license_str = input("Choose airplane (use the name): ")
+                        airplane_license_str = self.__llapi.get_airplane_model()
                     else:
                         airplane_license_str = "N/A"
                     print("")
@@ -120,14 +120,15 @@ class Create_Menu:
         airport = self.__llapi.get_destination()
         print_airport(airport)
         destination_str = self.__llapi.get_voyage_airport()
-        copy_voyage = input("\nDo you want to copy an existing voyage? ").lower()
+        copy_voyage = input("\nDo you want to copy an existing voyage? (Y/N): ").lower()
         if copy_voyage == "y":
             self.__copy_voyage(destination_str)
         elif copy_voyage == "n":
-            self.__create_voyage()
+            self.__create_voyage(destination_str)
 
     def __copy_voyage(self, airport):
         print("\nWhat date are you looking for? (only use numbers)")
+        airport_str = airport
         copy_year_str, copy_month_str, copy_day_str = self.__llapi.get_voyage_date()
         voyages = self.__llapi.get_voyage_destination(airport, int(copy_year_str), int(copy_month_str), int(copy_day_str))
         if print_voyages_destination(voyages, airport):
@@ -183,10 +184,11 @@ class Create_Menu:
             self.__llapi.add_voyage(new_voyage)
             input("**   Press any key to return to main menu    **")
         else:
-            self.__copy_voyage()
+            self.__copy_voyage(airport_str)
 
 
-    def __create_voyage(self):
+    def __create_voyage(self, destination):
+        destination_str = destination
         year_str, month_str, day_str = self.__llapi.get_voyage_date()
         hour_str, minutes_str = self.__llapi.get_voyage_time()
         new_departure_time = datetime.datetime(int(year_str), int(month_str), int(day_str), int(hour_str), int(minutes_str), 0).isoformat()
@@ -199,7 +201,7 @@ class Create_Menu:
 
         print_airplane_name_and_models(availableplanes)
         print("The listed airplanes are available for the given date and time")
-        airplane_str = self.__llapi.get_voyage_airplane()
+        airplane_str = self.__llapi.get_voyage_airplane(temp_lst)
         print("")
         man_voyage = input("Would you like to man the voyage at this time? (Y/N): ").lower()
 
@@ -220,18 +222,24 @@ class Create_Menu:
 
             fsm_str = self.__llapi.get_crew("flight service manager")
             fa_on_voyage_str = input("Would you like to add a Flight Attendant on this voyage? (Y/N): ").lower()
-            if fa_on_voyage_str == "y":
+            #fa_lst = []
+            if fa_on_voyage_str == "y": #while í listapælingum
                 fa_str = self.__llapi.get_crew("flight attendant")
+                #fa_lst.append(fa_str)
+                #fa_on_voyage_str = input("Would you like to add another Flight Attendant on this voyage? (Y/N): ").lower()
+
             else:
-                fa_str = ""
-    
+                fa_str = "N/A"
+            # if fa_lst == []:
+            #     fa_lst = ["N/A"]
+
             if is_correct():
                 print(header_string("SUCCESS!", 50))
                 new_voyage = Voyage(destination_str, new_departure_time, airplane_str, captain_str, pilot_str, fsm_str, fa_str)
                 self.__llapi.add_voyage(new_voyage)
-                input("**   Press any key to return to main menu    **")
+                press_any_key()
             else:
-                self.__create_voyage()
+                self.__create_voyage(destination_str)
         else:
             new_voyage = Voyage(destination_str, new_departure_time, airplane_str)
             self.__llapi.add_voyage(new_voyage)
