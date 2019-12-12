@@ -377,3 +377,6 @@ def get_email(status = ""):
             else:
                 print("Invalid e-mail address. Please try again.")
 
+def not_licensed():
+    not_licensed_str = "The employee is not licensed for this role or is not available"
+    return not_licensed_str

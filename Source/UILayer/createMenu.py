@@ -214,17 +214,30 @@ class Create_Menu:
             pilots_model = self.__llapi.get_pilots_by_model(model)
             print_pilots_by_model(pilots_model)
 
-            captain_str = self.__llapi.get_crew("captain") 
+            captain_str = self.__llapi.get_crew("captain")
+            while not self.__llapi.check_occupation("C", captain_str):
+                print(not_licensed())
+                captain_str = self.__llapi.get_crew("captain") 
+
             pilot_str = self.__llapi.get_crew("pilot")
+            while not self.__llapi.check_occupation("P", pilot_str):
+                print(not_licensed())
+                pilot_str = self.__llapi.get_crew("pilot")
 
             flight_attendants = self.__llapi.get_flight_attendants()
             print_flight_attendants(flight_attendants)
 
             fsm_str = self.__llapi.get_crew("flight service manager")
+            while not self.__llapi.check_occupation("FSM", fsm_str):
+                print(not_licensed())
+                fsm_str = self.__llapi.get_crew("flight service manager")
             fa_on_voyage_str = input("Would you like to add a Flight Attendant on this voyage? (Y/N): ").lower()
             #fa_lst = []
             if fa_on_voyage_str == "y": #while í listapælingum
                 fa_str = self.__llapi.get_crew("flight attendant")
+                while not self.__llapi.check_occupation("FA", fa_str):
+                    print(not_licensed())
+                    fa_str = self.__llapi.get_crew("flight attendant")
                 #fa_lst.append(fa_str)
                 #fa_on_voyage_str = input("Would you like to add another Flight Attendant on this voyage? (Y/N): ").lower()
 
