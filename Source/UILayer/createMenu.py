@@ -140,60 +140,29 @@ class Create_Menu:
         availableplanes = self.__llapi.get_airplane_status(int(new_year_str), int(new_month_str), int(new_day_str))
         new_hour_str, new_minutes_str = self.__llapi.get_voyage_time()
         new_departure_time = datetime.datetime(int(new_year_str), int(new_month_str), int(new_day_str), int(new_hour_str), int(new_minutes_str), 0).isoformat()
-        
-        # temp_lst = []
-        # for item in availableplanes:
-        #     temp_lst.append(item.name)
+        airplane_str = copy_voyage.airplane
 
-        # print_airplane_name_and_models(availableplanes)
-        # print("The listed airplanes are available for the given date and time")
-        
-        # air_input = 0
-        # while air_input != 1:
-        #     airplane_str = get_string("Airplane (name): ")
-        #     if airplane_str not in temp_lst:
-        #         print("Wrong input or airplane not available")
-        #         print("Please choose an airplane from the list")
-        #     else:
-        #         air_input = 1
-        
-        # airplanes = self.__llapi.get_airplane()
-        # for item in airplanes:
-        #     if airplane_str == item.name:
-        #         model = item.model
-        # pilots_model = self.__llapi.get_pilots_by_model(model)
-        # print_pilots_by_model(pilots_model)
-
-        # captain_str = self.__llapi.get_crew("captain") 
-        # pilot_str = self.__llapi.get_crew("pilot")
-
-        # flight_attendants = self.__llapi.get_flight_attendants()
-        # print_flight_attendants(flight_attendants)
-
-        # fsm_str = self.__llapi.get_crew("flight service manager")
-        # fa_on_voyage_str = input("Would you like to add a Flight Attendant on this voyage? (Y/N): ").lower()
-        # if fa_on_voyage_str == "y":
-        #     fa_str = self.__llapi.get_crew("flight attendant")
-        # else:
-        #     fa_str = ""
-
-        if is_correct():
-            print(header_string("SUCCESS!", 50))
-            new_voyage = Voyage(airport, new_departure_time, copy_voyage.airplane, copy_voyage.captain, copy_voyage.pilot, copy_voyage.fsm, copy_voyage.flight_attendant)
-            # new_voyage = Voyage(airport, new_departure_time, copy_voyage.airplane, copy_voyage.captain, copy_voyage.pilot, fsm_str, fa_str)
-            self.__llapi.add_voyage(new_voyage)
-            input("**   Press any key to return to main menu    **")
+        if copy_voyage.captain == "N/A":
+            man_voyage = input("Would you like to man the voyage at this time? (Y/N): ").lower()
+            if man_voyage == "y":
+                self.__man_voyage(airport_str, new_departure_time, airplane_str, new_year_str, new_month_str, new_day_str, new_hour_str, new_minutes_str)
+            else:
+                new_voyage = Voyage(airport_str, new_departure_time, airplane_str)
+                self.__llapi.add_voyage(new_voyage)
         else:
-            self.__copy_voyage(airport_str)
-
-
+            change_employees = input("Would you like to change employees for the voyage? (Y/N): ").lower()
+            if change_employees == "y":
+                self.__man_voyage(airport_str, new_departure_time, airplane_str, new_year_str, new_month_str, new_day_str, new_hour_str, new_minutes_str)
+            else:
+                new_voyage = Voyage(airport_str, new_departure_time, airplane_str, copy_voyage.captain, copy_voyage.pilot, copy_voyage.fsm, copy_voyage.flight_attendant)
+                self.__llapi.add_voyage(new_voyage)
+          
     def __create_voyage(self, destination):
         destination_str = destination
         year_str, month_str, day_str = self.__llapi.get_voyage_date()
         hour_str, minutes_str = self.__llapi.get_voyage_time()
         new_departure_time = datetime.datetime(int(year_str), int(month_str), int(day_str), int(hour_str), int(minutes_str), 0).isoformat()
        
-
         availableplanes = self.__llapi.get_airplane(int(year_str), int(month_str), int(day_str), int(hour_str), int(minutes_str))
         temp_lst = []
         for item in availableplanes:
@@ -206,56 +175,38 @@ class Create_Menu:
         man_voyage = input("Would you like to man the voyage at this time? (Y/N): ").lower()
 
         if man_voyage == "y":
-            ''' Prenta lausa flugstjóra'''
-            airplanes = self.__llapi.get_airplane(int(year_str), int(month_str), int(day_str), int(hour_str), int(minutes_str))
-            for item in airplanes:
-                if airplane_str == item.name:
-                    model = item.model
-            pilots_model = self.__llapi.get_pilots_by_model(model)
-            print_pilots_by_model(pilots_model)
-
-            captain_str = self.__llapi.get_crew("captain")
-            while not self.__llapi.check_occupation("C", captain_str):
-                print(not_licensed())
-                captain_str = self.__llapi.get_crew("captain") 
-
-            pilot_str = self.__llapi.get_crew("pilot")
-            while not self.__llapi.check_occupation("P", pilot_str):
-                print(not_licensed())
-                pilot_str = self.__llapi.get_crew("pilot")
-
-            flight_attendants = self.__llapi.get_flight_attendants()
-            print_flight_attendants(flight_attendants)
-
-            fsm_str = self.__llapi.get_crew("flight service manager")
-            while not self.__llapi.check_occupation("FSM", fsm_str):
-                print(not_licensed())
-                fsm_str = self.__llapi.get_crew("flight service manager")
-            fa_on_voyage_str = input("Would you like to add a Flight Attendant on this voyage? (Y/N): ").lower()
-            #fa_lst = []
-            if fa_on_voyage_str == "y": #while í listapælingum
-                fa_str = self.__llapi.get_crew("flight attendant")
-                while not self.__llapi.check_occupation("FA", fa_str):
-                    print(not_licensed())
-                    fa_str = self.__llapi.get_crew("flight attendant")
-                #fa_lst.append(fa_str)
-                #fa_on_voyage_str = input("Would you like to add another Flight Attendant on this voyage? (Y/N): ").lower()
-
-            else:
-                fa_str = "N/A"
-            # if fa_lst == []:
-            #     fa_lst = ["N/A"]
-
-            if is_correct():
-                print(header_string("SUCCESS!", 50))
-                new_voyage = Voyage(destination_str, new_departure_time, airplane_str, captain_str, pilot_str, fsm_str, fa_str)
-                self.__llapi.add_voyage(new_voyage)
-                press_any_key()
-            else:
-                self.__create_voyage(destination_str)
+            self.__man_voyage(destination_str, new_departure_time, airplane_str, year_str, month_str, day_str, hour_str, minutes_str)
         else:
             new_voyage = Voyage(destination_str, new_departure_time, airplane_str)
             self.__llapi.add_voyage(new_voyage)
     
+    def __man_voyage(self, destination_str, new_departure_time, airplane_str, year_str, month_str, day_str, hour_str, minutes_str):
+        ''' Prenta lausa flugstjóra'''
+        airplanes = self.__llapi.get_airplane(int(year_str), int(month_str), int(day_str), int(hour_str), int(minutes_str))
+        for item in airplanes:
+            if airplane_str == item.name:
+                model = item.model
+        pilots_model = self.__llapi.get_pilots_by_model(model)
+        print_pilots_by_model(pilots_model)
 
+        captain_str = self.__llapi.get_crew("captain") 
+        pilot_str = self.__llapi.get_crew("pilot")
 
+        flight_attendants = self.__llapi.get_flight_attendants()
+        print_flight_attendants(flight_attendants)
+
+        fsm_str = self.__llapi.get_crew("flight service manager")
+        fa_on_voyage_str = input("Would you like to add a Flight Attendant on this voyage? (Y/N): ").lower()
+        if fa_on_voyage_str == "y":
+            fa_str = self.__llapi.get_crew("flight attendant")
+
+        else:
+            fa_str = "N/A"
+
+        if is_correct():
+            print(header_string("SUCCESS!", 50))
+            new_voyage = Voyage(destination_str, new_departure_time, airplane_str, captain_str, pilot_str, fsm_str, fa_str)
+            self.__llapi.add_voyage(new_voyage)
+            press_any_key()
+        else:
+            self.__create_voyage(destination_str)
