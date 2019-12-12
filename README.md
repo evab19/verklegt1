@@ -289,3 +289,16 @@ Miðvikudagur
 - Eva fer yfir error og isvalid vesen - sér um GitHub líka
 - Thelma error checks og docstring
 - Ingibjörg og Thelma gerðu notanda prófanir, uppfærðu to do lista og fóru yfir að kröfur séu komnar (amk.A og helst B)
+HOME TIME 00:30!!!
+
+
+------------------------------------------------------------------------------------------------------------------------------
+Dagur 16 12.12.2019
+Fimmtudagur
+------------------------------------------------------------------------------------------------------------------------------
+
+10:00 Morgunfundur Online
+------Skiptum verkum------------
+Nokkru kóðunarverkefni og fíniseringar eftir á todo lista
+- Eva og Steinarnir eru að leggja lokahönd á kóðann
+- Ingibjörg og Thelma halda utan um todo listann og eru að ljúka við skýrsluna
