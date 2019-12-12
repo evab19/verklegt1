@@ -1,20 +1,14 @@
-﻿occupation,id,name,ssn,address,home_phone,cell_phone,email,licence,status
+﻿occupation,name,ssn,address,home_phone,cell_phone,email,licence,status
 
-C,,Eva,2904882309,23,4782040,1,2,Plane1,
+C,Jean Leblanc,0608765899,Nesvegur 2,,8656565,jeanleblanc@nanair.com,Plane1,A
 
-P,,Pikachu,5555886699,viridian,5555555,4444444,pikachu@nintendo.com,Plane1,
+C,Luke Morgenstern,2005863599,Suðurhólar 8,,9653568,lukemorgenstern@nanair.com,Plane1,A
 
-FSM,,Brian,0101903369,Happy Camper Street,5554477,1114455,brian_the_man@nanair.com,,
-
-P,,Harry Potter,7788996655,Hogwards,4445656,8885252,griffindor_rules@nanair.com,Plane1,
-
-C,,Thor,0000000001,Ásgarður,5556666,6665555,god_of_thunder@nanair.com,Plane1,
-
-FA,,Borat,7788552211,kazakhstan,can-phone3,can-phone1,what_is_email@nanair.com,,
-
-FA,,Júlla,7744774477,Vesturbær,1122332,4545454,what_is_this@nanair.com,,
-
-FSM,,Kisi,3322332233,Austurbær,1122232,4545452,is_this@nanair.com,,
-
-FSM,,Syndra,1010101010,Suðurhólar 4,5566969,6555858,syndra@cool.com,N/A,
-
+C,Luisa Mendez,2510885689,Laugavegur 77,5552020,,louisa@nanair.com,Plane3,A
+P,Soren Bergsen,2804692559,Vesturgata 25,,8586868,sorenbergsen@nanair.com,Plane1,A
+P,Simon R Green,2508553569,Ármúla 78,5552020,,simonrgreen@nanair.com,Plane2,A
+P,Laini Taylor,2212714129,Lækjabergi 27,,8585555,lainitaylor@nanair.com,Plane3,A
+FA,Rebecca Roanhorse,2505712359,Hamraborg 2,5552023,6592023,rebeccaroanhorse@nanair.com,N/A,A
+FSM,Naomi Novik,3004733789,Vallatröð 25,,8675959,naominovik@nanair.com,N/A,A
+FSM,Brandon Sanderson,1912751259,Krummahólar 4,,8457899,brandonsanderson@nanair.com,N/A,A
+FA,Robert Jordan,1710482009,Brekkukot 4,,8586999,robertjordan@nanair.com,N/A,A

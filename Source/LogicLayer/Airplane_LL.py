@@ -31,6 +31,10 @@ class AirplaneLL:
         #             plane.plane_status = "B"
         return our_airplanes
 
+    def get_airplanes(self):
+        our_airplanes = self.__airplane_repo.get_airplane()
+        return our_airplanes
+
     def get_airplane_status(self, year_int, month_int, day_int, hour_int, min_int, our_airplanes):
         the_airplanes = our_airplanes
 
@@ -111,3 +115,28 @@ class AirplaneLL:
         new_time = datetime.datetime(dep_year, dep_month, dep_day, arrival_time_hour, arrival_time_min, 0).isoformat()
         return new_time
 
+    def get_airplane_model(self, status = ""):
+        if status == "update":
+            model = input("Choose airplane model licence: ")
+            if model == "":
+                return model
+            else:
+                while True:
+                    if self.check_model(model):
+                        return model
+                    else:
+                        print("Invalid input. Please choose a model from the list")
+                        model = input("Choose airplane model licence: ")
+        else:
+            while True:
+                model = input("Choose airplane model licence: ")
+                if self.check_model(model):
+                    return model
+                else:
+                    print("Invalid input. Please choose a model from the list")
+
+
+
+    def check_model(self, model):
+        airplanes = self.get_airplanes()
+        return any(airplane.model == model for airplane in airplanes)

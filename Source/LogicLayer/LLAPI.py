@@ -88,16 +88,22 @@ class LLAPI:
     def get_airplane(self, year_int, month_int, day_int, hour_int, min_int):
         return self.__airplane.get_airplane(year_int, month_int, day_int, hour_int, min_int)
     
+    def get_airplanes(self):
+        return self.__airplane.get_airplanes()
+    
     def get_airplane_status(self, year_int, month_int, day_int):
         empty_list = []
         return self.__airplane.get_airplane_status(year_int, month_int, day_int, 0 ,0, empty_list)
+    
+    def get_airplane_model(self, status = ""):
+        return self.__airplane.get_airplane_model(status)
 
 #### voyage
     def get_voyage_airport(self):
         return self.__voyage.get_voyage_airport()
 
-    def get_voyage_airplane(self):
-        return self.__voyage.get_voyage_airplane()
+    def get_voyage_airplane(self, plane_list):
+        return self.__voyage.get_voyage_airplane(plane_list)
 
     def add_voyage(self, voyage):
         #if self.is_valid_voyage(voyage):

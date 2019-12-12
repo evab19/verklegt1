@@ -81,7 +81,7 @@ class Get_Menu:
             press_any_key()
         elif action == "7":
             print(header_string("GET PILOTS BY AN AIRPLANE MODEL", 50))
-            airplanes = self.__llapi.get_airplane()
+            airplanes = self.__llapi.get_airplanes()
             print_airplane_models(airplanes)
             model_to_find = input("What airplane would you like to get? ")
             pilots_model = self.__llapi.get_pilots_by_model(model_to_find)
