@@ -1,6 +1,7 @@
 from LogicLayer.LLAPI import LLAPI
 from utils.print_functions import *
 import datetime
+import time
 
 class Get_Menu:
 
@@ -101,7 +102,8 @@ class Get_Menu:
 
     def __get_airplane_information(self):
         print(header_string("GET AIRPLANE INFORMATION", 50))
-        airplanes = self.__llapi.get_airplane()
+        today = datetime.datetime.now()
+        airplanes = self.__llapi.get_airplane(today.year, today.month, today.day, today.hour, today.minute)
         print_airplanes(airplanes)
         press_any_key()
 

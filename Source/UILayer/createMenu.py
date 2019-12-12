@@ -127,7 +127,7 @@ class Create_Menu:
         new_departure_time = datetime.datetime(int(year_str), int(month_str), int(day_str), int(hour_str), int(minutes_str), 0).isoformat()
        
 
-        availableplanes = self.__llapi.get_airplane_status(int(year_str), int(month_str), int(day_str))
+        availableplanes = self.__llapi.get_airplane(int(year_str), int(month_str), int(day_str), int(hour_str), int(minutes_str))
         temp_lst = []
         for item in availableplanes:
             temp_lst.append(item.name)
@@ -140,7 +140,7 @@ class Create_Menu:
 
         if man_voyage == "y":
             ''' Prenta lausa flugstjóra'''
-            airplanes = self.__llapi.get_airplane()
+            airplanes = self.__llapi.get_airplane(int(year_str), int(month_str), int(day_str), int(hour_str), int(minutes_str))
             for item in airplanes:
                 if airplane_str == item.name:
                     model = item.model
