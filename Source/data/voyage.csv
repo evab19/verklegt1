@@ -1,4 +1,4 @@
-﻿destination,departure_date_time,airplane_name,captain_ssn,pilot_ssn,fsm_ssn,fa_ssn,flight_out,flight_in,arrival_at_dest,departure_from_dest,arrival_back_home
+destination,departure_date_time,airplane_name,captain_ssn,pilot_ssn,fsm_ssn,fa_ssn,flight_out,flight_in,arrival_at_dest,departure_from_dest,arrival_back_home
 Nuuk,2020-01-01T08:00:00,Boing,0608765899,2804692559,3004733789,,NA010,NA011,2020-01-01T11:20:00,2020-01-01T11:21:00,2020-01-01T14:41:00
 Nuuk,2020-01-02T08:00:00,Boing,0608765899,2005863599,1912751259,N/A,NA010,NA011,2020-01-02T11:20:00,2020-01-02T11:21:00,2020-01-02T14:41:00
 Nuuk,2020-02-02T08:00:00,Boing,N/A,N/A,N/A,N/A,NA010,NA011,2020-02-02T11:20:00,2020-02-02T11:21:00,2020-02-02T14:41:00

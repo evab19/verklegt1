@@ -22,13 +22,6 @@ class AirplaneLL:
     def get_airplane(self, year_int, month_int, day_int, hour_int, min_int):
         our_airplanes = self.__airplane_repo.get_airplane()
         our_airplanes = self.get_airplane_status(year_int, month_int, day_int, hour_int, min_int, our_airplanes)
-        # for plane in our_airplanes:
-        #     for a_planes in available_planes:
-        #         if plane.name == a_planes.name:
-        #             plane.plane_status = "A"
-        #             break
-        #         else:
-        #             plane.plane_status = "B"
         return our_airplanes
 
     def get_airplanes(self):
@@ -40,32 +33,30 @@ class AirplaneLL:
 
         voyages_at_same_date = self.__airplane_repo.get_all_voyage_at_date(year_int, month_int, day_int)
         
-        #time_now_str = str(year_int) + str(month_int) + str(day_int) + str(hour_int) + str(min_int)
         time_now = datetime.datetime(year_int, month_int, day_int, hour_int, min_int, 0).isoformat()
 
         for plane in the_airplanes:
             for voyage in voyages_at_same_date:
                 if plane.name == voyage.airplane:
-                    #times of voyage
+                    voyage_destination = self.__airplane_repo.get_destination_by_airport_class(voyage.destination)
                     departure_time = voyage.departure
-                    landed_at_destination_time = self.calculate_time_airplane(departure_time, "0:00")
-                    departure_from_destination_time = self.calculate_time_airplane(landed_at_destination_time, "0:02")
-                    landed_at_home_time = self.calculate_time_airplane(departure_from_destination_time, "0:00")
+                    landed_at_destination_time = self.calculate_time_airplane(departure_time, voyage_destination.duration)
+                    departure_from_destination_time = self.calculate_time_airplane(landed_at_destination_time, "1:00")
+                    landed_at_home_time = self.calculate_time_airplane(departure_from_destination_time, voyage_destination.duration)
 
-                    if ((time_now < departure_time) or (time_now > landed_at_home_time)):
-                        plane.plane_status = "A (SLTD)"
+                    if ((time_now < departure_time)):
+                        plane.plane_status = "Booked today"
                     elif ((time_now >= departure_time) and (time_now < landed_at_destination_time)):
-                        plane.plane_status = "I (outward)"
+                        plane.plane_status = "In air outbound"
                     elif ((time_now >= landed_at_destination_time) and (time_now < departure_from_destination_time)):
-                        plane.plane_status = "LA"
+                        plane.plane_status = "Landed abroad"
                     elif ((time_now >= departure_from_destination_time) and (time_now < landed_at_home_time)):
-                        plane.plane_status = "I (inward)"
+                        plane.plane_status = "In air inbound"
                     else:
-                        plane.plane_status = "A"
+                        plane.plane_status = "Available"
         
         return the_airplanes
-                    
-
+        
 
     def parse_date_airplane(self, departure_time):
         voyage_departure = dateutil.parser.parse(self.__voyage.departure)

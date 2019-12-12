@@ -20,7 +20,7 @@ class VoyageLL:
             destination = self.__get.get_destination_by_airport_class(get_destination)
 
             voyage.arrival_at_dest = self.calculate_time(voyage.departure, destination.duration)
-            voyage.departure_from_dest = self.calculate_time(voyage.arrival_at_dest, "00:01")
+            voyage.departure_from_dest = self.calculate_time(voyage.arrival_at_dest, "01:00")
             voyage.arrival_back_home = self.calculate_time(voyage.departure_from_dest, destination.duration)
 
             parseDate_dep = dateutil.parser.parse(voyage.departure)
@@ -130,8 +130,8 @@ class VoyageLL:
     def get_voyage_time(self):
         print("Departure time (Departures from Iceland are between 08:00 and 19:45 (including both)")
         print("four departure times per hour, on minutes 00, 15, 30, and 45)")
-        HOURS = ["08","09","10","11","12","13","14","15","16","17","18","19","23"]
-        MINUTES = ["00","15","30","45", "50"]
+        HOURS = ["08","09","10","11","12","13","14","15","16","17","18","19"]
+        MINUTES = ["00","15","30","45"]
         check = False
         while not check:
             time_str = input("Enter departure time (hh:mm): ")

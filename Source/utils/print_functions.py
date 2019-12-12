@@ -150,7 +150,8 @@ def print_airplane_name_and_models(airplanes):
     # unique_models = set()
     airplanes = sorted(airplanes, key=lambda x: x.model)
     for item in airplanes:
-        print("{}{:20}{}{:20}{}".format('| ', item.name, '| ', item.model, '|'))
+        if item.plane_status == 'Available':
+            print("{}{:20}{}{:20}{}".format('| ', item.name, '| ', item.model, '|'))
     print("{:-<45}".format(""))
     print("")
 
