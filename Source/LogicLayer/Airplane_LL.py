@@ -131,3 +131,8 @@ class AirplaneLL:
     def check_model(self, model):
         airplanes = self.get_airplanes()
         return any(airplane.model == model for airplane in airplanes)
+
+
+    def is_airplane_unique(self, name_str):
+        airplanes = self.get_airplanes()
+        return not(any(airplane.name.lower() == name_str.lower() for airplane in airplanes))

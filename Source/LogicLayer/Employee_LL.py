@@ -53,6 +53,8 @@ class EmployeeLL:
         employees = self.get_employee()
         return not(any(employee.ssn == ssn for employee in employees))
 
+
+
     def check_occupation(self, occupation, ssn):
         employees = self.get_employee()
         for employee in employees:

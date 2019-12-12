@@ -63,12 +63,12 @@ class Update_Menu:
                 new_employee.extend([new_occupation, new_address, new_home_phone, new_cell_phone, new_email, new_licence])
                 self.__llapi.update_employee(employee, new_employee)
                 print(header_string("SUCCESS!", 50))
-                press_any_key()
+                press_enter()
             else:
                 self.__update_employee()
         else:
             print("Employee doesn't exist")
-            press_any_key()
+            press_enter()
 
     def __update_destination(self):
         print(header_string("UPDATE DESTINATION", 50))
@@ -103,7 +103,7 @@ class Update_Menu:
         if is_correct():
             print(header_string("SUCCESS!", 50))
             self.__llapi.update_destination(destination, new_contact)
-            press_any_key()
+            press_enter()
         else:
             self.__update_destination()
 
@@ -149,6 +149,9 @@ class Update_Menu:
             print(not_licensed())
             fsm_str = self.__llapi.get_crew("flight service manager")
         fa_on_voyage_str = input("Would you like to add a Flight Attendant on this voyage? (Y/N): ").lower()
+        while fa_on_voyage_str != "y" and fa_on_voyage_str != "n":
+                print("Wrong input. Please choose Y or N")
+                fa_on_voyage_str = input("Would you like to add a Flight Attendant on this voyage? (Y/N): ").lower()
         #fa_lst = []
         if fa_on_voyage_str == "y": #while í listapælingum
             fa_str = self.__llapi.get_crew("flight attendant")
@@ -163,7 +166,7 @@ class Update_Menu:
         if is_correct():
             print(header_string("SUCCESS!", 50))
             self.__llapi.update_voyage(the_voyage, captain_str, pilot_str, fsm_str, fa_str)
-            press_any_key()
+            press_enter()
         else:
             self.__update_voyage()
 

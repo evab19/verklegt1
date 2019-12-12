@@ -39,3 +39,7 @@ class DestinationLL:
                 return duration_str
             except ValueError:
                 print("Invalid format. Please try again.")
+
+    def is_airport_unique(self, airport):
+        destinations = self.get_destination()
+        return not(any(destination.airport.lower() == airport.lower() for destination in destinations))
