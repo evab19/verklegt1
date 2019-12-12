@@ -114,7 +114,7 @@ class Get_Menu:
                     if item.name == voyage.airplane:
                         voyages_lst.append(voyage)
         print_airplanes(airplanes, voyages_lst)
-        press_any_key()
+        press_enter()
 
     def __get_voyage(self):
         print(header_string("GET VOYAGE INFORMATION", 50))

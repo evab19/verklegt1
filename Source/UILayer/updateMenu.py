@@ -6,11 +6,10 @@ class Update_Menu:
 
     def __init__(self):
         self.__llapi = LLAPI()
-        # self.update_employee_lst = []
-        # self.update_destination_lst = []
-        # self.update_flight_lst = []
 
     def update_menu(self):
+        '''Prints the update menu on the screen and asks the user
+           to choose an action.'''
         action = ""
         while(action != "b"):
             print(header_string("UPDATE", 50))
@@ -32,6 +31,9 @@ class Update_Menu:
                 self.__update_voyage()
 
     def __update_employee(self):
+        '''No input. Prints on the screen and asks for input to update/change
+           the employee informations that can be changed. There is no output
+           printed only saved in the employee.csv data file'''
         new_employee = []
         print(header_string("UPDATE EMPLOYEE", 50))
         emp_to_update = self.__llapi.get_employee()
@@ -71,6 +73,9 @@ class Update_Menu:
             press_enter()
 
     def __update_destination(self):
+        '''No input. Prints on the screen and asks for input to update/change
+           the contact informations for a selected destination. There is no output
+           printed only saved in the destination.csv data file'''
         print(header_string("UPDATE DESTINATION", 50))
         new_contact = []
         action2 = ""
@@ -99,7 +104,6 @@ class Update_Menu:
             new_phone = self.__llapi.get_phone("New contact")
             new_contact.append(new_name)
             new_contact.append(new_phone)
-            # print(new_contact)
         if is_correct():
             print(header_string("SUCCESS!", 50))
             self.__llapi.update_destination(destination, new_contact)
@@ -109,6 +113,8 @@ class Update_Menu:
 
 
     def __update_voyage(self):
+        '''No input. Prints on the screen and asks for input to man a voyage.
+           There is no output printed only saved in the voyage.csv data file'''
         print(header_string("MAN A VOYAGE", 50))
         '''Lista upp Destination'''
         airport = self.__llapi.get_destination()
@@ -152,14 +158,11 @@ class Update_Menu:
         while fa_on_voyage_str != "y" and fa_on_voyage_str != "n":
                 print("Wrong input. Please choose Y or N")
                 fa_on_voyage_str = input("Would you like to add a Flight Attendant on this voyage? (Y/N): ").lower()
-        #fa_lst = []
-        if fa_on_voyage_str == "y": #while í listapælingum
+        if fa_on_voyage_str == "y":
             fa_str = self.__llapi.get_crew("flight attendant")
             while not self.__llapi.check_occupation("FA", fa_str):
                 print(not_licensed())
                 fa_str = self.__llapi.get_crew("flight attendant")
-            #fa_lst.append(fa_str)
-            #fa_on_voyage_str = input("Would you like to add another Flight Attendant on this voyage? (Y/N): ").lower()
         else:
             fa_str = "N/A"
 
@@ -169,5 +172,3 @@ class Update_Menu:
             press_enter()
         else:
             self.__update_voyage()
-
-        '''Láta uppfæra'''
