@@ -57,9 +57,9 @@ class Update_Menu:
             new_email = get_email("update")
             if new_occupation in ["C", "P"]:
                 print("")
-                print('List of airplanes')
+                print('List of airplane models')
                 airplanes = self.__llapi.get_airplanes()
-                print_airplanes(airplanes)
+                print_airplane_models(airplanes)
                 new_licence = self.__llapi.get_airplane_model("update")
             if is_correct():
                 new_employee.extend([new_occupation, new_address, new_home_phone, new_cell_phone, new_email, new_licence])

@@ -52,9 +52,9 @@ class Create_Menu:
                     email_str = get_email()
                     if occupation_str in ["C", "P"]:
                         print("")
-                        print('List of airplanes')
+                        print('List of airplane models')
                         airplanes = self.__llapi.get_airplanes()
-                        print_airplanes(airplanes)
+                        print_airplane_models(airplanes)
                         airplane_license_str = self.__llapi.get_airplane_model()
                     else:
                         airplane_license_str = "N/A"
