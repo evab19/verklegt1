@@ -64,6 +64,9 @@ class DataAPI:
     def get_all_voyage_at_date(self, year_int, month_int, day_int):
         return self.__get.get_all_voyage_at_date(year_int, month_int, day_int)
 
+    def get_destination_by_airport_class(self, airport):
+        return self.__get.get_destination_by_airport_class(airport)
+
 # update föll
     def update_destination(self, destination, new_contact):
         return self.__update.update_destination(destination, new_contact)

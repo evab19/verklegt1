@@ -163,12 +163,14 @@ class Create_Menu:
         hour_str, minutes_str = self.__llapi.get_voyage_time()
         new_departure_time = datetime.datetime(int(year_str), int(month_str), int(day_str), int(hour_str), int(minutes_str), 0).isoformat()
        
-        availableplanes = self.__llapi.get_airplane(int(year_str), int(month_str), int(day_str), int(hour_str), int(minutes_str))
-        temp_lst = []
-        for item in availableplanes:
-            temp_lst.append(item.name)
 
-        print_airplane_name_and_models(availableplanes)
+        all_planes = self.__llapi.get_airplane(int(year_str), int(month_str), int(day_str), int(hour_str), int(minutes_str))
+        temp_lst = []
+        for item in all_planes:
+            if item.plane_status == "Available":
+                temp_lst.append(item.name)
+
+        print_airplane_name_and_models(all_planes)
         print("The listed airplanes are available for the given date and time")
         airplane_str = self.__llapi.get_voyage_airplane(temp_lst)
         print("")
