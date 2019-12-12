@@ -104,7 +104,16 @@ class Get_Menu:
         print(header_string("GET AIRPLANE INFORMATION", 50))
         today = datetime.datetime.now()
         airplanes = self.__llapi.get_airplane(today.year, today.month, today.day, today.hour, today.minute)
-        print_airplanes(airplanes)
+        voyages = self.__llapi.get_all_voyage_at_date(today.year, today.month, today.day)
+        voyages_lst = []
+        for item in airplanes:
+            if item.plane_status == 'Available':
+                voyages_lst.append(" ")
+            if item.plane_status != 'Available':
+                for voyage in voyages:
+                    if item.name == voyage.airplane:
+                        voyages_lst.append(voyage)
+        print_airplanes(airplanes, voyages_lst)
         press_any_key()
 
     def __get_voyage(self):
