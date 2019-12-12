@@ -81,13 +81,22 @@ def print_destination(destination):
     print("{:-<128}".format(""))
 
 
-def print_airplanes(airplane):
-    print("{:-<106}".format(""))
-    print("{}{:20}{}{:20}{}{:25}{}{:20}{}{:10}{}".format('| ', 'Name', '| ',  'Model', '| ', 'Producer', '| ', 'Number of seats', '| ', 'Status *', '|'))
-    print("{:-<106}".format(""))
-    for item in airplane:
-        print(item)
-    print("{:-<106}".format(""))
+def print_airplanes(airplane, voyages_lst):
+    
+    print("{:-<138}".format(""))
+    print("{}{:20}{}{:20}{}{:20}{}{:10}{}{:17}{}{:15}{}{:21}{}".format('| ', ' ', '| ',  ' ', '| ', ' ', '| ', 'Number', '| ', ' ', '| ', ' ', '| ', 'Available', '|'))
+    print("{}{:20}{}{:20}{}{:20}{}{:10}{}{:17}{}{:15}{}{:21}{}".format('| ', 'Name', '| ',  'Model', '| ', 'Producer', '| ', 'of seats', '| ', 'Status', '| ', 'Destination', '| ', 'again', '|'))
+    print("{:-<138}".format(""))
+    for index, item in enumerate(airplane):
+        if item.plane_status == 'Available':
+            destination_str = " "
+            available_again = " "
+        else:
+            destination_str = voyages_lst[index].destination
+            available_again = voyages_lst[index].arrival_back_home
+        print("{}{:20}{}{:20}{}{:20}{}{:10}{}{:17}{}{:15}{}{:21}{}".format('| ', item.name, '| ',  item.model, '| ', item.producer, '| ', item.number_of_seats, '| ', item.plane_status, '| ', destination_str, '| ', available_again, '|'))
+        # print(item + )
+    print("{:-<138}".format(""))
     print("* A = Available, I = In the air, LA = Landed abroad")
 
 
@@ -205,6 +214,7 @@ def print_the_voyage(the_voyage_lst):
     print("Information for voyage to " + the_destination.airport + "at " + the_voyage.departure)
     print("")
     print("   Destination: " + the_destination.airport)
+    print("   Airplane: " + the_voyage.airplane)
     print("   Flight number from Iceland: " + the_voyage.flight_out)
     print("   Departure time from Iceland: " + the_voyage.departure)
     print("   Arrival time at " + the_destination.airport + ": " + the_voyage.arrival_at_dest)
