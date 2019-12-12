@@ -341,10 +341,10 @@ def print_choose_occupation():
     print("")
 
 def try_again():
-    input("\n**   Press any key to try again    **")
+    input("\n**   Press enter to try again    **")
 
-def press_any_key():
-    input("\n**   Press any key to return to menu    **")
+def press_enter():
+    input("\n**   Press enter to return to menu    **")
     print("")
 
 
@@ -354,6 +354,8 @@ def error_message():
 def get_string(category):
     while True: 
         input_str = input("{}: ".format(category))
+        if input_str == "":
+            return input_str
         input_check = ''.join(input_str.split())
         if input_check.isalpha():
             return input_str

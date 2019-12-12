@@ -64,7 +64,7 @@ class Create_Menu:
                         new_employee = Employee(occupation_str, name_str, SO_str, address_str, home_phone_str, cell_phone_str, email_str, airplane_license_str)
                         if self.__llapi.add_employee(new_employee):
                             print(header_string("SUCCESS!", 50))
-                            input("\n**   Press any key to return to main menu    **")
+                            press_enter()
                         else:
                             print("Oh-oh something went wrong! Please fill in all information")
                             try_again()
@@ -73,46 +73,52 @@ class Create_Menu:
                         self.__create_employee()               
             else:
                 print("The SSN already exists!")
-                input("\n**   Press any key to return to the create menu    **")
+                press_enter()
     
     def __create_destination(self):
         print(header_string("CREATE DESTINATION", 50))
         print(please_fill_info())
         country_str = get_string("Country")
         airport_str = get_string("Airport")
-        duration_str = self.__llapi.get_destination_duration()
-        distance_str = get_number("Distance from Iceland (km)")
-        contact_name_str = get_string("Contact name")
-        contact_phone_nr_str = self.__llapi.get_phone("Contact")
-        print("")
-
-        if is_correct():
-            new_destination = Destination(country_str, airport_str, duration_str, distance_str, contact_name_str, contact_phone_nr_str)
-            if self.__llapi.add_destination(new_destination):
-                print(header_string("SUCCESS!", 50))
-                input("\n**   Press any key to return to the main menu    **")
+        if self.__llapi.is_airport_unique(airport_str):    
+            duration_str = self.__llapi.get_destination_duration()
+            distance_str = get_number("Distance from Iceland (km)")
+            contact_name_str = get_string("Contact name")
+            contact_phone_nr_str = self.__llapi.get_phone("Contact")
+            if is_correct():
+                new_destination = Destination(country_str, airport_str, duration_str, distance_str, contact_name_str, contact_phone_nr_str)
+                if self.__llapi.add_destination(new_destination):
+                    print(header_string("SUCCESS!", 50))
+                    press_enter()
+                else:
+                    print("Oh no something went wrong! Please try again.")
+                    try_again()
+                    self.__create_destination()
             else:
-                print("Oh no something went wrong! Please try again.")
-                try_again()
                 self.__create_destination()
         else:
-            self.__create_destination()
+            print("Airport already exists.")
+            press_enter()
 
     def __create_airplane(self):
         print(header_string("CREATE AIRPLANE", 50))
         print(please_fill_info())
-        name_str = get_string("Name")
-        model_str = input("Model: ")
-        producer_str = input("Producer: ")
-        number_of_seats_str = get_number("Number of seats")
-        print("")
-        if is_correct():
-            print(header_string("SUCCESS!", 50))
-            new_airplane = Airplane(name_str, model_str, producer_str, number_of_seats_str)
-            self.__llapi.add_airplane(new_airplane)
-            input("**   Press enter to return to main menu    **")
+        name_str = input("Name: ")
+        if self.__llapi.is_airplane_unique(name_str):
+            model_str = input("Model: ")
+            producer_str = input("Producer: ")
+            number_of_seats_str = get_number("Number of seats")
+            print("")
+            if is_correct():
+                print(header_string("SUCCESS!", 50))
+                new_airplane = Airplane(name_str, model_str, producer_str, number_of_seats_str)
+                self.__llapi.add_airplane(new_airplane)
+                press_enter()
+            else:
+                self.__create_airplane()
         else:
-            self.__create_airplane()
+            print("Airplane already exists")
+            press_enter()
 
     def __new_voyage(self):
         print(header_string("CREATE VOYAGE", 50))
@@ -121,9 +127,12 @@ class Create_Menu:
         print_airport(airport)
         destination_str = self.__llapi.get_voyage_airport()
         copy_voyage = input("\nDo you want to copy an existing voyage? (Y/N): ").lower()
+        while copy_voyage != "y" and copy_voyage != "n":
+            print("Wrong input. Please choose Y or N")
+            copy_voyage = input("\nDo you want to copy an existing voyage? (Y/N): ").lower()
         if copy_voyage == "y":
             self.__copy_voyage(destination_str)
-        elif copy_voyage == "n":
+        else:
             self.__create_voyage(destination_str)
 
     def __copy_voyage(self, airport):
@@ -144,6 +153,9 @@ class Create_Menu:
 
         if copy_voyage.captain == "N/A":
             man_voyage = input("Would you like to man the voyage at this time? (Y/N): ").lower()
+            while man_voyage != "y" and man_voyage != "n":
+                print("Wrong input. Please choose Y or N")
+                man_voyage = input("Would you like to man the voyage at this time? (Y/N): ").lower()
             if man_voyage == "y":
                 self.__man_voyage(airport_str, new_departure_time, airplane_str, new_year_str, new_month_str, new_day_str, new_hour_str, new_minutes_str)
             else:
@@ -151,6 +163,9 @@ class Create_Menu:
                 self.__llapi.add_voyage(new_voyage)
         else:
             change_employees = input("Would you like to change employees for the voyage? (Y/N): ").lower()
+            while change_employees != "y" and change_employees != "n":
+                print("Wrong input. Please choose Y or N")
+                change_employees = input("Would you like to change employees for the voyage? (Y/N): ").lower()
             if change_employees == "y":
                 self.__man_voyage(airport_str, new_departure_time, airplane_str, new_year_str, new_month_str, new_day_str, new_hour_str, new_minutes_str)
             else:
@@ -175,7 +190,9 @@ class Create_Menu:
         airplane_str = self.__llapi.get_voyage_airplane(temp_lst)
         print("")
         man_voyage = input("Would you like to man the voyage at this time? (Y/N): ").lower()
-
+        while man_voyage != "y" and man_voyage != "n":
+                print("Wrong input. Please choose Y or N")
+                man_voyage = input("Would you like to man the voyage at this time? (Y/N): ").lower()
         if man_voyage == "y":
             self.__man_voyage(destination_str, new_departure_time, airplane_str, year_str, month_str, day_str, hour_str, minutes_str)
         else:
@@ -209,6 +226,9 @@ class Create_Menu:
             print(not_licensed())
             fsm_str = self.__llapi.get_crew("flight service manager")
         fa_on_voyage_str = input("Would you like to add a Flight Attendant on this voyage? (Y/N): ").lower()
+        while fa_on_voyage_str != "y" and fa_on_voyage_str != "n":
+                print("Wrong input. Please choose Y or N")
+                fa_on_voyage_str = input("Would you like to add a Flight Attendant on this voyage? (Y/N): ").lower()
         #fa_lst = []
         if fa_on_voyage_str == "y": #while í listapælingum
             fa_str = self.__llapi.get_crew("flight attendant")
@@ -225,6 +245,6 @@ class Create_Menu:
             print(header_string("SUCCESS!", 50))
             new_voyage = Voyage(destination_str, new_departure_time, airplane_str, captain_str, pilot_str, fsm_str, fa_str)
             self.__llapi.add_voyage(new_voyage)
-            press_any_key()
+            press_enter()
         else:
             self.__create_voyage(destination_str)

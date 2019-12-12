@@ -1,7 +1,7 @@
 from UILayer.createMenu import Create_Menu
 from UILayer.getMenu import Get_Menu
 from UILayer.updateMenu import Update_Menu
-from utils.print_functions import header_string
+from utils.print_functions import *
 from datetime import *
 import dateutil
 
@@ -34,7 +34,7 @@ class Main_menu:
                 break
             else:
                 print(header_string('WRONG INPUT, please select from the list!', 50))
-                input("\n**   Press any key to return to menu    **")
+                press_enter()
 
 
    

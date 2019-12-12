@@ -27,6 +27,9 @@ class LLAPI:
 
     def get_destination_duration(self):
         return self.__destination.get_destination_duration()
+
+    def is_airport_unique(self, airport):
+        return self.__destination.is_airport_unique(airport)
     
 #### employee
 
@@ -38,6 +41,7 @@ class LLAPI:
 
     def is_ssn_valid(self, ssn):
         return self.__employee.is_ssn_valid(ssn)
+    
     
     def check_occupation(self, occupation, ssn):
         return self.__employee.check_occupation(occupation, ssn)
@@ -100,6 +104,9 @@ class LLAPI:
     
     def get_airplane_model(self, status = ""):
         return self.__airplane.get_airplane_model(status)
+
+    def is_airplane_unique(self, name_str):
+        return self.__airplane.is_airplane_unique(name_str)
 
 #### voyage
     def get_voyage_airport(self):
