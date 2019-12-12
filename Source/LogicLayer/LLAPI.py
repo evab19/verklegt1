@@ -39,6 +39,9 @@ class LLAPI:
     def is_ssn_valid(self, ssn):
         return self.__employee.is_ssn_valid(ssn)
     
+    def check_occupation(self, occupation, ssn):
+        return self.__employee.check_occupation(occupation, ssn)
+    
     def add_employee(self, employee):
         if self.__employee.is_valid_employee(employee):
             self.__employee.add_employee(employee)
