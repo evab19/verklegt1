@@ -44,7 +44,7 @@ class EmployeeLL:
             return False
 
     def is_valid_employee(self, employee):
-        if employee.name and employee.occupation and employee.ssn and (employee.cell_phone or employee.home_phone) and employee.address:
+        if employee.name and employee.occupation and employee.ssn and employee.cell_phone and employee.address != "":
             return True
         else:
             return False
@@ -52,7 +52,15 @@ class EmployeeLL:
     def check_if_ssn_unique(self, ssn):
         employees = self.get_employee()
         return not(any(employee.ssn == ssn for employee in employees))
-    
+
+    def check_occupation(self, occupation, ssn):
+        employees = self.get_employee()
+        for employee in employees:
+            if employee.ssn == ssn and employee.occupation == occupation:
+                return True
+        return False
+
+
     def is_ssn_valid(self, ssn):
         if len(ssn) != 10:
             return False
@@ -63,7 +71,7 @@ class EmployeeLL:
                 int(ssn)
                 return True
             except ValueError:
-                return False            
+                return False
 
     def get_phone(self, name):
         if name.lower() == "contact" or name.lower() == "new contact":
@@ -157,6 +165,7 @@ class EmployeeLL:
         
         else:
             return staff_ssn_str
+
     def get_week_schedule(self, employee, input_year, input_month, input_day):
         dates_of_week = self.get_start_of_week(input_year, input_month, input_day)
         
