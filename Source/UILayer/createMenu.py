@@ -29,7 +29,8 @@ class Create_Menu:
             print_create_menu()
 
             action = input("Choose an option: ").lower()
-
+            while action not in ["1","2","3","4", "b"]:
+                print("Invalid input. Please choose from the list")
             if action == "1":
                 self.__create_employee()
             elif action == "2":
@@ -40,8 +41,7 @@ class Create_Menu:
                 self.__new_voyage()
             elif action == "b":
                 pass
-            else:
-                error_message()
+
 
 
     def __create_employee(self):

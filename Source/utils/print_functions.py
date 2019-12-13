@@ -19,9 +19,15 @@ def header_string(text, length):
     return string
 
 def is_correct():
+    ''' Input check for y/n questions
+
+        Takes no parameters but returns a boolean value
+        for the choice made by the user
+    
+    '''
     check = input("Is this information correct? (Y/N): ").lower()
     while check != "y" and check != "n":
-        header_string('WRONG INPUT, please select a valid input!',50) #ath. Eva is this ok?? þú var með error_message()
+        print(wrong_input())
         check = input("Is this information correct? (Y/N): ").lower()
     if check == "y":
         return True
@@ -29,10 +35,22 @@ def is_correct():
         return False
 
 def please_fill_info():
+    ''' Prompt string
+
+        Takes no parameters but prompts the user to 
+        respond to input request
+
+    '''
     string = ("\n" + "**  Please fill in the information below   **" + "\n")
     return string
 
 def print_create_menu():
+    ''' Multiple choice string menu
+
+        Takes no parameters but prints the options available
+        to the user
+
+    '''
     print("1: Create employee")
     print("2: Create destination")
     print("3: Create airplane")
@@ -41,6 +59,12 @@ def print_create_menu():
     print("")
 
 def print_get_menu():
+    ''' Multiple choice string menu
+
+        Takes no parameters but prints the options available
+        to the user
+
+    '''
     print("1: Get employee information")
     print("2: Get destination")
     print("3: Get airplane information")
@@ -49,6 +73,12 @@ def print_get_menu():
     print("")
 
 def get_employee_information():
+    ''' Multiple choice string menu
+
+        Takes no parameters but prints the options available
+        to the user
+
+    '''
     print("1: All employees")
     print("2: Employee information")
     print("3: Employees by occupation")
@@ -60,6 +90,12 @@ def get_employee_information():
     print("")
 
 def print_employee_by_occupation():
+    ''' Multiple choice string menu
+
+        Takes no parameters but prints the options available
+        to the user
+
+    '''
     print("C for Captain")
     print("P for Pilot")
     print("FA for Flight Attendant")
@@ -72,12 +108,12 @@ def print_employee_by_status():
     print("")
 
 def print_employee(employees):
-    print("{:-<163}".format(""))
+    print("{:-<173}".format(""))
     print("{}{:10}{}{:13}{}{:25}{}{:12}{}{:30}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', 'Licence','| ', 'Occupation *', '| ', 'Name', '| ', 'SSN', '| ', 'Address', '| ', 'Home phone', '| ', 'Cell phone', '| ', 'Email', '| ', 'Status **', '|'))
-    print("{:-<163}".format(""))
+    print("{:-<173}".format(""))
     for item in employees:
         print(item)
-    print("{:-<163}".format(""))
+    print("{:-<173}".format(""))
     print("* C = Captain, P = Pilot, FA = Flight Attendant, FSM = Flight Service Manager")
     print("** A = Available, B = Busy")
 
@@ -138,14 +174,14 @@ def print_possible_employee_for_update(employees):
     print("")
     
 def print_pilots_by_airplane(pilots):
-    print("{:-<163}".format(""))
+    print("{:-<173}".format(""))
     print("{}{:10}{}{:13}{}{:25}{}{:12}{}{:30}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', 'Licence','| ', 'Occupation *', '| ', 'Name', '| ', 'SSN', '| ', 'Address', '| ', 'Home phone', '| ', 'Cell phone', '| ', 'Email', '| ', 'Status **', '|'))
-    print("{:-<163}".format(""))
+    print("{:-<173}".format(""))
     pilots = sorted(pilots, key=lambda x: x.licence)
     for item in pilots:
         licence, occupation , name, ssn, address, home_phone, cell_phone, email, licence, emp_status = item.licence, item.occupation , item.name, item.ssn, item.address, item.home_phone, item.cell_phone, item.email, item.licence, item.emp_status
         print("{}{:10}{}{:13}{}{:25}{}{:12}{}{:30}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', licence,'| ', occupation, '| ', name, '| ', ssn, '| ', address, '| ', home_phone, '| ', cell_phone, '| ', email, '| ', emp_status, '|'))
-    print("{:-<163}".format(""))
+    print("{:-<173}".format(""))
     print("* C = Captain, P = Pilot")
 
 
@@ -174,14 +210,14 @@ def print_airplane_name_and_models(airplanes):
     print("")
 
 def print_pilots_by_model(pilots_model):
-    print("{:-<163}".format(""))
+    print("{:-<173}".format(""))
     print("{}{:10}{}{:13}{}{:25}{}{:12}{}{:30}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', 'Licence','| ', 'Occupation *', '| ', 'Name', '| ', 'SSN', '| ', 'Address', '| ', 'Home phone', '| ', 'Cell phone', '| ', 'Email', '| ', 'Status **', '|'))
-    print("{:-<163}".format(""))
+    print("{:-<173}".format(""))
     pilots_model = sorted(pilots_model, key=lambda x: x.occupation)
     for item in pilots_model:
         licence, occupation , name, ssn, address, home_phone, cell_phone, email, licence, emp_status = item.licence, item.occupation , item.name, item.ssn, item.address, item.home_phone, item.cell_phone, item.email, item.licence, item.emp_status
         print("{}{:10}{}{:13}{}{:25}{}{:12}{}{:30}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', licence,'| ', occupation, '| ', name, '| ', ssn, '| ', address, '| ', home_phone, '| ', cell_phone, '| ', email, '| ', emp_status, '|'))
-    print("{:-<163}".format(""))
+    print("{:-<173}".format(""))
     print("* C = Captain, P = Pilot")
     print("")
 
@@ -411,3 +447,7 @@ def get_address():
         print("Address too long. Please use less than 30 characters")
         address = input("Address: ")
     return address
+
+def wrong_input():
+    string = "Wrong input. Please try again."
+    return string
