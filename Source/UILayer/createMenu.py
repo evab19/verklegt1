@@ -202,9 +202,9 @@ class Create_Menu:
         temp_lst = []
         for item in all_planes:
             if item.plane_status == "Available":
-                temp_lst.append(item.name)
+                temp_lst.append(item)
 
-        print_airplane_name_and_models(all_planes)
+        print_airplane_name_and_models(temp_lst)
         print("The listed airplanes are available for the given date and time")
         airplane_str = self.__llapi.get_voyage_airplane(temp_lst)
         print("")
