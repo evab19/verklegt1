@@ -68,6 +68,9 @@ class Get_Menu:
             print(header_string("GET EMPLOYEES BY STATUS", 50))
             print_employee_by_status()
             employee_status = input("What status would you like to get? ").upper()
+            while employee_status not in ["A", "B"]:
+                print("Invalid input. Please choose employee status.")
+                employee_status = input("What status would you like to get? ").upper()
             employee_by_status = self.__llapi.get_employee_by_status(employee_status)
             print_employee(employee_by_status)
             press_enter()

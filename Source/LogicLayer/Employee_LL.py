@@ -55,8 +55,8 @@ class EmployeeLL:
 
 
 
-    def check_occupation(self, occupation, ssn):
-        employees = self.get_employee()
+    def check_occupation(self, occupation, ssn, available_lst):
+        employees = self.get_employee_by_status("A")
         for employee in employees:
             if employee.ssn == ssn and employee.occupation == occupation:
                 return True
@@ -108,15 +108,45 @@ class EmployeeLL:
                     empl.emp_status = "B"
         return our_employees
 
+    def get_available_pilots(self, year, month, day, model):
+        our_pilots = self.get_pilots_by_model(model)
+        available_empl = self.get_employee_status(year, month, day)
+        available_pilots = []
+        for pilot in our_pilots:
+            for a_empl in available_empl:
+                if pilot.ssn == a_empl.ssn:
+                    available_pilots.append(pilot)
+        return available_pilots
+
+    def get_available_crew(self, year, month, day):
+        our_crew = self.get_flight_attendants()
+        available_empl = self.get_employee_status(year, month, day)
+        available_crew = []
+        for crew in our_crew:
+            for a_empl in available_empl:
+                if crew.ssn == a_empl.ssn:
+                    available_crew.append(crew)
+        return available_crew
+
+
     def update_employee(self, employee, new_employee):
         '''Takes call from the UI layer and send it to the Data layer
            so the data can be written to the Data layer.'''
         self.__employee_repo.update_employee(employee, new_employee)
     
     def get_employee_information(self, employee):
-        '''Takes call from the UI layer and sends it to the Data layer
-           which returns it to the UI layer to be printed out.'''
-        return self.__employee_repo.get_employee_information(employee)
+        today = date.today()
+        employee_list = self.__employee_repo.get_employee_information(employee)
+        available_empl = self.get_employee_status(today.year, today.month, today.day)
+        
+        for empl in employee_list:
+            for a_empl in available_empl:
+                if empl.ssn == a_empl.ssn:
+                    empl.emp_status = "A"
+                    break
+                else:
+                    empl.emp_status = "B"
+        return employee_list
     
     def get_employee_by_occupation(self, occupation):
         '''Takes call from the UI layer and sends it to the Data layer
@@ -175,6 +205,11 @@ class EmployeeLL:
                     empl.emp_status = "B"
         return employee_list
 
+
+    def get_flight_attendants(self):
+        '''Takes call from the UI layer and sends it to the Data layer
+           which returns it to the UI layer to be printed out.'''
+        return self.__employee_repo.get_flight_attendants()
 
     def get_employee_status(self, year_int, month_int, day_int):
         employees = self.__employee_repo.get_employee()

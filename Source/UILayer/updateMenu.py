@@ -134,24 +134,24 @@ class Update_Menu:
             for item in airplanes:
                 if the_voyage.airplane == item.name:
                     model = item.model
-            pilots_model = self.__llapi.get_pilots_by_model(model)
+            pilots_model = self.__llapi.get_available_pilots(int(year_str), int(month_str), int(day_str), model)
             print_pilots_by_model(pilots_model)
-    
+
             captain_str = self.__llapi.get_crew("captain")
-            while not self.__llapi.check_occupation("C", captain_str):
+            while not self.__llapi.check_occupation("C", captain_str, pilots_model):
                 print(not_licensed())
                 captain_str = self.__llapi.get_crew("captain") 
 
             pilot_str = self.__llapi.get_crew("pilot")
-            while not self.__llapi.check_occupation("P", pilot_str):
+            while not self.__llapi.check_occupation("P", pilot_str, pilots_model):
                 print(not_licensed())
                 pilot_str = self.__llapi.get_crew("pilot")
 
-            flight_attendants = self.__llapi.get_flight_attendants()
+            flight_attendants = self.__llapi.get_available_crew(int(year_str), int(month_str), int(day_str))
             print_flight_attendants(flight_attendants)
 
             fsm_str = self.__llapi.get_crew("flight service manager")
-            while not self.__llapi.check_occupation("FSM", fsm_str):
+            while not self.__llapi.check_occupation("FSM", fsm_str, flight_attendants):
                 print(not_licensed())
                 fsm_str = self.__llapi.get_crew("flight service manager")
             fa_on_voyage_str = input("Would you like to add a Flight Attendant on this voyage? (Y/N): ").lower()
@@ -160,7 +160,7 @@ class Update_Menu:
                     fa_on_voyage_str = input("Would you like to add a Flight Attendant on this voyage? (Y/N): ").lower()
             if fa_on_voyage_str == "y":
                 fa_str = self.__llapi.get_crew("flight attendant")
-                while not self.__llapi.check_occupation("FA", fa_str):
+                while not self.__llapi.check_occupation("FA", fa_str, flight_attendants):
                     print(not_licensed())
                     fa_str = self.__llapi.get_crew("flight attendant")
             else:

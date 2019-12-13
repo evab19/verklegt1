@@ -63,12 +63,12 @@ def print_employee_by_status():
     print("")
 
 def print_employee(employees):
-    print("{:-<163}".format(""))
-    print("{}{:13}{}{:25}{}{:12}{}{:30}{}{:12}{}{:12}{}{:30}{}{:10}{}{:10}{}".format('| ','Occupation *', '| ', 'Name', '| ', 'SSN', '| ', 'Address', '| ', 'Home phone', '| ', 'Cell phone', '| ', 'Email', '| ', 'Licence', '|', 'Status **','| ', ))
-    print("{:-<163}".format(""))
+    print("{:-<173}".format(""))
+    print("{}{:10}{}{:13}{}{:25}{}{:12}{}{:30}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', 'Licence','| ', 'Occupation *', '| ', 'Name', '| ', 'SSN', '| ', 'Address', '| ', 'Home phone', '| ', 'Cell phone', '| ', 'Email', '| ', 'Status **', '|'))
+    print("{:-<173}".format(""))
     for item in employees:
         print(item)
-    print("{:-<163}".format(""))
+    print("{:-<173}".format(""))
     print("* C = Captain, P = Pilot, FA = Flight Attendant, FSM = Flight Service Manager")
     print("** A = Available, B = Busy")
 
@@ -129,14 +129,14 @@ def print_possible_employee_for_update(employees):
     print("")
     
 def print_pilots_by_airplane(pilots):
-    print("{:-<163}".format(""))
+    print("{:-<173}".format(""))
     print("{}{:10}{}{:13}{}{:25}{}{:12}{}{:30}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', 'Licence','| ', 'Occupation *', '| ', 'Name', '| ', 'SSN', '| ', 'Address', '| ', 'Home phone', '| ', 'Cell phone', '| ', 'Email', '| ', 'Status **', '|'))
-    print("{:-<163}".format(""))
+    print("{:-<173}".format(""))
     pilots = sorted(pilots, key=lambda x: x.licence)
     for item in pilots:
         licence, occupation , name, ssn, address, home_phone, cell_phone, email, licence, emp_status = item.licence, item.occupation , item.name, item.ssn, item.address, item.home_phone, item.cell_phone, item.email, item.licence, item.emp_status
         print("{}{:10}{}{:13}{}{:25}{}{:12}{}{:30}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', licence,'| ', occupation, '| ', name, '| ', ssn, '| ', address, '| ', home_phone, '| ', cell_phone, '| ', email, '| ', emp_status, '|'))
-    print("{:-<163}".format(""))
+    print("{:-<173}".format(""))
     print("* C = Captain, P = Pilot")
 
 
@@ -165,14 +165,14 @@ def print_airplane_name_and_models(airplanes):
     print("")
 
 def print_pilots_by_model(pilots_model):
-    print("{:-<163}".format(""))
+    print("{:-<173}".format(""))
     print("{}{:10}{}{:13}{}{:25}{}{:12}{}{:30}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', 'Licence','| ', 'Occupation *', '| ', 'Name', '| ', 'SSN', '| ', 'Address', '| ', 'Home phone', '| ', 'Cell phone', '| ', 'Email', '| ', 'Status **', '|'))
-    print("{:-<163}".format(""))
+    print("{:-<173}".format(""))
     pilots_model = sorted(pilots_model, key=lambda x: x.occupation)
     for item in pilots_model:
         licence, occupation , name, ssn, address, home_phone, cell_phone, email, licence, emp_status = item.licence, item.occupation , item.name, item.ssn, item.address, item.home_phone, item.cell_phone, item.email, item.licence, item.emp_status
         print("{}{:10}{}{:13}{}{:25}{}{:12}{}{:30}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', licence,'| ', occupation, '| ', name, '| ', ssn, '| ', address, '| ', home_phone, '| ', cell_phone, '| ', email, '| ', emp_status, '|'))
-    print("{:-<163}".format(""))
+    print("{:-<173}".format(""))
     print("* C = Captain, P = Pilot")
     print("")
 
@@ -211,13 +211,13 @@ def print_the_voyage(the_voyage_lst):
     the_pilot = the_voyage_lst[3]
     the_fsm = the_voyage_lst[4]
     the_fa = the_voyage_lst[5]
-    print("Information for voyage to " + the_destination.airport + "at " + the_voyage.departure)
+    print("Information for voyage to " + the_destination.airport + " at " + the_voyage.departure)
     print("")
     print("   Destination: " + the_destination.airport)
     print("   Airplane: " + the_voyage.airplane)
     print("   Flight number from Iceland: " + the_voyage.flight_out)
     print("   Departure time from Iceland: " + the_voyage.departure)
-    print("   Arrival time at " + the_destination.airport + ": " + the_voyage.arrival_at_dest)
+    print("   Arrival time in " + the_destination.airport + ": " + the_voyage.arrival_at_dest)
     print("   Flight number to Iceland: " + the_voyage.flight_in)
     print("   Departure time from " + the_destination.airport + ": " + the_voyage.departure_from_dest)
     print("   Arrival time in Iceland: " + the_voyage.arrival_back_home)
