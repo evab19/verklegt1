@@ -51,7 +51,7 @@ class Update_Menu:
             print("------------------------------------------")
             print("To leave information unchanged press enter")
             print("------------------------------------------")
-            new_address = input("New address: ")
+            new_address = get_address()
             new_home_phone = self.__llapi.get_phone("Home")
             new_cell_phone = self.__llapi.get_phone("Cell")
             new_email = get_email("update")

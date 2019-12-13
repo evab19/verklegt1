@@ -58,6 +58,9 @@ class Get_Menu:
             print(header_string("GET EMPLOYEES BY OCCUPATION", 50))
             print_employee_by_occupation()
             occupation = input("What occupation would you like to get? ").upper()
+            while occupation not in ["C", "P", "FA", "FSM"]:
+                print("Invalid input. Please choose an option from the list")
+                occupation = input("What occupation would you like to get? ").upper()
             employee_by_occupation = self.__llapi.get_employee_by_occupation(occupation)
             print_employee(employee_by_occupation)
             press_enter()
@@ -69,15 +72,29 @@ class Get_Menu:
             print_employee(employee_by_status)
             press_enter()
         elif action == "5":
+            check = 0
             print(header_string("GET WEEK SCHEDULE FOR AN EMPLOYEE", 50))
-            employee = input("Use SSN for the employee you would like to get the schedule for: ")
-            print("\nPlease insert date and you will get the week schedule that includes that date.")
-            input_year, input_month, input_day = self.__llapi.get_voyage_date()
-            employee_information = self.__llapi.get_employee_information(employee)
-            week_dates = self.__llapi.get_week_lst(input_year, input_month, input_day)
-            week_schedule_lst = self.__llapi.get_week_schedule(employee, input_year, input_month, input_day)
-            print_employee_schedule(employee_information, week_dates, week_schedule_lst)
-            press_enter()
+            employee = input("Social Security Number: ")
+            while not(self.__llapi.is_ssn_valid(employee)):
+                print("Please insert a valid 10-digit social security number.")
+                employee = input("Social Security Number: ")
+
+            if not(self.__llapi.check_if_ssn_unique(employee)):
+                while check == 0:
+                    print("\nPlease insert date and you will get the week schedule that includes that date.")
+                    input_year, input_month, input_day = self.__llapi.get_voyage_date()
+                    employee_information = self.__llapi.get_employee_information(employee)
+                    week_dates = self.__llapi.get_week_lst(input_year, input_month, input_day)
+                    week_schedule_lst = self.__llapi.get_week_schedule(employee, input_year, input_month, input_day)
+                    if week_schedule_lst:
+                        print_employee_schedule(employee_information, week_dates, week_schedule_lst)
+                        check += 1
+                        press_enter()
+                    else:
+                        print("Date out of bounds. Please try again.")
+            else:
+                print("Employee does not exist")
+                press_enter()
         elif action == "6":
             print(header_string("GET ALL PILOTS BY AIRPLANE MODEL", 50))
             pilots = self.__llapi.get_pilots_by_airplane()

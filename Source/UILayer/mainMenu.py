@@ -7,9 +7,9 @@ import dateutil
 
 class Main_menu:
 
-    def main_menu(self):    
+    def main_menu(self):
         '''Prints the main menu on the screen and asks the user
-           to choose an action.'''   
+        to choose an action.'''          
         action = ""
         while(action != "q"):
             print(header_string("WELCOME TO NaN-AIR!", 50))
@@ -35,3 +35,7 @@ class Main_menu:
             else:
                 print(header_string('WRONG INPUT, please select from the list!', 50))
                 press_enter()
+
+
+
+   
