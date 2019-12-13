@@ -23,6 +23,13 @@ def please_fill_info():
     string = ("\n" + "**  Please fill in the information below   **" + "\n")
     return string
 
+def print_update_menu():
+    print("1: Update employee")
+    print("2: Update airport contact info")
+    print("3: Update voyage")
+    print("b: Back")
+    print("")
+
 def print_create_menu():
     print("1: Create employee")
     print("2: Create destination")
