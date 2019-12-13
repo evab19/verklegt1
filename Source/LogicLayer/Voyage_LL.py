@@ -127,12 +127,13 @@ class VoyageLL:
         air_input = 0
         while air_input != 1:
             airplane_str = input("Airplane (name): ")
-            if airplane_str not in airplanes_list:
-                print("Wrong input or airplane not available")
-                print("Please choose an airplane from the list")
-            else:
-                air_input = 1
-                return airplane_str
+            for airplane in airplanes_list:
+                if airplane.name == airplane_str:
+                    air_input = 1
+                    return airplane_str
+            print("Wrong input or airplane not available")
+            print("Please choose an airplane from the list")
+
 
     def get_voyage_date(self):
         '''Asks for input for a date and validates the input format and
