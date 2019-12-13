@@ -34,6 +34,9 @@ class Create_Menu:
 
 
     def __create_employee(self):
+        '''Takes no input. Prints on the screen and asks for input to create
+           an employee in the database. If all input is there and correctly
+           typed it is saved to the employee.csv data file'''
         print(header_string("CREATE EMPLOYEE", 50))
         occupation_str = self.__llapi.choose_occupation()
         if occupation_str:
@@ -76,6 +79,9 @@ class Create_Menu:
                 press_enter()
     
     def __create_destination(self):
+        '''Takes no input. Prints on the screen and asks for input to create
+           a destination in the database. If all input is there and correctly
+           typed it is saved to the destination.csv data file'''
         print(header_string("CREATE DESTINATION", 50))
         print(please_fill_info())
         country_str = get_string("Country")
