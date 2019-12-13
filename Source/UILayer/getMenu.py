@@ -18,16 +18,15 @@ class Get_Menu:
             action = input("Choose an option: ").lower()
 
             if action == "1":
-                self.__get_employee()
-         
+                self.__get_employee()        
             elif action == "2":
                 self.__get_destination()
-
             elif action == "3":
                 self.__get_airplane_information()
-
             elif action == "4":
-                self.__get_voyage()
+                self.__get_voyage()           
+            else:
+                print(invalid_input())
 
 
     def __get_employee(self):

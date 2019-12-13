@@ -29,8 +29,7 @@ class Create_Menu:
                 self.__new_voyage()
             elif action == "b":
                 pass
-            else:
-                error_message()
+
 
 
     def __create_employee(self):

@@ -400,3 +400,7 @@ def get_address():
         print("Address too long. Please use less than 30 characters")
         address = input("Address: ")
     return address
+
+def invalid_input():
+    string = "Invalid input. Please try again"
+    return string

@@ -22,13 +22,13 @@ class Update_Menu:
             action = input("Choose an option: ").lower()
 
             if action == "1":
-                self.__update_employee()
-                 
+                self.__update_employee()                 
             elif action == "2":
                 self.__update_destination()
-
             elif action == "3":
                 self.__update_voyage()
+            else:
+                print(invalid_input())
 
     def __update_employee(self):
         '''Takes no input. Prints on the screen and asks for input to update/change
