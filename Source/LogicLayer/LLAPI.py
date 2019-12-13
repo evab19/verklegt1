@@ -56,8 +56,8 @@ class LLAPI:
     def is_ssn_valid(self, ssn):
         return self.__employee.is_ssn_valid(ssn)
     
-    def check_occupation(self, occupation, ssn):
-        return self.__employee.check_occupation(occupation, ssn)
+    def check_occupation(self, occupation, ssn, available_lst):
+        return self.__employee.check_occupation(occupation, ssn, available_lst)
     
     def add_employee(self, employee):
         '''Takes in input information about a new employee. Calls the correct
@@ -70,6 +70,12 @@ class LLAPI:
         '''Takes call from the UI layer and sends it to the correct LL class which
            sends it to the Data layer which returns it to the UI layer to be printed out.'''
         return self.__employee.get_employee()
+
+    def get_available_pilots(self, year, month, day, model):
+        return self.__employee.get_available_pilots(year, month, day, model)
+    
+    def get_available_crew(self, year, month, day):
+        return self.__employee.get_available_crew(year, month, day)
 
     def update_employee(self, employee, new_employee):
         '''Takes call from the UI layer and send it to the LL calss which forwards it to the Data layer

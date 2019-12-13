@@ -49,7 +49,7 @@ class Create_DL:
         model = airplane.get_model()
         producer = airplane.get_producer()
         number_of_seats = airplane.get_number_of_seats()
-        plane_status = airplane.get_plane_status()
+        plane_status = "Available"
         with open("./data/airplanes.csv", "a+", newline='', encoding='utf-8-sig') as csv_file:
             fieldnames = ['name', 'model', 'producer', 'number_of_seats', 'status']
             writer = csv.DictWriter(csv_file, fieldnames=fieldnames)

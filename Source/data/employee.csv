@@ -1,73 +1,80 @@
-﻿﻿occupation,name,ssn,address,home_phone,cell_phone,email,licence,status
+occupation,id,name,ssn,address,home_phone,cell_phone,email,licence,status
 
-C,Chuck Norris,1002902299,Ásgarður,5551010,6626148,Chuck Norris@nanair.com,Boeing747,A
+C,,Chuck Norris,1002902299,Ásgarður,5551010,6626148,Chuck Norris@nanair.com,Boeing747,A
 
-C,Freyja,1102902089,Ásgarður,5551111,8885252,Freyja@nanair.com,Boeing757,A
+C,,Freyja,1102902089,Ásgarður,5551111,8885252,Freyja@nanair.com,Boeing757,A
 
-C,Frygg,1203803899,Ásgarður,5552020,6665555,Frygg@nanair.com,Boeing767,A
+C,,Frygg,1203803899,Ásgarður,5552020,6665555,Frygg@nanair.com,Boeing767,A
 
-C,Sunna,1404829039,Ásgarður,5552222,8677658,Sunna@nanair.com,Boeing747,A
+C,,Sunna,1404829039,Ásgarður,5552222,8677658,Sunna@nanair.com,Boeing747,A
 
-C,Heimdallur,1505752209,Ásgarður,5553030,9352525,Heimdallur@nanair.com,Boeing757,A
+C,,Heimdallur,1505752209,Ásgarður,5553030,9352525,Heimdallur@nanair.com,Boeing757,A
 
-C,Saga,1606763079,Ásgarður,5553333,10027367,Saga@nanair.com,Boeing767,A
+C,,Saga,1606763079,Ásgarður,5553333,10027367,Saga@nanair.com,Boeing767,A
 
-C,Fulla,1707784499,Ásgarður,5554040,107022,Fulla@nanair.com,Boeing747,A
+C,,Fulla,1707784499,Ásgarður,5554040,107022,Fulla@nanair.com,Boeing747,A
 
-C,Gefjun,1808853089,Ásgarður,5555050,11377076,Gefjun@nanair.com,Boeing757,A
+C,,Gefjun,1808853089,Ásgarður,5555050,11377076,Gefjun@nanair.com,Boeing757,A
 
-C,Iðunn,1909729999,Ásgarður,5555555,12051930,Iðunn@nanair.com,Boeing767,A
+C,,Iðunn,1909729999,Ásgarður,5555555,12051930,Iðunn@nanair.com,Boeing767,A
 
-C,Gerður,2010738989,Ásgarður,5556060,12726785,Gerður@nanair.com,Boeing747,A
+C,,Gerður,2010738989,Ásgarður,5556060,12726785,Gerður@nanair.com,Boeing747,A
 
-P,Colt,2002902299,Dallas,5556591,13401639,Colt@nanair.com,Boeing757,A
+P,,Colt,2002902299,Dallas,5556591,13401639,Colt@nanair.com,Boeing757,A
 
-P,Sheriff Dan Stevens,2102902089,Dallas,5557182,1407649,Sheriff Dan Stevens@nanair.com,Boeing767,A
+P,,Sheriff Dan Stevens,2102902089,Dallas,5557182,1407649,Sheriff Dan Stevens@nanair.com,Boeing767,A
 
-P,Booker,2203803899,Dallas,5557773,14751348,Booker@nanair.com,Boeing747,A
+P,,Booker,2203803899,Dallas,5557773,14751348,Booker@nanair.com,Boeing747,A
 
-P,James Braddock,2404829039,Dallas,5558364,15426202,James Braddock@nanair.com,Boeing757,A
+P,,James Braddock,2404829039,Dallas,5558364,15426202,James Braddock@nanair.com,Boeing757,A
 
-P,Matt Hunter,2505752209,Dallas,5558954,16101057,Matt Hunter@nanair.com,Boeing767,A
+P,,Matt Hunter,2505752209,Dallas,5558954,16101057,Matt Hunter@nanair.com,Boeing767,A
 
-P,Barney,2606763079,Dallas,5559545,16775911,Barney@nanair.com,Boeing747,A
+P,,Barney,2606763079,Dallas,5559545,16775911,Barney@nanair.com,Boeing747,A
 
-P,Grogan,2707784499,Dallas,5560136,17450766,Grogan@nanair.com,Boeing757,A
+P,,Grogan,2707784499,Dallas,5560136,17450766,Grogan@nanair.com,Boeing757,A
 
-P,Walker,2808853089,Irving,5560726,18125620,Walker@nanair.com,Boeing767,A
+P,,Walker,2808853089,Irving,5560726,18125620,Walker@nanair.com,Boeing767,A
 
-FSM,Nanna,1038038999,Ásgarður,5562498,20150183,Nanna@nanair.com,N/A,A
+FSM,,Nanna,1038038999,Ásgarður,5562498,20150183,Nanna@nanair.com,N/A,A
 
-FSM,Rindur,1148290399,Ásgarður,5563085,20825038,Rindur@nanair.com,N/A,A
+FSM,,Rindur,1148290399,Ásgarður,5563085,20825038,Rindur@nanair.com,N/A,A
 
-FSM,Sjöfn,1257522099,Ásgarður,5563680,21499892,Sjöfn@nanair.com,N/A,A
+FSM,,Sjöfn,1257522099,Ásgarður,5563680,21499892,Sjöfn@nanair.com,N/A,A
 
-FSM,Sigyn,1367630799,Ásgarður,5564270,22174747,Sigyn@nanair.com,N/A,A
+FSM,,Sigyn,1367630799,Ásgarður,5564270,22174747,Sigyn@nanair.com,N/A,A
 
-FSM,Snotra,1477844999,Ásgarður,5564861,22849601,Snotra@nanair.com,N/A,A
+FSM,,Snotra,1477844999,Ásgarður,5564861,22849601,Snotra@nanair.com,N/A,A
 
-FSM,Syn,1588530899,Ásgarður,5565452,23524456,Syn@nanair.com,N/A,A
+FSM,,Syn,1588530899,Ásgarður,5565452,23524456,Syn@nanair.com,N/A,A
 
-FSM,Vár,1697299999,Ásgarður,5566043,24199310,Vár@nanair.com,N/A,A
+FSM,,Vár,1697299999,Ásgarður,5566043,24199310,Vár@nanair.com,N/A,A
 
-FSM,Vör,1707389899,Ásgarður,5566633,24874164,Vör@nanair.com,N/A,A
+FSM,,Vör,1707389899,Ásgarður,5566633,24874164,Vör@nanair.com,N/A,A
 
-FSM,Snorri,1810290229,Skálholt,5567224,25549019,Snorri@nanair.com,N/A,A
+FSM,,Snorri,1810290229,Skálholt,5567224,25549019,Snorri@nanair.com,N/A,A
 
-FA,Bilbo,2711073899,Shire,5572540,31622709,Bilbo@nanair.com,N/A,A
+FA,,Bilbo,2711073899,Shire,5572540,31622709,Bilbo@nanair.com,N/A,A
 
-FA,Dwalin,2820290229,Shire,5573131,32297563,Dwalin@nanair.com,N/A,A
+FA,,Dwalin,2820290229,Shire,5573131,32297563,Dwalin@nanair.com,N/A,A
 
-FA,Gloin,2930290209,Shire,5573722,32972418,Gloin@nanair.com,N/A,A
+FA,,Gloin,2930290209,Shire,5573722,32972418,Gloin@nanair.com,N/A,A
 
-FA,Beorn,3040380389,Shire,5574312,33647272,Beorn@nanair.com,N/A,A
+FA,,Beorn,3040380389,Shire,5574312,33647272,Beorn@nanair.com,N/A,A
 
-FA,Azog,3160482909,Shire,5574903,34322126,Azog@nanair.com,N/A,A
+FA,,Azog,3160482909,Shire,5574903,34322126,Azog@nanair.com,N/A,A
 
-FA,Smaug,1070575229,Shire,5575494,34996981,Smaug@nanair.com,N/A,A
+FA,,Smaug,1070575229,Shire,5575494,34996981,Smaug@nanair.com,N/A,A
 
-FA,Nibs,1180676309,Shire,5576084,35671835,Nibs@nanair.com,N/A,A
+FA,,Nibs,1180676309,Shire,5576084,35671835,Nibs@nanair.com,N/A,A
 
-FA,Drogo,1290778449,Shire,5576675,36346690,Drogo@nanair.com,N/A,A
+FA,,Drogo,1290778449,Shire,5576675,36346690,Drogo@nanair.com,N/A,A
 
+C,,Sigtryggur,2712883799,Suðurhólar 4,,8679530,sigtryggur@gmail.com,Boeing767,A
+
+C,,Eva,2904882309,Suðurhólar 4,,6626148,evabjoss@gmail.com,Boeing767,A
+
+FSM,,Tímó,1705153789,Suðurhólar 4,,5556655,timo@timo.is,N/A,A
+
+C,,Sir Arthur,1205883699,Camelot,,8883689,sirtarthur@arthur.com,Boeing747,A
 

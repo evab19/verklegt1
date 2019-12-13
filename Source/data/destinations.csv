@@ -1,13 +1,7 @@
-﻿country,airport,duration,distance,contact_name,contact_phone
-
-Greenland,Nuuk,2:28,1403,Soggster,6626148
-
-Greenland,Kulusuk,1:50,710,Óliver Þór,8679530
-
-Faroe Island,Thorshavn,1:25,693,Joanne Rowling,8586698
-
-Shetland,Tingwall,2:00,730,Thelma,4567123
-
-Svalbard,Longyearbyen,5:00,2021,Ingibjörg,5671234
-
-
+﻿country,airport,duration,distance,contact_name,contact_phone
+Greenland,Nuuk,2:28,1403,Soggster,6626148
+Greenland,Kulusuk,1:50,710,Siggó,56458686
+Faroe Island,Thorshavn,1:25,693,Joanne Rowling,8586698
+Shetland,Tingwall,2:00,730,Thelma,4567123
+Svalbard,Longyearbyen,5:00,2021,Ingibjörg,5671234
+Greenland,Hinn staðurinn,05:07,600,Lance,8586686
