@@ -1,5 +1,15 @@
 class Destination:
+    '''Module Destination class
 
+        Module classes are used by the logic layer classes to create new instances of destination
+    
+        
+        gets an instance of a destination information list
+
+        Returns parameters and string if successful
+        -------------------------------------------
+    
+    '''
     def __init__(self, country = "", airport = "", duration = "", distance = "", contact_name = "", contact_phone = ""):
         self.country = country
         self.airport = airport

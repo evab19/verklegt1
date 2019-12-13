@@ -26,6 +26,12 @@ class Update_Menu:
                  
             elif action == "2":
                 self.__update_destination()
+            elif action == "3":
+                pass
+            elif action != 'b':
+                print(header_string('WRONG INPUT, please select a valid input!',50))
+                try_again()
+
 
             elif action == "3":
                 self.__update_voyage()
@@ -110,7 +116,6 @@ class Update_Menu:
             press_enter()
         else:
             self.__update_destination()
-
 
     def __update_voyage(self):
         '''Takes no input. Prints on the screen and asks for input to man a voyage.

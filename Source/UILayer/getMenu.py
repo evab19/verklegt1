@@ -4,7 +4,19 @@ import datetime
 import time
 
 class Get_Menu:
+    '''Get Option - Menu
 
+        This class allows the user to choose what to he can see/get:
+        ------------------------------------------------------------
+
+        -Get_employee = if chosen get a list of employee information 
+        -Get_destination = if chosen get a list of destinations
+        -Get_airplane = if chosen get airplane information
+        -Get_Voyage = if chosen get voyage information
+        -back = go back to main menu
+
+
+    '''
     def __init__(self):
         self.__llapi = LLAPI()
 
@@ -28,6 +40,10 @@ class Get_Menu:
 
             elif action == "4":
                 self.__get_voyage()
+            
+            elif action != 'b':
+                print(header_string('WRONG INPUT, please select a valid input!',50))
+                try_again()
 
 
     def __get_employee(self):
@@ -160,7 +176,5 @@ class Get_Menu:
            print_the_voyage(voyage)
         press_enter()
 
-    def __error_message(self):
-        '''Fetches if the input from user is wrong.'''
-        print(header_string('Wrong input, please select from the list!', 100))
-        press_enter()
+        
+        

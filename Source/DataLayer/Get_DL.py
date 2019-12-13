@@ -7,6 +7,21 @@ import csv
 import dateutil.parser
 
 class Get_DL:
+    '''Data Layer Get Class
+    -----------------------
+
+    Logic Layer either sends data tables for storage in data files or uses IDs 
+    received from logic layer to collect data from data layer and 
+    returns this back up.  
+
+    Attr:
+    ----
+    destination = instance of destination from logic layer
+    employee = instance of employee from logic layer
+    airplane = instance of airplane from logic layer
+    voyage = instance of voyage from logic layer
+
+    '''
     
     def __init__(self):
         self.__destination = []

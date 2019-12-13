@@ -1,4 +1,15 @@
 class Employee:
+    '''Module Employee class
+
+        Module classes are used by the logic layer classes to create new instances of employee
+    
+        
+        gets an instance of a Employee information list
+
+        Returns parameters and string if successful
+        -------------------------------------------
+
+    '''
     def __init__(self, occupation = "", name = "", ssn = "", address = "", home_phone = "", cell_phone = "", email = "", licence = "", emp_status = "A"):
         self.occupation = occupation
         self.name = name

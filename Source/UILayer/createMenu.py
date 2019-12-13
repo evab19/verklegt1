@@ -7,6 +7,17 @@ from utils.print_functions import *
 import datetime
 
 class Create_Menu:
+    '''Menu for Create options
+
+        This class allows the user to choose what to create.
+        -----------------------------------------------------
+    
+        -create_employee = indicates if we would like to create new employee on the system 
+        -create_destination = indicates if we would like to create new destination on the system
+        -create_airplane = indicates if we would like to create new airplane on the system
+        -create__voyage = indicates if we woule like to create new voyage on the system
+        
+    '''
 
     def __init__(self):
         self.__llapi = LLAPI()
@@ -18,7 +29,8 @@ class Create_Menu:
             print_create_menu()
 
             action = input("Choose an option: ").lower()
-
+            while action not in ["1","2","3","4", "b"]:
+                print("Invalid input. Please choose from the list")
             if action == "1":
                 self.__create_employee()
             elif action == "2":
@@ -29,8 +41,7 @@ class Create_Menu:
                 self.__new_voyage()
             elif action == "b":
                 pass
-            else:
-                error_message()
+
 
 
     def __create_employee(self):
