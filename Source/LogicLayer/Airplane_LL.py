@@ -10,10 +10,13 @@ class AirplaneLL:
         self.__airplane = Airplane()
 
     def add_airplane(self, airplane):
+        '''Takes an input from the UI layer and sends it to the Data layer to be saved 
+           to the database.'''
         if self.is_valid_airplane(airplane):
             self.__airplane_repo.add_airplane(airplane)
      
     def is_valid_airplane(self, __airplane):
+        '''Takes in an instance of an airplane and validates it. If OK returns True, else False.'''
         if __airplane.name and __airplane.model and __airplane.producer and __airplane.number_of_seats:
             return True
         else:
@@ -25,6 +28,8 @@ class AirplaneLL:
         return our_airplanes
 
     def get_airplanes(self):
+        '''Takes in no input. Calls the Data layer which returns all airplanes from the 
+           airplanes.csv file. Sends it back to the UI layer.'''
         our_airplanes = self.__airplane_repo.get_airplane()
         return our_airplanes
 
@@ -59,6 +64,8 @@ class AirplaneLL:
         
 
     def parse_date_airplane(self, departure_time):
+        '''Takes in a date in isoformat and parses it to be able to use the date
+           in calculations.'''
         voyage_departure = dateutil.parser.parse(self.__voyage.departure)
         voyage_year = voyage_departure.year
         voyage_month = voyage_departure.month_int
@@ -68,6 +75,8 @@ class AirplaneLL:
         return voyage_year, voyage_month, voyage_day, voyage_hh, voyage_mm
 
     def calculate_time_airplane(self, start_time, duration):
+        '''Takes in a date and time string, and duration string. Uses the parse
+           function to parse it and then calculates a new time and returns it'''
         parseDate = dateutil.parser.parse(start_time)
         dep_year, dep_month, dep_day, dep_hour, dep_min = parseDate.year, parseDate.month, parseDate.day, parseDate.hour, parseDate.minute
         flight_time_hours, flight_time_min = duration.split(':')
@@ -126,13 +135,13 @@ class AirplaneLL:
                 else:
                     print("Invalid input. Please choose a model from the list")
 
-
-
     def check_model(self, model):
+        '''Takes in an airplane model and checks to see if it is valid.'''
         airplanes = self.get_airplanes()
         return any(airplane.model == model for airplane in airplanes)
 
-
     def is_airplane_unique(self, name_str):
+        '''Takes in an airplane name and checks to see if there already is
+           an airplane with that name in the system.'''
         airplanes = self.get_airplanes()
         return not(any(airplane.name.lower() == name_str.lower() for airplane in airplanes))
