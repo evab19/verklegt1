@@ -31,7 +31,7 @@ class Update_Menu:
                 self.__update_voyage()
 
     def __update_employee(self):
-        '''No input. Prints on the screen and asks for input to update/change
+        '''Takes no input. Prints on the screen and asks for input to update/change
            the employee informations that can be changed. There is no output
            printed only saved in the employee.csv data file'''
         new_employee = []
@@ -73,7 +73,7 @@ class Update_Menu:
             press_enter()
 
     def __update_destination(self):
-        '''No input. Prints on the screen and asks for input to update/change
+        '''Takes no input. Prints on the screen and asks for input to update/change
            the contact informations for a selected destination. There is no output
            printed only saved in the destination.csv data file'''
         print(header_string("UPDATE DESTINATION", 50))
@@ -113,7 +113,7 @@ class Update_Menu:
 
 
     def __update_voyage(self):
-        '''No input. Prints on the screen and asks for input to man a voyage.
+        '''Takes no input. Prints on the screen and asks for input to man a voyage.
            There is no output printed only saved in the voyage.csv data file'''
         print(header_string("MAN A VOYAGE", 50))
         '''Lista upp Destination'''

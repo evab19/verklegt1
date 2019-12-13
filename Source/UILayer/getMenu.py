@@ -9,6 +9,8 @@ class Get_Menu:
         self.__llapi = LLAPI()
 
     def get_menu(self):
+        '''Prints the get menu on the screen and asks the user
+           to choose an action.'''
         action = ""
         while(action != "b"):
             print(header_string("GET", 50))
@@ -29,7 +31,9 @@ class Get_Menu:
 
 
     def __get_employee(self):
-        """ TODO Laga menuið eftir að við ákveðum hvernig við höfum þetta """
+        '''Takes no input. Prints on the screen and asks for what employee information
+           the user wants to see. Based on more input the output is printed on the 
+           screen after it has been fetched from the data files'''
         print(header_string("GET EMPLOYEE INFORMATION", 50))
         get_employee_information()
         action = input("Choose an option: ").lower()
@@ -94,6 +98,8 @@ class Get_Menu:
         
 
     def __get_destination(self):
+        '''Takes no input. Prints on the screen information about all destinations that
+           NaN air has on its books.'''
         print(header_string("GET DESTINATIONS", 50))
         destination = self.__llapi.get_destination()
         print_destination(destination)
@@ -101,6 +107,8 @@ class Get_Menu:
 
 
     def __get_airplane_information(self):
+        '''Takes no input. Prints on the screen information about all airplanes that
+           NaN air owns and if the are available or not.'''
         print(header_string("GET AIRPLANE INFORMATION", 50))
         today = datetime.datetime.now()
         airplanes = self.__llapi.get_airplane(today.year, today.month, today.day, today.hour, today.minute)
@@ -117,6 +125,9 @@ class Get_Menu:
         press_enter()
 
     def __get_voyage(self):
+        '''Takes no input. Prints on the screen and asks for what voyage the
+           user wants to see information for. Based on user selection all 
+           information about the selected voyage is printed on the screen.'''
         print(header_string("GET VOYAGE INFORMATION", 50))
         airport = self.__llapi.get_destination()
         print_airport(airport)
@@ -127,12 +138,9 @@ class Get_Menu:
         if print_voyages_destination(voyages, voyage_destination):
            voyage = self.__llapi.get_flight_number(voyage_destination, year_str, month_str, day_str)
            print_the_voyage(voyage)
-        # else:
-        #     print("No voyage on this date")
         press_enter()
 
     def __error_message(self):
+        '''Fetches if the input from user is wrong.'''
         print(header_string('Wrong input, please select from the list!', 100))
         press_enter()
-        
-        
