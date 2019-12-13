@@ -107,6 +107,9 @@ class Create_Menu:
             press_enter()
 
     def __create_airplane(self):
+        '''Takes no input. Prints on the screen and asks for input to create
+           a new airplane in the database. If all input is there and correctly
+           typed it is saved to the airplane.csv data file'''
         print(header_string("CREATE AIRPLANE", 50))
         print(please_fill_info())
         name_str = input("Name: ")
@@ -127,6 +130,11 @@ class Create_Menu:
             press_enter()
 
     def __new_voyage(self):
+        '''Takes no input. Prints on the screen and asks for input to create
+           a new voyage in the database. First step is to input airport name
+           and then it calls copy_voyage function if user wants to copy an older
+           voyage already in the system. If not it calls the create_voyage
+           function.'''
         print(header_string("CREATE VOYAGE", 50))
         print(please_fill_info())
         airport = self.__llapi.get_destination()
@@ -142,6 +150,9 @@ class Create_Menu:
             self.__create_voyage(destination_str)
 
     def __copy_voyage(self, airport):
+        '''Takes in a name of the airport that the voyage is scheduled for. Asks for if 
+           user wants to man voyage if needed and if user wants to change employees on
+           the voyage. Then it writes the new voyage to the voyage.csv file.'''
         print("\nWhat date are you looking for? (only use numbers)")
         airport_str = airport
         copy_year_str, copy_month_str, copy_day_str = self.__llapi.get_voyage_date()
@@ -179,6 +190,8 @@ class Create_Menu:
                 self.__llapi.add_voyage(new_voyage)
           
     def __create_voyage(self, destination):
+        '''Takes in a name of the airport that the voyage is scheduled for. Asks for if 
+           user wants to man voyage. Then it writes the new voyage to the voyage.csv file.'''
         destination_str = destination
         year_str, month_str, day_str = self.__llapi.get_voyage_date()
         hour_str, minutes_str = self.__llapi.get_voyage_time()
@@ -206,6 +219,9 @@ class Create_Menu:
             self.__llapi.add_voyage(new_voyage)
     
     def __man_voyage(self, destination_str, new_departure_time, airplane_str, year_str, month_str, day_str, hour_str, minutes_str):
+        '''Takes in name of airport (destination), departure time, airplane name 
+           and date and time to create a new voyage. If all input is valid it
+           vill write the voyage to the voyage.csv file.'''
         ''' Prenta lausa flugstjóra'''
         airplanes = self.__llapi.get_airplane(int(year_str), int(month_str), int(day_str), int(hour_str), int(minutes_str))
         for item in airplanes:
@@ -235,15 +251,11 @@ class Create_Menu:
         while fa_on_voyage_str != "y" and fa_on_voyage_str != "n":
                 print("Wrong input. Please choose Y or N")
                 fa_on_voyage_str = input("Would you like to add a Flight Attendant on this voyage? (Y/N): ").lower()
-        #fa_lst = []
-        if fa_on_voyage_str == "y": #while í listapælingum
+        if fa_on_voyage_str == "y":
             fa_str = self.__llapi.get_crew("flight attendant")
             while not self.__llapi.check_occupation("FA", fa_str):
                 print(not_licensed())
                 fa_str = self.__llapi.get_crew("flight attendant")
-            #fa_lst.append(fa_str)
-            #fa_on_voyage_str = input("Would you like to add another Flight Attendant on this voyage? (Y/N): ").lower()
-
         else:
             fa_str = "N/A"
 
