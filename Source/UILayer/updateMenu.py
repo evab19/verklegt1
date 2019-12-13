@@ -130,45 +130,46 @@ class Update_Menu:
             the_voyage_lst = self.__llapi.get_flight_number(voyage_destination, year_str, month_str, day_str)
             the_voyage = the_voyage_lst[0]
         
-        airplanes = self.__llapi.get_airplanes()
-        for item in airplanes:
-            if the_voyage.airplane == item.name:
-                model = item.model
-        pilots_model = self.__llapi.get_pilots_by_model(model)
-        print_pilots_by_model(pilots_model)
+            airplanes = self.__llapi.get_airplanes()
+            for item in airplanes:
+                if the_voyage.airplane == item.name:
+                    model = item.model
+            pilots_model = self.__llapi.get_pilots_by_model(model)
+            print_pilots_by_model(pilots_model)
     
-        captain_str = self.__llapi.get_crew("captain")
-        while not self.__llapi.check_occupation("C", captain_str):
-            print(not_licensed())
-            captain_str = self.__llapi.get_crew("captain") 
-
-        pilot_str = self.__llapi.get_crew("pilot")
-        while not self.__llapi.check_occupation("P", pilot_str):
-            print(not_licensed())
-            pilot_str = self.__llapi.get_crew("pilot")
-
-        flight_attendants = self.__llapi.get_flight_attendants()
-        print_flight_attendants(flight_attendants)
-
-        fsm_str = self.__llapi.get_crew("flight service manager")
-        while not self.__llapi.check_occupation("FSM", fsm_str):
-            print(not_licensed())
-            fsm_str = self.__llapi.get_crew("flight service manager")
-        fa_on_voyage_str = input("Would you like to add a Flight Attendant on this voyage? (Y/N): ").lower()
-        while fa_on_voyage_str != "y" and fa_on_voyage_str != "n":
-                print("Wrong input. Please choose Y or N")
-                fa_on_voyage_str = input("Would you like to add a Flight Attendant on this voyage? (Y/N): ").lower()
-        if fa_on_voyage_str == "y":
-            fa_str = self.__llapi.get_crew("flight attendant")
-            while not self.__llapi.check_occupation("FA", fa_str):
+            captain_str = self.__llapi.get_crew("captain")
+            while not self.__llapi.check_occupation("C", captain_str):
                 print(not_licensed())
-                fa_str = self.__llapi.get_crew("flight attendant")
-        else:
-            fa_str = "N/A"
+                captain_str = self.__llapi.get_crew("captain") 
 
-        if is_correct():
-            print(header_string("SUCCESS!", 50))
-            self.__llapi.update_voyage(the_voyage, captain_str, pilot_str, fsm_str, fa_str)
-            press_enter()
-        else:
-            self.__update_voyage()
+            pilot_str = self.__llapi.get_crew("pilot")
+            while not self.__llapi.check_occupation("P", pilot_str):
+                print(not_licensed())
+                pilot_str = self.__llapi.get_crew("pilot")
+
+            flight_attendants = self.__llapi.get_flight_attendants()
+            print_flight_attendants(flight_attendants)
+
+            fsm_str = self.__llapi.get_crew("flight service manager")
+            while not self.__llapi.check_occupation("FSM", fsm_str):
+                print(not_licensed())
+                fsm_str = self.__llapi.get_crew("flight service manager")
+            fa_on_voyage_str = input("Would you like to add a Flight Attendant on this voyage? (Y/N): ").lower()
+            while fa_on_voyage_str != "y" and fa_on_voyage_str != "n":
+                    print("Wrong input. Please choose Y or N")
+                    fa_on_voyage_str = input("Would you like to add a Flight Attendant on this voyage? (Y/N): ").lower()
+            if fa_on_voyage_str == "y":
+                fa_str = self.__llapi.get_crew("flight attendant")
+                while not self.__llapi.check_occupation("FA", fa_str):
+                    print(not_licensed())
+                    fa_str = self.__llapi.get_crew("flight attendant")
+            else:
+                fa_str = "N/A"
+
+            if is_correct():
+                print(header_string("SUCCESS!", 50))
+                self.__llapi.update_voyage(the_voyage, captain_str, pilot_str, fsm_str, fa_str)
+                
+            else:
+                self.__update_voyage()
+        press_enter()
