@@ -11,7 +11,7 @@ class Employee:
         self.emp_status = emp_status
 
     def __str__(self):
-        return "{}{:13}{}{:25}{}{:12}{}{:20}{}{:12}{}{:12}{}{:30}{}{:10}{}{:10}{}".format('| ', self.occupation, '| ', self.name, '| ', self.ssn, '| ', self.address, '| ', self.home_phone, '| ', self.cell_phone, '| ', self.email, '| ', self.licence, '| ', self.emp_status, '|')
+        return ("{}{:10}{}{:13}{}{:25}{}{:12}{}{:30}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', self.licence,'| ', self.occupation, '| ', self.name, '| ', self.ssn, '| ', self.address, '| ', self.home_phone, '| ', self.cell_phone, '| ', self.email, '| ', self.emp_status, '|'))
 
     def get_occupation(self):
         return str(self.occupation)
