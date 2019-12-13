@@ -108,24 +108,38 @@ class EmployeeLL:
         return our_employees
 
     def update_employee(self, employee, new_employee):
+        '''Takes call from the UI layer and send it to the Data layer
+           so the data can be written to the Data layer.'''
         self.__employee_repo.update_employee(employee, new_employee)
     
     def get_employee_information(self, employee):
+        '''Takes call from the UI layer and sends it to the Data layer
+           which returns it to the UI layer to be printed out.'''
         return self.__employee_repo.get_employee_information(employee)
     
     def get_employee_by_occupation(self, occupation):
+        '''Takes call from the UI layer and sends it to the Data layer
+           which returns it to the UI layer to be printed out.'''
         return self.__employee_repo.get_employee_by_occupation(occupation)
 
     def get_employee_by_status(self, emp_status):
+        '''Takes call from the UI layer and sends it to the Data layer
+           which returns it to the UI layer to be printed out.'''
         return self.__employee_repo.get_employee_by_status(emp_status)
 
     def get_pilots_by_airplane(self):
+        '''Takes call from the UI layer and sends it to the Data layer
+           which returns it to the UI layer to be printed out.'''
         return self.__employee_repo.get_pilots_by_airplane()
 
     def get_pilots_by_model(self, pilots_model):
+        '''Takes call from the UI layer and sends it to the Data layer
+           which returns it to the UI layer to be printed out.'''
         return self.__employee_repo.get_pilots_by_model(pilots_model)
 
     def get_flight_attendants(self):
+        '''Takes call from the UI layer and sends it to the Data layer
+           which returns it to the UI layer to be printed out.'''
         return self.__employee_repo.get_flight_attendants()
 
     def get_employee_status(self, year_int, month_int, day_int):

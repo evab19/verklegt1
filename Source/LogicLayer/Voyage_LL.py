@@ -15,6 +15,8 @@ class VoyageLL:
         self.__get = Get_DL()
 
     def add_voyage(self, voyage):
+        '''Takes in input information about a new voyage. Calculates the necessary
+           dates and times. Forwards all information to the Data layer.'''
         if self.is_valid_voyage(voyage):
             get_destination = voyage.destination
             destination = self.__get.get_destination_by_airport_class(get_destination)
@@ -31,19 +33,26 @@ class VoyageLL:
             self.__voyage_repo.add_voyage(voyage)
 
     def is_valid_voyage(self, voyage):
-        #add code here to verify
         return True
     
     def get_voyage_destination(self, voyage_destination, year_int, month_int, day_int):
+        '''Takes call from the UI layer and sends it to the Data layer
+           which returns it to the UI layer to be printed out.'''
         return self.__voyage_repo.get_voyage_destination(voyage_destination, year_int, month_int, day_int)
 
     def get_the_voyage(self, voyage_destination, year_int, month_int, day_int, flight_number):
+        '''Takes call from the UI layer and sends it to the Data layer
+           which returns it to the UI layer to be printed out.'''
         return self.__voyage_repo.get_the_voyage(voyage_destination, year_int, month_int, day_int, flight_number)
 
     def get_all_voyage_at_date(self, year_int, month_int, day_int):
+        '''Takes call from the UI layer and sends it to the Data layer
+           which returns it to the UI layer to be printed out.'''
         return self.__voyage_repo.get_all_voyage_at_date(year_int, month_int, day_int)
 
     def parse_date(self, departure_time):
+        '''Takes in a date in isoformat and parses it to be able to use the date
+           in calculations.'''
         voyage_departure = dateutil.parser.parse(self.__voyage.departure)
         voyage_year = voyage_departure.year
         voyage_month = voyage_departure.month_int
@@ -53,6 +62,8 @@ class VoyageLL:
         return voyage_year, voyage_month, voyage_day, voyage_hh, voyage_mm
 
     def calculate_time(self, start_time, duration):
+        '''Takes in a date and time string, and duration string. Uses the parse
+           function to parse it and then calculates a new time and returns it'''
         parseDate = dateutil.parser.parse(start_time)
         dep_year, dep_month, dep_day, dep_hour, dep_min = parseDate.year, parseDate.month, parseDate.day, parseDate.hour, parseDate.minute
         flight_time_hours, flight_time_min = duration.split(':')
@@ -93,6 +104,9 @@ class VoyageLL:
 
     
     def get_voyage_airport(self):
+        '''Takes no input. Talks to the Data layer and gets an instance of 
+           a destination based on a specific voyage. Returns the instance of
+           the destination to the UI layer.'''
         airport_str = input("Please enter airport: ")
         while not(self.airport_is_valid(airport_str)):
             print("Please insert a valid airport from the list.")
@@ -101,10 +115,14 @@ class VoyageLL:
             return airport_str
         
     def airport_is_valid(self, airport):
+        '''Check function to see if a valid destination airport has been inputed.'''
         destinations = self.__get.get_destination()
         return any(destination.airport == airport for destination in destinations)
 
     def get_voyage_airplane(self, plane_list):
+        '''Takes in an airplane list. If input is valid it forwards it to the
+           Data layer which fetches the necessary data and returns it back
+           to the UI layer.'''
         airplanes_list = plane_list
         air_input = 0
         while air_input != 1:
@@ -116,8 +134,9 @@ class VoyageLL:
                 air_input = 1
                 return airplane_str
 
-
     def get_voyage_date(self):
+        '''Asks for input for a date and validates the input format and
+           values.'''
         while True:
             date_str = input("Enter date (YYYY-MM-DD): ")
             date_list = date_str.split("-")
@@ -128,6 +147,8 @@ class VoyageLL:
                 print("Invalid format. Please enter a valid date")
 
     def get_voyage_time(self):
+        '''Asks for input for a time and validates the input format and
+           values.'''
         print("Departure time (Departures from Iceland are between 08:00 and 19:45 (including both)")
         print("four departure times per hour, on minutes 00, 15, 30, and 45)")
         HOURS = ["08","09","10","11","12","13","14","15","16","17","18","19"]
@@ -142,10 +163,11 @@ class VoyageLL:
                         return time_list
             else:
                 print("Invalid format. Please enter a valid time")
-        
-
     
     def generate_flight_number(self, destination, voyage_year, voyage_month, voyage_day):
+        '''Takes in a destination and a date. Based on the information the function
+           generates a flight number bot for flight from Iceland and back to Iceland.
+           Follows the rules given for the flight numbers.'''
         voyage_on_the_day = self.__get.get_voyage_destination(destination, voyage_year, voyage_month, voyage_day)
         destination_lst = self.__get.get_destination()
         dest_number_str = ""
@@ -166,6 +188,7 @@ class VoyageLL:
         return flight_number_out, flight_number_home
 
     def get_flight_number(self, destination, year, month, day):
+        '''Assignes the flight number to the Voyage class.'''
         while True:
             flight_number = input("Please insert flight number for the voyage: ").upper()
             the_voyage = self.get_the_voyage(destination, int(year), int(month), int(day), flight_number)
@@ -176,4 +199,6 @@ class VoyageLL:
 
 
     def update_voyage(self, the_voyage, captain_str, pilot_str, fsm_str, fa_str):
+        '''Takes call from the UI layer and send it to the Data layer
+           so the data can be written to the Data layer.'''
         return self.__voyage_repo.update_voyage(the_voyage, captain_str, pilot_str, fsm_str, fa_str)
