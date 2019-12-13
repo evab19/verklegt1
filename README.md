@@ -315,7 +315,7 @@ HOMETIME 02:15
 Dagur 17 13.12.2019
 Föstudagur
 ------------------------------------------------------------------------------------------------------------------------------
-10:00 - 23:00 kóðinn prófaður af öllum - smáatriði löguð - github vesen lagað - skýrsla o.fl. klárað
+10:00 - 23:00 kóðinn prófaður í drasl - smáatriði löguð - github vesen lagað - skýrsla o.fl. klárað
 
 WINNING TEAM!!!!!!!!!!!
 
