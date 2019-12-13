@@ -64,7 +64,7 @@ def print_employee_by_status():
 
 def print_employee(employees):
     print("{:-<163}".format(""))
-    print("{}{:13}{}{:25}{}{:12}{}{:20}{}{:12}{}{:12}{}{:30}{}{:10}{}{:10}{}".format('| ','Occupation *', '| ', 'Name', '| ', 'SSN', '| ', 'Address', '| ', 'Home phone', '| ', 'Cell phone', '| ', 'Email', '| ', 'Licence', '|', 'Status **','| ', ))
+    print("{}{:13}{}{:25}{}{:12}{}{:30}{}{:12}{}{:12}{}{:30}{}{:10}{}{:10}{}".format('| ','Occupation *', '| ', 'Name', '| ', 'SSN', '| ', 'Address', '| ', 'Home phone', '| ', 'Cell phone', '| ', 'Email', '| ', 'Licence', '|', 'Status **','| ', ))
     print("{:-<163}".format(""))
     for item in employees:
         print(item)
@@ -130,12 +130,12 @@ def print_possible_employee_for_update(employees):
     
 def print_pilots_by_airplane(pilots):
     print("{:-<163}".format(""))
-    print("{}{:10}{}{:13}{}{:25}{}{:12}{}{:20}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', 'Licence','| ', 'Occupation *', '| ', 'Name', '| ', 'SSN', '| ', 'Address', '| ', 'Home phone', '| ', 'Cell phone', '| ', 'Email', '| ', 'Status **', '|'))
+    print("{}{:10}{}{:13}{}{:25}{}{:12}{}{:30}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', 'Licence','| ', 'Occupation *', '| ', 'Name', '| ', 'SSN', '| ', 'Address', '| ', 'Home phone', '| ', 'Cell phone', '| ', 'Email', '| ', 'Status **', '|'))
     print("{:-<163}".format(""))
     pilots = sorted(pilots, key=lambda x: x.licence)
     for item in pilots:
         licence, occupation , name, ssn, address, home_phone, cell_phone, email, licence, emp_status = item.licence, item.occupation , item.name, item.ssn, item.address, item.home_phone, item.cell_phone, item.email, item.licence, item.emp_status
-        print("{}{:10}{}{:13}{}{:25}{}{:12}{}{:20}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', licence,'| ', occupation, '| ', name, '| ', ssn, '| ', address, '| ', home_phone, '| ', cell_phone, '| ', email, '| ', emp_status, '|'))
+        print("{}{:10}{}{:13}{}{:25}{}{:12}{}{:30}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', licence,'| ', occupation, '| ', name, '| ', ssn, '| ', address, '| ', home_phone, '| ', cell_phone, '| ', email, '| ', emp_status, '|'))
     print("{:-<163}".format(""))
     print("* C = Captain, P = Pilot")
 
@@ -166,24 +166,24 @@ def print_airplane_name_and_models(airplanes):
 
 def print_pilots_by_model(pilots_model):
     print("{:-<163}".format(""))
-    print("{}{:10}{}{:13}{}{:25}{}{:12}{}{:20}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', 'Licence','| ', 'Occupation *', '| ', 'Name', '| ', 'SSN', '| ', 'Address', '| ', 'Home phone', '| ', 'Cell phone', '| ', 'Email', '| ', 'Status **', '|'))
+    print("{}{:10}{}{:13}{}{:25}{}{:12}{}{:30}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', 'Licence','| ', 'Occupation *', '| ', 'Name', '| ', 'SSN', '| ', 'Address', '| ', 'Home phone', '| ', 'Cell phone', '| ', 'Email', '| ', 'Status **', '|'))
     print("{:-<163}".format(""))
     pilots_model = sorted(pilots_model, key=lambda x: x.occupation)
     for item in pilots_model:
         licence, occupation , name, ssn, address, home_phone, cell_phone, email, licence, emp_status = item.licence, item.occupation , item.name, item.ssn, item.address, item.home_phone, item.cell_phone, item.email, item.licence, item.emp_status
-        print("{}{:10}{}{:13}{}{:25}{}{:12}{}{:20}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', licence,'| ', occupation, '| ', name, '| ', ssn, '| ', address, '| ', home_phone, '| ', cell_phone, '| ', email, '| ', emp_status, '|'))
+        print("{}{:10}{}{:13}{}{:25}{}{:12}{}{:30}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', licence,'| ', occupation, '| ', name, '| ', ssn, '| ', address, '| ', home_phone, '| ', cell_phone, '| ', email, '| ', emp_status, '|'))
     print("{:-<163}".format(""))
     print("* C = Captain, P = Pilot")
     print("")
 
 def print_flight_attendants(flight_attendants):
     print("{:-<153}".format(""))
-    print("{}{:10}{}{:13}{}{:25}{}{:12}{}{:20}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', 'Licence','| ', 'Occupation *', '| ', 'Name', '| ', 'SSN', '| ', 'Address', '| ', 'Home phone', '| ', 'Cell phone', '| ', 'Email', '| ', 'Status **', '|'))
+    print("{}{:10}{}{:13}{}{:25}{}{:12}{}{:30}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', 'Licence','| ', 'Occupation *', '| ', 'Name', '| ', 'SSN', '| ', 'Address', '| ', 'Home phone', '| ', 'Cell phone', '| ', 'Email', '| ', 'Status **', '|'))
     print("{:-<153}".format(""))
     flight_attendants = sorted(flight_attendants, key=lambda x: x.occupation)
     for item in flight_attendants:
         occupation , name, ssn, address, home_phone, cell_phone, email, licence, emp_status = item.occupation , item.name, item.ssn, item.address, item.home_phone, item.cell_phone, item.email, item.licence, item.emp_status
-        print("{}{:13}{}{:25}{}{:12}{}{:20}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', occupation, '| ', name, '| ', ssn, '| ', address, '| ', home_phone, '| ', cell_phone, '| ', email, '| ', emp_status, '|'))
+        print("{}{:13}{}{:25}{}{:12}{}{:30}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', occupation, '| ', name, '| ', ssn, '| ', address, '| ', home_phone, '| ', cell_phone, '| ', email, '| ', emp_status, '|'))
     print("{:-<153}".format(""))
     print("* FSM = Flight Service Manager, FA = Flight Attendant")
     print("")
@@ -393,3 +393,10 @@ def get_email(status = ""):
 def not_licensed():
     not_licensed_str = "The employee is not licensed for this role or is not available"
     return not_licensed_str
+
+def get_address():
+    address = input("Address: ")
+    while len(address) > 30:
+        print("Address too long. Please use less than 30 characters")
+        address = input("Address: ")
+    return address

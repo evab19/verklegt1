@@ -44,7 +44,7 @@ class EmployeeLL:
             return False
 
     def is_valid_employee(self, employee):
-        if employee.name and employee.occupation and employee.ssn and employee.cell_phone and employee.address != "":
+        if employee.name and employee.occupation and employee.ssn and (employee.cell_phone or employee.home_phone) and employee.address != "":
             return True
         else:
             return False
@@ -85,6 +85,7 @@ class EmployeeLL:
             try:
                 int(number)
                 if len(number) >= 7:
+                    number = number.strip()
                     return number
                 else:
                     print(print_str)
@@ -184,10 +185,12 @@ class EmployeeLL:
 
     def get_week_schedule(self, employee, input_year, input_month, input_day):
         dates_of_week = self.get_start_of_week(input_year, input_month, input_day)
-        
-        schedule_for_employee = self.get_schedule(employee, dates_of_week)
+        if dates_of_week:
+            schedule_for_employee = self.get_schedule(employee, dates_of_week)
 
-        return schedule_for_employee
+            return schedule_for_employee
+        else:
+            return False
     
     def get_input_date_string(self, input_year, input_month, input_day):
         date_weekday = datetime(int(input_year), int(input_month), int(input_day)).isoweekday()
@@ -217,15 +220,21 @@ class EmployeeLL:
         elif input_date_weekday == 7:
             temp_date_str = str(((datetime.strptime(input_date_str, "%Y%m%d")) + timedelta(days=-6)).strftime("%Y%m%d"))
             dates_of_week = self.get_year_month_day(temp_date_str)
-        return dates_of_week
+        if dates_of_week:
+            return dates_of_week
+        else:
+            return False
 
     def get_year_month_day(self, start_date):
         week_dates_lst = []
         i = 0
         while i < 7:
-            week_day_str = str(((datetime.strptime(start_date, "%Y%m%d")) + timedelta(days=i)).strftime("%Y%m%d"))
-            week_dates_lst.append(week_day_str)
-            i += 1
+            try:
+                week_day_str = str(((datetime.strptime(start_date, "%Y%m%d")) + timedelta(days=i)).strftime("%Y%m%d"))
+                week_dates_lst.append(week_day_str)
+                i += 1
+            except OverflowError:
+                return False
         return week_dates_lst
 
     def get_schedule(self, employee, dates_lst):

@@ -49,7 +49,7 @@ class Create_Menu:
                 SO_str = input("Social Security Number: ")
 
             if self.__llapi.check_if_ssn_unique(SO_str):
-                    address_str = input("Address: ")
+                    address_str = get_address()
                     home_phone_str = self.__llapi.get_phone("Home")
                     cell_phone_str = self.__llapi.get_phone("Cell")
                     email_str = get_email()
