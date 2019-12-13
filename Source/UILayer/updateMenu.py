@@ -13,22 +13,18 @@ class Update_Menu:
         action = ""
         while(action != "b"):
             print(header_string("UPDATE", 50))
-            print("1: Update employee")
-            print("2: Update airport contact info")
-            print("3: Update voyage")
-            print("b: Back")
-            print("")
+            print_update_menu()
 
             action = input("Choose an option: ").lower()
 
             if action == "1":
-                self.__update_employee()
-                 
+                self.__update_employee()                 
             elif action == "2":
                 self.__update_destination()
-
             elif action == "3":
                 self.__update_voyage()
+            else:
+                print(invalid_input())
 
     def __update_employee(self):
         '''Takes no input. Prints on the screen and asks for input to update/change

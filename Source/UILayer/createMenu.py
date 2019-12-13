@@ -29,8 +29,7 @@ class Create_Menu:
                 self.__new_voyage()
             elif action == "b":
                 pass
-            else:
-                error_message()
+
 
 
     def __create_employee(self):
@@ -161,33 +160,35 @@ class Create_Menu:
             flight_number = input("Please insert flight number for the voyage: ").upper()
             the_voyage = self.__llapi.get_the_voyage(airport, int(copy_year_str), int(copy_month_str), int(copy_day_str), flight_number)
             copy_voyage = the_voyage[0]
-        new_year_str, new_month_str, new_day_str = self.__llapi.get_voyage_date()
-        print("")
-        availableplanes = self.__llapi.get_airplane_status(int(new_year_str), int(new_month_str), int(new_day_str))
-        new_hour_str, new_minutes_str = self.__llapi.get_voyage_time()
-        new_departure_time = datetime.datetime(int(new_year_str), int(new_month_str), int(new_day_str), int(new_hour_str), int(new_minutes_str), 0).isoformat()
-        airplane_str = copy_voyage.airplane
+            new_year_str, new_month_str, new_day_str = self.__llapi.get_voyage_date()
+            print("")
+            availableplanes = self.__llapi.get_airplane_status(int(new_year_str), int(new_month_str), int(new_day_str))
+            new_hour_str, new_minutes_str = self.__llapi.get_voyage_time()
+            new_departure_time = datetime.datetime(int(new_year_str), int(new_month_str), int(new_day_str), int(new_hour_str), int(new_minutes_str), 0).isoformat()
+            airplane_str = copy_voyage.airplane
 
-        if copy_voyage.captain == "N/A":
-            man_voyage = input("Would you like to man the voyage at this time? (Y/N): ").lower()
-            while man_voyage != "y" and man_voyage != "n":
-                print("Wrong input. Please choose Y or N")
+            if copy_voyage.captain == "N/A":
                 man_voyage = input("Would you like to man the voyage at this time? (Y/N): ").lower()
-            if man_voyage == "y":
-                self.__man_voyage(airport_str, new_departure_time, airplane_str, new_year_str, new_month_str, new_day_str, new_hour_str, new_minutes_str)
+                while man_voyage != "y" and man_voyage != "n":
+                    print("Wrong input. Please choose Y or N")
+                    man_voyage = input("Would you like to man the voyage at this time? (Y/N): ").lower()
+                if man_voyage == "y":
+                    self.__man_voyage(airport_str, new_departure_time, airplane_str, new_year_str, new_month_str, new_day_str, new_hour_str, new_minutes_str)
+                else:
+                    new_voyage = Voyage(airport_str, new_departure_time, airplane_str)
+                    self.__llapi.add_voyage(new_voyage)
             else:
-                new_voyage = Voyage(airport_str, new_departure_time, airplane_str)
-                self.__llapi.add_voyage(new_voyage)
-        else:
-            change_employees = input("Would you like to change employees for the voyage? (Y/N): ").lower()
-            while change_employees != "y" and change_employees != "n":
-                print("Wrong input. Please choose Y or N")
                 change_employees = input("Would you like to change employees for the voyage? (Y/N): ").lower()
-            if change_employees == "y":
-                self.__man_voyage(airport_str, new_departure_time, airplane_str, new_year_str, new_month_str, new_day_str, new_hour_str, new_minutes_str)
-            else:
-                new_voyage = Voyage(airport_str, new_departure_time, airplane_str, copy_voyage.captain, copy_voyage.pilot, copy_voyage.fsm, copy_voyage.flight_attendant)
-                self.__llapi.add_voyage(new_voyage)
+                while change_employees != "y" and change_employees != "n":
+                    print("Wrong input. Please choose Y or N")
+                    change_employees = input("Would you like to change employees for the voyage? (Y/N): ").lower()
+                if change_employees == "y":
+                    self.__man_voyage(airport_str, new_departure_time, airplane_str, new_year_str, new_month_str, new_day_str, new_hour_str, new_minutes_str)
+                else:
+                    new_voyage = Voyage(airport_str, new_departure_time, airplane_str, copy_voyage.captain, copy_voyage.pilot, copy_voyage.fsm, copy_voyage.flight_attendant)
+                    self.__llapi.add_voyage(new_voyage)
+        else:
+            press_enter()
           
     def __create_voyage(self, destination):
         '''Takes in a name of the airport that the voyage is scheduled for. Asks for if 

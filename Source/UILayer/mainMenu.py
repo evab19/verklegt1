@@ -33,7 +33,7 @@ class Main_menu:
             elif action == 'q':
                 break
             else:
-                print(header_string('WRONG INPUT, please select from the list!', 50))
+                print(invalid_input())
                 press_enter()
 
 
