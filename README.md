@@ -310,4 +310,13 @@ Mæting 17:00 í HR
 - Thelma gerir notendaprófanir
 
 Áætlum að taka upp myndband í kvöld
+HOMETIME 02:15
+------------------------------------------------------------------------------------------------------------------------------
+Dagur 17 13.12.2019
+Föstudagur
+------------------------------------------------------------------------------------------------------------------------------
+10:00 - 23:00 kóðinn prófaður af öllum - smáatriði löguð - github vesen lagað - skýrsla o.fl. klárað
 
+WINNING TEAM!!!!!!!!!!!
+
+"A lot of people give up just before they're about to make it. You know you never know when that next obstacle is going to be the last one." Chuck Norris
