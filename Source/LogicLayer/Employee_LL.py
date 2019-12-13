@@ -28,16 +28,20 @@ class EmployeeLL:
             if occupation_choice == "b":
                 return False
             if occupation_choice == "1":
-                occupation_str = "Captain"
+                occupation_str = "C"
+                return occupation_str
             elif occupation_choice == "2":
-                occupation_str = "Pilot"
+                occupation_str = "P"
+                return occupation_str
             elif occupation_choice == "3":
-                occupation_str = "Flight Attendant"
+                occupation_str = "FA"
+                return occupation_str
             elif occupation_choice == "4":
-                occupation_str = "Flight Service Manager"
+                occupation_str = "FSM"
+                return occupation_str
             else:
                 print("Invalid input. Please choose from the list")
-            return occupation_str
+        
 
     def add_employee(self, employee):
         if self.is_valid_employee(employee):
@@ -47,7 +51,7 @@ class EmployeeLL:
             return False
 
     def is_valid_employee(self, employee):
-        if employee.name and employee.occupation and employee.ssn and employee.cell_phone and employee.address != "":
+        if employee.name and employee.occupation and employee.ssn and (employee.cell_phone or employee.home_phone) and employee.address != "":
             return True
         else:
             return False
@@ -55,7 +59,17 @@ class EmployeeLL:
     def check_if_ssn_unique(self, ssn):
         employees = self.get_employee()
         return not(any(employee.ssn == ssn for employee in employees))
-    
+
+
+
+    def check_occupation(self, occupation, ssn):
+        employees = self.get_employee()
+        for employee in employees:
+            if employee.ssn == ssn and employee.occupation == occupation:
+                return True
+        return False
+
+
     def is_ssn_valid(self, ssn):
         if len(ssn) != 10:
             return False
@@ -69,7 +83,7 @@ class EmployeeLL:
                 return False
 
     def get_phone(self, name):
-        if name.lower() == "contact":
+        if name.lower() == "contact" or name.lower() == "new contact":
             print_str = "Please insert a valid phone number"
         else:
             print_str = "Please insert a valid phone number or leave it blank"
@@ -78,6 +92,7 @@ class EmployeeLL:
             try:
                 int(number)
                 if len(number) >= 7:
+                    number = number.strip()
                     return number
                 else:
                     print(print_str)
@@ -101,24 +116,38 @@ class EmployeeLL:
         return our_employees
 
     def update_employee(self, employee, new_employee):
+        '''Takes call from the UI layer and send it to the Data layer
+           so the data can be written to the Data layer.'''
         self.__employee_repo.update_employee(employee, new_employee)
     
     def get_employee_information(self, employee):
+        '''Takes call from the UI layer and sends it to the Data layer
+           which returns it to the UI layer to be printed out.'''
         return self.__employee_repo.get_employee_information(employee)
     
     def get_employee_by_occupation(self, occupation):
+        '''Takes call from the UI layer and sends it to the Data layer
+           which returns it to the UI layer to be printed out.'''
         return self.__employee_repo.get_employee_by_occupation(occupation)
 
     def get_employee_by_status(self, emp_status):
+        '''Takes call from the UI layer and sends it to the Data layer
+           which returns it to the UI layer to be printed out.'''
         return self.__employee_repo.get_employee_by_status(emp_status)
 
     def get_pilots_by_airplane(self):
+        '''Takes call from the UI layer and sends it to the Data layer
+           which returns it to the UI layer to be printed out.'''
         return self.__employee_repo.get_pilots_by_airplane()
 
     def get_pilots_by_model(self, pilots_model):
+        '''Takes call from the UI layer and sends it to the Data layer
+           which returns it to the UI layer to be printed out.'''
         return self.__employee_repo.get_pilots_by_model(pilots_model)
 
     def get_flight_attendants(self):
+        '''Takes call from the UI layer and sends it to the Data layer
+           which returns it to the UI layer to be printed out.'''
         return self.__employee_repo.get_flight_attendants()
 
     def get_employee_status(self, year_int, month_int, day_int):
@@ -144,7 +173,7 @@ class EmployeeLL:
 
     def parse_date(self, date):
         parseDate = dateutil.parser.parse(date)
-        year, month, day, hour, min = parseDate.year, parseDate.month, parseDate.day, parseDate.hour, parseDate.minute
+        year, month, day, hour, minute = parseDate.year, parseDate.month, parseDate.day, parseDate.hour, parseDate.minute
         return year, month, day
 
     def get_crew(self, occupation):
@@ -160,12 +189,15 @@ class EmployeeLL:
         
         else:
             return staff_ssn_str
+
     def get_week_schedule(self, employee, input_year, input_month, input_day):
         dates_of_week = self.get_start_of_week(input_year, input_month, input_day)
-        
-        schedule_for_employee = self.get_schedule(employee, dates_of_week)
+        if dates_of_week:
+            schedule_for_employee = self.get_schedule(employee, dates_of_week)
 
-        return schedule_for_employee
+            return schedule_for_employee
+        else:
+            return False
     
     def get_input_date_string(self, input_year, input_month, input_day):
         date_weekday = datetime(int(input_year), int(input_month), int(input_day)).isoweekday()
@@ -195,15 +227,21 @@ class EmployeeLL:
         elif input_date_weekday == 7:
             temp_date_str = str(((datetime.strptime(input_date_str, "%Y%m%d")) + timedelta(days=-6)).strftime("%Y%m%d"))
             dates_of_week = self.get_year_month_day(temp_date_str)
-        return dates_of_week
+        if dates_of_week:
+            return dates_of_week
+        else:
+            return False
 
     def get_year_month_day(self, start_date):
         week_dates_lst = []
         i = 0
         while i < 7:
-            week_day_str = str(((datetime.strptime(start_date, "%Y%m%d")) + timedelta(days=i)).strftime("%Y%m%d"))
-            week_dates_lst.append(week_day_str)
-            i += 1
+            try:
+                week_day_str = str(((datetime.strptime(start_date, "%Y%m%d")) + timedelta(days=i)).strftime("%Y%m%d"))
+                week_dates_lst.append(week_day_str)
+                i += 1
+            except OverflowError:
+                return False
         return week_dates_lst
 
     def get_schedule(self, employee, dates_lst):

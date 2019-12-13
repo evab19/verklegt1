@@ -1,4 +1,5 @@
 import dateutil.parser
+from validate_email import validate_email
 
 def header_string(text, length):
     ''' Header string print function
@@ -52,9 +53,9 @@ def get_employee_information():
     print("2: Employee information")
     print("3: Employees by occupation")
     print("4: Employee status")
-    print("5: All pilots by airplane model")
-    print("6: Pilots by an airplane model")
-    print("7: Employee week schedule")
+    print("5: Employee week schedule")
+    print("6: All pilots by airplane model")
+    print("7: Pilots by an airplane model")
     print("b: Back")
     print("")
 
@@ -72,14 +73,13 @@ def print_employee_by_status():
 
 def print_employee(employees):
     print("{:-<163}".format(""))
-    print("{}{:13}{}{:25}{}{:12}{}{:20}{}{:12}{}{:12}{}{:30}{}{:10}{}{:10}{}".format('| ', 'Occupation *', '| ', 'Name', '| ', 'SSN', '| ', 'Address', '| ', 'Home phone', '| ', 'Cell phone', '| ', 'Email', '| ', 'Licence', '| ', 'Status **', '|'))
+    print("{}{:13}{}{:25}{}{:12}{}{:30}{}{:12}{}{:12}{}{:30}{}{:10}{}{:10}{}".format('| ','Occupation *', '| ', 'Name', '| ', 'SSN', '| ', 'Address', '| ', 'Home phone', '| ', 'Cell phone', '| ', 'Email', '| ', 'Licence', '|', 'Status **','| ', ))
     print("{:-<163}".format(""))
     for item in employees:
         print(item)
     print("{:-<163}".format(""))
     print("* C = Captain, P = Pilot, FA = Flight Attendant, FSM = Flight Service Manager")
     print("** A = Available, B = Busy")
-    input("\n**   Press any key to return to main menu    **")
 
 def print_destination(destination):
     print("{:-<128}".format(""))
@@ -88,15 +88,24 @@ def print_destination(destination):
     for item in destination:
         print(item)
     print("{:-<128}".format(""))
-    input("\n**   Press any key to return to main menu    **")
 
-def print_airplanes(airplane):
-    print("{:-<106}".format(""))
-    print("{}{:20}{}{:20}{}{:25}{}{:20}{}{:10}{}".format('| ', 'Name', '| ',  'Model', '| ', 'Producer', '| ', 'Number of seats', '| ', 'Status *', '|'))
-    print("{:-<106}".format(""))
-    for item in airplane:
-        print(item)
-    print("{:-<106}".format(""))
+
+def print_airplanes(airplane, voyages_lst):
+    
+    print("{:-<138}".format(""))
+    print("{}{:20}{}{:20}{}{:20}{}{:10}{}{:17}{}{:15}{}{:21}{}".format('| ', ' ', '| ',  ' ', '| ', ' ', '| ', 'Number', '| ', ' ', '| ', ' ', '| ', 'Available', '|'))
+    print("{}{:20}{}{:20}{}{:20}{}{:10}{}{:17}{}{:15}{}{:21}{}".format('| ', 'Name', '| ',  'Model', '| ', 'Producer', '| ', 'of seats', '| ', 'Status', '| ', 'Destination', '| ', 'again', '|'))
+    print("{:-<138}".format(""))
+    for index, item in enumerate(airplane):
+        if item.plane_status == 'Available':
+            destination_str = " "
+            available_again = " "
+        else:
+            destination_str = voyages_lst[index].destination
+            available_again = voyages_lst[index].arrival_back_home
+        print("{}{:20}{}{:20}{}{:20}{}{:10}{}{:17}{}{:15}{}{:21}{}".format('| ', item.name, '| ',  item.model, '| ', item.producer, '| ', item.number_of_seats, '| ', item.plane_status, '| ', destination_str, '| ', available_again, '|'))
+        # print(item + )
+    print("{:-<138}".format(""))
     print("* A = Available, I = In the air, LA = Landed abroad")
 
 
@@ -107,7 +116,6 @@ def print_voyages(voyages):
     for item in voyages:
         print(item)
     print("{:-<94}".format(""))
-    input("\n**   Press any key to return to main menu    **")
 
 def print_airport(destination):
     print("{:-<28}".format(""))
@@ -131,16 +139,15 @@ def print_possible_employee_for_update(employees):
     
 def print_pilots_by_airplane(pilots):
     print("{:-<163}".format(""))
-    print("{}{:10}{}{:13}{}{:25}{}{:12}{}{:20}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', 'Licence','| ', 'Occupation *', '| ', 'Name', '| ', 'SSN', '| ', 'Address', '| ', 'Home phone', '| ', 'Cell phone', '| ', 'Email', '| ', 'Status **', '|'))
+    print("{}{:10}{}{:13}{}{:25}{}{:12}{}{:30}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', 'Licence','| ', 'Occupation *', '| ', 'Name', '| ', 'SSN', '| ', 'Address', '| ', 'Home phone', '| ', 'Cell phone', '| ', 'Email', '| ', 'Status **', '|'))
     print("{:-<163}".format(""))
     pilots = sorted(pilots, key=lambda x: x.licence)
     for item in pilots:
         licence, occupation , name, ssn, address, home_phone, cell_phone, email, licence, emp_status = item.licence, item.occupation , item.name, item.ssn, item.address, item.home_phone, item.cell_phone, item.email, item.licence, item.emp_status
-        print("{}{:10}{}{:13}{}{:25}{}{:12}{}{:20}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', licence,'| ', occupation, '| ', name, '| ', ssn, '| ', address, '| ', home_phone, '| ', cell_phone, '| ', email, '| ', emp_status, '|'))
+        print("{}{:10}{}{:13}{}{:25}{}{:12}{}{:30}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', licence,'| ', occupation, '| ', name, '| ', ssn, '| ', address, '| ', home_phone, '| ', cell_phone, '| ', email, '| ', emp_status, '|'))
     print("{:-<163}".format(""))
     print("* C = Captain, P = Pilot")
-    input("\n**   Press any key to return to main menu    **")
-    print("")
+
 
 def print_airplane_models(airplanes):
     print("{:-<23}".format(""))
@@ -161,30 +168,31 @@ def print_airplane_name_and_models(airplanes):
     # unique_models = set()
     airplanes = sorted(airplanes, key=lambda x: x.model)
     for item in airplanes:
-        print("{}{:20}{}{:20}{}".format('| ', item.name, '| ', item.model, '|'))
+        if item.plane_status == 'Available':
+            print("{}{:20}{}{:20}{}".format('| ', item.name, '| ', item.model, '|'))
     print("{:-<45}".format(""))
     print("")
 
 def print_pilots_by_model(pilots_model):
     print("{:-<163}".format(""))
-    print("{}{:10}{}{:13}{}{:25}{}{:12}{}{:20}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', 'Licence','| ', 'Occupation *', '| ', 'Name', '| ', 'SSN', '| ', 'Address', '| ', 'Home phone', '| ', 'Cell phone', '| ', 'Email', '| ', 'Status **', '|'))
+    print("{}{:10}{}{:13}{}{:25}{}{:12}{}{:30}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', 'Licence','| ', 'Occupation *', '| ', 'Name', '| ', 'SSN', '| ', 'Address', '| ', 'Home phone', '| ', 'Cell phone', '| ', 'Email', '| ', 'Status **', '|'))
     print("{:-<163}".format(""))
     pilots_model = sorted(pilots_model, key=lambda x: x.occupation)
     for item in pilots_model:
         licence, occupation , name, ssn, address, home_phone, cell_phone, email, licence, emp_status = item.licence, item.occupation , item.name, item.ssn, item.address, item.home_phone, item.cell_phone, item.email, item.licence, item.emp_status
-        print("{}{:10}{}{:13}{}{:25}{}{:12}{}{:20}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', licence,'| ', occupation, '| ', name, '| ', ssn, '| ', address, '| ', home_phone, '| ', cell_phone, '| ', email, '| ', emp_status, '|'))
+        print("{}{:10}{}{:13}{}{:25}{}{:12}{}{:30}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', licence,'| ', occupation, '| ', name, '| ', ssn, '| ', address, '| ', home_phone, '| ', cell_phone, '| ', email, '| ', emp_status, '|'))
     print("{:-<163}".format(""))
     print("* C = Captain, P = Pilot")
     print("")
 
 def print_flight_attendants(flight_attendants):
     print("{:-<153}".format(""))
-    print("{}{:10}{}{:13}{}{:25}{}{:12}{}{:20}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', 'Licence','| ', 'Occupation *', '| ', 'Name', '| ', 'SSN', '| ', 'Address', '| ', 'Home phone', '| ', 'Cell phone', '| ', 'Email', '| ', 'Status **', '|'))
+    print("{}{:10}{}{:13}{}{:25}{}{:12}{}{:30}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', 'Licence','| ', 'Occupation *', '| ', 'Name', '| ', 'SSN', '| ', 'Address', '| ', 'Home phone', '| ', 'Cell phone', '| ', 'Email', '| ', 'Status **', '|'))
     print("{:-<153}".format(""))
     flight_attendants = sorted(flight_attendants, key=lambda x: x.occupation)
     for item in flight_attendants:
         occupation , name, ssn, address, home_phone, cell_phone, email, licence, emp_status = item.occupation , item.name, item.ssn, item.address, item.home_phone, item.cell_phone, item.email, item.licence, item.emp_status
-        print("{}{:13}{}{:25}{}{:12}{}{:20}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', occupation, '| ', name, '| ', ssn, '| ', address, '| ', home_phone, '| ', cell_phone, '| ', email, '| ', emp_status, '|'))
+        print("{}{:13}{}{:25}{}{:12}{}{:30}{}{:12}{}{:12}{}{:30}{}{:10}{}".format('| ', occupation, '| ', name, '| ', ssn, '| ', address, '| ', home_phone, '| ', cell_phone, '| ', email, '| ', emp_status, '|'))
     print("{:-<153}".format(""))
     print("* FSM = Flight Service Manager, FA = Flight Attendant")
     print("")
@@ -215,6 +223,7 @@ def print_the_voyage(the_voyage_lst):
     print("Information for voyage to " + the_destination.airport + "at " + the_voyage.departure)
     print("")
     print("   Destination: " + the_destination.airport)
+    print("   Airplane: " + the_voyage.airplane)
     print("   Flight number from Iceland: " + the_voyage.flight_out)
     print("   Departure time from Iceland: " + the_voyage.departure)
     print("   Arrival time at " + the_destination.airport + ": " + the_voyage.arrival_at_dest)
@@ -329,8 +338,7 @@ def print_employee_schedule(employee, week_lst, schedule_lst):
     schedule_str += (("|" + " " * length) * times + '|\n')
     schedule_str += ("{:-<127}".format(""))
     print(schedule_str)
-    input("\n**   Press any key to return to main menu    **")
-    print("")
+
     
 def print_choose_occupation():
     print("** Please choose occupation **")
@@ -342,7 +350,12 @@ def print_choose_occupation():
     print("")
 
 def try_again():
-    input("\n**   Press any key to try again    **")
+    input("\n**   Press enter to try again    **")
+
+def press_enter():
+    input("\n**   Press enter to return to menu    **")
+    print("")
+
 
 # def error_message():
 #     print(header_string('WRONG INPUT, please select a valid input!', 50))
@@ -352,6 +365,8 @@ def try_again():
 def get_string(category):
     while True: 
         input_str = input("{}: ".format(category))
+        if input_str == "":
+            return input_str
         input_check = ''.join(input_str.split())
         if input_check.isalpha():
             return input_str
@@ -366,3 +381,33 @@ def get_number(category):
         else:
             print("Please insert a valid {}".format((category).lower()))
 
+def get_email(status = ""):
+    if status == "update":
+        input_str = input("Please enter an e-mail: ")
+        if input_str == "":
+            return input_str
+        else:
+            while True:
+                if validate_email(input_str):
+                    return input_str
+                else:
+                    print("Invalid e-mail address. Please try again.")
+                    input_str = input("Please enter an e-mail: ")
+    else:
+        while True:
+            input_str = input("Please enter an e-mail: ")
+            if validate_email(input_str):
+                return input_str
+            else:
+                print("Invalid e-mail address. Please try again.")
+
+def not_licensed():
+    not_licensed_str = "The employee is not licensed for this role or is not available"
+    return not_licensed_str
+
+def get_address():
+    address = input("Address: ")
+    while len(address) > 30:
+        print("Address too long. Please use less than 30 characters")
+        address = input("Address: ")
+    return address

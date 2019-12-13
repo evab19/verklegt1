@@ -256,7 +256,7 @@ ________________________________________________________________________________
 9.00 MORGUNFUNDUR on the line - facebook spjall 
 - fórum yfir það sem er komið  --- *Steinarnir nánast búnir að útfæra voyage
 - Eva er að vinna í is-valid notar daginn til kl.5 til að vinna í því.
-- Thelma var að klára error- message og notar daginn til kl.5 í að skrifa docstrings og comment
+- Thelma var að klára error- message og notar daginn til kl.5 í að skrifa docstrings
 - Ingibjörg heldur utan um notendaprófanir og to do listann
 - Vinnudagur á að hefjast kl.17 í dag
 -----------
@@ -278,3 +278,36 @@ ________________________________________________________________________________
  --- Allir eru með verkefni að klára frá því í gær ætlum að vinna heima í dag vegna veðurs
 - github hreynsað og lagfært
 24:00 Vinnudag lauk
+
+------------------------------------------------------------------------------------------------------------------------------
+Dagur 15 11.12.2019
+Miðvikudagur
+------------------------------------------------------------------------------------------------------------------------------
+
+10:00 Morgunfundur - Plönum að leggja lokahönd á kóða í kvöld
+- Steinarnir klára A kröfur og B kröfur 
+- Eva fer yfir error og isvalid vesen - sér um GitHub líka
+- Thelma error checks og docstring
+- Ingibjörg og Thelma gerðu notanda prófanir, uppfærðu to do lista og fóru yfir að kröfur séu komnar (amk.A og helst B)
+HOME TIME 00:30!!!
+
+
+------------------------------------------------------------------------------------------------------------------------------
+Dagur 16 12.12.2019
+Fimmtudagur
+------------------------------------------------------------------------------------------------------------------------------
+
+10:00 Morgunfundur Online
+------Skiptum verkum------------
+Nokkru kóðunarverkefni og fíniseringar eftir á todo lista
+- Eva og Steinarnir eru að leggja lokahönd á kóðann
+- Ingibjörg og Thelma halda utan um todo listann og eru að ljúka við skýrsluna
+
+Mæting 17:00 í HR
+- Steinarnir klára kóða og comments + docstrings
+- Eva finnur öll fatal error o.fl. tilfelli þar sem þarf loopu og error message
+- Ingibjörg skrifar leiðbeiningar fyrir myndband
+- Thelma gerir notendaprófanir
+
+Áætlum að taka upp myndband í kvöld
+

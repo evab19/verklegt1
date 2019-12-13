@@ -1,5 +1,6 @@
 from UILayer.mainMenu import Main_menu
 
+
 def main():
     '''This is the main function of NaNair booking system
 

@@ -1,13 +1,16 @@
-﻿occupation,id,name,ssn,address,home_phone,cell_phone,email,licence,status
-P,,Harry Potter,7788996655,Hogwards,4445656,8885252,griffindor_rules@nanair.com,Plane1,
+﻿country,airport,duration,distance,contact_name,contact_phone
 
-C,,Thor,0000000001,Ásgarður,5556666,6665555,god_of_thunder@nanair.com,Plane1,
+Greenland,Nuuk,2:28,1403,Soggster,6626148
 
-FA,,Borat,7788552211,kazakhstan,can-phone3,can-phone1,what_is_email@nanair.com,,
+Greenland,Kulusuk,1:50,710,Óliver Þór,8679530
 
-FA,,Júlla,7744774477,Vesturbær,1122332,4545454,what_is_this@nanair.com,,
+Faroe Island,Thorshavn,1:25,693,Joanne Rowling,8586698
 
-FSM,,Kisi,3322332233,Austurbær,1122232,4545452,is_this@nanair.com,,
+Shetland,Tingwall,2:00,730,Thelma,4567123
 
-Flight Service Manager,,Syndra,1010101010,Suðurhólar4,,6626148,syndra@cool.com,N/A,
+Svalbard,Longyearbyen,5:00,2021,Ingibjörg,5671234
+
+Iceland,Nuk nuk,00:00,0,Soggi,3548679530
+
+Soggland,Sugar,00:00,9999999999999999,Sogg,8679530
 
